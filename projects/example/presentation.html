@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation Builder -- Example Deck</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
+
+  <style>
+    /* ======================================================================
+       tokens/base.css -- Design Tokens
+       ====================================================================== */
+    :root {
+      /* --- Colors (16 tokens) --- */
+      --color-primary:      #1E3A5F;
+      --color-secondary:    #2C5282;
+      --color-accent:       #3182CE;
+      --color-background:   #FFFFFF;
+      --color-surface:      #F7FAFC;
+      --color-text:         #1A202C;
+      --color-text-muted:   #718096;
+      --color-border:       #E2E8F0;
+      --color-success:      #38A169;
+      --color-danger:       #E53E3E;
+      --color-highlight:    #EBF8FF;
+      --color-callout:      #FFF5F5;
+      --color-chart-1:      #3182CE;
+      --color-chart-2:      #38A169;
+      --color-chart-3:      #D69E2E;
+      --color-chart-4:      #E53E3E;
+      --color-chart-5:      #805AD5;
+
+      /* --- Typography (5-level scale) --- */
+      --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;
+      --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --font-size-display:    clamp(2.5rem, 5vw, 3.75rem);
+      --font-size-heading:    clamp(1.75rem, 3.5vw, 2.25rem);
+      --font-size-subheading: clamp(1.25rem, 2.5vw, 1.5rem);
+      --font-size-body:       clamp(1rem, 2vw, 1.125rem);
+      --font-size-caption:    clamp(0.75rem, 1.5vw, 0.875rem);
+
+      --font-weight-light:    300;
+      --font-weight-regular:  400;
+      --font-weight-medium:   500;
+      --font-weight-semibold: 600;
+      --font-weight-bold:     700;
+
+      --line-height-tight:    1.1;
+      --line-height-snug:     1.2;
+      --line-height-normal:   1.5;
+      --line-height-relaxed:  1.7;
+
+      /* --- Spacing (8px grid) --- */
+      --spacing-unit:    8px;
+      --spacing-xs:      4px;
+      --spacing-sm:      8px;
+      --spacing-md:      16px;
+      --spacing-lg:      24px;
+      --spacing-xl:      32px;
+      --spacing-2xl:     48px;
+      --spacing-3xl:     64px;
+      --spacing-section: 80px;
+
+      /* --- Shadows --- */
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md:   0 4px 12px rgba(0,0,0,0.10);
+      --shadow-lg:   0 8px 24px rgba(0,0,0,0.12);
+      --shadow-card: 0 2px 16px rgba(0,0,0,0.06);
+
+      /* --- Border Radius --- */
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   14px;
+      --radius-full: 9999px;
+
+      /* --- Animation Timing --- */
+      --ease-entrance:   cubic-bezier(.16, 1, .3, 1);
+      --duration-fast:   0.5s;
+      --duration-normal: 0.7s;
+      --duration-slow:   0.85s;
+    }
+
+    /* ======================================================================
+       tokens/animations.css -- Entrance Animations
+       ====================================================================== */
+    .reveal .fragment { transition: none !important; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blurIn {
+      from { opacity: 0; filter: blur(12px); }
+      to   { opacity: 1; filter: blur(0); }
+    }
+    @keyframes slideL {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideR {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scalePop {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes lineGrow {
+      from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+      to   { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    }
+
+    .fragment.anim-fadeUp.visible   { animation: fadeUp   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-blurIn.visible   { animation: blurIn   var(--duration-slow)   var(--ease-entrance) both; }
+    .fragment.anim-slideL.visible   { animation: slideL   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-slideR.visible   { animation: slideR   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-scalePop.visible { animation: scalePop  var(--duration-fast)   var(--ease-entrance) both; }
+    .fragment.anim-lineGrow.visible { animation: lineGrow  0.8s                   var(--ease-entrance) both; }
+
+    .fragment[data-delay="1"].visible { animation-delay: 0.1s; }
+    .fragment[data-delay="2"].visible { animation-delay: 0.2s; }
+    .fragment[data-delay="3"].visible { animation-delay: 0.3s; }
+    .fragment[data-delay="4"].visible { animation-delay: 0.4s; }
+    .fragment[data-delay="5"].visible { animation-delay: 0.5s; }
+
+    /* ======================================================================
+       themes/default/theme.css -- Default Theme: Consulting Standard
+       ====================================================================== */
+    :root {
+      --slide-bg: var(--color-background);
+      --content-max-width: 1100px;
+      --master-logo-height: 32px;
+      --master-footer-color: var(--color-text-muted);
+    }
+
+    .reveal .slides section {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+      text-align: left;
+      padding: var(--spacing-2xl);
+    }
+
+    .reveal .slides section h1,
+    .reveal .slides section h2 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .reveal .slides section h1 {
+      font-size: var(--font-size-display);
+      line-height: var(--line-height-tight);
+    }
+
+    .reveal .slides section h2 {
+      font-size: var(--font-size-heading);
+      line-height: var(--line-height-snug);
+    }
+
+    .reveal .slides section h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .reveal .slides section p {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .reveal .slides section ul,
+    .reveal .slides section ol {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      margin-left: var(--spacing-lg);
+    }
+
+    .reveal .slides section li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .reveal .slides section[data-background-color="dark"] {
+      color: var(--color-background);
+    }
+    .reveal .slides section[data-background-color="dark"] h1,
+    .reveal .slides section[data-background-color="dark"] h2 {
+      color: var(--color-background);
+    }
+
+    /* ======================================================================
+       Master Layer CSS
+       ====================================================================== */
+    .master-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      font-family: var(--font-family-body);
+    }
+    .master-logo {
+      position: absolute;
+      top: var(--spacing-lg);
+      right: var(--spacing-lg);
+    }
+    .master-logo img {
+      height: var(--master-logo-height);
+      width: auto;
+    }
+    .master-logo-client {
+      position: absolute;
+      top: var(--spacing-lg);
+      left: var(--spacing-lg);
+    }
+    .master-logo-client img {
+      height: var(--master-logo-height);
+      width: auto;
+    }
+    .master-footer {
+      position: absolute;
+      bottom: var(--spacing-md);
+      left: var(--spacing-lg);
+      right: var(--spacing-lg);
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--font-size-caption);
+      color: var(--master-footer-color);
+    }
+    .master-slide-number {
+      position: absolute;
+      bottom: var(--spacing-md);
+      right: var(--spacing-lg);
+      font-size: var(--font-size-caption);
+      color: var(--master-footer-color);
+    }
+
+    /* Base slide styling */
+    .reveal {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+    }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: var(--font-family-display);
+      color: var(--color-text);
+    }
+
+    /* ======================================================================
+       Demo-specific styles
+       ====================================================================== */
+
+    /* Title slide centering */
+    .slide-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+    }
+    .slide-title h1 {
+      margin-bottom: var(--spacing-md);
+    }
+    .slide-title p {
+      font-size: var(--font-size-subheading);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-light);
+    }
+
+    /* Section break slide centering */
+    .slide-section-break {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+    }
+    .slide-section-break h2 {
+      font-size: var(--font-size-display);
+      color: var(--color-primary);
+    }
+
+    /* Color swatch grid */
+    .color-grid {
+      display: flex;
+      gap: var(--spacing-lg);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-xl);
+    }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+    .color-swatch .swatch-box {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .color-swatch .swatch-label {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    /* Type scale demo */
+    .type-scale-demo {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .type-scale-demo .scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-lg);
+    }
+    .type-scale-demo .scale-label {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      min-width: 100px;
+      text-align: right;
+    }
+
+    /* Animation showcase */
+    .anim-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+    .anim-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-lg) var(--spacing-xl);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-body);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      box-shadow: var(--shadow-card);
+    }
+    .anim-line {
+      height: 4px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      transform-origin: left;
+    }
+
+    /* Master layer demo list */
+    .master-demo-list {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .master-demo-list li {
+      padding-left: var(--spacing-lg);
+      position: relative;
+    }
+    .master-demo-list li::before {
+      content: "\2022";
+      color: var(--color-accent);
+      font-weight: var(--font-weight-bold);
+      position: absolute;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+
+    <!-- Master Layer: persistent across all slides -->
+    <div class="master-layer" id="masterLayer">
+      <div class="master-logo" data-slot="logo">
+        <img src="" alt="Company Logo" />
+      </div>
+      <div class="master-logo-client" data-slot="client-logo">
+        <!-- Optional: client logo -->
+      </div>
+      <div class="master-footer" data-slot="footer">
+        <span class="master-confidential">Vertraulich</span>
+        <span class="master-company">Presentation Builder</span>
+        <span class="master-date">2026</span>
+      </div>
+      <div class="master-slide-number" data-slot="slide-number"></div>
+    </div>
+
+    <!-- SLIDES -->
+    <div class="slides">
+
+      <!-- Slide 1: Title (master hidden) -->
+      <section data-master="hide">
+        <div class="slide-title">
+          <h1>Presentation Builder</h1>
+          <p>Ein modulares Framework fuer professionelle Praesentationen</p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Section Break (master hidden) -->
+      <section data-master="hide">
+        <div class="slide-section-break">
+          <h2>01 -- Design Tokens</h2>
+        </div>
+      </section>
+
+      <!-- Slide 3: Token Demo (master visible) -->
+      <section>
+        <h2>Farben und Typografie</h2>
+
+        <div class="color-grid">
+          <div class="color-swatch fragment anim-fadeUp">
+            <div class="swatch-box" style="background-color: var(--color-primary);"></div>
+            <span class="swatch-label">primary</span>
+          </div>
+          <div class="color-swatch fragment anim-fadeUp" data-delay="1">
+            <div class="swatch-box" style="background-color: var(--color-secondary);"></div>
+            <span class="swatch-label">secondary</span>
+          </div>
+          <div class="color-swatch fragment anim-fadeUp" data-delay="2">
+            <div class="swatch-box" style="background-color: var(--color-accent);"></div>
+            <span class="swatch-label">accent</span>
+          </div>
+          <div class="color-swatch fragment anim-fadeUp" data-delay="3">
+            <div class="swatch-box" style="background-color: var(--color-success);"></div>
+            <span class="swatch-label">success</span>
+          </div>
+          <div class="color-swatch fragment anim-fadeUp" data-delay="4">
+            <div class="swatch-box" style="background-color: var(--color-danger);"></div>
+            <span class="swatch-label">danger</span>
+          </div>
+        </div>
+
+        <div class="type-scale-demo">
+          <div class="scale-row fragment anim-fadeUp" data-delay="5">
+            <span class="scale-label">display</span>
+            <span style="font-size: var(--font-size-display); line-height: var(--line-height-tight);">Aa</span>
+          </div>
+          <div class="scale-row fragment anim-fadeUp" data-delay="1">
+            <span class="scale-label">heading</span>
+            <span style="font-size: var(--font-size-heading); line-height: var(--line-height-snug);">Aa</span>
+          </div>
+          <div class="scale-row fragment anim-fadeUp" data-delay="2">
+            <span class="scale-label">subheading</span>
+            <span style="font-size: var(--font-size-subheading);">Aa</span>
+          </div>
+          <div class="scale-row fragment anim-fadeUp" data-delay="3">
+            <span class="scale-label">body</span>
+            <span style="font-size: var(--font-size-body);">Aa</span>
+          </div>
+          <div class="scale-row fragment anim-fadeUp" data-delay="4">
+            <span class="scale-label">caption</span>
+            <span style="font-size: var(--font-size-caption);">Aa</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Section Break (master hidden) -->
+      <section data-master="hide">
+        <div class="slide-section-break">
+          <h2>02 -- Animationen</h2>
+        </div>
+      </section>
+
+      <!-- Slide 5: Animation Showcase (master visible) -->
+      <section>
+        <h2>Eingangsanimationen</h2>
+
+        <div class="anim-grid">
+          <div class="anim-box fragment anim-fadeUp">fadeUp</div>
+          <div class="anim-box fragment anim-blurIn">blurIn</div>
+          <div class="anim-box fragment anim-slideL">slideL</div>
+          <div class="anim-box fragment anim-slideR">slideR</div>
+          <div class="anim-box fragment anim-scalePop">scalePop</div>
+          <div class="fragment anim-lineGrow">
+            <div class="anim-line" style="width: 100%; height: 4px;">
+              <span style="display: block; padding-top: var(--spacing-sm); font-size: var(--font-size-caption); color: var(--color-text-muted);">lineGrow</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Section Break (master hidden) -->
+      <section data-master="hide">
+        <div class="slide-section-break">
+          <h2>03 -- Master Layer</h2>
+        </div>
+      </section>
+
+      <!-- Slide 7: Master Layer Demo (master visible) -->
+      <section>
+        <h2>Persistente Elemente</h2>
+        <p>Logo, Fusszeile und Seitenzahl erscheinen automatisch auf allen Folien. Titel- und Abschnittsfolien blenden den Master Layer automatisch aus.</p>
+        <ul class="master-demo-list">
+          <li class="fragment anim-fadeUp">Logo (oben rechts) -- Firmenlogo auf jeder Inhaltsfolie</li>
+          <li class="fragment anim-fadeUp" data-delay="1">Kundenlogo (oben links) -- optionales Zweitlogo</li>
+          <li class="fragment anim-fadeUp" data-delay="2">Fusszeile -- Vertraulichkeit, Firmenname, Datum</li>
+          <li class="fragment anim-fadeUp" data-delay="3">Seitenzahl -- Fortschrittsanzeige (z.B. "3 / 8")</li>
+        </ul>
+      </section>
+
+      <!-- Slide 8: Selective Suppression (logo hidden) -->
+      <section data-master-hide="logo">
+        <h2>Selektive Unterdrueckung</h2>
+        <p>Auf dieser Folie ist das Logo ausgeblendet, aber Fusszeile und Seitenzahl bleiben sichtbar.</p>
+        <p class="fragment anim-fadeUp">Mit <code>data-master-hide="logo"</code> lassen sich einzelne Slots des Master Layers gezielt ausblenden, ohne die gesamte Ebene zu verbergen.</p>
+        <p class="fragment anim-fadeUp" data-delay="1">Weitere Optionen: <code>data-master-hide="footer"</code>, <code>data-master-hide="logo,footer"</code>, oder <code>data-master="hide"</code> fuer vollstaendige Unterdrueckung.</p>
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- Mode B (Online): reveal.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+
+  <script>
+    // Presentation configuration
+    var presentationConfig = {
+      slideNumberStyle: 'progress', // 'simple' | 'progress' | 'hidden'
+      masterDefaults: {
+        // Component types that hide master layer by default
+        hideOnTypes: ['title', 'full-bleed', 'section-break']
+      }
+    };
+
+    // Initialize reveal.js
+    Reveal.initialize({
+      // 16:9 aspect ratio
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+
+      // Navigation
+      controls: true,
+      controlsTutorial: false,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      keyboard: true,
+
+      // Speaker notes
+      showNotes: false,
+
+      // Transitions
+      transition: 'none',
+      backgroundTransition: 'fade',
+
+      // Fragments
+      fragments: true,
+
+      // Centering
+      center: true,
+
+      // Min/max scale
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+
+    /**
+     * Update the slide number in the master layer.
+     * Reads presentationConfig.slideNumberStyle to determine format.
+     */
+    function updateSlideNumber(event) {
+      var el = document.querySelector('.master-slide-number');
+      if (!el) return;
+
+      var config = window.presentationConfig || {};
+      var style = config.slideNumberStyle || 'progress';
+
+      if (style === 'hidden') {
+        el.style.display = 'none';
+        return;
+      }
+
+      el.style.display = '';
+      var indices = Reveal.getIndices();
+      var total = Reveal.getTotalSlides();
+      var current = indices.h + 1;
+
+      if (style === 'progress') {
+        el.textContent = current + ' / ' + total;
+      } else {
+        el.textContent = String(current);
+      }
+    }
+
+    /**
+     * Master layer suppression logic.
+     * Controls visibility of master layer slots based on per-slide data attributes:
+     *   data-master="hide"        -- hides entire master layer
+     *   data-master="show"        -- forces master layer visible
+     *   data-master-hide="logo,footer" -- hides specific slots by name
+     */
+    function updateMasterLayer(slide) {
+      var master = document.getElementById('masterLayer');
+      if (!master || !slide) return;
+
+      var masterAttr = slide.getAttribute('data-master');
+      var hideAttr = slide.getAttribute('data-master-hide');
+
+      // Reset all slots to visible
+      master.querySelectorAll('[data-slot]').forEach(function(el) {
+        el.style.display = '';
+      });
+
+      if (masterAttr === 'hide') {
+        master.style.display = 'none';
+      } else {
+        master.style.display = '';
+        if (hideAttr) {
+          hideAttr.split(',').forEach(function(slot) {
+            var el = master.querySelector('[data-slot="' + slot.trim() + '"]');
+            if (el) el.style.display = 'none';
+          });
+        }
+      }
+    }
+
+    // Listen for slide changes
+    Reveal.on('slidechanged', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+
+    // Initial state on ready
+    Reveal.on('ready', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+  </script>
+
+</body>
+</html>

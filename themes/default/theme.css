@@ -1,0 +1,82 @@
+/*
+ * Default Theme: Consulting Standard
+ *
+ * Extends tokens/base.css with a polished, professional look.
+ * To create a new theme: copy this file and override the custom properties.
+ */
+
+:root {
+  /* Theme overrides -- same property names as base.css */
+  /* Default theme uses the base values as-is, demonstrating the override pattern */
+
+  /* Slide background */
+  --slide-bg: var(--color-background);
+
+  /* Content area max-width for readability */
+  --content-max-width: 1100px;
+
+  /* Master layer logo height */
+  --master-logo-height: 32px;
+
+  /* Footer text color */
+  --master-footer-color: var(--color-text-muted);
+}
+
+/* Theme-level slide styles */
+.reveal .slides section {
+  font-family: var(--font-family-body);
+  color: var(--color-text);
+  text-align: left;
+  padding: var(--spacing-2xl);
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.reveal .slides section h1 {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-tight);
+}
+
+.reveal .slides section h2 {
+  font-size: var(--font-size-heading);
+  line-height: var(--line-height-snug);
+}
+
+.reveal .slides section h3 {
+  font-size: var(--font-size-subheading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.reveal .slides section p {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-md);
+}
+
+.reveal .slides section ul,
+.reveal .slides section ol {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  margin-left: var(--spacing-lg);
+}
+
+.reveal .slides section li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Dark background variant */
+.reveal .slides section[data-background-color="dark"] {
+  color: var(--color-background);
+}
+.reveal .slides section[data-background-color="dark"] h1,
+.reveal .slides section[data-background-color="dark"] h2 {
+  color: var(--color-background);
+}
