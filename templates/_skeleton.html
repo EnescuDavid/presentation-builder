@@ -216,19 +216,36 @@
     .master-footer {
       position: absolute;
       bottom: var(--spacing-md);
-      left: var(--spacing-lg);
-      right: var(--spacing-lg);
+      left: var(--spacing-2xl);
+      right: var(--spacing-2xl);
       display: flex;
-      justify-content: space-between;
-      font-size: var(--font-size-caption);
+      align-items: center;
+      gap: var(--spacing-lg);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.02em;
       color: var(--color-text-muted);
+      opacity: 0.7;
+    }
+    .master-footer .master-confidential {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+    }
+    .master-footer .master-separator {
+      color: var(--color-border);
     }
     .master-slide-number {
       position: absolute;
       bottom: var(--spacing-md);
-      right: var(--spacing-lg);
-      font-size: var(--font-size-caption);
+      right: var(--spacing-2xl);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.02em;
       color: var(--color-text-muted);
+      opacity: 0.7;
+      font-variant-numeric: tabular-nums;
     }
 
     /* Base slide styling */
@@ -257,7 +274,9 @@
       </div>
       <div class="master-footer" data-slot="footer">
         <span class="master-confidential">Vertraulich</span>
+        <span class="master-separator">&middot;</span>
         <span class="master-company">Firmenname</span>
+        <span class="master-separator">&middot;</span>
         <span class="master-date"></span>
       </div>
       <div class="master-slide-number" data-slot="slide-number"></div>
