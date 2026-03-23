@@ -1,0 +1,144 @@
+/* ==========================================================================
+   Presentation Builder — Entrance Animations
+   ==========================================================================
+   Usage: Apply class="fragment anim-fadeUp" to any element.
+   Optional: Add data-delay="1" through data-delay="5" for stagger effect.
+
+   Example:
+     <p class="fragment anim-fadeUp">First item</p>
+     <p class="fragment anim-fadeUp" data-delay="1">Second item (0.1s later)</p>
+     <p class="fragment anim-fadeUp" data-delay="2">Third item (0.2s later)</p>
+
+   Available animations:
+     anim-fadeUp    — Fade in from below (default choice for most content)
+     anim-blurIn    — Fade in with blur dissolve (emphasis, hero elements)
+     anim-slideL    — Slide in from the left (left-column content)
+     anim-slideR    — Slide in from the right (right-column content)
+     anim-scalePop  — Scale up with pop (metrics, numbers, icons)
+     anim-lineGrow  — Horizontal line grow from left (dividers, underlines)
+   ========================================================================== */
+
+/* --- Suppress reveal.js default fragment transition --- */
+.reveal .fragment {
+  transition: none !important;
+}
+
+/* --- Keyframe Definitions --- */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slideL {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideR {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scalePop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* --- Animation Utility Classes --- */
+/* Applied when reveal.js adds .visible to the fragment */
+
+.fragment.anim-fadeUp.visible {
+  animation: fadeUp var(--duration-normal) var(--ease-entrance) both;
+}
+
+.fragment.anim-blurIn.visible {
+  animation: blurIn var(--duration-slow) var(--ease-entrance) both;
+}
+
+.fragment.anim-slideL.visible {
+  animation: slideL var(--duration-normal) var(--ease-entrance) both;
+}
+
+.fragment.anim-slideR.visible {
+  animation: slideR var(--duration-normal) var(--ease-entrance) both;
+}
+
+.fragment.anim-scalePop.visible {
+  animation: scalePop var(--duration-fast) var(--ease-entrance) both;
+}
+
+.fragment.anim-lineGrow.visible {
+  animation: lineGrow 0.8s var(--ease-entrance) both;
+}
+
+/* --- Stagger Delay Classes --- */
+/* Use data-delay="N" attribute for sequential entrance timing */
+
+.fragment[data-delay="1"].visible {
+  animation-delay: 0.1s;
+}
+
+.fragment[data-delay="2"].visible {
+  animation-delay: 0.2s;
+}
+
+.fragment[data-delay="3"].visible {
+  animation-delay: 0.3s;
+}
+
+.fragment[data-delay="4"].visible {
+  animation-delay: 0.4s;
+}
+
+.fragment[data-delay="5"].visible {
+  animation-delay: 0.5s;
+}
