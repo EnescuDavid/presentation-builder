@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation</title>
+
+  <!-- ==========================================================================
+       OUTPUT MODES — Uncomment the mode you need, comment out the others.
+       Default: Mode B (Online) is active for development convenience.
+       ========================================================================== -->
+
+  <!-- MODE A: OFFLINE =========================================================
+       For fully self-contained presentations that work without internet.
+       Inline all assets directly in this file:
+
+       1. Replace the reveal.min.css <link> below with a <style> block containing
+          the contents of reveal.min.css (~54KB)
+       2. Replace the reveal.min.js <script src> below with a <script> block
+          containing the contents of reveal.min.js (~108KB)
+       3. The tokens/base.css and tokens/animations.css are already inline below
+       4. Add @font-face with base64-encoded Inter WOFF2:
+          <style>
+          @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+            src: url(data:font/woff2;base64,...) format('woff2');
+          }
+          </style>
+       5. Remove the Google Fonts <link> tags
+
+       Total overhead: ~250KB added to HTML file.
+       Recommended for decks up to ~10MB total media.
+       ========================================================================== -->
+
+  <!-- MODE B: ONLINE ========================================================== -->
+  <!-- Active by default — requires internet connection -->
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
+
+  <!-- END MODE B ============================================================== -->
+
+  <!-- MODE C: ZIP BUNDLE ======================================================
+       For presentations distributed as a ZIP file with an assets/ folder.
+       Replace the CDN links above with relative paths:
+
+       <link rel="stylesheet" href="assets/reveal.min.css">
+       <style>
+         @font-face {
+           font-family: 'Inter';
+           font-style: normal;
+           font-weight: 100 900;
+           font-display: swap;
+           src: url(assets/inter.woff2) format('woff2');
+         }
+       </style>
+
+       And replace the reveal.js script at the bottom with:
+       <script src="assets/reveal.min.js"></script>
+       ========================================================================== -->
+
+  <style>
+    /* <!-- TOKENS --> */
+
+    /* tokens/base.css — Design Tokens */
+    :root {
+      /* --- Colors (16 tokens) --- */
+      --color-primary:      #1E3A5F;
+      --color-secondary:    #2C5282;
+      --color-accent:       #3182CE;
+      --color-background:   #FFFFFF;
+      --color-surface:      #F7FAFC;
+      --color-text:         #1A202C;
+      --color-text-muted:   #718096;
+      --color-border:       #E2E8F0;
+      --color-success:      #38A169;
+      --color-danger:       #E53E3E;
+      --color-highlight:    #EBF8FF;
+      --color-callout:      #FFF5F5;
+      --color-chart-1:      #3182CE;
+      --color-chart-2:      #38A169;
+      --color-chart-3:      #D69E2E;
+      --color-chart-4:      #E53E3E;
+      --color-chart-5:      #805AD5;
+
+      /* --- Typography (5-level scale) --- */
+      --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;
+      --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --font-size-display:    clamp(2.5rem, 5vw, 3.75rem);
+      --font-size-heading:    clamp(1.75rem, 3.5vw, 2.25rem);
+      --font-size-subheading: clamp(1.25rem, 2.5vw, 1.5rem);
+      --font-size-body:       clamp(1rem, 2vw, 1.125rem);
+      --font-size-caption:    clamp(0.75rem, 1.5vw, 0.875rem);
+
+      --font-weight-light:    300;
+      --font-weight-regular:  400;
+      --font-weight-medium:   500;
+      --font-weight-semibold: 600;
+      --font-weight-bold:     700;
+
+      --line-height-tight:    1.1;
+      --line-height-snug:     1.2;
+      --line-height-normal:   1.5;
+      --line-height-relaxed:  1.7;
+
+      /* --- Spacing (8px grid) --- */
+      --spacing-unit:    8px;
+      --spacing-xs:      4px;
+      --spacing-sm:      8px;
+      --spacing-md:      16px;
+      --spacing-lg:      24px;
+      --spacing-xl:      32px;
+      --spacing-2xl:     48px;
+      --spacing-3xl:     64px;
+      --spacing-section: 80px;
+
+      /* --- Shadows --- */
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md:   0 4px 12px rgba(0,0,0,0.10);
+      --shadow-lg:   0 8px 24px rgba(0,0,0,0.12);
+      --shadow-card: 0 2px 16px rgba(0,0,0,0.06);
+
+      /* --- Border Radius --- */
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   14px;
+      --radius-full: 9999px;
+
+      /* --- Animation Timing --- */
+      --ease-entrance:   cubic-bezier(.16, 1, .3, 1);
+      --duration-fast:   0.5s;
+      --duration-normal: 0.7s;
+      --duration-slow:   0.85s;
+    }
+
+    /* <!-- ANIMATIONS --> */
+
+    /* tokens/animations.css — Entrance Animations */
+    .reveal .fragment { transition: none !important; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blurIn {
+      from { opacity: 0; filter: blur(12px); }
+      to   { opacity: 1; filter: blur(0); }
+    }
+    @keyframes slideL {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideR {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scalePop {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes lineGrow {
+      from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+      to   { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    }
+
+    .fragment.anim-fadeUp.visible   { animation: fadeUp   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-blurIn.visible   { animation: blurIn   var(--duration-slow)   var(--ease-entrance) both; }
+    .fragment.anim-slideL.visible   { animation: slideL   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-slideR.visible   { animation: slideR   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-scalePop.visible { animation: scalePop  var(--duration-fast)   var(--ease-entrance) both; }
+    .fragment.anim-lineGrow.visible { animation: lineGrow  0.8s                   var(--ease-entrance) both; }
+
+    .fragment[data-delay="1"].visible { animation-delay: 0.1s; }
+    .fragment[data-delay="2"].visible { animation-delay: 0.2s; }
+    .fragment[data-delay="3"].visible { animation-delay: 0.3s; }
+    .fragment[data-delay="4"].visible { animation-delay: 0.4s; }
+    .fragment[data-delay="5"].visible { animation-delay: 0.5s; }
+
+    /* <!-- MASTER LAYER CSS --> */
+
+    /* Master layer — persistent overlay across all slides */
+    .master-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      font-family: var(--font-family-body);
+    }
+    .master-logo {
+      position: absolute;
+      top: var(--spacing-lg);
+      right: var(--spacing-lg);
+    }
+    .master-logo img {
+      height: 32px;
+      width: auto;
+    }
+    .master-logo-client {
+      position: absolute;
+      top: var(--spacing-lg);
+      left: var(--spacing-lg);
+    }
+    .master-logo-client img {
+      height: 32px;
+      width: auto;
+    }
+    .master-footer {
+      position: absolute;
+      bottom: var(--spacing-md);
+      left: var(--spacing-lg);
+      right: var(--spacing-lg);
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+    .master-slide-number {
+      position: absolute;
+      bottom: var(--spacing-md);
+      right: var(--spacing-lg);
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    /* Base slide styling */
+    .reveal {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+    }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: var(--font-family-display);
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+
+    <!-- MASTER LAYER HTML -->
+    <!-- Master Layer: persistent across all slides -->
+    <div class="master-layer" id="masterLayer">
+      <div class="master-logo" data-slot="logo">
+        <img src="" alt="Company Logo" />
+      </div>
+      <div class="master-logo-client" data-slot="client-logo">
+        <!-- Optional: client logo -->
+      </div>
+      <div class="master-footer" data-slot="footer">
+        <span class="master-confidential">Vertraulich</span>
+        <span class="master-company">Firmenname</span>
+        <span class="master-date"></span>
+      </div>
+      <div class="master-slide-number" data-slot="slide-number"></div>
+    </div>
+
+    <!-- SLIDES -->
+    <div class="slides">
+      <section>
+        <h1>Placeholder</h1>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- REVEAL.JS INIT -->
+
+  <!-- Mode B (Online): reveal.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+
+  <script>
+    // Presentation configuration
+    var presentationConfig = {
+      slideNumberStyle: 'progress', // 'simple' | 'progress' | 'hidden'
+      masterDefaults: {
+        // Component types that hide master layer by default
+        hideOnTypes: ['title', 'full-bleed', 'section-break']
+      }
+    };
+
+    // Initialize reveal.js
+    Reveal.initialize({
+      // 16:9 aspect ratio
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+
+      // Navigation
+      controls: true,
+      controlsTutorial: false,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      keyboard: true,
+
+      // Speaker notes
+      showNotes: false,
+
+      // Transitions
+      transition: 'none',
+      backgroundTransition: 'fade',
+
+      // Fragments
+      fragments: true,
+
+      // Centering
+      center: true,
+
+      // Min/max scale
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+
+    // <!-- MASTER LAYER JS -->
+
+    /**
+     * Update the slide number in the master layer.
+     * Reads presentationConfig.slideNumberStyle to determine format.
+     * @param {Object} event - reveal.js slide event (optional)
+     */
+    function updateSlideNumber(event) {
+      var el = document.querySelector('.master-slide-number');
+      if (!el) return;
+
+      var config = window.presentationConfig || {};
+      var style = config.slideNumberStyle || 'progress';
+
+      if (style === 'hidden') {
+        el.style.display = 'none';
+        return;
+      }
+
+      el.style.display = '';
+      var indices = Reveal.getIndices();
+      var total = Reveal.getTotalSlides();
+      var current = indices.h + 1;
+
+      if (style === 'progress') {
+        el.textContent = current + ' / ' + total;
+      } else {
+        el.textContent = String(current);
+      }
+    }
+
+    /**
+     * Master layer suppression logic.
+     * Controls visibility of master layer slots based on per-slide data attributes:
+     *   data-master="hide"        — hides entire master layer
+     *   data-master="show"        — forces master layer visible
+     *   data-master-hide="logo,footer" — hides specific slots by name
+     */
+    function updateMasterLayer(slide) {
+      var master = document.getElementById('masterLayer');
+      if (!master || !slide) return;
+
+      var masterAttr = slide.getAttribute('data-master');
+      var hideAttr = slide.getAttribute('data-master-hide');
+
+      // Reset all slots to visible
+      master.querySelectorAll('[data-slot]').forEach(function(el) {
+        el.style.display = '';
+      });
+
+      if (masterAttr === 'hide') {
+        master.style.display = 'none';
+      } else {
+        master.style.display = '';
+        if (hideAttr) {
+          hideAttr.split(',').forEach(function(slot) {
+            var el = master.querySelector('[data-slot="' + slot.trim() + '"]');
+            if (el) el.style.display = 'none';
+          });
+        }
+      }
+    }
+
+    // Listen for slide changes
+    Reveal.on('slidechanged', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+
+    // Initial state on ready
+    Reveal.on('ready', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+  </script>
+
+</body>
+</html>
