@@ -46,11 +46,12 @@ Plans:
   2. Developer can build a section break, text-heavy, two-column, metrics, image full-bleed, agenda, and summary slide -- each from its own distinct template
   3. All eight components render cleanly within the design token system and respect the master layer (logo, footer, slide numbers visible)
   4. Each component works with placeholder content of varying lengths without layout breakage
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- Title/Cover, Section Break, Text-Heavy, and Two-Column component templates
+- [ ] 02-02-PLAN.md -- Metrics/KPI, Image Full-Bleed, Agenda, and Summary/Takeaway component templates
+- [ ] 02-03-PLAN.md -- Component index catalog and example presentation with all 8 components
 
 ### Phase 3: Extended Components
 **Goal**: Six specialized slide components complete the 14-layout library, enabling advanced consulting patterns like comparisons, timelines, and frameworks
@@ -124,7 +125,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-23 |
-| 2. Essential Components | 0/0 | Not started | - |
+| 2. Essential Components | 0/3 | In progress | - |
 | 3. Extended Components | 0/0 | Not started | - |
 | 4. Theming & Branding | 0/0 | Not started | - |
 | 5. Localization & Speaker Notes | 0/0 | Not started | - |

@@ -1,0 +1,65 @@
+<!--
+  COMPONENT: Title/Cover (COMP-01)
+  USE WHEN: Opening slide of any presentation. First impression.
+
+  REQUIRED SLOTS:
+    - Hero text (h1): Main title, keep under 8 words for impact
+    - Subtitle (p): Context line -- date, company, occasion
+
+  OPTIONAL SLOTS:
+    - Background image: via data-background-image on <section>
+    - Secondary subtitle: additional context line
+    - Divider line: decorative accent between title and subtitle
+
+  MASTER LAYER: Hidden by default (data-master="hide")
+
+  LAYOUT NOTES:
+    - Centered by default, but can be left-aligned with image on right
+    - Action title pattern: use a full sentence as h1 for McKinsey-style governing thought
+    - German text: hero text may need font-size reduction for long compound words
+    - Animations: h1 uses anim-blurIn, divider uses anim-lineGrow, subtitle uses anim-fadeUp
+-->
+
+<style>
+  /* COMPONENT: Title/Cover */
+  .comp-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: var(--spacing-3xl);
+  }
+
+  .comp-title h1 {
+    font-size: var(--font-size-display);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: var(--line-height-tight);
+    max-width: 900px;
+    overflow-wrap: break-word;
+  }
+
+  .comp-title__divider {
+    width: 120px;
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: var(--radius-full);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .comp-title__subtitle {
+    font-size: var(--font-size-subheading);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-light);
+  }
+</style>
+
+<section data-master="hide" data-component="title">
+  <div class="comp-title">
+    <h1 class="fragment anim-blurIn">Strategische Neuausrichtung der Digitalplattform</h1>
+    <div class="comp-title__divider fragment anim-lineGrow" data-delay="1"></div>
+    <p class="comp-title__subtitle fragment anim-fadeUp" data-delay="2">Quartalsupdate Q3 2026 &middot; Vorstandssitzung</p>
+  </div>
+</section>

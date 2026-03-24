@@ -1,0 +1,63 @@
+<!--
+  COMPONENT: Section Break (COMP-02)
+  USE WHEN: Dividing major sections. Chapter marker.
+
+  REQUIRED SLOTS:
+    - Heading (h2): Section title
+
+  OPTIONAL SLOTS:
+    - Counter (span): Section number like "01", "02"
+
+  MASTER LAYER: Hidden by default (data-master="hide")
+
+  LAYOUT NOTES:
+    - Centered layout with large heading
+    - Counter appears above divider for visual hierarchy
+    - Use short, punchy section titles (2-4 words ideal)
+    - Animations: counter uses anim-fadeUp, divider uses anim-lineGrow, heading uses anim-blurIn
+-->
+
+<style>
+  /* COMPONENT: Section Break */
+  .comp-section-break {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: var(--spacing-3xl);
+  }
+
+  .comp-section-break__counter {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .comp-section-break__divider {
+    width: 80px;
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: var(--radius-full);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .comp-section-break h2 {
+    font-size: var(--font-size-display);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: var(--line-height-tight);
+    max-width: 800px;
+    overflow-wrap: break-word;
+  }
+</style>
+
+<section data-master="hide" data-component="section-break">
+  <div class="comp-section-break">
+    <span class="comp-section-break__counter fragment anim-fadeUp">01</span>
+    <div class="comp-section-break__divider fragment anim-lineGrow" data-delay="1"></div>
+    <h2 class="fragment anim-blurIn" data-delay="2">Marktanalyse</h2>
+  </div>
+</section>
