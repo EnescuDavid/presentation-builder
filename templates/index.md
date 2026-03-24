@@ -16,6 +16,17 @@ Then open the specific template file to see the HTML structure, CSS, and slot de
 | Agenda | `agenda.html` | Presentation roadmap. Meeting structure. Topic overview. |
 | Summary/Takeaway | `summary.html` | Closing slide. Key takeaways. Call to action. Recap. |
 
+## Extended Components (Phase 3)
+
+| Component | File | Use When |
+|-----------|------|----------|
+| Contact/CTA | `contact.html` | Closing slide. Contact details. Call to action. Speaker info. |
+| Comparison | `comparison.html` | Before/after. A vs B. Pros/cons. Current vs target state. |
+| Timeline/Process | `timeline.html` | Project roadmap. Process flow. Milestones. Sequential steps. |
+| Quote/Testimonial | `quote.html` | Customer quote. Expert endorsement. Key statement emphasis. |
+| Card Grid | `card-grid.html` | Service offerings. Feature overview. Team capabilities. 2-4 items. |
+| Framework/Matrix | `framework.html` | BCG matrix. Prioritization. 2x2 analysis. Quadrant mapping. |
+
 ## How to Use
 
 1. Read this file to find the right component for your slide
@@ -38,6 +49,12 @@ Then open the specific template file to see the HTML structure, CSS, and slot de
 | Metrics/KPI | Visible |
 | Agenda | Visible |
 | Summary/Takeaway | Visible |
+| Contact/CTA | Visible |
+| Comparison | Visible |
+| Timeline/Process | Visible |
+| Quote/Testimonial | Visible |
+| Card Grid | Visible |
+| Framework/Matrix | Visible |
 
 ## Design Tokens
 

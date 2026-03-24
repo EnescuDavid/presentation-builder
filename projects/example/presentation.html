@@ -678,6 +678,412 @@
       color: var(--color-primary);
       font-weight: var(--font-weight-semibold);
     }
+
+    /* ====== Extended Component Library CSS (Phase 3) ====== */
+
+    /* COMPONENT: Comparison */
+    .comp-comparison {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-comparison h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .comp-comparison__cards {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    .comp-comparison__card {
+      flex: 1;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      min-width: 0;
+    }
+
+    .comp-comparison__label {
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .comp-comparison__card--left .comp-comparison__label {
+      background: var(--color-callout);
+      color: var(--color-danger);
+    }
+
+    .comp-comparison__card--right .comp-comparison__label {
+      background: var(--color-highlight);
+      color: var(--color-accent);
+    }
+
+    .comp-comparison__body {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+
+    .comp-comparison__body ul {
+      margin-left: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .comp-comparison__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 var(--spacing-md);
+      font-size: var(--font-size-heading);
+      color: var(--color-text-muted);
+    }
+
+    /* COMPONENT: Timeline/Process */
+    .comp-timeline {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-timeline__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .comp-timeline__track {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      padding: 0 var(--spacing-lg);
+      flex: 1;
+    }
+
+    .comp-timeline__step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 0 var(--spacing-sm);
+    }
+
+    .comp-timeline__step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: calc(50% + 20px);
+      right: calc(-50% + 20px);
+      height: 2px;
+      background: var(--color-border);
+    }
+
+    .comp-timeline__marker {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-caption);
+      z-index: 1;
+      flex-shrink: 0;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .comp-timeline__content h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .comp-timeline__content p {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      line-height: var(--line-height-normal);
+    }
+
+    /* COMPONENT: Card Grid */
+    .comp-card-grid {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-card-grid h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .comp-card-grid__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .comp-card-grid__card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .comp-card-grid__icon {
+      font-size: 2rem;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      color: var(--color-accent);
+    }
+
+    .comp-card-grid__card-title {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+
+    .comp-card-grid__card-desc {
+      font-size: var(--font-size-body);
+      color: var(--color-text);
+      line-height: var(--line-height-normal);
+    }
+
+    /* COMPONENT: Framework/Matrix */
+    .comp-matrix {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-matrix__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .comp-matrix__grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr auto;
+      gap: var(--spacing-xs);
+      flex: 1;
+    }
+
+    .comp-matrix__y-label {
+      grid-column: 1;
+      grid-row: 2 / 4;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-right: var(--spacing-md);
+    }
+
+    .comp-matrix__x-label {
+      grid-column: 2 / 4;
+      grid-row: 4;
+      text-align: center;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-top: var(--spacing-md);
+    }
+
+    .comp-matrix__quadrant {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      min-width: 0;
+    }
+
+    .comp-matrix__quadrant h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+
+    .comp-matrix__quadrant p {
+      font-size: var(--font-size-caption);
+      color: var(--color-text);
+      line-height: var(--line-height-normal);
+    }
+
+    /* COMPONENT: Quote/Testimonial */
+    .comp-quote {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-3xl) var(--spacing-section);
+      text-align: center;
+      height: 100%;
+    }
+
+    .comp-quote__text {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-light);
+      font-style: italic;
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+      max-width: 800px;
+      position: relative;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      margin: 0;
+      border: none;
+      padding: 0;
+    }
+
+    .comp-quote__text::before {
+      content: '\201E';
+      font-size: 6rem;
+      color: var(--color-accent);
+      opacity: 0.2;
+      position: absolute;
+      top: -40px;
+      left: -30px;
+      font-style: normal;
+      line-height: 1;
+    }
+
+    .comp-quote__attribution {
+      margin-top: var(--spacing-xl);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .comp-quote__photo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+
+    .comp-quote__author {
+      font-size: var(--font-size-body);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+
+    .comp-quote__role {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    /* COMPONENT: Contact/CTA */
+    .comp-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: var(--spacing-3xl);
+      gap: var(--spacing-lg);
+    }
+
+    .comp-contact__photo {
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+
+    .comp-contact__name {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .comp-contact__role {
+      font-size: var(--font-size-subheading);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-light);
+    }
+
+    .comp-contact__divider {
+      width: 60px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+
+    .comp-contact__details {
+      display: flex;
+      gap: var(--spacing-2xl);
+      font-size: var(--font-size-body);
+      color: var(--color-text);
+    }
+
+    .comp-contact__detail {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
   </style>
 </head>
 <body>
@@ -850,6 +1256,163 @@
           </div>
           <div class="comp-summary__cta fragment anim-fadeUp" data-delay="4">
             <p><strong>Naechste Schritte:</strong> Freigabe des Pilotbudgets bis Ende Q3 und Kickoff-Workshop mit allen Stakeholdern im Oktober</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== Extended Components (Phase 3) ====== -->
+
+      <!-- Slide 10: Comparison -- IST vs SOLL digitale Reife (master visible) -->
+      <section data-component="comparison">
+        <div class="comp-comparison">
+          <h2 class="fragment anim-fadeUp">Digitale Reife: IST vs SOLL</h2>
+          <div class="comp-comparison__cards">
+            <div class="comp-comparison__card comp-comparison__card--left fragment anim-slideL" data-delay="1">
+              <span class="comp-comparison__label">IST-Zustand</span>
+              <div class="comp-comparison__body">
+                <ul>
+                  <li>Manuelle Prozesse in 60% der Kernbereiche</li>
+                  <li>Isolierte Datensilos ohne zentrale Analyse</li>
+                  <li>Reaktive Kundenbetreuung per Telefon und E-Mail</li>
+                  <li>Durchlaufzeit von 14 Tagen fuer Standardauftraege</li>
+                </ul>
+              </div>
+            </div>
+            <div class="comp-comparison__divider fragment anim-scalePop" data-delay="2">&#x2192;</div>
+            <div class="comp-comparison__card comp-comparison__card--right fragment anim-slideR" data-delay="3">
+              <span class="comp-comparison__label">SOLL-Zustand</span>
+              <div class="comp-comparison__body">
+                <ul>
+                  <li>End-to-End-Automatisierung der Kernprozesse</li>
+                  <li>Einheitliche Datenplattform mit Echtzeit-Dashboards</li>
+                  <li>Proaktiver Self-Service ueber digitale Kanaele</li>
+                  <li>Durchlaufzeit unter 3 Tagen durch Workflow-Optimierung</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 11: Timeline -- Umsetzungsfahrplan (master visible) -->
+      <section data-component="timeline">
+        <div class="comp-timeline">
+          <h2 class="comp-timeline__title fragment anim-fadeUp">Umsetzungsfahrplan 2026-2027</h2>
+          <div class="comp-timeline__track">
+            <div class="comp-timeline__step fragment anim-fadeUp" data-delay="1">
+              <div class="comp-timeline__marker">Q3</div>
+              <div class="comp-timeline__content">
+                <h3>Analyse &amp; Pilotdesign</h3>
+                <p>Bestandsaufnahme, Zielarchitektur definieren, Pilotteam aufbauen</p>
+              </div>
+            </div>
+            <div class="comp-timeline__step fragment anim-fadeUp" data-delay="2">
+              <div class="comp-timeline__marker">Q4</div>
+              <div class="comp-timeline__content">
+                <h3>Pilotphase</h3>
+                <p>MVP fuer zwei Kernprozesse, erste Nutzertests mit Pilotgruppe</p>
+              </div>
+            </div>
+            <div class="comp-timeline__step fragment anim-fadeUp" data-delay="3">
+              <div class="comp-timeline__marker">Q1</div>
+              <div class="comp-timeline__content">
+                <h3>Skalierung</h3>
+                <p>Rollout auf alle Abteilungen, Schulungsprogramm starten</p>
+              </div>
+            </div>
+            <div class="comp-timeline__step fragment anim-fadeUp" data-delay="4">
+              <div class="comp-timeline__marker">Q2</div>
+              <div class="comp-timeline__content">
+                <h3>Vollbetrieb</h3>
+                <p>Optimierung, KPI-Monitoring, kontinuierliche Verbesserung</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 12: Card Grid -- Kernkompetenzen des Transformationsteams (master visible) -->
+      <section data-component="card-grid">
+        <div class="comp-card-grid">
+          <h2 class="fragment anim-fadeUp">Kernkompetenzen des Transformationsteams</h2>
+          <div class="comp-card-grid__cards">
+            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="1">
+              <div class="comp-card-grid__icon">&#x1F4CA;</div>
+              <div class="comp-card-grid__card-title">Datenanalyse</div>
+              <div class="comp-card-grid__card-desc">Fundierte Entscheidungen durch datengetriebene Erkenntnisse und fortgeschrittene Analytik</div>
+            </div>
+            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="2">
+              <div class="comp-card-grid__icon">&#x1F680;</div>
+              <div class="comp-card-grid__card-title">Digitale Transformation</div>
+              <div class="comp-card-grid__card-desc">Ganzheitliche Begleitung von der Strategie bis zur erfolgreichen Umsetzung</div>
+            </div>
+            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="3">
+              <div class="comp-card-grid__icon">&#x1F465;</div>
+              <div class="comp-card-grid__card-title">Change Management</div>
+              <div class="comp-card-grid__card-desc">Nachhaltige Veraenderungsprozesse mit Fokus auf Mitarbeiterbeteiligung</div>
+            </div>
+            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="4">
+              <div class="comp-card-grid__icon">&#x1F3AF;</div>
+              <div class="comp-card-grid__card-title">Strategieberatung</div>
+              <div class="comp-card-grid__card-desc">Wachstumsstrategien und Marktpositionierung fuer nachhaltige Wettbewerbsvorteile</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 13: Framework/Matrix -- Priorisierungsmatrix (master visible) -->
+      <section data-component="framework">
+        <div class="comp-matrix">
+          <h2 class="comp-matrix__title fragment anim-fadeUp">Priorisierungsmatrix der Initiativen</h2>
+          <div class="comp-matrix__grid">
+            <div class="comp-matrix__y-label">Strategische Bedeutung</div>
+            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="1">
+              <h3>Beobachten</h3>
+              <p>Hohe Bedeutung, geringe Dringlichkeit -- langfristig im Blick behalten und evaluieren</p>
+            </div>
+            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="2">
+              <h3>Sofort umsetzen</h3>
+              <p>Hohe Dringlichkeit und Bedeutung -- hoechste Prioritaet fuer Ressourceneinsatz</p>
+            </div>
+            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="3">
+              <h3>Zurueckstellen</h3>
+              <p>Niedrige Dringlichkeit und Bedeutung -- nur bei freien Kapazitaeten angehen</p>
+            </div>
+            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="4">
+              <h3>Delegieren</h3>
+              <p>Hohe Dringlichkeit, geringe Bedeutung -- an operative Teams abgeben</p>
+            </div>
+            <div class="comp-matrix__x-label">Dringlichkeit</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 14: Quote -- CEO-Zitat zur Transformationsvision (master visible) -->
+      <section data-component="quote">
+        <div class="comp-quote">
+          <blockquote class="comp-quote__text fragment anim-blurIn">
+            Die strategische Neuausrichtung unserer Digitalplattform ist kein IT-Projekt -- sie ist der Schluessel zu unserem kuenftigen Markterfolg und nachhaltiger Wertschoepfung.
+          </blockquote>
+          <div class="comp-quote__attribution fragment anim-fadeUp" data-delay="1">
+            <img class="comp-quote__photo" src="https://via.placeholder.com/56" alt="Dr. Klaus Berger" />
+            <div>
+              <div class="comp-quote__author">Dr. Klaus Berger</div>
+              <div class="comp-quote__role">Vorstandsvorsitzender, Digitale Transformation AG</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 15: Contact/CTA -- Ansprechpartnerin (master visible) -->
+      <section data-component="contact">
+        <div class="comp-contact">
+          <img class="comp-contact__photo fragment anim-scalePop" src="https://via.placeholder.com/120" alt="Dr. Maria Schmidt" />
+          <h2 class="comp-contact__name fragment anim-fadeUp" data-delay="1">Dr. Maria Schmidt</h2>
+          <p class="comp-contact__role fragment anim-fadeUp" data-delay="2">Partnerin, Digitale Transformation</p>
+          <div class="comp-contact__divider fragment anim-lineGrow" data-delay="3"></div>
+          <div class="comp-contact__details fragment anim-fadeUp" data-delay="4">
+            <span class="comp-contact__detail">m.schmidt@beratung.de</span>
+            <span class="comp-contact__detail">+49 30 1234 5678</span>
           </div>
         </div>
       </section>
