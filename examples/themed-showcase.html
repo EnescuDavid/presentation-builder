@@ -1,0 +1,970 @@
+<!--
+  Themed Showcase: Default Theme (Consulting Standard)
+
+  To see this deck with a different theme:
+  1. Replace the "THEME CSS" section below with CSS from themes/startup/theme.css or themes/enterprise/theme.css
+  2. Update the logo <img src=""> to point to the theme's logo.svg
+  3. Update presentationConfig footer text as desired
+
+  All 14 components adopt the new theme automatically via CSS custom properties.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markenstrategie 2026 — Themed Showcase</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
+
+  <style>
+    /* ========================================================================
+       TOKENS (tokens/base.css)
+       ======================================================================== */
+
+    :root {
+      /* --- Colors (16 tokens) --- */
+      --color-primary:      #1E3A5F;
+      --color-secondary:    #2C5282;
+      --color-accent:       #3182CE;
+      --color-background:   #FFFFFF;
+      --color-surface:      #F7FAFC;
+      --color-text:         #1A202C;
+      --color-text-muted:   #718096;
+      --color-border:       #E2E8F0;
+      --color-success:      #38A169;
+      --color-danger:       #E53E3E;
+      --color-highlight:    #EBF8FF;
+      --color-callout:      #FFF5F5;
+      --color-chart-1:      #3182CE;
+      --color-chart-2:      #38A169;
+      --color-chart-3:      #D69E2E;
+      --color-chart-4:      #E53E3E;
+      --color-chart-5:      #805AD5;
+
+      /* --- Typography (5-level scale) --- */
+      --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;
+      --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --font-size-display:    clamp(2.5rem, 5vw, 3.75rem);
+      --font-size-heading:    clamp(1.75rem, 3.5vw, 2.25rem);
+      --font-size-subheading: clamp(1.25rem, 2.5vw, 1.5rem);
+      --font-size-body:       clamp(1rem, 2vw, 1.125rem);
+      --font-size-caption:    clamp(0.75rem, 1.5vw, 0.875rem);
+
+      --font-weight-light:    300;
+      --font-weight-regular:  400;
+      --font-weight-medium:   500;
+      --font-weight-semibold: 600;
+      --font-weight-bold:     700;
+
+      --line-height-tight:    1.1;
+      --line-height-snug:     1.2;
+      --line-height-normal:   1.5;
+      --line-height-relaxed:  1.7;
+
+      /* --- Spacing (8px grid) --- */
+      --spacing-unit:    8px;
+      --spacing-xs:      4px;
+      --spacing-sm:      8px;
+      --spacing-md:      16px;
+      --spacing-lg:      24px;
+      --spacing-xl:      32px;
+      --spacing-2xl:     48px;
+      --spacing-3xl:     64px;
+      --spacing-section: 80px;
+
+      /* --- Shadows --- */
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md:   0 4px 12px rgba(0,0,0,0.10);
+      --shadow-lg:   0 8px 24px rgba(0,0,0,0.12);
+      --shadow-card: 0 2px 16px rgba(0,0,0,0.06);
+
+      /* --- Border Radius --- */
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   14px;
+      --radius-full: 9999px;
+
+      /* --- Animation Timing --- */
+      --ease-entrance:   cubic-bezier(.16, 1, .3, 1);
+      --duration-fast:   0.5s;
+      --duration-normal: 0.7s;
+      --duration-slow:   0.85s;
+    }
+
+    /* ========================================================================
+       ANIMATIONS (tokens/animations.css)
+       ======================================================================== */
+
+    .reveal .fragment { transition: none !important; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blurIn {
+      from { opacity: 0; filter: blur(12px); }
+      to   { opacity: 1; filter: blur(0); }
+    }
+    @keyframes slideL {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideR {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scalePop {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes lineGrow {
+      from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+      to   { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    }
+
+    .fragment.anim-fadeUp.visible   { animation: fadeUp   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-blurIn.visible   { animation: blurIn   var(--duration-slow)   var(--ease-entrance) both; }
+    .fragment.anim-slideL.visible   { animation: slideL   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-slideR.visible   { animation: slideR   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-scalePop.visible { animation: scalePop  var(--duration-fast)   var(--ease-entrance) both; }
+    .fragment.anim-lineGrow.visible { animation: lineGrow  0.8s                   var(--ease-entrance) both; }
+
+    .fragment[data-delay="1"].visible { animation-delay: 0.1s; }
+    .fragment[data-delay="2"].visible { animation-delay: 0.2s; }
+    .fragment[data-delay="3"].visible { animation-delay: 0.3s; }
+    .fragment[data-delay="4"].visible { animation-delay: 0.4s; }
+    .fragment[data-delay="5"].visible { animation-delay: 0.5s; }
+
+    /* ========================================================================
+       THEME CSS — Default Theme (Consulting Standard)
+       Replace this section with another theme's CSS to switch branding.
+       See: themes/default/theme.css | themes/startup/theme.css | themes/enterprise/theme.css
+       ======================================================================== */
+
+    :root {
+      --slide-bg: var(--color-background);
+      --content-max-width: 1100px;
+      --master-logo-height: 32px;
+      --master-footer-color: var(--color-text-muted);
+      --theme-accent-bar-height: 3px;
+      --theme-accent-bar-color: var(--color-accent);
+      --theme-heading-border: 2px solid var(--color-accent);
+    }
+
+    /* Theme-level slide styles */
+    .reveal .slides section {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+      text-align: left;
+      padding: var(--spacing-2xl);
+    }
+
+    .reveal .slides section h1,
+    .reveal .slides section h2 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .reveal .slides section h1 {
+      font-size: var(--font-size-display);
+      line-height: var(--line-height-tight);
+    }
+
+    .reveal .slides section h2 {
+      font-size: var(--font-size-heading);
+      line-height: var(--line-height-snug);
+      padding-bottom: var(--spacing-xs);
+      border-bottom: var(--theme-heading-border);
+      display: inline-block;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .reveal .slides section h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .reveal .slides section p {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .reveal .slides section ul,
+    .reveal .slides section ol {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      margin-left: var(--spacing-lg);
+    }
+
+    .reveal .slides section li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Accent bar on content slides */
+    .reveal .slides section:not([data-master="hide"])::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: var(--theme-accent-bar-height);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      z-index: 10;
+    }
+
+    /* Professional bullet styling */
+    .reveal .slides section ul {
+      list-style: none;
+      padding-left: var(--spacing-lg);
+    }
+
+    .reveal .slides section ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent);
+      margin-right: var(--spacing-sm);
+      margin-left: calc(var(--spacing-lg) * -1);
+      vertical-align: middle;
+    }
+
+    /* Card elevation refinement */
+    .reveal .slides section [class*="comp-"] .card,
+    .reveal .slides section [class*="comp-"] [class*="__card"] {
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Dark background variant */
+    .reveal .slides section[data-background-color="dark"] {
+      color: var(--color-background);
+    }
+
+    .reveal .slides section[data-background-color="dark"] h1,
+    .reveal .slides section[data-background-color="dark"] h2 {
+      color: var(--color-background);
+    }
+
+    .reveal .slides section[data-background-color="dark"] h3 {
+      color: var(--color-surface);
+    }
+
+    .reveal .slides section[data-background-color="dark"] p,
+    .reveal .slides section[data-background-color="dark"] li {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .reveal .slides section[data-background-color="dark"] .text-muted,
+    .reveal .slides section[data-background-color="dark"] [class*="__label"],
+    .reveal .slides section[data-background-color="dark"] [class*="__subtitle"] {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS
+       ======================================================================== */
+
+    /* --- Title/Cover Component --- */
+    .comp-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: var(--spacing-3xl);
+    }
+
+    .comp-title h1 {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      max-width: 900px;
+      overflow-wrap: break-word;
+    }
+
+    .comp-title__divider {
+      width: 120px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      margin: var(--spacing-lg) 0;
+    }
+
+    .comp-title__subtitle {
+      font-size: var(--font-size-subheading);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-light);
+    }
+
+    /* --- Agenda Component --- */
+    .comp-agenda {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-xl);
+    }
+
+    .comp-agenda__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .comp-agenda__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .comp-agenda__item {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-left: 3px solid transparent;
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-body);
+      color: var(--color-text-muted);
+      transition: none;
+    }
+
+    .comp-agenda__item--active {
+      border-left-color: var(--color-accent);
+      background: var(--color-highlight);
+      color: var(--color-text);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .comp-agenda__item-number {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-accent);
+      min-width: 32px;
+    }
+
+    .comp-agenda__item--active .comp-agenda__item-number {
+      color: var(--color-primary);
+    }
+
+    .comp-agenda__item-text {
+      flex: 1;
+    }
+
+    .comp-agenda__item-desc {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-regular);
+      margin-top: var(--spacing-xs);
+    }
+
+    /* --- Text-Heavy Component --- */
+    .comp-text-heavy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-md);
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-text-heavy h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-snug);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .comp-text-heavy__body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      min-height: 200px;
+    }
+
+    .comp-text-heavy__body ul,
+    .comp-text-heavy__body ol {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-left: var(--spacing-lg);
+      list-style-position: outside;
+    }
+
+    .comp-text-heavy__body li {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+
+    .comp-text-heavy__body p {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+    }
+
+    /* --- Metrics/KPI Hero Component --- */
+    .comp-metrics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      text-align: center;
+    }
+
+    .comp-metrics__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .comp-metrics__grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-3xl);
+    }
+
+    .comp-metrics__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .comp-metrics__number {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .comp-metrics__label {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: var(--font-weight-medium);
+    }
+
+    /* --- Two-Column Component --- */
+    .comp-two-col {
+      display: flex;
+      gap: var(--spacing-2xl);
+      padding-top: var(--spacing-md);
+      min-height: 0;
+      align-items: flex-start;
+    }
+
+    .comp-two-col__left,
+    .comp-two-col__right {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-two-col h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .comp-two-col p,
+    .comp-two-col li {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+    }
+
+    .comp-two-col ul {
+      margin-left: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    /* --- Image Full-Bleed Component --- */
+    .comp-full-bleed__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--spacing-3xl);
+      overflow-wrap: break-word;
+    }
+
+    .comp-full-bleed__overlay--dark {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%);
+      color: #fff;
+    }
+
+    .comp-full-bleed__overlay--dark h2 {
+      color: #fff;
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .comp-full-bleed__overlay--dark p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--font-size-body);
+    }
+
+    /* --- Summary/Takeaway Component --- */
+    .comp-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-lg);
+    }
+
+    .comp-summary h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .comp-summary__points {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      flex: 1;
+    }
+
+    .comp-summary__point {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+
+    .comp-summary__point-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-bold);
+      margin-top: 2px;
+    }
+
+    .comp-summary__cta {
+      margin-top: auto;
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .comp-summary__cta p {
+      font-size: var(--font-size-body);
+      color: var(--color-text-muted);
+    }
+
+    .comp-summary__cta strong {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* ========================================================================
+       MASTER LAYER CSS
+       ======================================================================== */
+
+    .master-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      font-family: var(--font-family-body);
+    }
+    .master-logo {
+      position: absolute;
+      top: var(--spacing-lg);
+      right: var(--spacing-lg);
+    }
+    .master-logo img {
+      height: var(--master-logo-height, 32px);
+      width: auto;
+    }
+    .master-logo-client {
+      position: absolute;
+      top: var(--spacing-lg);
+      left: var(--spacing-lg);
+    }
+    .master-logo-client img {
+      height: 32px;
+      width: auto;
+    }
+    .master-footer {
+      position: absolute;
+      bottom: var(--spacing-md);
+      left: var(--spacing-2xl);
+      right: var(--spacing-2xl);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-lg);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.02em;
+      color: var(--master-footer-color, var(--color-text-muted));
+      opacity: 0.7;
+    }
+    .master-footer .master-confidential {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+    }
+    .master-footer .master-separator {
+      color: var(--color-border);
+    }
+    .master-slide-number {
+      position: absolute;
+      bottom: var(--spacing-md);
+      right: var(--spacing-2xl);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.02em;
+      color: var(--color-text-muted);
+      opacity: 0.7;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Base slide styling */
+    .reveal {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+    }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: var(--font-family-display);
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+
+    <!-- Master Layer: persistent across all slides -->
+    <div class="master-layer" id="masterLayer">
+      <div class="master-logo" data-slot="logo">
+        <!-- Default theme has no logo file; text placeholder used -->
+        <span style="font-size: 11px; font-weight: 600; color: var(--color-primary); letter-spacing: 0.05em;">BEISPIEL AG</span>
+      </div>
+      <div class="master-logo-client" data-slot="client-logo">
+        <!-- Optional: client logo -->
+      </div>
+      <div class="master-footer" data-slot="footer">
+        <span class="master-confidential">Vertraulich</span>
+        <span class="master-separator">&middot;</span>
+        <span class="master-company">Beispiel AG</span>
+        <span class="master-separator">&middot;</span>
+        <span class="master-date">Maerz 2026</span>
+      </div>
+      <div class="master-slide-number" data-slot="slide-number"></div>
+    </div>
+
+    <!-- SLIDES -->
+    <div class="slides">
+
+      <!-- ================================================================
+           SLIDE 1: Title/Cover
+           data-master="hide" suppresses master layer on opening slide
+           ================================================================ -->
+      <section data-master="hide" data-component="title">
+        <div class="comp-title">
+          <h1>Markenstrategie 2026</h1>
+          <div class="comp-title__divider"></div>
+          <p class="comp-title__subtitle">Visuelles Identitaetssystem fuer die digitale Transformation</p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLIDE 2: Agenda
+           Master layer visible — accent bar at top, logo + footer shown
+           ================================================================ -->
+      <section data-component="agenda">
+        <div class="comp-agenda">
+          <h2 class="comp-agenda__title">Agenda</h2>
+          <div class="comp-agenda__list">
+            <div class="comp-agenda__item comp-agenda__item--active">
+              <span class="comp-agenda__item-number">01</span>
+              <div class="comp-agenda__item-text">
+                Strategischer Kontext
+                <div class="comp-agenda__item-desc">Marktentwicklung und Wettbewerbsumfeld</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">02</span>
+              <div class="comp-agenda__item-text">
+                Kernkennzahlen
+                <div class="comp-agenda__item-desc">Aktuelle Performance und Zielerreichung</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">03</span>
+              <div class="comp-agenda__item-text">
+                Markenarchitektur
+                <div class="comp-agenda__item-desc">Positionierung und Differenzierung</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">04</span>
+              <div class="comp-agenda__item-text">
+                Umsetzungsplan
+                <div class="comp-agenda__item-desc">Roadmap und naechste Schritte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLIDE 3: Text-Heavy
+           Demonstrates h2 accent underline + professional bullet styling
+           ================================================================ -->
+      <section data-component="text-heavy">
+        <div class="comp-text-heavy">
+          <h2>Marktdynamik erfordert strategische Neupositionierung</h2>
+          <div class="comp-text-heavy__body">
+            <ul>
+              <li>Digitale Transformation beschleunigt den Wandel im Markenumfeld — traditionelle Positionierungsstrategien verlieren an Wirksamkeit</li>
+              <li>Kundenerwartungen verschieben sich zunehmend in Richtung konsistenter Markenerlebnisse ueber alle digitalen Touchpoints hinweg</li>
+              <li>Wettbewerber investieren signifikant in visuelle Identitaetssysteme und Design-Systeme als strategischen Differenzierungsfaktor</li>
+              <li>Regulatorische Anforderungen an Barrierefreiheit (BFSG 2025) erfordern systematische Anpassungen des visuellen Systems</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLIDE 4: Metrics/KPI
+           Shows card elevation refinement from theme + large numbers
+           ================================================================ -->
+      <section data-component="metrics">
+        <div class="comp-metrics">
+          <h2 class="comp-metrics__title">Markenperformance im Ueberblick</h2>
+          <div class="comp-metrics__grid">
+            <div class="comp-metrics__card">
+              <span class="comp-metrics__number">+34%</span>
+              <span class="comp-metrics__label">Markenbekanntheit</span>
+            </div>
+            <div class="comp-metrics__card">
+              <span class="comp-metrics__number">72</span>
+              <span class="comp-metrics__label">Net Promoter Score</span>
+            </div>
+            <div class="comp-metrics__card">
+              <span class="comp-metrics__number">2.8M</span>
+              <span class="comp-metrics__label">Digitale Kontakte</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLIDE 5: Two-Column
+           Shows theme spacing and typography across two content areas
+           ================================================================ -->
+      <section data-component="two-column">
+        <div class="comp-text-heavy" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
+          <h2>Markenarchitektur: Ist-Zustand und Zielbild</h2>
+          <div class="comp-two-col">
+            <div class="comp-two-col__left">
+              <h3>Ist-Zustand</h3>
+              <ul>
+                <li>Fragmentierte visuelle Identitaet ueber 12 Geschaeftsbereiche</li>
+                <li>Keine zentrale Design-Governance oder Styleguide-Einhaltung</li>
+                <li>Manuelle Praesentation-Erstellung mit inkonsistenten Vorlagen</li>
+              </ul>
+            </div>
+            <div class="comp-two-col__right">
+              <h3>Zielbild 2027</h3>
+              <ul>
+                <li>Einheitliches Design-System mit Token-basierter Markensteuerung</li>
+                <li>Automatisierte Markenkonsistenz durch KI-gestuetzte Vorlagen</li>
+                <li>Zentrale Theme-Verwaltung fuer alle Praesentations-Touchpoints</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLIDE 6: Dark Variant
+           data-master="hide" + data-background-color="dark"
+           Demonstrates extended dark variant (h3, p, muted text all inverted)
+           ================================================================ -->
+      <section data-master="hide"
+               data-background-color="dark"
+               data-component="image-full-bleed"
+               style="background-color: #1E3A5F;">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; padding: var(--spacing-3xl);">
+          <h2 style="border-bottom: none; display: block;">Marken werden nicht erzaehlt — sie werden erlebt.</h2>
+          <h3>Die digitale Praesenz entscheidet ueber Vertrauen und Relevanz</h3>
+          <p class="text-muted" style="max-width: 700px; margin-top: var(--spacing-lg);">
+            Eine konsistente visuelle Identitaet steigert die Markenwahrnehmung nachweislich um 23% und reduziert den Aufwand fuer Materialerstellung um bis zu 40%.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLIDE 7: Summary/Takeaway
+           Key takeaways with accent-colored bullets + CTA zone with separator
+           ================================================================ -->
+      <section data-component="summary">
+        <div class="comp-summary">
+          <h2>Zusammenfassung und naechste Schritte</h2>
+          <div class="comp-summary__points">
+            <div class="comp-summary__point">
+              <span class="comp-summary__point-icon">1</span>
+              <span>Ein konsistentes visuelles Identitaetssystem ist entscheidend fuer die Markenwirkung in der digitalen Transformation</span>
+            </div>
+            <div class="comp-summary__point">
+              <span class="comp-summary__point-icon">2</span>
+              <span>Token-basierte Design-Systeme ermoeglichen skalierbare Markenkonsistenz ueber alle Geschaeftsbereiche hinweg</span>
+            </div>
+            <div class="comp-summary__point">
+              <span class="comp-summary__point-icon">3</span>
+              <span>KI-gestuetzte Praesentations-Erstellung reduziert den manuellen Aufwand und sichert gleichzeitig die Markenqualitaet</span>
+            </div>
+          </div>
+          <div class="comp-summary__cta">
+            <p><strong>Naechste Schritte:</strong> Freigabe des Pilotprojekts bis Ende Q2 2026 — Kickoff-Workshop mit Design- und Marketingteam im Mai</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.slides -->
+
+  </div><!-- /.reveal -->
+
+  <!-- reveal.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+
+  <script>
+    // Presentation configuration
+    var presentationConfig = {
+      slideNumberStyle: 'progress',
+      masterDefaults: {
+        hideOnTypes: ['title', 'full-bleed', 'section-break']
+      }
+    };
+
+    // Initialize reveal.js
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      controls: false,
+      controlsTutorial: false,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      keyboard: true,
+      showNotes: false,
+      transition: 'none',
+      backgroundTransition: 'fade',
+      fragments: true,
+      center: true,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+
+    // Master layer: slide number
+    function updateSlideNumber(event) {
+      var el = document.querySelector('.master-slide-number');
+      if (!el) return;
+
+      var config = window.presentationConfig || {};
+      var style = config.slideNumberStyle || 'progress';
+
+      if (style === 'hidden') {
+        el.style.display = 'none';
+        return;
+      }
+
+      el.style.display = '';
+      var indices = Reveal.getIndices();
+      var total = Reveal.getTotalSlides();
+      var current = indices.h + 1;
+
+      if (style === 'progress') {
+        el.textContent = current + ' / ' + total;
+      } else {
+        el.textContent = String(current);
+      }
+    }
+
+    // Master layer: suppression logic
+    function updateMasterLayer(slide) {
+      var master = document.getElementById('masterLayer');
+      if (!master || !slide) return;
+
+      var masterAttr = slide.getAttribute('data-master');
+      var hideAttr = slide.getAttribute('data-master-hide');
+
+      // Reset all slots to visible
+      master.querySelectorAll('[data-slot]').forEach(function(el) {
+        el.style.display = '';
+      });
+
+      if (masterAttr === 'hide') {
+        master.style.display = 'none';
+      } else {
+        master.style.display = '';
+        if (hideAttr) {
+          hideAttr.split(',').forEach(function(slot) {
+            var el = master.querySelector('[data-slot="' + slot.trim() + '"]');
+            if (el) el.style.display = 'none';
+          });
+        }
+      }
+    }
+
+    Reveal.on('slidechanged', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+
+    Reveal.on('ready', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+  </script>
+
+</body>
+</html>

@@ -67,6 +67,25 @@
        <script src="assets/reveal.min.js"></script>
        ========================================================================== -->
 
+  <!-- THEME CSS ================================================================
+       Include ONE theme file's CSS in the <style> block below the tokens.
+       Available themes:
+         - themes/default/theme.css    (Consulting Standard — navy/blue)
+         - themes/startup/theme.css    (Bold, vibrant — orange/blue, Space Grotesk)
+         - themes/enterprise/theme.css (Conservative — navy/gray, traditional)
+
+       To use a theme: copy its CSS content into the style block below,
+       after the animation rules and before the master layer CSS.
+
+       To switch themes: replace the theme CSS block with another theme's content.
+       All 14 components adopt the new branding automatically via CSS custom properties.
+
+       For custom themes from PPTX extraction:
+         1. Run: node tools/extract-theme.js path/to/template.pptx themes/[name]
+         2. Claude reads the extracted JSON and assembles theme CSS
+         3. Include the generated theme CSS here
+       ========================================================================== -->
+
   <style>
     /* <!-- TOKENS --> */
 
@@ -184,6 +203,9 @@
     .fragment[data-delay="3"].visible { animation-delay: 0.3s; }
     .fragment[data-delay="4"].visible { animation-delay: 0.4s; }
     .fragment[data-delay="5"].visible { animation-delay: 0.5s; }
+
+    /* <!-- THEME CSS --> */
+    /* Paste theme CSS here (from themes/default/theme.css or another theme) */
 
     /* <!-- MASTER LAYER CSS --> */
 
