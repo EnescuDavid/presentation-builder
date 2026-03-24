@@ -1,0 +1,122 @@
+<!--
+  ============================================================================
+  COMPONENT: Metrics/KPI Hero (COMP-05)
+  ============================================================================
+
+  USE WHEN:
+    Highlighting 1-6 key numbers. Performance data. Revenue, growth, users.
+
+  REQUIRED SLOTS:
+    - At least 1 metric card (number + label)
+
+  OPTIONAL SLOTS:
+    - Slide title (h2)
+    - Up to 6 metric cards
+    - For 4-6 metrics use comp-metrics__grid--compact modifier
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  LAYOUT NOTES:
+    - 1-3 metrics use large display-size numbers in flexbox row
+    - 4-6 metrics use compact CSS grid (3 columns) with heading-size numbers
+    - scalePop animation on each card with stagger
+    - tabular-nums on numbers for alignment
+
+  EXAMPLE:
+    <section data-component="metrics">
+      <div class="comp-metrics">
+        <h2 class="comp-metrics__title fragment anim-fadeUp">Headline</h2>
+        <div class="comp-metrics__grid">
+          <div class="comp-metrics__card fragment anim-scalePop">
+            <span class="comp-metrics__number">+23%</span>
+            <span class="comp-metrics__label">Umsatzwachstum</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  COMPACT VARIANT (4-6 metrics):
+    Replace comp-metrics__grid with comp-metrics__grid comp-metrics__grid--compact
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Metrics/KPI Hero Component --- */
+  .comp-metrics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    text-align: center;
+  }
+
+  .comp-metrics__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .comp-metrics__grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-3xl);
+  }
+
+  .comp-metrics__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .comp-metrics__number {
+    font-size: var(--font-size-display);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: var(--line-height-tight);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-metrics__label {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Compact variant for 4-6 metrics */
+  .comp-metrics__grid--compact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .comp-metrics__grid--compact .comp-metrics__number {
+    font-size: var(--font-size-heading);
+  }
+</style>
+
+<section data-component="metrics">
+  <div class="comp-metrics">
+    <h2 class="comp-metrics__title fragment anim-fadeUp">Geschaeftsentwicklung Q3</h2>
+    <div class="comp-metrics__grid">
+      <div class="comp-metrics__card fragment anim-scalePop" data-delay="1">
+        <span class="comp-metrics__number">+23%</span>
+        <span class="comp-metrics__label">Umsatzwachstum</span>
+      </div>
+      <div class="comp-metrics__card fragment anim-scalePop" data-delay="2">
+        <span class="comp-metrics__number">4.2M</span>
+        <span class="comp-metrics__label">Neue Nutzer</span>
+      </div>
+      <div class="comp-metrics__card fragment anim-scalePop" data-delay="3">
+        <span class="comp-metrics__number">98.7%</span>
+        <span class="comp-metrics__label">Verfuegbarkeit</span>
+      </div>
+    </div>
+  </div>
+</section>
