@@ -1,0 +1,123 @@
+<!--
+  ============================================================================
+  COMPONENT: Quote/Testimonial (COMP-12)
+  ============================================================================
+
+  USE WHEN:
+    Customer quote. Expert endorsement. Key statement emphasis. CEO vision statement.
+
+  REQUIRED SLOTS:
+    - Quote text
+    - Author name
+
+  OPTIONAL SLOTS:
+    - Author role
+    - Author photo (56x56 rounded)
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  LAYOUT NOTES:
+    - Centered layout, large italic text
+    - Decorative German quotation mark via ::before pseudo-element
+    - Max-width 800px on quote text
+    - overflow-wrap and hyphens enabled for German compound words
+
+  EXAMPLE:
+    <section data-component="quote">
+      <div class="comp-quote">
+        <blockquote class="comp-quote__text fragment anim-blurIn">
+          Quote text here
+        </blockquote>
+        <div class="comp-quote__attribution fragment anim-fadeUp">
+          <img class="comp-quote__photo" src="photo.jpg" alt="Name" />
+          <div>
+            <div class="comp-quote__author">Author Name</div>
+            <div class="comp-quote__role">Author Role</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Quote/Testimonial Component --- */
+  .comp-quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl) var(--spacing-section);
+    text-align: center;
+    height: 100%;
+  }
+
+  .comp-quote__text {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
+    max-width: 800px;
+    position: relative;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .comp-quote__text::before {
+    content: '\201E';
+    font-size: 6rem;
+    color: var(--color-accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -40px;
+    left: -30px;
+    font-style: normal;
+    line-height: 1;
+  }
+
+  .comp-quote__attribution {
+    margin-top: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .comp-quote__photo {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+  }
+
+  .comp-quote__author {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+  }
+
+  .comp-quote__role {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+  }
+</style>
+
+<section data-component="quote">
+  <div class="comp-quote">
+    <blockquote class="comp-quote__text fragment anim-blurIn">
+      Digitalisierung ist kein IT-Projekt, sondern eine grundlegende Transformation unserer Unternehmenskultur und Wertschoepfungskette.
+    </blockquote>
+    <div class="comp-quote__attribution fragment anim-fadeUp" data-delay="1">
+      <img class="comp-quote__photo" src="https://via.placeholder.com/56" alt="Thomas Weber" />
+      <div>
+        <div class="comp-quote__author">Thomas Weber</div>
+        <div class="comp-quote__role">CEO, Mittelstand Digital AG</div>
+      </div>
+    </div>
+  </div>
+</section>
