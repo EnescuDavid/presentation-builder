@@ -1,0 +1,13 @@
+{
+  "name": "presentation-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-friendly slide deck framework powered by reveal.js",
+  "scripts": {
+    "extract-theme": "node tools/extract-theme.js"
+  },
+  "optionalDependencies": {
+    "adm-zip": "0.5.16",
+    "fast-xml-parser": "5.5.9"
+  }
+}
