@@ -18,14 +18,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Component Library
 
-- [ ] **COMP-01**: Title/Cover slide component with hero text, subtitle, and optional background
-- [ ] **COMP-02**: Section Break slide component with large heading and optional counter
-- [ ] **COMP-03**: Text-Heavy slide component (single column with headline, body, and bullet points)
-- [ ] **COMP-04**: Two-Column slide component with independently filled left/right regions
-- [ ] **COMP-05**: Metrics/KPI Hero slide component displaying 1-3 large numbers with labels
-- [ ] **COMP-06**: Image Full-Bleed slide component with optional text overlay
-- [ ] **COMP-07**: Agenda slide component with numbered/bulleted list and active-item highlight
-- [ ] **COMP-08**: Summary/Takeaway slide component with key points and call-to-action area
+- [x] **COMP-01**: Title/Cover slide component with hero text, subtitle, and optional background
+- [x] **COMP-02**: Section Break slide component with large heading and optional counter
+- [x] **COMP-03**: Text-Heavy slide component (single column with headline, body, and bullet points)
+- [x] **COMP-04**: Two-Column slide component with independently filled left/right regions
+- [x] **COMP-05**: Metrics/KPI Hero slide component displaying 1-3 large numbers with labels
+- [x] **COMP-06**: Image Full-Bleed slide component with optional text overlay
+- [x] **COMP-07**: Agenda slide component with numbered/bulleted list and active-item highlight
+- [x] **COMP-08**: Summary/Takeaway slide component with key points and call-to-action area
 - [ ] **COMP-09**: Contact/CTA slide component with name, role, contact details, and logo
 - [ ] **COMP-10**: Comparison slide component (side-by-side cards with labels, from/to or vs-style)
 - [ ] **COMP-11**: Timeline/Process slide component showing 3-6 sequential steps with connectors
@@ -123,14 +123,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CORE-04 | Phase 1: Foundation | Complete |
 | CORE-05 | Phase 1: Foundation | Complete |
 | CORE-06 | Phase 1: Foundation | Complete |
-| COMP-01 | Phase 2: Essential Components | Pending |
-| COMP-02 | Phase 2: Essential Components | Pending |
-| COMP-03 | Phase 2: Essential Components | Pending |
-| COMP-04 | Phase 2: Essential Components | Pending |
-| COMP-05 | Phase 2: Essential Components | Pending |
-| COMP-06 | Phase 2: Essential Components | Pending |
-| COMP-07 | Phase 2: Essential Components | Pending |
-| COMP-08 | Phase 2: Essential Components | Pending |
+| COMP-01 | Phase 2: Essential Components | Complete |
+| COMP-02 | Phase 2: Essential Components | Complete |
+| COMP-03 | Phase 2: Essential Components | Complete |
+| COMP-04 | Phase 2: Essential Components | Complete |
+| COMP-05 | Phase 2: Essential Components | Complete |
+| COMP-06 | Phase 2: Essential Components | Complete |
+| COMP-07 | Phase 2: Essential Components | Complete |
+| COMP-08 | Phase 2: Essential Components | Complete |
 | COMP-09 | Phase 3: Extended Components | Pending |
 | COMP-10 | Phase 3: Extended Components | Pending |
 | COMP-11 | Phase 3: Extended Components | Pending |

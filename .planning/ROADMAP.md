@@ -49,8 +49,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Title/Cover, Section Break, Text-Heavy, and Two-Column component templates
-- [ ] 02-02-PLAN.md -- Metrics/KPI, Image Full-Bleed, Agenda, and Summary/Takeaway component templates
+- [x] 02-01-PLAN.md -- Title/Cover, Section Break, Text-Heavy, and Two-Column component templates
+- [x] 02-02-PLAN.md -- Metrics/KPI, Image Full-Bleed, Agenda, and Summary/Takeaway component templates
 - [ ] 02-03-PLAN.md -- Component index catalog and example presentation with all 8 components
 
 ### Phase 3: Extended Components

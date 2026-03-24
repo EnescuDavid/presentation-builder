@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-02-PLAN.md (default theme and example presentation)
-last_updated: "2026-03-23T20:56:45.234Z"
+stopped_at: Completed 02-02-PLAN.md (metrics, full-bleed, agenda, summary templates)
+last_updated: "2026-03-24T11:47:32.081Z"
 progress:
   total_phases: 6
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 5
+  completed_plans: 4
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-22)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 01 — foundation
+**Current focus:** Phase 02 — essential-components
 
 ## Current Position
 
-Phase: 01 (foundation) — EXECUTING
-Plan: 2 of 2
+Phase: 02 (essential-components) — EXECUTING
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -48,6 +48,8 @@ Plan: 2 of 2
 *Updated after each plan completion*
 | Phase 01 P01 | 3min | 2 tasks | 3 files |
 | Phase 01 P02 | 3min | 2 tasks | 3 files |
+| Phase 02 P01 | 2min | 2 tasks | 4 files |
+| Phase 02 P02 | 2min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -67,6 +69,16 @@ Recent decisions affecting current work:
 - Phase 1: Discussion-first workflow → brief.md → generate → iterate
 - [Phase 01]: Inter as sole default font, 8px spacing grid, reveal.js slideNumber disabled for custom master layer, Mode B (online) as default
 - [Phase 01]: Footer uses left-aligned layout with dot separators to avoid overlap with slide counter
+- Phase 2: Templates are reference patterns, not rigid molds — Claude improvises from them
+- Phase 2: Hybrid density (minimal default, supports dense when needed), flexible column splits, mixed media in any slot
+- Phase 2: Action titles configurable, bullet style is Claude's choice (consistent within a slide)
+- Phase 2: Single template per component with comment header metadata + templates/index.md
+- [Phase 02]: BEM-lite naming: comp-{name} wrapper, comp-{name}__{element} children
+- [Phase 02]: Comment header format: COMPONENT, USE WHEN, REQUIRED/OPTIONAL SLOTS, MASTER LAYER, LAYOUT NOTES
+- [Phase 02]: German text handling: overflow-wrap break-word + hyphens auto on all containers
+- [Phase 02]: Metrics uses flexbox for 1-3 cards and CSS grid (3-col) for 4-6 compact variant
+- [Phase 02]: Image full-bleed gradient fades bottom to 70% transparent for text readability
+- [Phase 02]: Summary CTA zone uses border-top separator with margin-top auto for bottom alignment
 
 ### Pending Todos
 
@@ -78,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-23T20:56:45.232Z
-Stopped at: Completed 01-02-PLAN.md (default theme and example presentation)
+Last session: 2026-03-24T11:47:32.079Z
+Stopped at: Completed 02-02-PLAN.md (metrics, full-bleed, agenda, summary templates)
 Resume file: None
