@@ -82,7 +82,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 04-01-PLAN.md -- Polish default theme, create startup and enterprise personality themes, dark/light variants
+- [x] 04-01-PLAN.md -- Polish default theme, create startup and enterprise personality themes, dark/light variants
 - [ ] 04-02-PLAN.md -- PPTX theme extraction tool with test fixture and verification
 - [ ] 04-03-PLAN.md -- Themed showcase presentation and skeleton template update with visual checkpoint
 

@@ -36,12 +36,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Theming & Branding
 
-- [ ] **THEME-01**: Framework ships with one polished default theme (clean, consulting-grade)
-- [ ] **THEME-02**: Theme CSS file overrides design tokens to apply corporate colors, fonts, and visual style
-- [ ] **THEME-03**: Theme includes persistent logo placement configurable via CSS variable or HTML slot
-- [ ] **THEME-04**: Theme includes footer bar with company name, optional confidentiality text, and slide number
+- [x] **THEME-01**: Framework ships with one polished default theme (clean, consulting-grade)
+- [x] **THEME-02**: Theme CSS file overrides design tokens to apply corporate colors, fonts, and visual style
+- [x] **THEME-03**: Theme includes persistent logo placement configurable via CSS variable or HTML slot
+- [x] **THEME-04**: Theme includes footer bar with company name, optional confidentiality text, and slide number
 - [ ] **THEME-05**: PPTX theme extraction tool parses a .pptx file and generates a CSS theme file (extracts 12 color slots, 2 font families, logo images)
-- [ ] **THEME-06**: Theme supports dark/light background variants selectable per slide
+- [x] **THEME-06**: Theme supports dark/light background variants selectable per slide
 
 ### German-Ready Layouts
 
@@ -137,12 +137,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-12 | Phase 3: Extended Components | Complete |
 | COMP-13 | Phase 3: Extended Components | Complete |
 | COMP-14 | Phase 3: Extended Components | Complete |
-| THEME-01 | Phase 4: Theming & Branding | Pending |
-| THEME-02 | Phase 4: Theming & Branding | Pending |
-| THEME-03 | Phase 4: Theming & Branding | Pending |
-| THEME-04 | Phase 4: Theming & Branding | Pending |
+| THEME-01 | Phase 4: Theming & Branding | Complete |
+| THEME-02 | Phase 4: Theming & Branding | Complete |
+| THEME-03 | Phase 4: Theming & Branding | Complete |
+| THEME-04 | Phase 4: Theming & Branding | Complete |
 | THEME-05 | Phase 4: Theming & Branding | Pending |
-| THEME-06 | Phase 4: Theming & Branding | Pending |
+| THEME-06 | Phase 4: Theming & Branding | Complete |
 | LANG-01 | Phase 5: Localization & Speaker Notes | Pending |
 | LANG-02 | Phase 5: Localization & Speaker Notes | Pending |
 | LANG-03 | Phase 5: Localization & Speaker Notes | Pending |
