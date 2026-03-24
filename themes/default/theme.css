@@ -1,8 +1,12 @@
 /*
- * Default Theme: Consulting Standard
+ * THEME: Consulting Standard (Default)
+ * PALETTE: Navy/blue professional (#1E3A5F primary)
+ * FONT: Inter (display + body)
+ * ACCENT: Top border bar on content slides, accent-colored heading underline
+ * DARK VARIANT: data-background-color="dark" inverts text for dark backgrounds
  *
- * Extends tokens/base.css with a polished, professional look.
- * To create a new theme: copy this file and override the custom properties.
+ * To create a new theme: copy this file to themes/[name]/theme.css
+ * and override the :root custom properties. All 14 components adopt automatically.
  */
 
 :root {
@@ -20,9 +24,17 @@
 
   /* Footer text color */
   --master-footer-color: var(--color-text-muted);
+
+  /* Theme-specific accent properties */
+  --theme-accent-bar-height: 3px;
+  --theme-accent-bar-color: var(--color-accent);
+  --theme-heading-border: 2px solid var(--color-accent);
 }
 
-/* Theme-level slide styles */
+/* ==========================================================================
+   Theme-level slide styles
+   ========================================================================== */
+
 .reveal .slides section {
   font-family: var(--font-family-body);
   color: var(--color-text);
@@ -46,6 +58,10 @@
 .reveal .slides section h2 {
   font-size: var(--font-size-heading);
   line-height: var(--line-height-snug);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: var(--theme-heading-border);
+  display: inline-block;
+  margin-bottom: var(--spacing-lg);
 }
 
 .reveal .slides section h3 {
@@ -72,11 +88,75 @@
   margin-bottom: var(--spacing-sm);
 }
 
-/* Dark background variant */
+/* ==========================================================================
+   Accent bar on content slides
+   ========================================================================== */
+
+.reveal .slides section:not([data-master="hide"])::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: var(--theme-accent-bar-height);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Professional bullet styling
+   ========================================================================== */
+
+.reveal .slides section ul {
+  list-style: none;
+  padding-left: var(--spacing-lg);
+}
+
+.reveal .slides section ul li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  margin-right: var(--spacing-sm);
+  margin-left: calc(var(--spacing-lg) * -1);
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Card elevation refinement
+   ========================================================================== */
+
+.reveal .slides section [class*="comp-"] .card,
+.reveal .slides section [class*="comp-"] [class*="__card"] {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   Dark background variant
+   ========================================================================== */
+
 .reveal .slides section[data-background-color="dark"] {
   color: var(--color-background);
 }
+
 .reveal .slides section[data-background-color="dark"] h1,
 .reveal .slides section[data-background-color="dark"] h2 {
   color: var(--color-background);
+}
+
+.reveal .slides section[data-background-color="dark"] h3 {
+  color: var(--color-surface);
+}
+
+.reveal .slides section[data-background-color="dark"] p,
+.reveal .slides section[data-background-color="dark"] li {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.reveal .slides section[data-background-color="dark"] .text-muted,
+.reveal .slides section[data-background-color="dark"] [class*="__label"],
+.reveal .slides section[data-background-color="dark"] [class*="__subtitle"] {
+  color: rgba(255, 255, 255, 0.6);
 }
