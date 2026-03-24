@@ -79,11 +79,12 @@ Plans:
   3. Running the PPTX extraction tool against a corporate .pptx template generates a CSS theme file with extracted colors (12 slots), fonts (2 families), and logo images
   4. Developer can set a slide to dark or light background variant, and text/element colors adjust accordingly
   5. Logo placement and footer content (company name, confidentiality text, slide number) are configurable per theme
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- Polish default theme, create startup and enterprise personality themes, dark/light variants
+- [ ] 04-02-PLAN.md -- PPTX theme extraction tool with test fixture and verification
+- [ ] 04-03-PLAN.md -- Themed showcase presentation and skeleton template update with visual checkpoint
 
 ### Phase 5: Localization & Speaker Notes
 **Goal**: All components handle German text gracefully, and every slide template includes speaker notes support with AI generation guidance
@@ -128,6 +129,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Foundation | 2/2 | Complete   | 2026-03-23 |
 | 2. Essential Components | 0/3 | In progress | - |
 | 3. Extended Components | 3/3 | Complete | 2026-03-24 |
-| 4. Theming & Branding | 0/0 | Not started | - |
+| 4. Theming & Branding | 0/3 | Not started | - |
 | 5. Localization & Speaker Notes | 0/0 | Not started | - |
 | 6. AI Integration & Tooling | 0/0 | Not started | - |
