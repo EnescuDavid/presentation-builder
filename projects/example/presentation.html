@@ -872,11 +872,17 @@
     }
 
     .comp-card-grid__icon {
-      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      color: var(--color-accent);
       min-height: 40px;
       display: flex;
       align-items: center;
-      color: var(--color-accent);
+    }
+
+    .comp-card-grid__icon svg {
+      width: 100%;
+      height: 100%;
     }
 
     .comp-card-grid__card-title {
@@ -1009,6 +1015,18 @@
       line-height: 1;
     }
 
+    .comp-quote__text::after {
+      content: '\201C';
+      font-size: 6rem;
+      color: var(--color-accent);
+      opacity: 0.2;
+      position: absolute;
+      bottom: -60px;
+      right: -30px;
+      font-style: normal;
+      line-height: 1;
+    }
+
     .comp-quote__attribution {
       margin-top: var(--spacing-xl);
       display: flex;
@@ -1114,9 +1132,9 @@
       <!-- Slide 1: Title/Cover (master hidden) -->
       <section data-master="hide" data-component="title">
         <div class="comp-title">
-          <h1 class="fragment anim-blurIn">Strategische Neuausrichtung der Digitalplattform</h1>
-          <div class="comp-title__divider fragment anim-lineGrow" data-delay="1"></div>
-          <p class="comp-title__subtitle fragment anim-fadeUp" data-delay="2">Quartalsupdate Q3 2026 &middot; Vorstandssitzung</p>
+          <h1>Strategische Neuausrichtung der Digitalplattform</h1>
+          <div class="comp-title__divider"></div>
+          <p class="comp-title__subtitle">Quartalsupdate Q3 2026 &middot; Vorstandssitzung</p>
         </div>
       </section>
 
@@ -1148,23 +1166,23 @@
       <!-- Slide 3: Section Break "01 Marktanalyse" (master hidden) -->
       <section data-master="hide" data-component="section-break">
         <div class="comp-section-break">
-          <span class="comp-section-break__counter fragment anim-fadeUp">01</span>
-          <div class="comp-section-break__divider fragment anim-lineGrow" data-delay="1"></div>
-          <h2 class="fragment anim-blurIn" data-delay="2">Marktanalyse</h2>
+          <span class="comp-section-break__counter">01</span>
+          <div class="comp-section-break__divider"></div>
+          <h2>Marktanalyse</h2>
         </div>
       </section>
 
       <!-- Slide 4: Text-Heavy (master visible) -->
       <section data-component="text-heavy">
         <div class="comp-text-heavy">
-          <h2 class="fragment anim-fadeUp">Marktdynamik erfordert strategische Neupositionierung</h2>
+          <h2>Marktdynamik erfordert strategische Neupositionierung</h2>
           <div class="comp-text-heavy__body">
             <ul>
-              <li class="fragment anim-fadeUp" data-delay="1">Wettbewerbsintensivierung durch drei neue Marktteilnehmer im DACH-Raum seit Q1 2026</li>
-              <li class="fragment anim-fadeUp" data-delay="2">Kundenerwartungen verschieben sich zunehmend in Richtung digitaler Self-Service-Plattformen</li>
-              <li class="fragment anim-fadeUp" data-delay="3">Regulatorische Anforderungen (EU Digital Services Act) erfordern Plattformanpassungen bis Q4 2027</li>
-              <li class="fragment anim-fadeUp" data-delay="4">Technologische Disruption durch KI-gesteuerte Automatisierung reduziert Margen um 15-20%</li>
-              <li class="fragment anim-fadeUp" data-delay="5">Organisches Wachstum allein reicht nicht aus -- strategische Partnerschaften werden entscheidend</li>
+              <li>Wettbewerbsintensivierung durch drei neue Marktteilnehmer im DACH-Raum seit Q1 2026</li>
+              <li>Kundenerwartungen verschieben sich zunehmend in Richtung digitaler Self-Service-Plattformen</li>
+              <li>Regulatorische Anforderungen (EU Digital Services Act) erfordern Plattformanpassungen bis Q4 2027</li>
+              <li>Technologische Disruption durch KI-gesteuerte Automatisierung reduziert Margen um 15-20%</li>
+              <li>Organisches Wachstum allein reicht nicht aus -- strategische Partnerschaften werden entscheidend</li>
             </ul>
           </div>
         </div>
@@ -1194,9 +1212,9 @@
       <!-- Slide 6: Two-Column (master visible) -->
       <section data-component="two-column">
         <div class="comp-text-heavy" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
-          <h2 class="fragment anim-fadeUp">Wettbewerbsvergleich</h2>
+          <h2>Wettbewerbsvergleich</h2>
           <div class="comp-two-col">
-            <div class="comp-two-col__left fragment anim-slideL" data-delay="1">
+            <div class="comp-two-col__left">
               <h3>Aktuelle Position</h3>
               <ul>
                 <li>Marktanteil von 23% im DACH-Raum mit rucklaufiger Tendenz</li>
@@ -1204,7 +1222,7 @@
                 <li>Vertriebsstruktur uberwiegend auf Direktvertrieb ausgerichtet</li>
               </ul>
             </div>
-            <div class="comp-two-col__right fragment anim-slideR" data-delay="2">
+            <div class="comp-two-col__right">
               <h3>Zielbild 2027</h3>
               <ul>
                 <li>Marktanteil von 30% durch gezielte Akquisitionen und Partnerschaften</li>
@@ -1219,9 +1237,9 @@
       <!-- Slide 7: Section Break "02 Strategie" (master hidden) -->
       <section data-master="hide" data-component="section-break">
         <div class="comp-section-break">
-          <span class="comp-section-break__counter fragment anim-fadeUp">02</span>
-          <div class="comp-section-break__divider fragment anim-lineGrow" data-delay="1"></div>
-          <h2 class="fragment anim-blurIn" data-delay="2">Strategie</h2>
+          <span class="comp-section-break__counter">02</span>
+          <div class="comp-section-break__divider"></div>
+          <h2>Strategie</h2>
         </div>
       </section>
 
@@ -1231,30 +1249,30 @@
                data-master="hide"
                data-component="image-full-bleed">
         <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
-          <h2 class="fragment anim-fadeUp">Unser Team vor Ort</h2>
-          <p class="fragment anim-fadeUp" data-delay="1">Standort Frankfurt -- Innovationszentrum</p>
+          <h2>Unser Team vor Ort</h2>
+          <p>Standort Frankfurt -- Innovationszentrum</p>
         </div>
       </section>
 
       <!-- Slide 9: Summary/Takeaway (master visible) -->
       <section data-component="summary">
         <div class="comp-summary">
-          <h2 class="fragment anim-fadeUp">Zusammenfassung</h2>
+          <h2>Zusammenfassung</h2>
           <div class="comp-summary__points">
-            <div class="comp-summary__point fragment anim-fadeUp" data-delay="1">
+            <div class="comp-summary__point">
               <span class="comp-summary__point-icon">1</span>
               <span>Die Marktanalyse zeigt klaren Bedarf fuer strategische Neupositionierung im Enterprise-Segment</span>
             </div>
-            <div class="comp-summary__point fragment anim-fadeUp" data-delay="2">
+            <div class="comp-summary__point">
               <span class="comp-summary__point-icon">2</span>
               <span>Investitionen in Digitalisierung und Teamaufbau sind entscheidend fuer nachhaltiges Wachstum</span>
             </div>
-            <div class="comp-summary__point fragment anim-fadeUp" data-delay="3">
+            <div class="comp-summary__point">
               <span class="comp-summary__point-icon">3</span>
               <span>Zeitplan fuer Umsetzung: Q4 2026 Pilotphase, Q1 2027 vollstaendiger Rollout</span>
             </div>
           </div>
-          <div class="comp-summary__cta fragment anim-fadeUp" data-delay="4">
+          <div class="comp-summary__cta">
             <p><strong>Naechste Schritte:</strong> Freigabe des Pilotbudgets bis Ende Q3 und Kickoff-Workshop mit allen Stakeholdern im Oktober</p>
           </div>
         </div>
@@ -1265,9 +1283,9 @@
       <!-- Slide 10: Comparison -- IST vs SOLL digitale Reife (master visible) -->
       <section data-component="comparison">
         <div class="comp-comparison">
-          <h2 class="fragment anim-fadeUp">Digitale Reife: IST vs SOLL</h2>
+          <h2>Digitale Reife: IST vs SOLL</h2>
           <div class="comp-comparison__cards">
-            <div class="comp-comparison__card comp-comparison__card--left fragment anim-slideL" data-delay="1">
+            <div class="comp-comparison__card comp-comparison__card--left">
               <span class="comp-comparison__label">IST-Zustand</span>
               <div class="comp-comparison__body">
                 <ul>
@@ -1278,8 +1296,8 @@
                 </ul>
               </div>
             </div>
-            <div class="comp-comparison__divider fragment anim-scalePop" data-delay="2">&#x2192;</div>
-            <div class="comp-comparison__card comp-comparison__card--right fragment anim-slideR" data-delay="3">
+            <div class="comp-comparison__divider">&#x2192;</div>
+            <div class="comp-comparison__card comp-comparison__card--right">
               <span class="comp-comparison__label">SOLL-Zustand</span>
               <div class="comp-comparison__body">
                 <ul>
@@ -1334,25 +1352,25 @@
       <!-- Slide 12: Card Grid -- Kernkompetenzen des Transformationsteams (master visible) -->
       <section data-component="card-grid">
         <div class="comp-card-grid">
-          <h2 class="fragment anim-fadeUp">Kernkompetenzen des Transformationsteams</h2>
+          <h2>Kernkompetenzen des Transformationsteams</h2>
           <div class="comp-card-grid__cards">
-            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="1">
-              <div class="comp-card-grid__icon">&#x1F4CA;</div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
               <div class="comp-card-grid__card-title">Datenanalyse</div>
               <div class="comp-card-grid__card-desc">Fundierte Entscheidungen durch datengetriebene Erkenntnisse und fortgeschrittene Analytik</div>
             </div>
-            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="2">
-              <div class="comp-card-grid__icon">&#x1F680;</div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg></div>
               <div class="comp-card-grid__card-title">Digitale Transformation</div>
               <div class="comp-card-grid__card-desc">Ganzheitliche Begleitung von der Strategie bis zur erfolgreichen Umsetzung</div>
             </div>
-            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="3">
-              <div class="comp-card-grid__icon">&#x1F465;</div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
               <div class="comp-card-grid__card-title">Change Management</div>
               <div class="comp-card-grid__card-desc">Nachhaltige Veraenderungsprozesse mit Fokus auf Mitarbeiterbeteiligung</div>
             </div>
-            <div class="comp-card-grid__card fragment anim-scalePop" data-delay="4">
-              <div class="comp-card-grid__icon">&#x1F3AF;</div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
               <div class="comp-card-grid__card-title">Strategieberatung</div>
               <div class="comp-card-grid__card-desc">Wachstumsstrategien und Marktpositionierung fuer nachhaltige Wettbewerbsvorteile</div>
             </div>
@@ -1363,22 +1381,22 @@
       <!-- Slide 13: Framework/Matrix -- Priorisierungsmatrix (master visible) -->
       <section data-component="framework">
         <div class="comp-matrix">
-          <h2 class="comp-matrix__title fragment anim-fadeUp">Priorisierungsmatrix der Initiativen</h2>
+          <h2 class="comp-matrix__title">Priorisierungsmatrix der Initiativen</h2>
           <div class="comp-matrix__grid">
             <div class="comp-matrix__y-label">Strategische Bedeutung</div>
-            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="1">
+            <div class="comp-matrix__quadrant">
               <h3>Beobachten</h3>
               <p>Hohe Bedeutung, geringe Dringlichkeit -- langfristig im Blick behalten und evaluieren</p>
             </div>
-            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="2">
+            <div class="comp-matrix__quadrant">
               <h3>Sofort umsetzen</h3>
               <p>Hohe Dringlichkeit und Bedeutung -- hoechste Prioritaet fuer Ressourceneinsatz</p>
             </div>
-            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="3">
+            <div class="comp-matrix__quadrant">
               <h3>Zurueckstellen</h3>
               <p>Niedrige Dringlichkeit und Bedeutung -- nur bei freien Kapazitaeten angehen</p>
             </div>
-            <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="4">
+            <div class="comp-matrix__quadrant">
               <h3>Delegieren</h3>
               <p>Hohe Dringlichkeit, geringe Bedeutung -- an operative Teams abgeben</p>
             </div>
@@ -1390,10 +1408,10 @@
       <!-- Slide 14: Quote -- CEO-Zitat zur Transformationsvision (master visible) -->
       <section data-component="quote">
         <div class="comp-quote">
-          <blockquote class="comp-quote__text fragment anim-blurIn">
+          <blockquote class="comp-quote__text">
             Die strategische Neuausrichtung unserer Digitalplattform ist kein IT-Projekt -- sie ist der Schluessel zu unserem kuenftigen Markterfolg und nachhaltiger Wertschoepfung.
           </blockquote>
-          <div class="comp-quote__attribution fragment anim-fadeUp" data-delay="1">
+          <div class="comp-quote__attribution">
             <img class="comp-quote__photo" src="https://via.placeholder.com/56" alt="Dr. Klaus Berger" />
             <div>
               <div class="comp-quote__author">Dr. Klaus Berger</div>
@@ -1406,11 +1424,11 @@
       <!-- Slide 15: Contact/CTA -- Ansprechpartnerin (master visible) -->
       <section data-component="contact">
         <div class="comp-contact">
-          <img class="comp-contact__photo fragment anim-scalePop" src="https://via.placeholder.com/120" alt="Dr. Maria Schmidt" />
-          <h2 class="comp-contact__name fragment anim-fadeUp" data-delay="1">Dr. Maria Schmidt</h2>
-          <p class="comp-contact__role fragment anim-fadeUp" data-delay="2">Partnerin, Digitale Transformation</p>
-          <div class="comp-contact__divider fragment anim-lineGrow" data-delay="3"></div>
-          <div class="comp-contact__details fragment anim-fadeUp" data-delay="4">
+          <img class="comp-contact__photo" src="https://via.placeholder.com/120" alt="Dr. Maria Schmidt" />
+          <h2 class="comp-contact__name">Dr. Maria Schmidt</h2>
+          <p class="comp-contact__role">Partnerin, Digitale Transformation</p>
+          <div class="comp-contact__divider"></div>
+          <div class="comp-contact__details">
             <span class="comp-contact__detail">m.schmidt@beratung.de</span>
             <span class="comp-contact__detail">+49 30 1234 5678</span>
           </div>
@@ -1442,7 +1460,7 @@
       margin: 0.04,
 
       // Navigation
-      controls: true,
+      controls: false,
       controlsTutorial: false,
       progress: true,
       slideNumber: false,

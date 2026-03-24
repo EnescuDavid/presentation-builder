@@ -23,15 +23,16 @@
     - Divider via anim-lineGrow
     - Contact details in horizontal row
     - overflow-wrap and hyphens enabled for German compound words
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="contact">
       <div class="comp-contact">
-        <img class="comp-contact__photo fragment anim-scalePop" src="photo.jpg" alt="Name" />
-        <h2 class="comp-contact__name fragment anim-fadeUp">Dr. Maria Schmidt</h2>
-        <p class="comp-contact__role fragment anim-fadeUp">Geschaeftsfuehrerin</p>
-        <div class="comp-contact__divider fragment anim-lineGrow"></div>
-        <div class="comp-contact__details fragment anim-fadeUp">
+        <img class="comp-contact__photo" src="photo.jpg" alt="Name" />
+        <h2 class="comp-contact__name">Dr. Maria Schmidt</h2>
+        <p class="comp-contact__role">Geschaeftsfuehrerin</p>
+        <div class="comp-contact__divider"></div>
+        <div class="comp-contact__details">
           <span class="comp-contact__detail">m.schmidt@firma.de</span>
           <span class="comp-contact__detail">+49 30 1234 5678</span>
         </div>
@@ -96,11 +97,11 @@
 
 <section data-component="contact">
   <div class="comp-contact">
-    <img class="comp-contact__photo fragment anim-scalePop" src="https://via.placeholder.com/120" alt="Dr. Maria Schmidt" />
-    <h2 class="comp-contact__name fragment anim-fadeUp" data-delay="1">Dr. Maria Schmidt</h2>
-    <p class="comp-contact__role fragment anim-fadeUp" data-delay="2">Geschaeftsfuehrerin Digitale Transformation</p>
-    <div class="comp-contact__divider fragment anim-lineGrow" data-delay="3"></div>
-    <div class="comp-contact__details fragment anim-fadeUp" data-delay="4">
+    <img class="comp-contact__photo" src="https://via.placeholder.com/120" alt="Dr. Maria Schmidt" />
+    <h2 class="comp-contact__name">Dr. Maria Schmidt</h2>
+    <p class="comp-contact__role">Geschaeftsfuehrerin Digitale Transformation</p>
+    <div class="comp-contact__divider"></div>
+    <div class="comp-contact__details">
       <span class="comp-contact__detail">m.schmidt@unternehmen.de</span>
       <span class="comp-contact__detail">+49 30 1234 5678</span>
     </div>

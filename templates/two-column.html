@@ -19,6 +19,7 @@
     - Any content type in any column (text, images, lists, metrics)
     - overflow-wrap and hyphens enabled for German compound words
     - Animations: left column uses anim-slideL, right column uses anim-slideR
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 -->
 
 <style>
@@ -63,9 +64,9 @@
 
 <section data-component="two-column">
   <div class="comp-text-heavy" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
-    <h2 class="fragment anim-fadeUp">Wettbewerbsvergleich</h2>
+    <h2>Wettbewerbsvergleich</h2>
     <div class="comp-two-col">
-      <div class="comp-two-col__left fragment anim-slideL" data-delay="1">
+      <div class="comp-two-col__left">
         <h3>Aktuelle Position</h3>
         <ul>
           <li>Marktanteil von 23% im DACH-Raum mit rucklaufiger Tendenz</li>
@@ -73,7 +74,7 @@
           <li>Vertriebsstruktur uberwiegend auf Direktvertrieb ausgerichtet</li>
         </ul>
       </div>
-      <div class="comp-two-col__right fragment anim-slideR" data-delay="2">
+      <div class="comp-two-col__right">
         <h3>Zielbild 2027</h3>
         <ul>
           <li>Marktanteil von 30% durch gezielte Akquisitionen und Partnerschaften</li>

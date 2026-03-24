@@ -24,14 +24,15 @@
       bottom-to-top reading
     - CRITICAL: Apply min-width: 0 on quadrant cells to prevent German
       compound words from breaking grid alignment
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="framework">
       <div class="comp-matrix">
-        <h2 class="comp-matrix__title fragment anim-fadeUp">Matrix</h2>
+        <h2 class="comp-matrix__title">Matrix</h2>
         <div class="comp-matrix__grid">
           <div class="comp-matrix__y-label">Y-Achse</div>
-          <div class="comp-matrix__quadrant fragment anim-scalePop">
+          <div class="comp-matrix__quadrant">
             <h3>Quadrant</h3>
             <p>Beschreibung</p>
           </div>
@@ -127,22 +128,22 @@
 
 <section data-component="framework">
   <div class="comp-matrix">
-    <h2 class="comp-matrix__title fragment anim-fadeUp">Priorisierungsmatrix</h2>
+    <h2 class="comp-matrix__title">Priorisierungsmatrix</h2>
     <div class="comp-matrix__grid">
       <div class="comp-matrix__y-label">Strategische Bedeutung</div>
-      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="1">
+      <div class="comp-matrix__quadrant">
         <h3>Beobachten</h3>
         <p>Hohe strategische Bedeutung, aber geringe Dringlichkeit -- langfristig im Blick behalten</p>
       </div>
-      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="2">
+      <div class="comp-matrix__quadrant">
         <h3>Sofort umsetzen</h3>
         <p>Hohe Dringlichkeit und hohe Bedeutung -- hoechste Prioritaet fuer Ressourceneinsatz</p>
       </div>
-      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="3">
+      <div class="comp-matrix__quadrant">
         <h3>Zurueckstellen</h3>
         <p>Niedrige Dringlichkeit und niedrige Bedeutung -- nur bei freien Kapazitaeten angehen</p>
       </div>
-      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="4">
+      <div class="comp-matrix__quadrant">
         <h3>Delegieren</h3>
         <p>Hohe Dringlichkeit, aber geringe strategische Bedeutung -- an operative Teams abgeben</p>
       </div>

@@ -21,17 +21,18 @@
     - Claude picks highlight style (accent border shown here, but progressive
       reveal, bold+color, etc. all work)
     - Works with 3-8 agenda items
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="agenda">
       <div class="comp-agenda">
-        <h2 class="comp-agenda__title fragment anim-fadeUp">Agenda</h2>
+        <h2 class="comp-agenda__title">Agenda</h2>
         <div class="comp-agenda__list">
-          <div class="comp-agenda__item fragment anim-fadeUp">
+          <div class="comp-agenda__item">
             <span class="comp-agenda__item-number">01</span>
             <div class="comp-agenda__item-text">Marktanalyse</div>
           </div>
-          <div class="comp-agenda__item comp-agenda__item--active fragment anim-fadeUp">
+          <div class="comp-agenda__item comp-agenda__item--active">
             <span class="comp-agenda__item-number">02</span>
             <div class="comp-agenda__item-text">Strategische Optionen</div>
           </div>
@@ -117,21 +118,21 @@
 
 <section data-component="agenda">
   <div class="comp-agenda">
-    <h2 class="comp-agenda__title fragment anim-fadeUp">Agenda</h2>
+    <h2 class="comp-agenda__title">Agenda</h2>
     <div class="comp-agenda__list">
-      <div class="comp-agenda__item fragment anim-fadeUp" data-delay="1">
+      <div class="comp-agenda__item">
         <span class="comp-agenda__item-number">01</span>
         <div class="comp-agenda__item-text">Marktanalyse</div>
       </div>
-      <div class="comp-agenda__item comp-agenda__item--active fragment anim-fadeUp" data-delay="2">
+      <div class="comp-agenda__item comp-agenda__item--active">
         <span class="comp-agenda__item-number">02</span>
         <div class="comp-agenda__item-text">Strategische Optionen</div>
       </div>
-      <div class="comp-agenda__item fragment anim-fadeUp" data-delay="3">
+      <div class="comp-agenda__item">
         <span class="comp-agenda__item-number">03</span>
         <div class="comp-agenda__item-text">Finanzplanung</div>
       </div>
-      <div class="comp-agenda__item fragment anim-fadeUp" data-delay="4">
+      <div class="comp-agenda__item">
         <span class="comp-agenda__item-number">04</span>
         <div class="comp-agenda__item-text">Naechste Schritte</div>
       </div>

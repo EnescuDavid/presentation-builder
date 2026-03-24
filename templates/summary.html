@@ -19,18 +19,19 @@
     - Clean summary by default
     - CTA zone separated by a top border or background color change
     - Claude decides whether CTA is appropriate based on presentation context
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="summary">
       <div class="comp-summary">
-        <h2 class="fragment anim-fadeUp">Zusammenfassung</h2>
+        <h2>Zusammenfassung</h2>
         <div class="comp-summary__points">
-          <div class="comp-summary__point fragment anim-fadeUp">
+          <div class="comp-summary__point">
             <span class="comp-summary__point-icon">1</span>
             <span>Key takeaway text</span>
           </div>
         </div>
-        <div class="comp-summary__cta fragment anim-fadeUp">
+        <div class="comp-summary__cta">
           <p><strong>Naechste Schritte:</strong> Action item here</p>
         </div>
       </div>
@@ -109,22 +110,22 @@
 
 <section data-component="summary">
   <div class="comp-summary">
-    <h2 class="fragment anim-fadeUp">Zusammenfassung</h2>
+    <h2>Zusammenfassung</h2>
     <div class="comp-summary__points">
-      <div class="comp-summary__point fragment anim-fadeUp" data-delay="1">
+      <div class="comp-summary__point">
         <span class="comp-summary__point-icon">1</span>
         <span>Die Marktanalyse zeigt klaren Bedarf fuer strategische Neupositionierung im Enterprise-Segment</span>
       </div>
-      <div class="comp-summary__point fragment anim-fadeUp" data-delay="2">
+      <div class="comp-summary__point">
         <span class="comp-summary__point-icon">2</span>
         <span>Investitionen in Digitalisierung und Teamaufbau sind entscheidend fuer nachhaltiges Wachstum</span>
       </div>
-      <div class="comp-summary__point fragment anim-fadeUp" data-delay="3">
+      <div class="comp-summary__point">
         <span class="comp-summary__point-icon">3</span>
         <span>Zeitplan fuer Umsetzung: Q4 2026 Pilotphase, Q1 2027 vollstaendiger Rollout</span>
       </div>
     </div>
-    <div class="comp-summary__cta fragment anim-fadeUp" data-delay="4">
+    <div class="comp-summary__cta">
       <p><strong>Naechste Schritte:</strong> Freigabe des Pilotbudgets bis Ende Q3 und Kickoff-Workshop mit allen Stakeholdern im Oktober</p>
     </div>
   </div>

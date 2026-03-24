@@ -21,6 +21,7 @@
       - Light overlay for dark images (dark text on light gradient)
     - Overlay is optional -- omit the overlay div for image-only slides
     - Gradient starts from bottom, fading to transparent at 70%
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE (dark overlay):
     <section data-background-image="path/to/image.jpg"
@@ -28,8 +29,8 @@
              data-master="hide"
              data-component="image-full-bleed">
       <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
-        <h2 class="fragment anim-fadeUp">Headline</h2>
-        <p class="fragment anim-fadeUp" data-delay="1">Supporting text</p>
+        <h2>Headline</h2>
+        <p>Supporting text</p>
       </div>
     </section>
 
@@ -94,7 +95,7 @@
          data-master="hide"
          data-component="image-full-bleed">
   <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
-    <h2 class="fragment anim-fadeUp">Unser Team vor Ort</h2>
-    <p class="fragment anim-fadeUp" data-delay="1">Standort Frankfurt -- Innovationszentrum</p>
+    <h2>Unser Team vor Ort</h2>
+    <p>Standort Frankfurt -- Innovationszentrum</p>
   </div>
 </section>

@@ -71,5 +71,12 @@ Components use entrance animation classes from `tokens/animations.css`:
 - `anim-scalePop` -- Metrics, numbers, icons
 - `anim-lineGrow` -- Dividers, underlines
 
-Add `class="fragment anim-fadeUp"` to any element.
-Use `data-delay="1"` through `data-delay="5"` for stagger.
+**Fragments are OPTIONAL.** By default, all slide content appears immediately.
+To enable progressive reveal, add `class="fragment anim-fadeUp"` to elements.
+Use `data-delay="1"` through `data-delay="5"` for stagger timing.
+Claude decides whether to add fragments based on the user's preference — only add them when the user wants step-by-step reveal for a specific slide.
+
+## Icons
+
+Use inline SVGs for icons (e.g., Lucide icons). Do NOT use emojis in professional slides.
+See `card-grid.html` for an example of inline Lucide SVG icons.

@@ -21,13 +21,14 @@
     - 4-6 metrics use compact CSS grid (3 columns) with heading-size numbers
     - scalePop animation on each card with stagger
     - tabular-nums on numbers for alignment
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="metrics">
       <div class="comp-metrics">
-        <h2 class="comp-metrics__title fragment anim-fadeUp">Headline</h2>
+        <h2 class="comp-metrics__title">Headline</h2>
         <div class="comp-metrics__grid">
-          <div class="comp-metrics__card fragment anim-scalePop">
+          <div class="comp-metrics__card">
             <span class="comp-metrics__number">+23%</span>
             <span class="comp-metrics__label">Umsatzwachstum</span>
           </div>
@@ -103,17 +104,17 @@
 
 <section data-component="metrics">
   <div class="comp-metrics">
-    <h2 class="comp-metrics__title fragment anim-fadeUp">Geschaeftsentwicklung Q3</h2>
+    <h2 class="comp-metrics__title">Geschaeftsentwicklung Q3</h2>
     <div class="comp-metrics__grid">
-      <div class="comp-metrics__card fragment anim-scalePop" data-delay="1">
+      <div class="comp-metrics__card">
         <span class="comp-metrics__number">+23%</span>
         <span class="comp-metrics__label">Umsatzwachstum</span>
       </div>
-      <div class="comp-metrics__card fragment anim-scalePop" data-delay="2">
+      <div class="comp-metrics__card">
         <span class="comp-metrics__number">4.2M</span>
         <span class="comp-metrics__label">Neue Nutzer</span>
       </div>
-      <div class="comp-metrics__card fragment anim-scalePop" data-delay="3">
+      <div class="comp-metrics__card">
         <span class="comp-metrics__number">98.7%</span>
         <span class="comp-metrics__label">Verfuegbarkeit</span>
       </div>

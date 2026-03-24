@@ -15,6 +15,7 @@
     - Counter appears above divider for visual hierarchy
     - Use short, punchy section titles (2-4 words ideal)
     - Animations: counter uses anim-fadeUp, divider uses anim-lineGrow, heading uses anim-blurIn
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 -->
 
 <style>
@@ -56,8 +57,8 @@
 
 <section data-master="hide" data-component="section-break">
   <div class="comp-section-break">
-    <span class="comp-section-break__counter fragment anim-fadeUp">01</span>
-    <div class="comp-section-break__divider fragment anim-lineGrow" data-delay="1"></div>
-    <h2 class="fragment anim-blurIn" data-delay="2">Marktanalyse</h2>
+    <span class="comp-section-break__counter">01</span>
+    <div class="comp-section-break__divider"></div>
+    <h2>Marktanalyse</h2>
   </div>
 </section>

@@ -24,13 +24,14 @@
     - Connectors use ::after pseudo-elements anchored to marker center
       (top: 18px = half of 36px marker)
     - Step content uses compact font sizes for German text
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="timeline">
       <div class="comp-timeline">
-        <h2 class="comp-timeline__title fragment anim-fadeUp">Projektfahrplan</h2>
+        <h2 class="comp-timeline__title">Projektfahrplan</h2>
         <div class="comp-timeline__track">
-          <div class="comp-timeline__step fragment anim-fadeUp" data-delay="1">
+          <div class="comp-timeline__step">
             <div class="comp-timeline__marker">Q1</div>
             <div class="comp-timeline__content">
               <h3>Phase 1</h3>
@@ -125,30 +126,30 @@
 
 <section data-component="timeline">
   <div class="comp-timeline">
-    <h2 class="comp-timeline__title fragment anim-fadeUp">Projektfahrplan 2026-2027</h2>
+    <h2 class="comp-timeline__title">Projektfahrplan 2026-2027</h2>
     <div class="comp-timeline__track">
-      <div class="comp-timeline__step fragment anim-fadeUp" data-delay="1">
+      <div class="comp-timeline__step">
         <div class="comp-timeline__marker">Q1</div>
         <div class="comp-timeline__content">
           <h3>Analyse</h3>
           <p>Marktforschung und Bedarfsanalyse der Zielgruppen</p>
         </div>
       </div>
-      <div class="comp-timeline__step fragment anim-fadeUp" data-delay="2">
+      <div class="comp-timeline__step">
         <div class="comp-timeline__marker">Q2</div>
         <div class="comp-timeline__content">
           <h3>Konzeption</h3>
           <p>Strategieentwicklung und Pilotplanung</p>
         </div>
       </div>
-      <div class="comp-timeline__step fragment anim-fadeUp" data-delay="3">
+      <div class="comp-timeline__step">
         <div class="comp-timeline__marker">Q3</div>
         <div class="comp-timeline__content">
           <h3>Pilotphase</h3>
           <p>Prototyp-Entwicklung und Nutzertests</p>
         </div>
       </div>
-      <div class="comp-timeline__step fragment anim-fadeUp" data-delay="4">
+      <div class="comp-timeline__step">
         <div class="comp-timeline__marker">Q4</div>
         <div class="comp-timeline__content">
           <h3>Rollout</h3>

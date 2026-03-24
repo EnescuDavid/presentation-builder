@@ -25,6 +25,7 @@
     - Left card uses --color-callout + --color-danger for label
     - Right card uses --color-highlight + --color-accent for label
     - overflow-wrap and hyphens enabled for German compound words
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   DIFFERENTIATION FROM TWO-COLUMN:
     1. Cards with background, border-radius, and box-shadow (two-column is flat)
@@ -34,16 +35,16 @@
   EXAMPLE:
     <section data-component="comparison">
       <div class="comp-comparison">
-        <h2 class="fragment anim-fadeUp">Headline</h2>
+        <h2>Headline</h2>
         <div class="comp-comparison__cards">
-          <div class="comp-comparison__card comp-comparison__card--left fragment anim-slideL">
+          <div class="comp-comparison__card comp-comparison__card--left">
             <span class="comp-comparison__label">IST-Zustand</span>
             <div class="comp-comparison__body">
               <ul><li>Point</li></ul>
             </div>
           </div>
-          <div class="comp-comparison__divider fragment anim-scalePop">&#x2192;</div>
-          <div class="comp-comparison__card comp-comparison__card--right fragment anim-slideR">
+          <div class="comp-comparison__divider">&#x2192;</div>
+          <div class="comp-comparison__card comp-comparison__card--right">
             <span class="comp-comparison__label">SOLL-Zustand</span>
             <div class="comp-comparison__body">
               <ul><li>Point</li></ul>
@@ -140,9 +141,9 @@
 
 <section data-component="comparison">
   <div class="comp-comparison">
-    <h2 class="fragment anim-fadeUp">Digitale Reife: Transformation</h2>
+    <h2>Digitale Reife: Transformation</h2>
     <div class="comp-comparison__cards">
-      <div class="comp-comparison__card comp-comparison__card--left fragment anim-slideL" data-delay="1">
+      <div class="comp-comparison__card comp-comparison__card--left">
         <span class="comp-comparison__label">IST-Zustand</span>
         <div class="comp-comparison__body">
           <ul>
@@ -153,8 +154,8 @@
           </ul>
         </div>
       </div>
-      <div class="comp-comparison__divider fragment anim-scalePop" data-delay="2">&#x2192;</div>
-      <div class="comp-comparison__card comp-comparison__card--right fragment anim-slideR" data-delay="3">
+      <div class="comp-comparison__divider">&#x2192;</div>
+      <div class="comp-comparison__card comp-comparison__card--right">
         <span class="comp-comparison__label">SOLL-Zustand</span>
         <div class="comp-comparison__body">
           <ul>

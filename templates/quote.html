@@ -18,9 +18,11 @@
 
   LAYOUT NOTES:
     - Centered layout, large italic text
-    - Decorative German quotation mark via ::before pseudo-element
+    - Decorative German quotation marks via ::before and ::after pseudo-elements
     - Max-width 800px on quote text
     - overflow-wrap and hyphens enabled for German compound words
+
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
     <section data-component="quote">
@@ -81,6 +83,18 @@
     line-height: 1;
   }
 
+  .comp-quote__text::after {
+    content: '\201C';
+    font-size: 6rem;
+    color: var(--color-accent);
+    opacity: 0.2;
+    position: absolute;
+    bottom: -60px;
+    right: -30px;
+    font-style: normal;
+    line-height: 1;
+  }
+
   .comp-quote__attribution {
     margin-top: var(--spacing-xl);
     display: flex;
@@ -109,10 +123,10 @@
 
 <section data-component="quote">
   <div class="comp-quote">
-    <blockquote class="comp-quote__text fragment anim-blurIn">
+    <blockquote class="comp-quote__text">
       Digitalisierung ist kein IT-Projekt, sondern eine grundlegende Transformation unserer Unternehmenskultur und Wertschoepfungskette.
     </blockquote>
-    <div class="comp-quote__attribution fragment anim-fadeUp" data-delay="1">
+    <div class="comp-quote__attribution">
       <img class="comp-quote__photo" src="https://via.placeholder.com/56" alt="Thomas Weber" />
       <div>
         <div class="comp-quote__author">Thomas Weber</div>
