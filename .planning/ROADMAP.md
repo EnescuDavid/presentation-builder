@@ -66,7 +66,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md -- Contact/CTA, Quote/Testimonial, and Comparison component templates
-- [ ] 03-02-PLAN.md -- Timeline/Process, Card Grid, and Framework/Matrix component templates
+- [x] 03-02-PLAN.md -- Timeline/Process, Card Grid, and Framework/Matrix component templates
 - [ ] 03-03-PLAN.md -- Component index catalog update and example presentation with all 14 components
 
 ### Phase 4: Theming & Branding
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-23 |
 | 2. Essential Components | 0/3 | In progress | - |
-| 3. Extended Components | 0/3 | Not started | - |
+| 3. Extended Components | 2/3 | In progress | - |
 | 4. Theming & Branding | 0/0 | Not started | - |
 | 5. Localization & Speaker Notes | 0/0 | Not started | - |
 | 6. AI Integration & Tooling | 0/0 | Not started | - |
