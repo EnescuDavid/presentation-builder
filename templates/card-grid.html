@@ -1,0 +1,125 @@
+<!--
+  ============================================================================
+  COMPONENT: Card Grid (COMP-13)
+  ============================================================================
+
+  USE WHEN:
+    Service offerings. Feature overview. Team capabilities.
+    2-4 items with icon and description.
+
+  REQUIRED SLOTS:
+    - 2-4 cards each with title
+
+  OPTIONAL SLOTS:
+    - Card icon (emoji or HTML entity)
+    - Card description text
+    - Slide title (h2)
+
+  MASTER LAYER: Visible
+
+  LAYOUT NOTES:
+    - CSS Grid with auto-fit minmax(220px, 1fr) handles 2-4 cards automatically
+    - Cards have surface background, shadow, rounded corners
+    - Icons use emoji in template (Claude can substitute inline SVG)
+    - Reserve 40px min-height for icon slot for alignment
+
+  EXAMPLE:
+    <section data-component="card-grid">
+      <div class="comp-card-grid">
+        <h2 class="fragment anim-fadeUp">Headline</h2>
+        <div class="comp-card-grid__cards">
+          <div class="comp-card-grid__card fragment anim-scalePop">
+            <div class="comp-card-grid__icon">&#x1F4CA;</div>
+            <div class="comp-card-grid__card-title">Titel</div>
+            <div class="comp-card-grid__card-desc">Beschreibung</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Card Grid Component --- */
+  .comp-card-grid {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    min-height: 100%;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .comp-card-grid h2 {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-card-grid__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .comp-card-grid__card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .comp-card-grid__icon {
+    font-size: 2rem;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    color: var(--color-accent);
+  }
+
+  .comp-card-grid__card-title {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+  }
+
+  .comp-card-grid__card-desc {
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+</style>
+
+<section data-component="card-grid">
+  <div class="comp-card-grid">
+    <h2 class="fragment anim-fadeUp">Unsere Kernkompetenzen</h2>
+    <div class="comp-card-grid__cards">
+      <div class="comp-card-grid__card fragment anim-scalePop" data-delay="1">
+        <div class="comp-card-grid__icon">&#x1F4CA;</div>
+        <div class="comp-card-grid__card-title">Datenanalyse</div>
+        <div class="comp-card-grid__card-desc">Fundierte Entscheidungen durch datengetriebene Erkenntnisse und fortgeschrittene Analytik</div>
+      </div>
+      <div class="comp-card-grid__card fragment anim-scalePop" data-delay="2">
+        <div class="comp-card-grid__icon">&#x1F680;</div>
+        <div class="comp-card-grid__card-title">Digitale Transformation</div>
+        <div class="comp-card-grid__card-desc">Ganzheitliche Begleitung von der Strategie bis zur erfolgreichen Umsetzung</div>
+      </div>
+      <div class="comp-card-grid__card fragment anim-scalePop" data-delay="3">
+        <div class="comp-card-grid__icon">&#x1F465;</div>
+        <div class="comp-card-grid__card-title">Change Management</div>
+        <div class="comp-card-grid__card-desc">Nachhaltige Veraenderungsprozesse mit Fokus auf Mitarbeiterbeteiligung</div>
+      </div>
+      <div class="comp-card-grid__card fragment anim-scalePop" data-delay="4">
+        <div class="comp-card-grid__icon">&#x1F3AF;</div>
+        <div class="comp-card-grid__card-title">Strategieberatung</div>
+        <div class="comp-card-grid__card-desc">Wachstumsstrategien und Marktpositionierung fuer nachhaltige Wettbewerbsvorteile</div>
+      </div>
+    </div>
+  </div>
+</section>

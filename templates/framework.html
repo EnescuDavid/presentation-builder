@@ -1,0 +1,152 @@
+<!--
+  ============================================================================
+  COMPONENT: Framework/Matrix (COMP-14)
+  ============================================================================
+
+  USE WHEN:
+    BCG matrix. Prioritization grid. 2x2 analysis. Quadrant mapping.
+    Strategic framework.
+
+  REQUIRED SLOTS:
+    - 4 quadrant contents (title + description)
+
+  OPTIONAL SLOTS:
+    - Slide title (h2)
+    - Y-axis label
+    - X-axis label
+
+  MASTER LAYER: Visible
+
+  LAYOUT NOTES:
+    - CSS Grid with 3 columns (auto 1fr 1fr) and 4 rows (auto 1fr 1fr auto)
+      for axis labels + quadrants
+    - Y-axis uses writing-mode vertical-lr with rotate(180deg) for
+      bottom-to-top reading
+    - CRITICAL: Apply min-width: 0 on quadrant cells to prevent German
+      compound words from breaking grid alignment
+
+  EXAMPLE:
+    <section data-component="framework">
+      <div class="comp-matrix">
+        <h2 class="comp-matrix__title fragment anim-fadeUp">Matrix</h2>
+        <div class="comp-matrix__grid">
+          <div class="comp-matrix__y-label">Y-Achse</div>
+          <div class="comp-matrix__quadrant fragment anim-scalePop">
+            <h3>Quadrant</h3>
+            <p>Beschreibung</p>
+          </div>
+          <!-- 3 more quadrants -->
+          <div class="comp-matrix__x-label">X-Achse</div>
+        </div>
+      </div>
+    </section>
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Framework/Matrix Component --- */
+  .comp-matrix {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    min-height: 100%;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .comp-matrix__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-matrix__grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
+    gap: var(--spacing-xs);
+    flex: 1;
+  }
+
+  .comp-matrix__y-label {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-right: var(--spacing-md);
+  }
+
+  .comp-matrix__x-label {
+    grid-column: 2 / 4;
+    grid-row: 4;
+    text-align: center;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: var(--spacing-md);
+  }
+
+  .comp-matrix__quadrant {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    min-width: 0;
+  }
+
+  .comp-matrix__quadrant h3 {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+  }
+
+  .comp-matrix__quadrant p {
+    font-size: var(--font-size-caption);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+</style>
+
+<section data-component="framework">
+  <div class="comp-matrix">
+    <h2 class="comp-matrix__title fragment anim-fadeUp">Priorisierungsmatrix</h2>
+    <div class="comp-matrix__grid">
+      <div class="comp-matrix__y-label">Strategische Bedeutung</div>
+      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="1">
+        <h3>Beobachten</h3>
+        <p>Hohe strategische Bedeutung, aber geringe Dringlichkeit -- langfristig im Blick behalten</p>
+      </div>
+      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="2">
+        <h3>Sofort umsetzen</h3>
+        <p>Hohe Dringlichkeit und hohe Bedeutung -- hoechste Prioritaet fuer Ressourceneinsatz</p>
+      </div>
+      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="3">
+        <h3>Zurueckstellen</h3>
+        <p>Niedrige Dringlichkeit und niedrige Bedeutung -- nur bei freien Kapazitaeten angehen</p>
+      </div>
+      <div class="comp-matrix__quadrant fragment anim-scalePop" data-delay="4">
+        <h3>Delegieren</h3>
+        <p>Hohe Dringlichkeit, aber geringe strategische Bedeutung -- an operative Teams abgeben</p>
+      </div>
+      <div class="comp-matrix__x-label">Dringlichkeit</div>
+    </div>
+  </div>
+</section>
