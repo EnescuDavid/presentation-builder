@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Presentation Builder -- Example Deck</title>
+  <title>Presentation Builder -- Komponentenbibliothek</title>
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -286,127 +286,397 @@
       color: var(--color-primary);
     }
 
-    /* ======================================================================
-       Demo-specific styles
-       ====================================================================== */
+    /* German text handling */
+    .reveal .slides section {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
 
-    /* Title slide centering */
-    .slide-title {
+    /* ====== Component Library CSS ====== */
+
+    /* COMPONENT: Title/Cover */
+    .comp-title {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       height: 100%;
+      padding: var(--spacing-3xl);
     }
-    .slide-title h1 {
-      margin-bottom: var(--spacing-md);
+
+    .comp-title h1 {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      max-width: 900px;
+      overflow-wrap: break-word;
     }
-    .slide-title p {
+
+    .comp-title__divider {
+      width: 120px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      margin: var(--spacing-lg) 0;
+    }
+
+    .comp-title__subtitle {
       font-size: var(--font-size-subheading);
       color: var(--color-text-muted);
       font-weight: var(--font-weight-light);
     }
 
-    /* Section break slide centering */
-    .slide-section-break {
+    /* COMPONENT: Section Break */
+    .comp-section-break {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       height: 100%;
-    }
-    .slide-section-break h2 {
-      font-size: var(--font-size-display);
-      color: var(--color-primary);
+      padding: var(--spacing-3xl);
     }
 
-    /* Color swatch grid */
-    .color-grid {
-      display: flex;
-      gap: var(--spacing-lg);
-      flex-wrap: wrap;
-      margin-bottom: var(--spacing-xl);
+    .comp-section-break__counter {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
     }
-    .color-swatch {
+
+    .comp-section-break__divider {
+      width: 80px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      margin: var(--spacing-lg) 0;
+    }
+
+    .comp-section-break h2 {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      max-width: 800px;
+      overflow-wrap: break-word;
+    }
+
+    /* COMPONENT: Text-Heavy */
+    .comp-text-heavy {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: var(--spacing-xs);
-    }
-    .color-swatch .swatch-box {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-    }
-    .color-swatch .swatch-label {
-      font-size: var(--font-size-caption);
-      color: var(--color-text-muted);
+      justify-content: flex-start;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-md);
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
 
-    /* Type scale demo */
-    .type-scale-demo {
+    .comp-text-heavy h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-snug);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .comp-text-heavy__body {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-sm);
+      min-height: 200px;
     }
-    .type-scale-demo .scale-row {
+
+    .comp-text-heavy__body ul,
+    .comp-text-heavy__body ol {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-left: var(--spacing-lg);
+      list-style-position: outside;
+    }
+
+    .comp-text-heavy__body li {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+
+    .comp-text-heavy__body p {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+    }
+
+    /* COMPONENT: Two-Column */
+    .comp-two-col {
+      display: flex;
+      gap: var(--spacing-2xl);
+      padding-top: var(--spacing-md);
+      min-height: 0;
+      align-items: flex-start;
+    }
+
+    .comp-two-col__left,
+    .comp-two-col__right {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .comp-two-col h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .comp-two-col p,
+    .comp-two-col li {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+    }
+
+    .comp-two-col ul {
+      margin-left: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    /* COMPONENT: Metrics/KPI Hero */
+    .comp-metrics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      text-align: center;
+    }
+
+    .comp-metrics__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .comp-metrics__grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-3xl);
+    }
+
+    .comp-metrics__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .comp-metrics__number {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .comp-metrics__label {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: var(--font-weight-medium);
+    }
+
+    .comp-metrics__grid--compact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+    }
+
+    .comp-metrics__grid--compact .comp-metrics__number {
+      font-size: var(--font-size-heading);
+    }
+
+    /* COMPONENT: Image Full-Bleed */
+    .comp-full-bleed__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--spacing-3xl);
+      overflow-wrap: break-word;
+    }
+
+    .comp-full-bleed__overlay--dark {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%);
+      color: #fff;
+    }
+
+    .comp-full-bleed__overlay--dark h2 {
+      color: #fff;
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .comp-full-bleed__overlay--dark p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--font-size-body);
+    }
+
+    .comp-full-bleed__overlay--light {
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 40%, transparent 70%);
+      color: var(--color-text);
+    }
+
+    .comp-full-bleed__overlay--light h2 {
+      color: var(--color-primary);
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .comp-full-bleed__overlay--light p {
+      color: var(--color-text);
+      font-size: var(--font-size-body);
+    }
+
+    /* COMPONENT: Agenda */
+    .comp-agenda {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-xl);
+    }
+
+    .comp-agenda__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .comp-agenda__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .comp-agenda__item {
       display: flex;
       align-items: baseline;
       gap: var(--spacing-lg);
-    }
-    .type-scale-demo .scale-label {
-      font-size: var(--font-size-caption);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-left: 3px solid transparent;
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-body);
       color: var(--color-text-muted);
-      min-width: 100px;
-      text-align: right;
+      transition: none;
     }
 
-    /* Animation showcase */
-    .anim-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
+    .comp-agenda__item--active {
+      border-left-color: var(--color-accent);
+      background: var(--color-highlight);
+      color: var(--color-text);
+      font-weight: var(--font-weight-semibold);
     }
-    .anim-box {
+
+    .comp-agenda__item-number {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-accent);
+      min-width: 32px;
+    }
+
+    .comp-agenda__item--active .comp-agenda__item-number {
+      color: var(--color-primary);
+    }
+
+    .comp-agenda__item-text {
+      flex: 1;
+    }
+
+    .comp-agenda__item-desc {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-regular);
+      margin-top: var(--spacing-xs);
+    }
+
+    /* COMPONENT: Summary/Takeaway */
+    .comp-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-lg);
+    }
+
+    .comp-summary h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .comp-summary__points {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      flex: 1;
+    }
+
+    .comp-summary__point {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+
+    .comp-summary__point-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius-full);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--spacing-lg) var(--spacing-xl);
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      font-size: var(--font-size-body);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
-      box-shadow: var(--shadow-card);
-    }
-    .anim-line {
-      height: 4px;
-      background: var(--color-accent);
-      border-radius: var(--radius-full);
-      transform-origin: left;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-bold);
+      margin-top: 2px;
     }
 
-    /* Master layer demo list */
-    .master-demo-list {
-      list-style: none;
-      margin-left: 0;
-      padding-left: 0;
+    .comp-summary__cta {
+      margin-top: auto;
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid var(--color-border);
     }
-    .master-demo-list li {
-      padding-left: var(--spacing-lg);
-      position: relative;
+
+    .comp-summary__cta p {
+      font-size: var(--font-size-body);
+      color: var(--color-text-muted);
     }
-    .master-demo-list li::before {
-      content: "\2022";
-      color: var(--color-accent);
-      font-weight: var(--font-weight-bold);
-      position: absolute;
-      left: 0;
+
+    .comp-summary__cta strong {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
     }
   </style>
 </head>
@@ -435,122 +705,153 @@
     <!-- SLIDES -->
     <div class="slides">
 
-      <!-- Slide 1: Title (master hidden) -->
-      <section data-master="hide">
-        <div class="slide-title">
-          <h1>Presentation Builder</h1>
-          <p>Ein modulares Framework fuer professionelle Praesentationen</p>
+      <!-- Slide 1: Title/Cover (master hidden) -->
+      <section data-master="hide" data-component="title">
+        <div class="comp-title">
+          <h1 class="fragment anim-blurIn">Strategische Neuausrichtung der Digitalplattform</h1>
+          <div class="comp-title__divider fragment anim-lineGrow" data-delay="1"></div>
+          <p class="comp-title__subtitle fragment anim-fadeUp" data-delay="2">Quartalsupdate Q3 2026 &middot; Vorstandssitzung</p>
         </div>
       </section>
 
-      <!-- Slide 2: Section Break (master hidden) -->
-      <section data-master="hide">
-        <div class="slide-section-break">
-          <h2>01 -- Design Tokens</h2>
-        </div>
-      </section>
-
-      <!-- Slide 3: Token Demo (master visible) -->
-      <section>
-        <h2>Farben und Typografie</h2>
-
-        <div class="color-grid">
-          <div class="color-swatch fragment anim-fadeUp">
-            <div class="swatch-box" style="background-color: var(--color-primary);"></div>
-            <span class="swatch-label">primary</span>
-          </div>
-          <div class="color-swatch fragment anim-fadeUp" data-delay="1">
-            <div class="swatch-box" style="background-color: var(--color-secondary);"></div>
-            <span class="swatch-label">secondary</span>
-          </div>
-          <div class="color-swatch fragment anim-fadeUp" data-delay="2">
-            <div class="swatch-box" style="background-color: var(--color-accent);"></div>
-            <span class="swatch-label">accent</span>
-          </div>
-          <div class="color-swatch fragment anim-fadeUp" data-delay="3">
-            <div class="swatch-box" style="background-color: var(--color-success);"></div>
-            <span class="swatch-label">success</span>
-          </div>
-          <div class="color-swatch fragment anim-fadeUp" data-delay="4">
-            <div class="swatch-box" style="background-color: var(--color-danger);"></div>
-            <span class="swatch-label">danger</span>
-          </div>
-        </div>
-
-        <div class="type-scale-demo">
-          <div class="scale-row fragment anim-fadeUp" data-delay="5">
-            <span class="scale-label">display</span>
-            <span style="font-size: var(--font-size-display); line-height: var(--line-height-tight);">Aa</span>
-          </div>
-          <div class="scale-row fragment anim-fadeUp" data-delay="1">
-            <span class="scale-label">heading</span>
-            <span style="font-size: var(--font-size-heading); line-height: var(--line-height-snug);">Aa</span>
-          </div>
-          <div class="scale-row fragment anim-fadeUp" data-delay="2">
-            <span class="scale-label">subheading</span>
-            <span style="font-size: var(--font-size-subheading);">Aa</span>
-          </div>
-          <div class="scale-row fragment anim-fadeUp" data-delay="3">
-            <span class="scale-label">body</span>
-            <span style="font-size: var(--font-size-body);">Aa</span>
-          </div>
-          <div class="scale-row fragment anim-fadeUp" data-delay="4">
-            <span class="scale-label">caption</span>
-            <span style="font-size: var(--font-size-caption);">Aa</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 4: Section Break (master hidden) -->
-      <section data-master="hide">
-        <div class="slide-section-break">
-          <h2>02 -- Animationen</h2>
-        </div>
-      </section>
-
-      <!-- Slide 5: Animation Showcase (master visible) -->
-      <section>
-        <h2>Eingangsanimationen</h2>
-
-        <div class="anim-grid">
-          <div class="anim-box fragment anim-fadeUp">fadeUp</div>
-          <div class="anim-box fragment anim-blurIn">blurIn</div>
-          <div class="anim-box fragment anim-slideL">slideL</div>
-          <div class="anim-box fragment anim-slideR">slideR</div>
-          <div class="anim-box fragment anim-scalePop">scalePop</div>
-          <div class="fragment anim-lineGrow">
-            <div class="anim-line" style="width: 100%; height: 4px;">
-              <span style="display: block; padding-top: var(--spacing-sm); font-size: var(--font-size-caption); color: var(--color-text-muted);">lineGrow</span>
+      <!-- Slide 2: Agenda (master visible) -->
+      <section data-component="agenda">
+        <div class="comp-agenda">
+          <h2 class="comp-agenda__title fragment anim-fadeUp">Agenda</h2>
+          <div class="comp-agenda__list">
+            <div class="comp-agenda__item comp-agenda__item--active fragment anim-fadeUp" data-delay="1">
+              <span class="comp-agenda__item-number">01</span>
+              <div class="comp-agenda__item-text">Marktanalyse</div>
+            </div>
+            <div class="comp-agenda__item fragment anim-fadeUp" data-delay="2">
+              <span class="comp-agenda__item-number">02</span>
+              <div class="comp-agenda__item-text">Strategische Optionen</div>
+            </div>
+            <div class="comp-agenda__item fragment anim-fadeUp" data-delay="3">
+              <span class="comp-agenda__item-number">03</span>
+              <div class="comp-agenda__item-text">Finanzplanung</div>
+            </div>
+            <div class="comp-agenda__item fragment anim-fadeUp" data-delay="4">
+              <span class="comp-agenda__item-number">04</span>
+              <div class="comp-agenda__item-text">Naechste Schritte</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Slide 6: Section Break (master hidden) -->
-      <section data-master="hide">
-        <div class="slide-section-break">
-          <h2>03 -- Master Layer</h2>
+      <!-- Slide 3: Section Break "01 Marktanalyse" (master hidden) -->
+      <section data-master="hide" data-component="section-break">
+        <div class="comp-section-break">
+          <span class="comp-section-break__counter fragment anim-fadeUp">01</span>
+          <div class="comp-section-break__divider fragment anim-lineGrow" data-delay="1"></div>
+          <h2 class="fragment anim-blurIn" data-delay="2">Marktanalyse</h2>
         </div>
       </section>
 
-      <!-- Slide 7: Master Layer Demo (master visible) -->
-      <section>
-        <h2>Persistente Elemente</h2>
-        <p>Logo, Fusszeile und Seitenzahl erscheinen automatisch auf allen Folien. Titel- und Abschnittsfolien blenden den Master Layer automatisch aus.</p>
-        <ul class="master-demo-list">
-          <li class="fragment anim-fadeUp">Logo (oben rechts) -- Firmenlogo auf jeder Inhaltsfolie</li>
-          <li class="fragment anim-fadeUp" data-delay="1">Kundenlogo (oben links) -- optionales Zweitlogo</li>
-          <li class="fragment anim-fadeUp" data-delay="2">Fusszeile -- Vertraulichkeit, Firmenname, Datum</li>
-          <li class="fragment anim-fadeUp" data-delay="3">Seitenzahl -- Fortschrittsanzeige (z.B. "3 / 8")</li>
-        </ul>
+      <!-- Slide 4: Text-Heavy (master visible) -->
+      <section data-component="text-heavy">
+        <div class="comp-text-heavy">
+          <h2 class="fragment anim-fadeUp">Marktdynamik erfordert strategische Neupositionierung</h2>
+          <div class="comp-text-heavy__body">
+            <ul>
+              <li class="fragment anim-fadeUp" data-delay="1">Wettbewerbsintensivierung durch drei neue Marktteilnehmer im DACH-Raum seit Q1 2026</li>
+              <li class="fragment anim-fadeUp" data-delay="2">Kundenerwartungen verschieben sich zunehmend in Richtung digitaler Self-Service-Plattformen</li>
+              <li class="fragment anim-fadeUp" data-delay="3">Regulatorische Anforderungen (EU Digital Services Act) erfordern Plattformanpassungen bis Q4 2027</li>
+              <li class="fragment anim-fadeUp" data-delay="4">Technologische Disruption durch KI-gesteuerte Automatisierung reduziert Margen um 15-20%</li>
+              <li class="fragment anim-fadeUp" data-delay="5">Organisches Wachstum allein reicht nicht aus -- strategische Partnerschaften werden entscheidend</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <!-- Slide 8: Selective Suppression (logo hidden) -->
-      <section data-master-hide="logo">
-        <h2>Selektive Unterdrueckung</h2>
-        <p>Auf dieser Folie ist das Logo ausgeblendet, aber Fusszeile und Seitenzahl bleiben sichtbar.</p>
-        <p class="fragment anim-fadeUp">Mit <code>data-master-hide="logo"</code> lassen sich einzelne Slots des Master Layers gezielt ausblenden, ohne die gesamte Ebene zu verbergen.</p>
-        <p class="fragment anim-fadeUp" data-delay="1">Weitere Optionen: <code>data-master-hide="footer"</code>, <code>data-master-hide="logo,footer"</code>, oder <code>data-master="hide"</code> fuer vollstaendige Unterdrueckung.</p>
+      <!-- Slide 5: Metrics/KPI (master visible) -->
+      <section data-component="metrics">
+        <div class="comp-metrics">
+          <h2 class="comp-metrics__title fragment anim-fadeUp">Geschaeftsentwicklung Q3</h2>
+          <div class="comp-metrics__grid">
+            <div class="comp-metrics__card fragment anim-scalePop" data-delay="1">
+              <span class="comp-metrics__number">+23%</span>
+              <span class="comp-metrics__label">Umsatzwachstum</span>
+            </div>
+            <div class="comp-metrics__card fragment anim-scalePop" data-delay="2">
+              <span class="comp-metrics__number">4.2M</span>
+              <span class="comp-metrics__label">Neue Nutzer</span>
+            </div>
+            <div class="comp-metrics__card fragment anim-scalePop" data-delay="3">
+              <span class="comp-metrics__number">98.7%</span>
+              <span class="comp-metrics__label">Verfuegbarkeit</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Two-Column (master visible) -->
+      <section data-component="two-column">
+        <div class="comp-text-heavy" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
+          <h2 class="fragment anim-fadeUp">Wettbewerbsvergleich</h2>
+          <div class="comp-two-col">
+            <div class="comp-two-col__left fragment anim-slideL" data-delay="1">
+              <h3>Aktuelle Position</h3>
+              <ul>
+                <li>Marktanteil von 23% im DACH-Raum mit rucklaufiger Tendenz</li>
+                <li>Produktportfolio auf drei Kernbereiche konzentriert</li>
+                <li>Vertriebsstruktur uberwiegend auf Direktvertrieb ausgerichtet</li>
+              </ul>
+            </div>
+            <div class="comp-two-col__right fragment anim-slideR" data-delay="2">
+              <h3>Zielbild 2027</h3>
+              <ul>
+                <li>Marktanteil von 30% durch gezielte Akquisitionen und Partnerschaften</li>
+                <li>Erweiterung um zwei neue Geschaftsfelder im digitalen Bereich</li>
+                <li>Hybrides Vertriebsmodell mit starkem Online-Kanal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Section Break "02 Strategie" (master hidden) -->
+      <section data-master="hide" data-component="section-break">
+        <div class="comp-section-break">
+          <span class="comp-section-break__counter fragment anim-fadeUp">02</span>
+          <div class="comp-section-break__divider fragment anim-lineGrow" data-delay="1"></div>
+          <h2 class="fragment anim-blurIn" data-delay="2">Strategie</h2>
+        </div>
+      </section>
+
+      <!-- Slide 8: Image Full-Bleed (master hidden) -->
+      <section data-background-image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920"
+               data-background-size="cover"
+               data-master="hide"
+               data-component="image-full-bleed">
+        <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
+          <h2 class="fragment anim-fadeUp">Unser Team vor Ort</h2>
+          <p class="fragment anim-fadeUp" data-delay="1">Standort Frankfurt -- Innovationszentrum</p>
+        </div>
+      </section>
+
+      <!-- Slide 9: Summary/Takeaway (master visible) -->
+      <section data-component="summary">
+        <div class="comp-summary">
+          <h2 class="fragment anim-fadeUp">Zusammenfassung</h2>
+          <div class="comp-summary__points">
+            <div class="comp-summary__point fragment anim-fadeUp" data-delay="1">
+              <span class="comp-summary__point-icon">1</span>
+              <span>Die Marktanalyse zeigt klaren Bedarf fuer strategische Neupositionierung im Enterprise-Segment</span>
+            </div>
+            <div class="comp-summary__point fragment anim-fadeUp" data-delay="2">
+              <span class="comp-summary__point-icon">2</span>
+              <span>Investitionen in Digitalisierung und Teamaufbau sind entscheidend fuer nachhaltiges Wachstum</span>
+            </div>
+            <div class="comp-summary__point fragment anim-fadeUp" data-delay="3">
+              <span class="comp-summary__point-icon">3</span>
+              <span>Zeitplan fuer Umsetzung: Q4 2026 Pilotphase, Q1 2027 vollstaendiger Rollout</span>
+            </div>
+          </div>
+          <div class="comp-summary__cta fragment anim-fadeUp" data-delay="4">
+            <p><strong>Naechste Schritte:</strong> Freigabe des Pilotbudgets bis Ende Q3 und Kickoff-Workshop mit allen Stakeholdern im Oktober</p>
+          </div>
+        </div>
       </section>
 
     </div>
