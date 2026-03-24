@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Design tokens, reveal.js config, animations, build pipeline, and master layer (completed 2026-03-23)
 - [ ] **Phase 2: Essential Components** - Eight core slide layouts that cover 80% of consulting presentations
-- [ ] **Phase 3: Extended Components** - Six specialized layouts for comparison, timeline, grid, and matrix slides
+- [x] **Phase 3: Extended Components** - Six specialized layouts for comparison, timeline, grid, and matrix slides (completed 2026-03-24)
 - [ ] **Phase 4: Theming & Branding** - Theme system, default theme, PPTX extraction, dark/light variants
 - [ ] **Phase 5: Localization & Speaker Notes** - German-ready layouts, typography conventions, and speaker notes support
 - [ ] **Phase 6: AI Integration & Tooling** - AI instruction files, semantic component catalog, audience presets, PDF export, and gallery mode
@@ -67,7 +67,7 @@ Plans:
 Plans:
 - [x] 03-01-PLAN.md -- Contact/CTA, Quote/Testimonial, and Comparison component templates
 - [x] 03-02-PLAN.md -- Timeline/Process, Card Grid, and Framework/Matrix component templates
-- [ ] 03-03-PLAN.md -- Component index catalog update and example presentation with all 14 components
+- [x] 03-03-PLAN.md -- Component index catalog update and example presentation with all 14 components
 
 ### Phase 4: Theming & Branding
 **Goal**: Corporate branding can be applied on top of the component library via a theme layer, including automated extraction from PowerPoint templates
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-23 |
 | 2. Essential Components | 0/3 | In progress | - |
-| 3. Extended Components | 2/3 | In progress | - |
+| 3. Extended Components | 3/3 | Complete | 2026-03-24 |
 | 4. Theming & Branding | 0/0 | Not started | - |
 | 5. Localization & Speaker Notes | 0/0 | Not started | - |
 | 6. AI Integration & Tooling | 0/0 | Not started | - |
