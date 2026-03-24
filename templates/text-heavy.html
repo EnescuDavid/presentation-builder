@@ -1,0 +1,86 @@
+<!--
+  COMPONENT: Text-Heavy (COMP-03)
+  USE WHEN: Explaining a concept. Key arguments. Bullet-heavy content.
+
+  REQUIRED SLOTS:
+    - Headline (h2): Slide title or action title
+    - Body content: Paragraphs, bullet lists, or mixed
+
+  OPTIONAL SLOTS:
+    - Subheading (h3): Secondary heading below main headline
+    - Lead paragraph: Introductory text before bullets
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  LAYOUT NOTES:
+    - Handles 2-8 bullets gracefully
+    - Use action title pattern for McKinsey-style governing thought
+    - Bullet style is Claude's choice (consistent within slide)
+    - Dense content reduces gap automatically
+    - overflow-wrap and hyphens enabled for German compound words
+-->
+
+<style>
+  /* COMPONENT: Text-Heavy */
+  .comp-text-heavy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    min-height: 100%;
+    gap: var(--spacing-md);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .comp-text-heavy h2 {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .comp-text-heavy__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    min-height: 200px;
+  }
+
+  .comp-text-heavy__body ul,
+  .comp-text-heavy__body ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-left: var(--spacing-lg);
+    list-style-position: outside;
+  }
+
+  .comp-text-heavy__body li {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
+  }
+
+  .comp-text-heavy__body p {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-normal);
+  }
+</style>
+
+<section data-component="text-heavy">
+  <div class="comp-text-heavy">
+    <h2 class="fragment anim-fadeUp">Marktdynamik erfordert strategische Neupositionierung</h2>
+    <div class="comp-text-heavy__body">
+      <ul>
+        <li class="fragment anim-fadeUp" data-delay="1">Wettbewerbsintensivierung durch drei neue Marktteilnehmer im DACH-Raum seit Q1 2026</li>
+        <li class="fragment anim-fadeUp" data-delay="2">Kundenerwartungen verschieben sich zunehmend in Richtung digitaler Self-Service-Plattformen</li>
+        <li class="fragment anim-fadeUp" data-delay="3">Regulatorische Anforderungen (EU Digital Services Act) erfordern Plattformanpassungen bis Q4 2027</li>
+        <li class="fragment anim-fadeUp" data-delay="4">Technologische Disruption durch KI-gesteuerte Automatisierung reduziert Margen um 15-20%</li>
+        <li class="fragment anim-fadeUp" data-delay="5">Organisches Wachstum allein reicht nicht aus -- strategische Partnerschaften werden entscheidend</li>
+      </ul>
+    </div>
+  </div>
+</section>

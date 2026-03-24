@@ -1,0 +1,86 @@
+<!--
+  COMPONENT: Two-Column (COMP-04)
+  USE WHEN: Comparing two things. Text + image. Before/after. Side-by-side arguments.
+
+  REQUIRED SLOTS:
+    - Left column content
+    - Right column content
+
+  OPTIONAL SLOTS:
+    - Headline (h2): Above columns, spanning full width
+    - Column sub-headers (h3): Individual column titles
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  LAYOUT NOTES:
+    - Default 50/50 split
+    - For 60/40 use style="flex: 3" on left and style="flex: 2" on right
+    - For 70/30 use style="flex: 7" and style="flex: 3"
+    - Any content type in any column (text, images, lists, metrics)
+    - overflow-wrap and hyphens enabled for German compound words
+    - Animations: left column uses anim-slideL, right column uses anim-slideR
+-->
+
+<style>
+  /* COMPONENT: Two-Column */
+  .comp-two-col {
+    display: flex;
+    gap: var(--spacing-2xl);
+    padding-top: var(--spacing-md);
+    min-height: 0;
+    align-items: flex-start;
+  }
+
+  .comp-two-col__left,
+  .comp-two-col__right {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .comp-two-col h3 {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .comp-two-col p,
+  .comp-two-col li {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-normal);
+  }
+
+  .comp-two-col ul {
+    margin-left: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+</style>
+
+<section data-component="two-column">
+  <div class="comp-text-heavy" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
+    <h2 class="fragment anim-fadeUp">Wettbewerbsvergleich</h2>
+    <div class="comp-two-col">
+      <div class="comp-two-col__left fragment anim-slideL" data-delay="1">
+        <h3>Aktuelle Position</h3>
+        <ul>
+          <li>Marktanteil von 23% im DACH-Raum mit rucklaufiger Tendenz</li>
+          <li>Produktportfolio auf drei Kernbereiche konzentriert</li>
+          <li>Vertriebsstruktur uberwiegend auf Direktvertrieb ausgerichtet</li>
+        </ul>
+      </div>
+      <div class="comp-two-col__right fragment anim-slideR" data-delay="2">
+        <h3>Zielbild 2027</h3>
+        <ul>
+          <li>Marktanteil von 30% durch gezielte Akquisitionen und Partnerschaften</li>
+          <li>Erweiterung um zwei neue Geschaftsfelder im digitalen Bereich</li>
+          <li>Hybrides Vertriebsmodell mit starkem Online-Kanal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
