@@ -62,11 +62,12 @@ Plans:
   2. Timeline component correctly renders 3-6 sequential steps with visual connectors
   3. Framework/matrix component displays a labeled 2x2 quadrant grid that maintains alignment across content lengths
   4. All six components integrate with existing design tokens, animations, and master layer from Phases 1-2
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md -- Contact/CTA, Quote/Testimonial, and Comparison component templates
+- [ ] 03-02-PLAN.md -- Timeline/Process, Card Grid, and Framework/Matrix component templates
+- [ ] 03-03-PLAN.md -- Component index catalog update and example presentation with all 14 components
 
 ### Phase 4: Theming & Branding
 **Goal**: Corporate branding can be applied on top of the component library via a theme layer, including automated extraction from PowerPoint templates
@@ -126,7 +127,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-23 |
 | 2. Essential Components | 0/3 | In progress | - |
-| 3. Extended Components | 0/0 | Not started | - |
+| 3. Extended Components | 0/3 | Not started | - |
 | 4. Theming & Branding | 0/0 | Not started | - |
 | 5. Localization & Speaker Notes | 0/0 | Not started | - |
 | 6. AI Integration & Tooling | 0/0 | Not started | - |
