@@ -26,10 +26,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **COMP-06**: Image Full-Bleed slide component with optional text overlay
 - [x] **COMP-07**: Agenda slide component with numbered/bulleted list and active-item highlight
 - [x] **COMP-08**: Summary/Takeaway slide component with key points and call-to-action area
-- [ ] **COMP-09**: Contact/CTA slide component with name, role, contact details, and logo
-- [ ] **COMP-10**: Comparison slide component (side-by-side cards with labels, from/to or vs-style)
+- [x] **COMP-09**: Contact/CTA slide component with name, role, contact details, and logo
+- [x] **COMP-10**: Comparison slide component (side-by-side cards with labels, from/to or vs-style)
 - [ ] **COMP-11**: Timeline/Process slide component showing 3-6 sequential steps with connectors
-- [ ] **COMP-12**: Quote/Testimonial slide component with large quote text, attribution, and optional photo
+- [x] **COMP-12**: Quote/Testimonial slide component with large quote text, attribution, and optional photo
 - [ ] **COMP-13**: Card Grid slide component displaying 2-4 cards with icon/title/description
 - [ ] **COMP-14**: Framework/Matrix slide component (2x2 grid with labeled quadrants)
 - [ ] **COMP-15**: Each component has a semantic description file documenting when to use it, content requirements, and layout behavior
@@ -131,10 +131,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-06 | Phase 2: Essential Components | Complete |
 | COMP-07 | Phase 2: Essential Components | Complete |
 | COMP-08 | Phase 2: Essential Components | Complete |
-| COMP-09 | Phase 3: Extended Components | Pending |
-| COMP-10 | Phase 3: Extended Components | Pending |
+| COMP-09 | Phase 3: Extended Components | Complete |
+| COMP-10 | Phase 3: Extended Components | Complete |
 | COMP-11 | Phase 3: Extended Components | Pending |
-| COMP-12 | Phase 3: Extended Components | Pending |
+| COMP-12 | Phase 3: Extended Components | Complete |
 | COMP-13 | Phase 3: Extended Components | Pending |
 | COMP-14 | Phase 3: Extended Components | Pending |
 | THEME-01 | Phase 4: Theming & Branding | Pending |
