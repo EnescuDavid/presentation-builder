@@ -1,0 +1,140 @@
+<!--
+  ============================================================================
+  COMPONENT: Agenda (COMP-07)
+  ============================================================================
+
+  USE WHEN:
+    Presentation roadmap. Meeting structure. Outlining what's coming.
+
+  REQUIRED SLOTS:
+    - Agenda items (list of topics)
+
+  OPTIONAL SLOTS:
+    - Slide title (h2)
+    - Item descriptions (secondary text per item)
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  LAYOUT NOTES:
+    - Active item highlighted with left-border accent + bold weight
+    - Inactive items muted
+    - Claude picks highlight style (accent border shown here, but progressive
+      reveal, bold+color, etc. all work)
+    - Works with 3-8 agenda items
+
+  EXAMPLE:
+    <section data-component="agenda">
+      <div class="comp-agenda">
+        <h2 class="comp-agenda__title fragment anim-fadeUp">Agenda</h2>
+        <div class="comp-agenda__list">
+          <div class="comp-agenda__item fragment anim-fadeUp">
+            <span class="comp-agenda__item-number">01</span>
+            <div class="comp-agenda__item-text">Marktanalyse</div>
+          </div>
+          <div class="comp-agenda__item comp-agenda__item--active fragment anim-fadeUp">
+            <span class="comp-agenda__item-number">02</span>
+            <div class="comp-agenda__item-text">Strategische Optionen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  WITH DESCRIPTIONS:
+    <div class="comp-agenda__item-text">
+      Marktanalyse
+      <div class="comp-agenda__item-desc">Wettbewerb und Markttrends</div>
+    </div>
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Agenda Component --- */
+  .comp-agenda {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    min-height: 100%;
+    gap: var(--spacing-xl);
+  }
+
+  .comp-agenda__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .comp-agenda__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .comp-agenda__item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-left: 3px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+    transition: none;
+  }
+
+  .comp-agenda__item--active {
+    border-left-color: var(--color-accent);
+    background: var(--color-highlight);
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .comp-agenda__item-number {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent);
+    min-width: 32px;
+  }
+
+  .comp-agenda__item--active .comp-agenda__item-number {
+    color: var(--color-primary);
+  }
+
+  .comp-agenda__item-text {
+    flex: 1;
+  }
+
+  .comp-agenda__item-desc {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-regular);
+    margin-top: var(--spacing-xs);
+  }
+</style>
+
+<section data-component="agenda">
+  <div class="comp-agenda">
+    <h2 class="comp-agenda__title fragment anim-fadeUp">Agenda</h2>
+    <div class="comp-agenda__list">
+      <div class="comp-agenda__item fragment anim-fadeUp" data-delay="1">
+        <span class="comp-agenda__item-number">01</span>
+        <div class="comp-agenda__item-text">Marktanalyse</div>
+      </div>
+      <div class="comp-agenda__item comp-agenda__item--active fragment anim-fadeUp" data-delay="2">
+        <span class="comp-agenda__item-number">02</span>
+        <div class="comp-agenda__item-text">Strategische Optionen</div>
+      </div>
+      <div class="comp-agenda__item fragment anim-fadeUp" data-delay="3">
+        <span class="comp-agenda__item-number">03</span>
+        <div class="comp-agenda__item-text">Finanzplanung</div>
+      </div>
+      <div class="comp-agenda__item fragment anim-fadeUp" data-delay="4">
+        <span class="comp-agenda__item-number">04</span>
+        <div class="comp-agenda__item-text">Naechste Schritte</div>
+      </div>
+    </div>
+  </div>
+</section>
