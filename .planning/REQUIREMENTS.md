@@ -51,9 +51,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Speaker Notes
 
-- [ ] **NOTE-01**: Speaker notes injection mechanism is documented and works via generation-time population of `<aside class="notes">` -- templates stay clean (per D-07), notes are injected when generating presentations
-- [ ] **NOTE-02**: Documentation includes AI prompt patterns for generating speaker notes that match slide tone and audience
-- [ ] **NOTE-03**: Documentation includes timing estimation guidance (words-per-minute to slide duration)
+- [x] **NOTE-01**: Speaker notes injection mechanism is documented and works via generation-time population of `<aside class="notes">` -- templates stay clean (per D-07), notes are injected when generating presentations
+- [x] **NOTE-02**: Documentation includes AI prompt patterns for generating speaker notes that match slide tone and audience
+- [x] **NOTE-03**: Documentation includes timing estimation guidance (words-per-minute to slide duration)
 
 ### AI Integration
 
@@ -146,9 +146,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LANG-01 | Phase 5: Localization & Speaker Notes | Complete |
 | LANG-02 | Phase 5: Localization & Speaker Notes | Complete |
 | LANG-03 | Phase 5: Localization & Speaker Notes | Pending |
-| NOTE-01 | Phase 5: Localization & Speaker Notes | Pending |
-| NOTE-02 | Phase 5: Localization & Speaker Notes | Pending |
-| NOTE-03 | Phase 5: Localization & Speaker Notes | Pending |
+| NOTE-01 | Phase 5: Localization & Speaker Notes | Complete |
+| NOTE-02 | Phase 5: Localization & Speaker Notes | Complete |
+| NOTE-03 | Phase 5: Localization & Speaker Notes | Complete |
 | AI-01 | Phase 6: AI Integration & Tooling | Pending |
 | AI-02 | Phase 6: AI Integration & Tooling | Pending |
 | AI-03 | Phase 6: AI Integration & Tooling | Pending |
