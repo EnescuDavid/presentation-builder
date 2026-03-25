@@ -94,7 +94,7 @@ Plans:
   1. All 14 components render correctly with German text at 130-300% expansion -- no overflow, truncation, or visual breakage
   2. CSS includes German typography defaults (quotation marks, dash conventions, decimal comma guidance) that apply automatically
   3. A complete demo presentation exists with German content showcasing all components
-  4. Every component template includes an aside notes slot, and speaker notes display correctly in reveal.js speaker view
+  4. Speaker notes injection mechanism is documented with file format and HTML examples, and notes display correctly in reveal.js speaker view when injected at generation time
   5. Documentation provides AI prompt patterns for generating speaker notes and timing estimation guidance (words-per-minute to duration)
 **Plans**: 3 plans
 

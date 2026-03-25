@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **THEME-02**: Theme CSS file overrides design tokens to apply corporate colors, fonts, and visual style
 - [x] **THEME-03**: Theme includes persistent logo placement configurable via CSS variable or HTML slot
 - [x] **THEME-04**: Theme includes footer bar with company name, optional confidentiality text, and slide number
-- [ ] **THEME-05**: PPTX theme extraction tool parses a .pptx file and generates a CSS theme file (extracts 12 color slots, 2 font families, logo images)
+- [x] **THEME-05**: PPTX theme extraction tool parses a .pptx file and generates a CSS theme file (extracts 12 color slots, 2 font families, logo images)
 - [x] **THEME-06**: Theme supports dark/light background variants selectable per slide
 
 ### German-Ready Layouts
@@ -51,7 +51,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Speaker Notes
 
-- [ ] **NOTE-01**: Every component template includes an `<aside class="notes">` slot for speaker notes
+- [ ] **NOTE-01**: Speaker notes injection mechanism is documented and works via generation-time population of `<aside class="notes">` -- templates stay clean (per D-07), notes are injected when generating presentations
 - [ ] **NOTE-02**: Documentation includes AI prompt patterns for generating speaker notes that match slide tone and audience
 - [ ] **NOTE-03**: Documentation includes timing estimation guidance (words-per-minute to slide duration)
 
@@ -141,7 +141,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-02 | Phase 4: Theming & Branding | Complete |
 | THEME-03 | Phase 4: Theming & Branding | Complete |
 | THEME-04 | Phase 4: Theming & Branding | Complete |
-| THEME-05 | Phase 4: Theming & Branding | Pending |
+| THEME-05 | Phase 4: Theming & Branding | Complete |
 | THEME-06 | Phase 4: Theming & Branding | Complete |
 | LANG-01 | Phase 5: Localization & Speaker Notes | Pending |
 | LANG-02 | Phase 5: Localization & Speaker Notes | Pending |
