@@ -118,7 +118,7 @@ Plans:
 
 Plans:
 - [ ] 06-01-PLAN.md -- Reference files: component catalog, audience presets, design principles, theme system, animation guide
-- [ ] 06-02-PLAN.md -- DeckTape PDF export, gallery view, AI-02 deferral housekeeping
+- [x] 06-02-PLAN.md -- DeckTape PDF export, gallery view, AI-02 deferral housekeeping
 - [ ] 06-03-PLAN.md -- Skill router (SKILL.md), three workflows, CLAUDE.md framework teaching content
 - [ ] 06-04-PLAN.md -- Three subagent definitions (researcher, strategist, builder)
 

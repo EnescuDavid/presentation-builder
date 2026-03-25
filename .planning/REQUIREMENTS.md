@@ -58,15 +58,15 @@ Requirements for initial release. Each maps to roadmap phases.
 ### AI Integration
 
 - [ ] **AI-01**: Repository includes a CLAUDE.md that teaches Claude Code how to use the framework (component catalog, theme system, build process)
-- [ ] **AI-02**: ~~Repository includes a copilot-instructions.md equivalent for GitHub Copilot CLI~~ DEFERRED to post-v1 (per D-23)
+- [x] **AI-02**: ~~Repository includes a copilot-instructions.md equivalent for GitHub Copilot CLI~~ DEFERRED to post-v1 (per D-23)
 - [ ] **AI-03**: Component catalog is structured as an AI-readable reference (component name, description, when to use, content slots, variants)
 - [ ] **AI-04**: Documentation includes audience presets (C-Suite, technical, sales, workshop, internal) with design rules an AI can apply
 
 ### Export & Tooling
 
-- [ ] **TOOL-01**: PDF export works via DeckTape CLI command
-- [ ] **TOOL-02**: Browser presentation works with reveal.js keyboard navigation, speaker view, and fullscreen
-- [ ] **TOOL-03**: Preview/gallery mode shows all slides as thumbnails on a single page
+- [x] **TOOL-01**: PDF export works via DeckTape CLI command
+- [x] **TOOL-02**: Browser presentation works with reveal.js keyboard navigation, speaker view, and fullscreen
+- [x] **TOOL-03**: Preview/gallery mode shows all slides as thumbnails on a single page
 
 ## v2 Requirements
 
@@ -154,9 +154,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AI-03 | Phase 6: AI Integration & Tooling | Pending |
 | AI-04 | Phase 6: AI Integration & Tooling | Pending |
 | COMP-15 | Phase 6: AI Integration & Tooling | Pending |
-| TOOL-01 | Phase 6: AI Integration & Tooling | Pending |
+| TOOL-01 | Phase 6: AI Integration & Tooling | Complete |
 | TOOL-02 | Phase 6: AI Integration & Tooling | Complete |
-| TOOL-03 | Phase 6: AI Integration & Tooling | Pending |
+| TOOL-03 | Phase 6: AI Integration & Tooling | Complete |
 
 **Coverage:**
 - v1 requirements: 40 total

@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 05-03-PLAN.md (German demo presentation)
-last_updated: "2026-03-25T09:09:22.340Z"
+stopped_at: Completed 06-02-PLAN.md (export & tooling)
+last_updated: "2026-03-25T13:10:36.592Z"
 progress:
   total_phases: 6
   completed_phases: 5
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 18
+  completed_plans: 15
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-22)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 05 — localization-speaker-notes
+**Current focus:** Phase 06 — ai-integration-tooling
 
 ## Current Position
 
-Phase: 6
-Plan: Not started
+Phase: 06 (ai-integration-tooling) — EXECUTING
+Plan: 2 of 4
 
 ## Performance Metrics
 
@@ -60,6 +60,7 @@ Plan: Not started
 | Phase 05 P01 | 2min | 2 tasks | 7 files |
 | Phase 05 P02 | 2min | 2 tasks | 3 files |
 | Phase 05 P03 | 6min | 2 tasks | 2 files |
+| Phase 06 P02 | 2min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -105,6 +106,8 @@ Recent decisions affecting current work:
 - [Phase 05]: YAML chosen as notes file format for machine-readable slide-to-notes mapping
 - [Phase 05]: NOTE-01 reframed from template slots to generation-time injection per D-07
 - [Phase 05]: Stadtwerke Mittelrhein story as German demo with all 14 components and full speaker notes
+- [Phase 06]: DeckTape runs via npx with auto-started serve on port 8173
+- [Phase 06]: AI-02 (copilot-instructions.md) deferred to post-v1 per D-23
 
 ### Pending Todos
 
@@ -116,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T09:02:32.528Z
-Stopped at: Completed 05-03-PLAN.md (German demo presentation)
+Last session: 2026-03-25T13:10:31.236Z
+Stopped at: Completed 06-02-PLAN.md (export & tooling)
 Resume file: None
