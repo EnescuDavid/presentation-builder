@@ -114,11 +114,13 @@ Plans:
   4. Audience presets (C-Suite, technical, sales, workshop, internal) are documented with design rules an AI can apply (font sizes, content density, visual weight)
   5. PDF export works via DeckTape, presentation works with full reveal.js navigation, and a gallery/thumbnail view shows all slides on one page
 
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md -- Reference files: component catalog, audience presets, design principles, theme system, animation guide
+- [ ] 06-02-PLAN.md -- DeckTape PDF export, gallery view, AI-02 deferral housekeeping
+- [ ] 06-03-PLAN.md -- Skill router (SKILL.md), three workflows, CLAUDE.md framework teaching content
+- [ ] 06-04-PLAN.md -- Three subagent definitions (researcher, strategist, builder)
 
 ## Progress
 
@@ -132,4 +134,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Extended Components | 3/3 | Complete | 2026-03-24 |
 | 4. Theming & Branding | 3/3 | Complete | 2026-03-24 |
 | 5. Localization & Speaker Notes | 2/3 | In Progress|  |
-| 6. AI Integration & Tooling | 0/0 | Not started | - |
+| 6. AI Integration & Tooling | 0/4 | Not started | - |
