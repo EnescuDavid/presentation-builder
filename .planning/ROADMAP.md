@@ -87,7 +87,7 @@ Plans:
 - [x] 04-03-PLAN.md -- Themed showcase presentation and skeleton template update with visual checkpoint
 
 ### Phase 5: Localization & Speaker Notes
-**Goal**: All components handle German text gracefully, and every slide template includes speaker notes support with AI generation guidance
+**Goal**: All components handle German text gracefully, with typography conventions documented and speaker notes infrastructure in place
 **Depends on**: Phase 4
 **Requirements**: LANG-01, LANG-02, LANG-03, NOTE-01, NOTE-02, NOTE-03
 **Success Criteria** (what must be TRUE):
@@ -96,11 +96,12 @@ Plans:
   3. A complete demo presentation exists with German content showcasing all components
   4. Every component template includes an aside notes slot, and speaker notes display correctly in reveal.js speaker view
   5. Documentation provides AI prompt patterns for generating speaker notes and timing estimation guidance (words-per-minute to duration)
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md -- Global German text handling CSS, umlaut fixes, and typography conventions reference
+- [ ] 05-02-PLAN.md -- Speaker notes infrastructure documentation with file format and injection mechanism
+- [ ] 05-03-PLAN.md -- Complete German demo presentation with all 14 components and speaker notes
 
 ### Phase 6: AI Integration & Tooling
 **Goal**: Any AI coding assistant can generate professional presentations from natural language prompts using the framework's documentation and component catalog
@@ -130,5 +131,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Essential Components | 0/3 | In progress | - |
 | 3. Extended Components | 3/3 | Complete | 2026-03-24 |
 | 4. Theming & Branding | 3/3 | Complete | 2026-03-24 |
-| 5. Localization & Speaker Notes | 0/0 | Not started | - |
+| 5. Localization & Speaker Notes | 0/3 | Not started | - |
 | 6. AI Integration & Tooling | 0/0 | Not started | - |
