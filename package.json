@@ -4,10 +4,12 @@
   "private": true,
   "description": "AI-friendly slide deck framework powered by reveal.js",
   "scripts": {
-    "extract-theme": "node tools/extract-theme.js"
+    "extract-theme": "node tools/extract-theme.js",
+    "export-pdf": "bash tools/export-pdf.sh"
   },
   "optionalDependencies": {
     "adm-zip": "0.5.16",
+    "decktape": "3.15.0",
     "fast-xml-parser": "5.5.9"
   }
 }
