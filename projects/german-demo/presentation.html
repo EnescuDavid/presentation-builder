@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digitale Transformation der Stadtwerke Mittelrhein</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
+
+  <style>
+    /* ========================================================================
+       TOKENS (base.css)
+       ======================================================================== */
+    :root {
+      --color-primary:      #1E3A5F;
+      --color-secondary:    #2C5282;
+      --color-accent:       #3182CE;
+      --color-background:   #FFFFFF;
+      --color-surface:      #F7FAFC;
+      --color-text:         #1A202C;
+      --color-text-muted:   #718096;
+      --color-border:       #E2E8F0;
+      --color-success:      #38A169;
+      --color-danger:       #E53E3E;
+      --color-highlight:    #EBF8FF;
+      --color-callout:      #FFF5F5;
+      --color-chart-1:      #3182CE;
+      --color-chart-2:      #38A169;
+      --color-chart-3:      #D69E2E;
+      --color-chart-4:      #E53E3E;
+      --color-chart-5:      #805AD5;
+
+      --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;
+      --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --font-size-display:    clamp(2.5rem, 5vw, 3.75rem);
+      --font-size-heading:    clamp(1.75rem, 3.5vw, 2.25rem);
+      --font-size-subheading: clamp(1.25rem, 2.5vw, 1.5rem);
+      --font-size-body:       clamp(1rem, 2vw, 1.125rem);
+      --font-size-caption:    clamp(0.75rem, 1.5vw, 0.875rem);
+
+      --font-weight-light:    300;
+      --font-weight-regular:  400;
+      --font-weight-medium:   500;
+      --font-weight-semibold: 600;
+      --font-weight-bold:     700;
+
+      --line-height-tight:    1.1;
+      --line-height-snug:     1.2;
+      --line-height-normal:   1.5;
+      --line-height-relaxed:  1.7;
+
+      --spacing-unit:    8px;
+      --spacing-xs:      4px;
+      --spacing-sm:      8px;
+      --spacing-md:      16px;
+      --spacing-lg:      24px;
+      --spacing-xl:      32px;
+      --spacing-2xl:     48px;
+      --spacing-3xl:     64px;
+      --spacing-section: 80px;
+
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md:   0 4px 12px rgba(0,0,0,0.10);
+      --shadow-lg:   0 8px 24px rgba(0,0,0,0.12);
+      --shadow-card: 0 2px 16px rgba(0,0,0,0.06);
+
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   14px;
+      --radius-full: 9999px;
+
+      --ease-entrance:   cubic-bezier(.16, 1, .3, 1);
+      --duration-fast:   0.5s;
+      --duration-normal: 0.7s;
+      --duration-slow:   0.85s;
+    }
+
+    /* ========================================================================
+       ANIMATIONS (animations.css)
+       ======================================================================== */
+    .reveal .fragment { transition: none !important; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blurIn {
+      from { opacity: 0; filter: blur(12px); }
+      to   { opacity: 1; filter: blur(0); }
+    }
+    @keyframes slideL {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideR {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scalePop {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes lineGrow {
+      from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+      to   { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    }
+
+    .fragment.anim-fadeUp.visible   { animation: fadeUp   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-blurIn.visible   { animation: blurIn   var(--duration-slow)   var(--ease-entrance) both; }
+    .fragment.anim-slideL.visible   { animation: slideL   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-slideR.visible   { animation: slideR   var(--duration-normal) var(--ease-entrance) both; }
+    .fragment.anim-scalePop.visible { animation: scalePop  var(--duration-fast)   var(--ease-entrance) both; }
+    .fragment.anim-lineGrow.visible { animation: lineGrow  0.8s                   var(--ease-entrance) both; }
+
+    .fragment[data-delay="1"].visible { animation-delay: 0.1s; }
+    .fragment[data-delay="2"].visible { animation-delay: 0.2s; }
+    .fragment[data-delay="3"].visible { animation-delay: 0.3s; }
+    .fragment[data-delay="4"].visible { animation-delay: 0.4s; }
+    .fragment[data-delay="5"].visible { animation-delay: 0.5s; }
+
+    /* ========================================================================
+       THEME: Consulting Standard (Default)
+       ======================================================================== */
+    :root {
+      --slide-bg: var(--color-background);
+      --content-max-width: 1100px;
+      --master-logo-height: 32px;
+      --master-footer-color: var(--color-text-muted);
+      --theme-accent-bar-height: 3px;
+      --theme-accent-bar-color: var(--color-accent);
+      --theme-heading-border: 2px solid var(--color-accent);
+    }
+
+    .reveal .slides section {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+      text-align: left;
+      padding: var(--spacing-2xl);
+    }
+
+    .reveal .slides section h1,
+    .reveal .slides section h2 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .reveal .slides section h1 {
+      font-size: var(--font-size-display);
+      line-height: var(--line-height-tight);
+    }
+
+    .reveal .slides section h2 {
+      font-size: var(--font-size-heading);
+      line-height: var(--line-height-snug);
+      padding-bottom: var(--spacing-xs);
+      border-bottom: var(--theme-heading-border);
+      display: inline-block;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .reveal .slides section h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .reveal .slides section p {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .reveal .slides section ul,
+    .reveal .slides section ol {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      margin-left: var(--spacing-lg);
+    }
+
+    .reveal .slides section li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Accent bar on content slides */
+    .reveal .slides section:not([data-master="hide"])::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: var(--theme-accent-bar-height);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      z-index: 10;
+    }
+
+    /* Professional bullet styling */
+    .reveal .slides section ul {
+      list-style: none;
+      padding-left: var(--spacing-lg);
+    }
+
+    .reveal .slides section ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent);
+      margin-right: var(--spacing-sm);
+      margin-left: calc(var(--spacing-lg) * -1);
+      vertical-align: middle;
+    }
+
+    /* Card elevation refinement */
+    .reveal .slides section [class*="comp-"] .card,
+    .reveal .slides section [class*="comp-"] [class*="__card"] {
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Dark background variant */
+    .reveal .slides section[data-background-color="dark"] {
+      color: var(--color-background);
+    }
+    .reveal .slides section[data-background-color="dark"] h1,
+    .reveal .slides section[data-background-color="dark"] h2 {
+      color: var(--color-background);
+    }
+    .reveal .slides section[data-background-color="dark"] h3 {
+      color: var(--color-surface);
+    }
+    .reveal .slides section[data-background-color="dark"] p,
+    .reveal .slides section[data-background-color="dark"] li {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .reveal .slides section[data-background-color="dark"] .text-muted,
+    .reveal .slides section[data-background-color="dark"] [class*="__label"],
+    .reveal .slides section[data-background-color="dark"] [class*="__subtitle"] {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ========================================================================
+       MASTER LAYER CSS
+       ======================================================================== */
+    .master-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      font-family: var(--font-family-body);
+    }
+    .master-logo {
+      position: absolute;
+      top: var(--spacing-lg);
+      right: var(--spacing-lg);
+    }
+    .master-logo img {
+      height: 32px;
+      width: auto;
+    }
+    .master-logo-client {
+      position: absolute;
+      top: var(--spacing-lg);
+      left: var(--spacing-lg);
+    }
+    .master-logo-client img {
+      height: 32px;
+      width: auto;
+    }
+    .master-footer {
+      position: absolute;
+      bottom: var(--spacing-md);
+      left: var(--spacing-2xl);
+      right: var(--spacing-2xl);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-lg);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.02em;
+      color: var(--color-text-muted);
+      opacity: 0.7;
+    }
+    .master-footer .master-confidential {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+    }
+    .master-footer .master-separator {
+      color: var(--color-border);
+    }
+    .master-slide-number {
+      position: absolute;
+      bottom: var(--spacing-md);
+      right: var(--spacing-2xl);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      letter-spacing: 0.02em;
+      color: var(--color-text-muted);
+      opacity: 0.7;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Base slide styling */
+    .reveal {
+      font-family: var(--font-family-body);
+      color: var(--color-text);
+    }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: var(--font-family-display);
+      color: var(--color-text);
+    }
+
+    /* ========================================================================
+       GERMAN TEXT HANDLING
+       ======================================================================== */
+    .reveal .slides section {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Title/Cover (COMP-01)
+       ======================================================================== */
+    .comp-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: var(--spacing-3xl);
+    }
+    .comp-title h1 {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      max-width: 900px;
+      overflow-wrap: break-word;
+    }
+    .comp-title__divider {
+      width: 120px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      margin: var(--spacing-lg) 0;
+    }
+    .comp-title__subtitle {
+      font-size: var(--font-size-subheading);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-light);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Section Break (COMP-02)
+       ======================================================================== */
+    .comp-section-break {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: var(--spacing-3xl);
+    }
+    .comp-section-break__counter {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-light);
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+    }
+    .comp-section-break__divider {
+      width: 80px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      margin: var(--spacing-lg) 0;
+    }
+    .comp-section-break h2 {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      max-width: 800px;
+      overflow-wrap: break-word;
+      border-bottom: none;
+      display: block;
+      padding-bottom: 0;
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Text-Heavy (COMP-03)
+       ======================================================================== */
+    .comp-text-heavy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-md);
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .comp-text-heavy h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-snug);
+      margin-bottom: var(--spacing-sm);
+    }
+    .comp-text-heavy__body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      min-height: 200px;
+    }
+    .comp-text-heavy__body ul,
+    .comp-text-heavy__body ol {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-left: var(--spacing-lg);
+      list-style-position: outside;
+    }
+    .comp-text-heavy__body li {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+    .comp-text-heavy__body p {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Two-Column (COMP-04)
+       ======================================================================== */
+    .comp-two-col {
+      display: flex;
+      gap: var(--spacing-2xl);
+      padding-top: var(--spacing-md);
+      min-height: 0;
+      align-items: flex-start;
+    }
+    .comp-two-col__left,
+    .comp-two-col__right {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .comp-two-col h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+    .comp-two-col p,
+    .comp-two-col li {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+    }
+    .comp-two-col ul {
+      margin-left: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Metrics/KPI (COMP-05)
+       ======================================================================== */
+    .comp-metrics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      text-align: center;
+    }
+    .comp-metrics__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-2xl);
+    }
+    .comp-metrics__grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-3xl);
+    }
+    .comp-metrics__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    .comp-metrics__number {
+      font-size: var(--font-size-display);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      line-height: var(--line-height-tight);
+      font-variant-numeric: tabular-nums;
+    }
+    .comp-metrics__label {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: var(--font-weight-medium);
+    }
+    .comp-metrics__grid--compact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+    }
+    .comp-metrics__grid--compact .comp-metrics__number {
+      font-size: var(--font-size-heading);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Image Full-Bleed (COMP-06)
+       ======================================================================== */
+    .comp-full-bleed__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--spacing-3xl);
+      overflow-wrap: break-word;
+    }
+    .comp-full-bleed__overlay--dark {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%);
+      color: #fff;
+    }
+    .comp-full-bleed__overlay--dark h2 {
+      color: #fff;
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      border-bottom: none;
+    }
+    .comp-full-bleed__overlay--dark p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--font-size-body);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Agenda (COMP-07)
+       ======================================================================== */
+    .comp-agenda {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-xl);
+    }
+    .comp-agenda__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+    .comp-agenda__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .comp-agenda__item {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-left: 3px solid transparent;
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-body);
+      color: var(--color-text-muted);
+      transition: none;
+    }
+    .comp-agenda__item--active {
+      border-left-color: var(--color-accent);
+      background: var(--color-highlight);
+      color: var(--color-text);
+      font-weight: var(--font-weight-semibold);
+    }
+    .comp-agenda__item-number {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-accent);
+      min-width: 32px;
+    }
+    .comp-agenda__item--active .comp-agenda__item-number {
+      color: var(--color-primary);
+    }
+    .comp-agenda__item-text {
+      flex: 1;
+    }
+    .comp-agenda__item-desc {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-regular);
+      margin-top: var(--spacing-xs);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Summary/Takeaway (COMP-08)
+       ======================================================================== */
+    .comp-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      gap: var(--spacing-lg);
+    }
+    .comp-summary h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+    .comp-summary__points {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      flex: 1;
+    }
+    .comp-summary__point {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+    .comp-summary__point-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-bold);
+      margin-top: 2px;
+    }
+    .comp-summary__cta {
+      margin-top: auto;
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid var(--color-border);
+    }
+    .comp-summary__cta p {
+      font-size: var(--font-size-body);
+      color: var(--color-text-muted);
+    }
+    .comp-summary__cta strong {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Contact/CTA (COMP-09)
+       ======================================================================== */
+    .comp-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: var(--spacing-3xl);
+      gap: var(--spacing-lg);
+    }
+    .comp-contact__photo {
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+    .comp-contact__name {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+    .comp-contact__role {
+      font-size: var(--font-size-subheading);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-light);
+    }
+    .comp-contact__divider {
+      width: 60px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    .comp-contact__details {
+      display: flex;
+      gap: var(--spacing-2xl);
+      font-size: var(--font-size-body);
+      color: var(--color-text);
+    }
+    .comp-contact__detail {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Comparison (COMP-10)
+       ======================================================================== */
+    .comp-comparison {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .comp-comparison h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xl);
+    }
+    .comp-comparison__cards {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      flex: 1;
+    }
+    .comp-comparison__card {
+      flex: 1;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      min-width: 0;
+    }
+    .comp-comparison__label {
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      margin-bottom: var(--spacing-md);
+    }
+    .comp-comparison__card--left .comp-comparison__label {
+      background: var(--color-callout);
+      color: var(--color-danger);
+    }
+    .comp-comparison__card--right .comp-comparison__label {
+      background: var(--color-highlight);
+      color: var(--color-accent);
+    }
+    .comp-comparison__body {
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+    }
+    .comp-comparison__body ul {
+      margin-left: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+    .comp-comparison__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 var(--spacing-md);
+      font-size: var(--font-size-heading);
+      color: var(--color-text-muted);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Timeline/Process (COMP-11)
+       ======================================================================== */
+    .comp-timeline {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .comp-timeline__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-2xl);
+    }
+    .comp-timeline__track {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      padding: 0 var(--spacing-lg);
+      flex: 1;
+    }
+    .comp-timeline__step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 0 var(--spacing-sm);
+    }
+    .comp-timeline__step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: calc(50% + 20px);
+      right: calc(-50% + 20px);
+      height: 2px;
+      background: var(--color-border);
+    }
+    .comp-timeline__marker {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-caption);
+      z-index: 1;
+      flex-shrink: 0;
+      margin-bottom: var(--spacing-md);
+    }
+    .comp-timeline__content h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+    .comp-timeline__content p {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      line-height: var(--line-height-normal);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Quote/Testimonial (COMP-12)
+       ======================================================================== */
+    .comp-quote {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-3xl) var(--spacing-section);
+      text-align: center;
+      height: 100%;
+    }
+    .comp-quote__text {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-light);
+      font-style: italic;
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+      max-width: 800px;
+      position: relative;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      margin: 0;
+      border: none;
+      padding: 0;
+    }
+    .comp-quote__text::before {
+      content: '\201E';
+      font-size: 6rem;
+      color: var(--color-accent);
+      opacity: 0.2;
+      position: absolute;
+      top: -40px;
+      left: -30px;
+      font-style: normal;
+      line-height: 1;
+    }
+    .comp-quote__text::after {
+      content: '\201C';
+      font-size: 6rem;
+      color: var(--color-accent);
+      opacity: 0.2;
+      position: absolute;
+      bottom: -60px;
+      right: -30px;
+      font-style: normal;
+      line-height: 1;
+    }
+    .comp-quote__attribution {
+      margin-top: var(--spacing-xl);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    .comp-quote__photo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+    .comp-quote__author {
+      font-size: var(--font-size-body);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+    .comp-quote__role {
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Card Grid (COMP-13)
+       ======================================================================== */
+    .comp-card-grid {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .comp-card-grid h2 {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xl);
+    }
+    .comp-card-grid__cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--spacing-xl);
+    }
+    .comp-card-grid__card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .comp-card-grid__icon {
+      width: 48px;
+      height: 48px;
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+    }
+    .comp-card-grid__icon svg {
+      width: 100%;
+      height: 100%;
+    }
+    .comp-card-grid__card-title {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+    .comp-card-grid__card-desc {
+      font-size: var(--font-size-body);
+      color: var(--color-text);
+      line-height: var(--line-height-normal);
+    }
+
+    /* ========================================================================
+       COMPONENT CSS: Framework/Matrix (COMP-14)
+       ======================================================================== */
+    .comp-matrix {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-2xl) var(--spacing-3xl);
+      min-height: 100%;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+    .comp-matrix__title {
+      font-size: var(--font-size-heading);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-lg);
+    }
+    .comp-matrix__grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr auto;
+      gap: var(--spacing-xs);
+      flex: 1;
+    }
+    .comp-matrix__y-label {
+      grid-column: 1;
+      grid-row: 2 / 4;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-right: var(--spacing-md);
+    }
+    .comp-matrix__x-label {
+      grid-column: 2 / 4;
+      grid-row: 4;
+      text-align: center;
+      font-size: var(--font-size-caption);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-top: var(--spacing-md);
+    }
+    .comp-matrix__quadrant {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      min-width: 0;
+    }
+    .comp-matrix__quadrant h3 {
+      font-size: var(--font-size-subheading);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+    }
+    .comp-matrix__quadrant p {
+      font-size: var(--font-size-caption);
+      color: var(--color-text);
+      line-height: var(--line-height-normal);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+
+    <!-- Master Layer -->
+    <div class="master-layer" id="masterLayer">
+      <div class="master-logo" data-slot="logo">
+        <img src="" alt="Stadtwerke Mittelrhein" />
+      </div>
+      <div class="master-logo-client" data-slot="client-logo"></div>
+      <div class="master-footer" data-slot="footer">
+        <span class="master-confidential">Vertraulich</span>
+        <span class="master-separator">&middot;</span>
+        <span class="master-company">Stadtwerke Mittelrhein GmbH</span>
+        <span class="master-separator">&middot;</span>
+        <span class="master-date">Q3 2026</span>
+      </div>
+      <div class="master-slide-number" data-slot="slide-number"></div>
+    </div>
+
+    <!-- SLIDES -->
+    <div class="slides">
+
+      <!-- ================================================================
+           Slide 1: Title/Cover (COMP-01)
+           ================================================================ -->
+      <section id="titel" data-master="hide" data-component="title">
+        <div class="comp-title">
+          <h1>Digitale Transformation der Stadtwerke Mittelrhein</h1>
+          <div class="comp-title__divider"></div>
+          <p class="comp-title__subtitle">Strategisches Update für den Aufsichtsrat &middot; Q3 2026</p>
+        </div>
+        <aside class="notes">
+          Begrüßung des Aufsichtsrats. Kernbotschaft: Die digitale Transformation
+          zeigt messbare Fortschritte und eröffnet neue Geschäftsfelder.
+          Zeitrahmen: 2 Minuten.
+        </aside>
+      </section>
+
+      <!-- ================================================================
+           Slide 2: Agenda (COMP-07)
+           ================================================================ -->
+      <section id="agenda" data-component="agenda">
+        <div class="comp-agenda">
+          <h2 class="comp-agenda__title">Agenda</h2>
+          <div class="comp-agenda__list">
+            <div class="comp-agenda__item comp-agenda__item--active">
+              <span class="comp-agenda__item-number">01</span>
+              <div class="comp-agenda__item-text">
+                Ausgangslage und Marktumfeld
+                <div class="comp-agenda__item-desc">Energiewende, Regulierung, Kundenwandel</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">02</span>
+              <div class="comp-agenda__item-text">
+                Strategische Handlungsfelder
+                <div class="comp-agenda__item-desc">Vergleich, Priorisierung, Fahrplan</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">03</span>
+              <div class="comp-agenda__item-text">
+                Operative Kennzahlen
+                <div class="comp-agenda__item-desc">Umsatz, Kunden, Netzstabilität</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">04</span>
+              <div class="comp-agenda__item-text">
+                Transformationsvision
+                <div class="comp-agenda__item-desc">Leuchtturmprojekte und Impulse</div>
+              </div>
+            </div>
+            <div class="comp-agenda__item">
+              <span class="comp-agenda__item-number">05</span>
+              <div class="comp-agenda__item-text">
+                Zusammenfassung und nächste Schritte
+                <div class="comp-agenda__item-desc">Handlungsempfehlungen, Zeitplan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Agenda kurz vorstellen. Fünf Themenblöcke mit klarer Struktur.
+          Hinweis: Fragen gerne am Ende jedes Abschnitts.
+          Gesamtdauer der Präsentation: ca. 30 Minuten.
+        </aside>
+      </section>
+
+      <!-- ================================================================
+           Slide 3: Section Break (COMP-02) -- Abschnitt 1
+           ================================================================ -->
+      <section id="section-ausgangslage" data-master="hide" data-component="section-break">
+        <div class="comp-section-break">
+          <span class="comp-section-break__counter">01</span>
+          <div class="comp-section-break__divider"></div>
+          <h2>Ausgangslage und Marktumfeld</h2>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 4: Text-Heavy (COMP-03) -- Marktanalyse
+           ================================================================ -->
+      <section id="marktanalyse" data-component="text-heavy">
+        <div class="comp-text-heavy">
+          <h2>Die Marktanalyse zeigt drei zentrale Handlungsfelder für die strategische Neuausrichtung</h2>
+          <div class="comp-text-heavy__body">
+            <ul>
+              <li>Die Energiewende verändert das Geschäftsmodell klassischer Energieversorgungsunternehmen grundlegend. Dezentrale Erzeugung und volatile Einspeisungen erfordern eine vollständige Netzinfrastrukturmodernisierung bis spätestens 2028.</li>
+              <li>Regulatorische Verschärfungen durch das Energiewirtschaftsgesetz und die EU-Taxonomie-Verordnung erhöhen den Dokumentations- und Berichtsaufwand um ca. 40% gegenüber dem Vorjahr.</li>
+              <li>Kundenerwartungen verschieben sich massiv: 67% der Privatkunden und 82% der Gewerbekunden erwarten digitale Self-Service-Portale für Vertragsmanagement und Verbrauchsanalysen.</li>
+              <li>Der Fachkräftemangel in der Unternehmensdigitalisierungsstrategie zwingt zur Automatisierung manueller Prozesse. Aktuell sind 23 Stellen im IT-Bereich unbesetzt.</li>
+              <li>Drei neue Wettbewerber – darunter ein überregionaler Ökostrom-Anbieter – drängen seit Q1 2026 in unser Versorgungsgebiet und bieten aggressive Digitaltarife an.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          Zeitrahmen: 3 Minuten. Drei Kernpunkte hervorheben: Energiewende,
+          Regulierung, Kundenwandel. Bei Nachfragen zum Fachkräftemangel:
+          HR-Strategie wird in separater Vorlage behandelt.
+          Damit kommen wir zur Gegenüberstellung von Ist- und Soll-Zustand.
+        </aside>
+      </section>
+
+      <!-- ================================================================
+           Slide 5: Two-Column (COMP-04) -- Ist/Soll
+           ================================================================ -->
+      <section id="ist-soll-vergleich" data-component="two-column">
+        <div class="comp-text-heavy" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
+          <h2>Herausforderungen und Zielbild der digitalen Transformation</h2>
+          <div class="comp-two-col">
+            <div class="comp-two-col__left">
+              <h3>Aktuelle Herausforderungen</h3>
+              <ul>
+                <li>Veraltete IT-Infrastruktur mit Medienbrüchen in 8 von 12 Kernprozessen</li>
+                <li>Kein zentrales Kundendatenmanagement – Informationen verteilt auf 5 Systeme</li>
+                <li>Manuelle Zählerablesung für 73% des Privatkundenstamms</li>
+                <li>Reaktionszeit bei Störungsmeldungen: durchschnittlich 4,2 Stunden</li>
+              </ul>
+            </div>
+            <div class="comp-two-col__right">
+              <h3>Zielbild 2028</h3>
+              <ul>
+                <li>Durchgängige End-to-End-Digitalisierung aller Kundenprozesse</li>
+                <li>Einheitliche Datenplattform mit Echtzeit-Analytics und KI-Prognosen</li>
+                <li>100% Smart-Meter-Rollout mit automatisierter Verbrauchsoptimierung</li>
+                <li>Reaktionszeit bei Störungen unter 30 Minuten durch prädiktive Wartung</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 6: Metrics/KPI (COMP-05) -- Kennzahlen
+           ================================================================ -->
+      <section id="kennzahlen" data-component="metrics">
+        <div class="comp-metrics">
+          <h2 class="comp-metrics__title">Operative Kennzahlen Q3 2026</h2>
+          <div class="comp-metrics__grid">
+            <div class="comp-metrics__card">
+              <span class="comp-metrics__number">+23,5%</span>
+              <span class="comp-metrics__label">Umsatzwachstum</span>
+            </div>
+            <div class="comp-metrics__card">
+              <span class="comp-metrics__number">4 200</span>
+              <span class="comp-metrics__label">Neue Kundenverträge</span>
+            </div>
+            <div class="comp-metrics__card">
+              <span class="comp-metrics__number">98,7%</span>
+              <span class="comp-metrics__label">Netzstabilität</span>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          Jede Kennzahl einzeln erläutern. Das Umsatzwachstum von 23,5% liegt
+          deutlich über der Branche (Durchschnitt: 8,3%). Die 4 200 neuen
+          Kundenverträge sind ein Rekordwert seit Unternehmensgründung.
+          Netzstabilität von 98,7% entspricht dem SAIDI-Bestwert in Rheinland-Pfalz.
+          Zeitrahmen: 2 Minuten.
+        </aside>
+      </section>
+
+      <!-- ================================================================
+           Slide 7: Image Full-Bleed (COMP-06) -- Vision
+           ================================================================ -->
+      <section id="vision-bild" data-background-image="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1280&q=80"
+               data-background-size="cover"
+               data-master="hide"
+               data-component="image-full-bleed">
+        <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
+          <h2>Unsere Vision: Stadtwerke Mittelrhein als digitaler Energiedienstleister der Zukunft</h2>
+          <p>Von der klassischen Versorgung zur intelligenten Energieplattform – für 180 000 Kunden in der Region.</p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 8: Section Break (COMP-02) -- Abschnitt 2
+           ================================================================ -->
+      <section id="section-handlungsfelder" data-master="hide" data-component="section-break">
+        <div class="comp-section-break">
+          <span class="comp-section-break__counter">02</span>
+          <div class="comp-section-break__divider"></div>
+          <h2>Strategische Handlungsfelder</h2>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 9: Comparison (COMP-10) -- Heute vs. Morgen
+           ================================================================ -->
+      <section id="heute-morgen" data-component="comparison">
+        <div class="comp-comparison">
+          <h2>Heute vs. Morgen – Prozessdigitalisierung im Überblick</h2>
+          <div class="comp-comparison__cards">
+            <div class="comp-comparison__card comp-comparison__card--left">
+              <span class="comp-comparison__label">Heute</span>
+              <div class="comp-comparison__body">
+                <ul>
+                  <li>Papierbasierte Antragsprozesse mit 5–7 Werktagen Bearbeitungszeit</li>
+                  <li>Manuelle Zählerablesung durch Außendienstmitarbeiter</li>
+                  <li>Telefonische Störungsmeldung mit Rückrufgarantie innerhalb 24 Stunden</li>
+                  <li>Abrechnungssystem mit monatlichem Batch-Lauf und manuellen Korrekturen</li>
+                </ul>
+              </div>
+            </div>
+            <div class="comp-comparison__divider">&#x2192;</div>
+            <div class="comp-comparison__card comp-comparison__card--right">
+              <span class="comp-comparison__label">Morgen</span>
+              <div class="comp-comparison__body">
+                <ul>
+                  <li>Volldigitaler Vertragsabschluss in unter 10 Minuten via Self-Service-Portal</li>
+                  <li>Automatisierte Smart-Meter-Infrastruktur mit Echtzeit-Verbrauchsdaten</li>
+                  <li>KI-gestützte Störungserkennung mit proaktiver Benachrichtigung</li>
+                  <li>Echtzeit-Abrechnung mit automatischem Tarifwechsel und Verbrauchsoptimierung</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 10: Framework/Matrix (COMP-14) -- Priorisierung
+           ================================================================ -->
+      <section id="priorisierung" data-component="framework">
+        <div class="comp-matrix">
+          <h2 class="comp-matrix__title">Priorisierung der Transformationsinitiativen</h2>
+          <div class="comp-matrix__grid">
+            <div class="comp-matrix__y-label">Strategische Wirkung</div>
+            <div class="comp-matrix__quadrant">
+              <h3>Langfristig planen</h3>
+              <p>Hohe Wirkung, niedriger Aufwand: KI-basierte Lastprognose, automatisierte Netzsteuerung. Implementierung ab Q2 2027 nach Datenplattform-Aufbau.</p>
+            </div>
+            <div class="comp-matrix__quadrant">
+              <h3>Sofort umsetzen</h3>
+              <p>Hohe Wirkung, hoher Aufwand: Smart-Meter-Rollout, Kundenportal-Entwicklung, Netzinfrastrukturmodernisierung. Budget: 3,8 Mio. EUR.</p>
+            </div>
+            <div class="comp-matrix__quadrant">
+              <h3>Zurückstellen</h3>
+              <p>Niedrige Wirkung, niedriger Aufwand: Interne Wissensdatenbank, Mitarbeiter-App. Bei freien Kapazitäten in Q4 2027 adressieren.</p>
+            </div>
+            <div class="comp-matrix__quadrant">
+              <h3>Delegieren</h3>
+              <p>Niedrige Wirkung, hoher Aufwand: Legacy-System-Migration einzelner Nebenprozesse. An externe Dienstleister vergeben.</p>
+            </div>
+            <div class="comp-matrix__x-label">Implementierungsaufwand</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 11: Timeline (COMP-11) -- Fahrplan
+           ================================================================ -->
+      <section id="fahrplan" data-component="timeline">
+        <div class="comp-timeline">
+          <h2 class="comp-timeline__title">Transformationsfahrplan 2024–2027</h2>
+          <div class="comp-timeline__track">
+            <div class="comp-timeline__step">
+              <div class="comp-timeline__marker">1</div>
+              <div class="comp-timeline__content">
+                <h3>Analyse &amp; Strategie</h3>
+                <p>Q3 2024 – Q1 2025: Bestandsaufnahme, Marktanalyse, Strategieentwicklung mit externem Beratungspartner</p>
+              </div>
+            </div>
+            <div class="comp-timeline__step">
+              <div class="comp-timeline__marker">2</div>
+              <div class="comp-timeline__content">
+                <h3>Pilotprojekte</h3>
+                <p>Q2 2025 – Q4 2025: Smart-Meter-Pilot in 3 Stadtteilen, Kundenportal-MVP, Datenplattform-Proof-of-Concept</p>
+              </div>
+            </div>
+            <div class="comp-timeline__step">
+              <div class="comp-timeline__marker">3</div>
+              <div class="comp-timeline__content">
+                <h3>Skalierung</h3>
+                <p>Q1 2026 – Q4 2026: Flächendeckender Smart-Meter-Rollout, Kundenportal-Launch, Prozessautomatisierung</p>
+              </div>
+            </div>
+            <div class="comp-timeline__step">
+              <div class="comp-timeline__marker">4</div>
+              <div class="comp-timeline__content">
+                <h3>Optimierung</h3>
+                <p>Q1 2027 – Q4 2027: KI-Integration, prädiktive Wartung, neue Geschäftsmodelle (z. B. Energieberatung-as-a-Service)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 12: Card Grid (COMP-13) -- Initiativen
+           ================================================================ -->
+      <section id="initiativen" data-component="card-grid">
+        <div class="comp-card-grid">
+          <h2>Vier strategische Leuchtturmprojekte treiben die Transformation voran</h2>
+          <div class="comp-card-grid__cards">
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg></div>
+              <div class="comp-card-grid__card-title">Smart-Meter-Rollout</div>
+              <div class="comp-card-grid__card-desc">Flächendeckende Installation intelligenter Messsysteme für 180 000 Haushalte. Echtzeit-Verbrauchsdaten ermöglichen dynamische Tarifmodelle und Laststeuerung.</div>
+            </div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+              <div class="comp-card-grid__card-title">Kundenportal</div>
+              <div class="comp-card-grid__card-desc">Digitale Self-Service-Plattform für Vertragsverwaltung, Verbrauchsanalyse und Tarifwechsel. Ziel: 60% der Kundenanfragen ohne Callcenter-Kontakt.</div>
+            </div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+              <div class="comp-card-grid__card-title">Datenplattform</div>
+              <div class="comp-card-grid__card-desc">Zentrale Dateninfrastruktur für Echtzeit-Analytics, KI-gestützte Prognosen und automatisierte Berichterstattung gemäß EU-Taxonomie.</div>
+            </div>
+            <div class="comp-card-grid__card">
+              <div class="comp-card-grid__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+              <div class="comp-card-grid__card-title">Prozessautomatisierung</div>
+              <div class="comp-card-grid__card-desc">Automatisierung von 85% der manuellen Routineprozesse durch RPA und Workflow-Engines. Erwartete Kosteneinsparung: 1,2 Mio. EUR pro Jahr.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 13: Quote (COMP-12) -- CEO-Zitat
+           ================================================================ -->
+      <section id="zitat" data-component="quote">
+        <div class="comp-quote">
+          <blockquote class="comp-quote__text">
+            Die digitale Transformation ist kein IT-Projekt, sondern eine grundlegende Neuausrichtung unseres Unternehmens. Wir gestalten die Energieversorgung der Zukunft – intelligent, nachhaltig und nah am Kunden.
+          </blockquote>
+          <div class="comp-quote__attribution">
+            <div>
+              <div class="comp-quote__author">Dr. Thomas Bergmann</div>
+              <div class="comp-quote__role">Geschäftsführer, Stadtwerke Mittelrhein GmbH</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 14: Section Break (COMP-02) -- Abschnitt 3
+           ================================================================ -->
+      <section id="section-zusammenfassung" data-master="hide" data-component="section-break">
+        <div class="comp-section-break">
+          <span class="comp-section-break__counter">03</span>
+          <div class="comp-section-break__divider"></div>
+          <h2>Zusammenfassung und nächste Schritte</h2>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 15: Summary (COMP-08) -- Zusammenfassung
+           ================================================================ -->
+      <section id="zusammenfassung" data-component="summary">
+        <div class="comp-summary">
+          <h2>Zusammenfassung</h2>
+          <div class="comp-summary__points">
+            <div class="comp-summary__point">
+              <span class="comp-summary__point-icon">1</span>
+              <span>Die Stadtwerke Mittelrhein stehen vor einem tiefgreifenden Wandel: Die Energiewende, verschärfte Regulierung und steigende Kundenerwartungen erfordern eine konsequente Digitalisierungsstrategie.</span>
+            </div>
+            <div class="comp-summary__point">
+              <span class="comp-summary__point-icon">2</span>
+              <span>Vier Leuchtturmprojekte – Smart-Meter-Rollout, Kundenportal, Datenplattform und Prozessautomatisierung – bilden das Fundament der Transformation mit einem Investitionsvolumen von 3,8 Mio. EUR.</span>
+            </div>
+            <div class="comp-summary__point">
+              <span class="comp-summary__point-icon">3</span>
+              <span>Die operative Performance bestätigt den eingeschlagenen Kurs: +23,5% Umsatzwachstum, 4 200 neue Kundenverträge und 98,7% Netzstabilität zeigen die Leistungsfähigkeit des Unternehmens.</span>
+            </div>
+          </div>
+          <div class="comp-summary__cta">
+            <p><strong>Nächste Schritte:</strong> Freigabe des Investitionsbudgets für Phase 3 (Skalierung) bis Ende Q3 2026. Einberufung des Lenkungsausschusses für Oktober 2026. Quartalsbericht an den Aufsichtsrat im Dezember 2026.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Slide 16: Contact (COMP-09) -- Kontakt
+           ================================================================ -->
+      <section id="kontakt" data-component="contact">
+        <div class="comp-contact">
+          <h2 class="comp-contact__name">Dr. Thomas Bergmann</h2>
+          <p class="comp-contact__role">Geschäftsführer Digitale Transformation</p>
+          <div class="comp-contact__divider"></div>
+          <div class="comp-contact__details">
+            <span class="comp-contact__detail">t.bergmann@stadtwerke-mittelrhein.de</span>
+            <span class="comp-contact__detail">+49 261 4080 100</span>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- .slides -->
+
+  </div><!-- .reveal -->
+
+  <!-- reveal.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+
+  <script>
+    // Presentation configuration
+    var presentationConfig = {
+      slideNumberStyle: 'progress',
+      masterDefaults: {
+        hideOnTypes: ['title', 'full-bleed', 'section-break']
+      }
+    };
+
+    // Initialize reveal.js
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      controls: false,
+      controlsTutorial: false,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      keyboard: true,
+      showNotes: false,
+      transition: 'none',
+      backgroundTransition: 'fade',
+      fragments: true,
+      center: true,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+
+    // Master layer slide number
+    function updateSlideNumber(event) {
+      var el = document.querySelector('.master-slide-number');
+      if (!el) return;
+      var config = window.presentationConfig || {};
+      var style = config.slideNumberStyle || 'progress';
+      if (style === 'hidden') { el.style.display = 'none'; return; }
+      el.style.display = '';
+      var indices = Reveal.getIndices();
+      var total = Reveal.getTotalSlides();
+      var current = indices.h + 1;
+      if (style === 'progress') {
+        el.textContent = current + ' / ' + total;
+      } else {
+        el.textContent = String(current);
+      }
+    }
+
+    // Master layer suppression
+    function updateMasterLayer(slide) {
+      var master = document.getElementById('masterLayer');
+      if (!master || !slide) return;
+      var masterAttr = slide.getAttribute('data-master');
+      var hideAttr = slide.getAttribute('data-master-hide');
+      master.querySelectorAll('[data-slot]').forEach(function(el) {
+        el.style.display = '';
+      });
+      if (masterAttr === 'hide') {
+        master.style.display = 'none';
+      } else {
+        master.style.display = '';
+        if (hideAttr) {
+          hideAttr.split(',').forEach(function(slot) {
+            var el = master.querySelector('[data-slot="' + slot.trim() + '"]');
+            if (el) el.style.display = 'none';
+          });
+        }
+      }
+    }
+
+    Reveal.on('slidechanged', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+    Reveal.on('ready', function(event) {
+      updateMasterLayer(event.currentSlide);
+      updateSlideNumber(event);
+    });
+  </script>
+
+</body>
+</html>
