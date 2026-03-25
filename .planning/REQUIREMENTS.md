@@ -45,8 +45,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### German-Ready Layouts
 
-- [ ] **LANG-01**: All component layouts handle German text lengths (130-300% expansion) without overflow or visual breakage
-- [ ] **LANG-02**: CSS includes German typography defaults (correct quotation marks, proper dash conventions, decimal comma formatting guidance)
+- [x] **LANG-01**: All component layouts handle German text lengths (130-300% expansion) without overflow or visual breakage
+- [x] **LANG-02**: CSS includes German typography defaults (correct quotation marks, proper dash conventions, decimal comma formatting guidance)
 - [ ] **LANG-03**: Example/demo presentation uses German content
 
 ### Speaker Notes
@@ -143,8 +143,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-04 | Phase 4: Theming & Branding | Complete |
 | THEME-05 | Phase 4: Theming & Branding | Complete |
 | THEME-06 | Phase 4: Theming & Branding | Complete |
-| LANG-01 | Phase 5: Localization & Speaker Notes | Pending |
-| LANG-02 | Phase 5: Localization & Speaker Notes | Pending |
+| LANG-01 | Phase 5: Localization & Speaker Notes | Complete |
+| LANG-02 | Phase 5: Localization & Speaker Notes | Complete |
 | LANG-03 | Phase 5: Localization & Speaker Notes | Pending |
 | NOTE-01 | Phase 5: Localization & Speaker Notes | Pending |
 | NOTE-02 | Phase 5: Localization & Speaker Notes | Pending |
