@@ -32,7 +32,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **COMP-12**: Quote/Testimonial slide component with large quote text, attribution, and optional photo
 - [x] **COMP-13**: Card Grid slide component displaying 2-4 cards with icon/title/description
 - [x] **COMP-14**: Framework/Matrix slide component (2x2 grid with labeled quadrants)
-- [ ] **COMP-15**: Each component has a semantic description file documenting when to use it, content requirements, and layout behavior
+- [x] **COMP-15**: Each component has a semantic description file documenting when to use it, content requirements, and layout behavior
 
 ### Theming & Branding
 
@@ -59,8 +59,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **AI-01**: Repository includes a CLAUDE.md that teaches Claude Code how to use the framework (component catalog, theme system, build process)
 - [x] **AI-02**: ~~Repository includes a copilot-instructions.md equivalent for GitHub Copilot CLI~~ DEFERRED to post-v1 (per D-23)
-- [ ] **AI-03**: Component catalog is structured as an AI-readable reference (component name, description, when to use, content slots, variants)
-- [ ] **AI-04**: Documentation includes audience presets (C-Suite, technical, sales, workshop, internal) with design rules an AI can apply
+- [x] **AI-03**: Component catalog is structured as an AI-readable reference (component name, description, when to use, content slots, variants)
+- [x] **AI-04**: Documentation includes audience presets (C-Suite, technical, sales, workshop, internal) with design rules an AI can apply
 
 ### Export & Tooling
 
@@ -151,9 +151,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NOTE-03 | Phase 5: Localization & Speaker Notes | Complete |
 | AI-01 | Phase 6: AI Integration & Tooling | Pending |
 | AI-02 | Phase 6: AI Integration & Tooling | Deferred |
-| AI-03 | Phase 6: AI Integration & Tooling | Pending |
-| AI-04 | Phase 6: AI Integration & Tooling | Pending |
-| COMP-15 | Phase 6: AI Integration & Tooling | Pending |
+| AI-03 | Phase 6: AI Integration & Tooling | Complete |
+| AI-04 | Phase 6: AI Integration & Tooling | Complete |
+| COMP-15 | Phase 6: AI Integration & Tooling | Complete |
 | TOOL-01 | Phase 6: AI Integration & Tooling | Complete |
 | TOOL-02 | Phase 6: AI Integration & Tooling | Complete |
 | TOOL-03 | Phase 6: AI Integration & Tooling | Complete |

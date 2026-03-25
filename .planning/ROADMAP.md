@@ -117,7 +117,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 06-01-PLAN.md -- Reference files: component catalog, audience presets, design principles, theme system, animation guide
+- [x] 06-01-PLAN.md -- Reference files: component catalog, audience presets, design principles, theme system, animation guide
 - [x] 06-02-PLAN.md -- DeckTape PDF export, gallery view, AI-02 deferral housekeeping
 - [ ] 06-03-PLAN.md -- Skill router (SKILL.md), three workflows, CLAUDE.md framework teaching content
 - [ ] 06-04-PLAN.md -- Three subagent definitions (researcher, strategist, builder)
@@ -134,4 +134,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Extended Components | 3/3 | Complete | 2026-03-24 |
 | 4. Theming & Branding | 3/3 | Complete | 2026-03-24 |
 | 5. Localization & Speaker Notes | 2/3 | In Progress|  |
-| 6. AI Integration & Tooling | 0/4 | Not started | - |
+| 6. AI Integration & Tooling | 2/4 | In Progress|  |

@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 06-02-PLAN.md (export & tooling)
-last_updated: "2026-03-25T13:10:36.592Z"
+stopped_at: Completed 06-01-PLAN.md (AI reference files)
+last_updated: "2026-03-25T13:15:02.545Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 18
-  completed_plans: 15
+  completed_plans: 16
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-22)
 ## Current Position
 
 Phase: 06 (ai-integration-tooling) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Plan: 2 of 4
 | Phase 05 P02 | 2min | 2 tasks | 3 files |
 | Phase 05 P03 | 6min | 2 tasks | 2 files |
 | Phase 06 P02 | 2min | 2 tasks | 4 files |
+| Phase 06 P01 | 6min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -108,6 +109,7 @@ Recent decisions affecting current work:
 - [Phase 05]: Stadtwerke Mittelrhein story as German demo with all 14 components and full speaker notes
 - [Phase 06]: DeckTape runs via npx with auto-started serve on port 8173
 - [Phase 06]: AI-02 (copilot-instructions.md) deferred to post-v1 per D-23
+- [Phase 06]: AI reference format: quick-reference table + structured H2 sections for fast scanning
 
 ### Pending Todos
 
@@ -119,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T13:10:31.236Z
-Stopped at: Completed 06-02-PLAN.md (export & tooling)
+Last session: 2026-03-25T13:15:02.543Z
+Stopped at: Completed 06-01-PLAN.md (AI reference files)
 Resume file: None
