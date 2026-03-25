@@ -1,0 +1,140 @@
+# Speaker Notes -- Digitale Transformation der Stadtwerke Mittelrhein
+# Zielgruppe: Aufsichtsrat (C-Suite)
+# Sprache: Deutsch
+# Erstellt: Q3 2026
+
+slides:
+  - id: "titel"
+    component: "title"
+    notes: |
+      Begruessung des Aufsichtsrats und kurze Vorstellung der Agenda.
+      Kernbotschaft: Die digitale Transformation zeigt messbare Fortschritte
+      und eroeffnet neue Geschaeftsfelder fuer die Stadtwerke Mittelrhein.
+      Zeitrahmen: 2 Minuten.
+
+  - id: "agenda"
+    component: "agenda"
+    notes: |
+      Fuenf Themenbloecke kurz vorstellen. Hinweisen, dass Fragen
+      am Ende jedes Abschnitts willkommen sind.
+      Gesamtdauer der Praesentation: ca. 30 Minuten.
+      Schwerpunkte heute: Marktumfeld, Kennzahlen und Transformationsfahrplan.
+
+  - id: "section-ausgangslage"
+    component: "section-break"
+    notes: |
+      Ueberleitung: Bevor wir ueber Loesungen sprechen, werfen wir einen
+      Blick auf die aktuelle Marktsituation und die Herausforderungen,
+      denen wir uns stellen muessen.
+
+  - id: "marktanalyse"
+    component: "text-heavy"
+    notes: |
+      Zeitrahmen: 3 Minuten. Drei zentrale Erkenntnisse hervorheben:
+      1. Energiewende veraendert unser Geschaeftsmodell grundlegend.
+      2. Regulatorischer Aufwand steigt um 40% -- konkretes Beispiel nennen.
+      3. Kundenwandel: 67% erwarten digitale Self-Service-Portale.
+      Bei Nachfragen zum Fachkraeftemangel: HR-Strategie wird in separater
+      Vorlage behandelt. Quelle: Branchenstudie BDEW, August 2026.
+      Damit kommen wir zur Gegenuberstellung von Ist- und Soll-Zustand.
+
+  - id: "ist-soll-vergleich"
+    component: "two-column"
+    notes: |
+      Zeitrahmen: 2 Minuten. Die linke Spalte zeigt den Status quo,
+      die rechte das Zielbild 2028. Besonders hervorheben:
+      Reduktion der Stoerungsreaktionszeit von 4,2 Stunden auf unter
+      30 Minuten durch praediktive Wartung.
+      Smart-Meter-Rollout ist der Schluessel fuer alle weiteren Initiativen.
+      Kommen wir nun zu den operativen Kennzahlen.
+
+  - id: "kennzahlen"
+    component: "metrics"
+    notes: |
+      Zeitrahmen: 2 Minuten. Jede Kennzahl einzeln erlaeutern:
+      +23,5% Umsatzwachstum liegt deutlich ueber dem Branchendurchschnitt (8,3%).
+      4 200 neue Kundenvertraege sind ein Rekordwert seit Unternehmensgruendung.
+      98,7% Netzsabilitaet entspricht dem SAIDI-Bestwert in Rheinland-Pfalz.
+      Auf Nachfrage: Umsatzdetails nach Segmenten im Anhang verfuegbar.
+
+  - id: "vision-bild"
+    component: "image-full-bleed"
+    notes: |
+      Emotionaler Moment -- kurze Pause lassen.
+      Kernaussage: Wir wandeln uns vom klassischen Versorger zum digitalen
+      Energiedienstleister. 180 000 Kunden profitieren direkt.
+      Damit kommen wir zu den konkreten strategischen Handlungsfeldern.
+
+  - id: "section-handlungsfelder"
+    component: "section-break"
+    notes: |
+      Ueberleitung: Nachdem wir die Ausgangslage kennen, schauen wir uns
+      die konkreten strategischen Handlungsfelder und deren Priorisierung an.
+
+  - id: "heute-morgen"
+    component: "comparison"
+    notes: |
+      Zeitrahmen: 3 Minuten. Linke Seite: heutige analoge Prozesse.
+      Rechte Seite: digitales Zielbild. Besonders betonen:
+      Vertragsabschluss heute 5-7 Werktage, morgen unter 10 Minuten.
+      Stoerungserkennung: von reaktiv (Kundenmeldung) zu proaktiv (KI).
+      Bei Nachfragen: Detaillierte Prozesslandkarte liegt als Anlage bei.
+
+  - id: "priorisierung"
+    component: "framework"
+    notes: |
+      Zeitrahmen: 3 Minuten. Die Matrix zeigt vier Quadranten.
+      Fokus auf den oberen rechten Quadranten: Smart-Meter-Rollout,
+      Kundenportal und Netzinfrastrukturmodernisierung.
+      Budget fuer den Sofort-Quadranten: 3,8 Mio. EUR.
+      Entscheidungsbedarf: Freigabe dieses Budgets durch den Aufsichtsrat.
+
+  - id: "fahrplan"
+    component: "timeline"
+    notes: |
+      Zeitrahmen: 2 Minuten. Vier Phasen chronologisch durchgehen.
+      Wir befinden uns aktuell in Phase 3 (Skalierung).
+      Besonders auf Ressourcenbedarf in Phase 4 eingehen:
+      KI-Integration erfordert 5 zusaetzliche Data-Science-Stellen.
+      Pufferzeit fuer regulatorische Genehmigungen eingeplant.
+
+  - id: "initiativen"
+    component: "card-grid"
+    notes: |
+      Zeitrahmen: 3 Minuten. Vier Leuchtturmprojekte im Ueberblick.
+      Smart-Meter-Rollout: Investition 1,8 Mio. EUR, 180 000 Haushalte.
+      Kundenportal: Ziel 60% Self-Service-Quote bis Q2 2027.
+      Datenplattform: Grundlage fuer alle KI-Anwendungen.
+      Prozessautomatisierung: ROI innerhalb von 18 Monaten erwartet.
+      Kommen wir nun zur Vision unseres Geschaeftsfuehrers.
+
+  - id: "zitat"
+    component: "quote"
+    notes: |
+      Zitat von Dr. Bergmann wirken lassen -- kurze Pause danach.
+      Kernaussage verstaerken: Transformation ist Chefsache,
+      nicht nur ein IT-Projekt. Ueberleitung zur Zusammenfassung.
+
+  - id: "section-zusammenfassung"
+    component: "section-break"
+    notes: |
+      Ueberleitung: Lassen Sie mich die wichtigsten Punkte
+      zusammenfassen und die naechsten Schritte skizzieren.
+
+  - id: "zusammenfassung"
+    component: "summary"
+    notes: |
+      Zeitrahmen: 3 Minuten. Drei Kernbotschaften wiederholen:
+      1. Marktumfeld erfordert konsequente Digitalisierung.
+      2. Vier Leuchtturmprojekte mit 3,8 Mio. EUR Investitionsvolumen.
+      3. Operative Kennzahlen bestaetigen den eingeschlagenen Kurs.
+      Handlungsempfehlung klar formulieren: Budgetfreigabe Phase 3.
+      Lenkungsausschuss im Oktober, naechster Quartalsbericht Dezember 2026.
+
+  - id: "kontakt"
+    component: "contact"
+    notes: |
+      Vielen Dank fuer Ihre Aufmerksamkeit.
+      Fuer Rueckfragen steht Dr. Bergmann jederzeit zur Verfuegung.
+      Alle Unterlagen werden im Anschluss per E-Mail verteilt.
+      Zeitrahmen fuer Q&A: 10 Minuten.
