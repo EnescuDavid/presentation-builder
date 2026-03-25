@@ -1,3 +1,60 @@
+## Presentation Builder Framework
+
+A code-based slide deck framework for consulting-grade presentations. AI assistants generate single-file HTML presentations using reveal.js, CSS design tokens, and 14 component templates.
+
+### Quick Start
+
+To build a presentation, describe what you want to build, the audience, and key messages. The skill routes to the appropriate workflow automatically.
+
+Skill location: `.claude/skills/build-presentation/SKILL.md`
+
+### Component Library (14 layouts)
+
+| Component | Use When |
+|-----------|----------|
+| title | Opening slide, first impression |
+| section-break | Dividing major sections, chapter markers |
+| text-heavy | Explaining concepts, key arguments, bullet-heavy content |
+| two-column | Side-by-side content, text + image |
+| metrics | Highlighting 1-6 key numbers, KPIs |
+| image-full-bleed | Visual impact, mood, product shots |
+| agenda | Presentation roadmap, meeting structure |
+| summary | Closing slide, key takeaways, recap |
+| contact | Speaker info, call to action |
+| comparison | Before/after, A vs B, pros/cons (IST/SOLL) |
+| timeline | Roadmap, process flow, milestones |
+| quote | Customer quote, expert endorsement |
+| card-grid | Service offerings, feature overview (2-4 cards) |
+| framework | BCG matrix, 2x2 analysis, quadrant mapping |
+
+Full details: `references/component-catalog.md`
+
+### Theme System
+
+Themes override CSS custom properties (tokens) in `tokens/base.css`. Three bundled themes: default, startup, enterprise. Import from PPTX via `tools/extract-theme.js`. See `references/theme-system.md`.
+
+### Audience Presets
+
+Six audience types with quantified design rules: C-Suite, Stakeholder, Technical, Sales, Workshop, Internal. Each preset specifies slide count, word limits, font sizes, component selection bias, and animation density. See `references/audience-presets.md`.
+
+### Project Structure
+
+```
+projects/{name}/
+  brief.md            # User requirements
+  research.md         # Optional research data
+  deck-plan.md        # Slide-by-slide plan (review before building)
+  presentation.html   # Final output
+  notes.yaml          # Optional speaker notes
+```
+
+### Key Conventions
+
+- German-first: all templates handle 130-300% text expansion
+- BEM-lite CSS: `comp-{name}`, `comp-{name}__{element}`
+- Single HTML output: self-contained, works offline
+- No build step: AI writes final HTML directly
+
 <!-- GSD:project-start source:PROJECT.md -->
 ## Project
 
@@ -19,19 +76,37 @@ A shareable, code-based slide deck framework that turns structured content (YAML
 <!-- GSD:stack-start source:STACK.md -->
 ## Technology Stack
 
-Technology stack not yet documented. Will populate after codebase mapping or first phase.
+- **reveal.js 5.2.1** (CDN) -- presentation engine, handles slides, fragments, navigation, speaker notes
+- **Inter** (Google Fonts CDN) -- sole default body and display font
+- **CSS Custom Properties** -- design token system in `tokens/base.css` (colors, typography, spacing, shadows)
+- **DeckTape 3.15.0** (optional) -- PDF export via `tools/export-pdf.sh`
+- **adm-zip + fast-xml-parser** (optional) -- PPTX theme extraction via `tools/extract-theme.js`
 <!-- GSD:stack-end -->
 
 <!-- GSD:conventions-start source:CONVENTIONS.md -->
 ## Conventions
 
-Conventions not yet established. Will populate as patterns emerge during development.
+- **BEM-lite naming:** `comp-{name}` wrapper class, `comp-{name}__{element}` children (e.g., `comp-metrics`, `comp-metrics__card`)
+- **Comment headers on all templates:** COMPONENT, USE WHEN, REQUIRED/OPTIONAL SLOTS, MASTER LAYER, LAYOUT NOTES
+- **8px spacing grid** via CSS custom properties (`--spacing-xs` 4px through `--spacing-3xl` 64px)
+- **German text handling:** `overflow-wrap: break-word`, `hyphens: auto` on all containers
+- **Project folder convention:** `projects/{name}/` with brief.md, deck-plan.md, presentation.html
+- **Master layer:** logo, footer bar, slide number -- configurable via `presentationConfig` object, hidden on title/section-break/image-full-bleed slides
 <!-- GSD:conventions-end -->
 
 <!-- GSD:architecture-start source:ARCHITECTURE.md -->
 ## Architecture
 
-Architecture not yet mapped. Follow existing patterns found in the codebase.
+```
+templates/          # 14 component HTML templates + _skeleton.html + index.md
+tokens/             # base.css (design tokens) + animations.css
+themes/             # default/, startup/, enterprise/ theme CSS files
+tools/              # extract-theme.js, export-pdf.sh, gallery.html
+projects/           # Generated presentations ({name}/ folders)
+docs/               # german-typography.md, speaker-notes.md
+.claude/skills/     # build-presentation skill (SKILL.md + workflows/ + references/)
+.claude/agents/     # presentation-researcher, strategist, builder subagents
+```
 <!-- GSD:architecture-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->
@@ -46,7 +121,6 @@ Use these entry points:
 
 Do not make direct repo edits outside a GSD workflow unless the user explicitly asks to bypass it.
 <!-- GSD:workflow-end -->
-
 
 
 <!-- GSD:profile-start -->
