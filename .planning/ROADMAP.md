@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Extended Components** - Six specialized layouts for comparison, timeline, grid, and matrix slides (completed 2026-03-24)
 - [x] **Phase 4: Theming & Branding** - Theme system, default theme, PPTX extraction, dark/light variants (completed 2026-03-24)
 - [ ] **Phase 5: Localization & Speaker Notes** - German-ready layouts, typography conventions, and speaker notes support
-- [ ] **Phase 6: AI Integration & Tooling** - AI instruction files, semantic component catalog, audience presets, PDF export, and gallery mode
+- [x] **Phase 6: AI Integration & Tooling** - AI instruction files, semantic component catalog, audience presets, PDF export, and gallery mode (completed 2026-03-25)
 
 ## Phase Details
 
@@ -119,8 +119,8 @@ Plans:
 Plans:
 - [x] 06-01-PLAN.md -- Reference files: component catalog, audience presets, design principles, theme system, animation guide
 - [x] 06-02-PLAN.md -- DeckTape PDF export, gallery view, AI-02 deferral housekeeping
-- [ ] 06-03-PLAN.md -- Skill router (SKILL.md), three workflows, CLAUDE.md framework teaching content
-- [ ] 06-04-PLAN.md -- Three subagent definitions (researcher, strategist, builder)
+- [x] 06-03-PLAN.md -- Skill router (SKILL.md), three workflows, CLAUDE.md framework teaching content
+- [x] 06-04-PLAN.md -- Three subagent definitions (researcher, strategist, builder)
 
 ## Progress
 
@@ -134,4 +134,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Extended Components | 3/3 | Complete | 2026-03-24 |
 | 4. Theming & Branding | 3/3 | Complete | 2026-03-24 |
 | 5. Localization & Speaker Notes | 2/3 | In Progress|  |
-| 6. AI Integration & Tooling | 2/4 | In Progress|  |
+| 6. AI Integration & Tooling | 4/4 | Complete   | 2026-03-25 |

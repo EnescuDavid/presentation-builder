@@ -57,7 +57,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### AI Integration
 
-- [ ] **AI-01**: Repository includes a CLAUDE.md that teaches Claude Code how to use the framework (component catalog, theme system, build process)
+- [x] **AI-01**: Repository includes a CLAUDE.md that teaches Claude Code how to use the framework (component catalog, theme system, build process)
 - [x] **AI-02**: ~~Repository includes a copilot-instructions.md equivalent for GitHub Copilot CLI~~ DEFERRED to post-v1 (per D-23)
 - [x] **AI-03**: Component catalog is structured as an AI-readable reference (component name, description, when to use, content slots, variants)
 - [x] **AI-04**: Documentation includes audience presets (C-Suite, technical, sales, workshop, internal) with design rules an AI can apply
@@ -149,7 +149,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NOTE-01 | Phase 5: Localization & Speaker Notes | Complete |
 | NOTE-02 | Phase 5: Localization & Speaker Notes | Complete |
 | NOTE-03 | Phase 5: Localization & Speaker Notes | Complete |
-| AI-01 | Phase 6: AI Integration & Tooling | Pending |
+| AI-01 | Phase 6: AI Integration & Tooling | Complete |
 | AI-02 | Phase 6: AI Integration & Tooling | Deferred |
 | AI-03 | Phase 6: AI Integration & Tooling | Complete |
 | AI-04 | Phase 6: AI Integration & Tooling | Complete |
