@@ -279,6 +279,18 @@
       font-family: var(--font-family-display);
       color: var(--color-text);
     }
+
+    /* <!-- GERMAN TEXT HANDLING --> */
+
+    /* Global German text handling — ensures compound words and long text
+       break gracefully across all components. Requires lang="de" on <html>
+       for hyphens: auto to work correctly. */
+    .reveal .slides section {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
   </style>
 </head>
 <body>
