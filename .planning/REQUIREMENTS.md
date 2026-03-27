@@ -34,11 +34,11 @@
 ### Accessibility & Compliance
 
 - [ ] **A11Y-01**: WCAG contrast validation tool — script checks theme color combinations against 4.5:1 (normal text) and 3:1 (large text) ratios. Pass/fail report per color pair.
-- [ ] **A11Y-02**: ARIA landmarks in all 14+ component templates — `role`, `aria-label`, correct heading hierarchy.
-- [ ] **A11Y-03**: Alt text slots for visual components — required `alt`/`aria-label` on images, charts, diagrams, framework/matrix.
+- [x] **A11Y-02**: ARIA landmarks in all 14+ component templates — `role`, `aria-label`, correct heading hierarchy.
+- [x] **A11Y-03**: Alt text slots for visual components — required `alt`/`aria-label` on images, charts, diagrams, framework/matrix.
 - [ ] **A11Y-04**: Accessible linear HTML export — screen-reader-friendly version without reveal.js framework. Charts replaced with text descriptions.
 - [x] **A11Y-05**: Semantic state color tokens — add `--color-warning`, `--color-info`, `--color-overlay`, `--color-on-primary`. Eliminate all hardcoded color values.
-- [ ] **A11Y-06**: Keyboard navigation verification — all interactive elements Tab-reachable, focus indicators visible, no keyboard traps.
+- [x] **A11Y-06**: Keyboard navigation verification — all interactive elements Tab-reachable, focus indicators visible, no keyboard traps.
 - [ ] **A11Y-07**: European Accessibility Act compliance checklist — document mapping framework features to EAA requirements, per-presentation checklist.
 
 ### Platform Expansion
@@ -89,11 +89,11 @@
 | CONSULT-05 | Phase 10 | Pending |
 | CONSULT-06 | Phase 11 | Pending |
 | A11Y-01 | Phase 12 | Pending |
-| A11Y-02 | Phase 10 | Pending |
-| A11Y-03 | Phase 10 | Pending |
+| A11Y-02 | Phase 10 | Complete |
+| A11Y-03 | Phase 10 | Complete |
 | A11Y-04 | Phase 12 | Pending |
 | A11Y-05 | Phase 7 | Complete |
-| A11Y-06 | Phase 10 | Pending |
+| A11Y-06 | Phase 10 | Complete |
 | A11Y-07 | Phase 13 | Pending |
 | PLAT-01 | Phase 11 | Pending |
 | PLAT-02 | Phase 12 | Pending |

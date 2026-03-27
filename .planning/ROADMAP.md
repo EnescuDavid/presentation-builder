@@ -200,7 +200,7 @@ Plans:
 
 Plans:
 - [ ] 10-01-PLAN.md -- Audience preset CSS (6 types), print/PDF @media print styling, dark variant background fix
-- [ ] 10-02-PLAN.md -- ARIA landmarks and alt text slots on all 21 templates, keyboard focus indicators
+- [x] 10-02-PLAN.md -- ARIA landmarks and alt text slots on all 21 templates, keyboard focus indicators
 
 ### Phase 11: Consulting Intelligence & AI Skill Layer
 **Goal**: AI assistants apply consulting methodology (SCQA, Pyramid Principle, action titles) when generating presentations, with platform-agnostic instruction files
@@ -261,7 +261,7 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 7. Foundation Fixes & Token Expansion | v2.0 | 0/2 | Planned | - |
 | 8. Pure CSS Components | v2.0 | 0/2 | Not started | - |
 | 9. CDN-Dependent Components | v2.0 | 0/2 | Not started | - |
-| 10. Audience Presets & Accessibility CSS | v2.0 | 0/2 | Planned | - |
+| 10. Audience Presets & Accessibility CSS | v2.0 | 1/2 | In Progress|  |
 | 11. Consulting Intelligence & AI Skill Layer | v2.0 | 0/? | Not started | - |
 | 12. Export Tools | v2.0 | 0/? | Not started | - |
 | 13. Documentation & Compliance | v2.0 | 0/? | Not started | - |
