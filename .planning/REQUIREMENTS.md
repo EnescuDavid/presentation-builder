@@ -7,8 +7,8 @@
 
 ### Polish & Fixes (remaining from v1.0 audit)
 
-- [ ] **FIX-06**: Nested bullet list styles (`ul ul`, `ol ul`) with visual indentation differentiation across all themes
-- [ ] **FIX-07**: Theme CSS deduplication — extract shared structural rules to base, themes contain only token overrides
+- [x] **FIX-06**: Nested bullet list styles (`ul ul`, `ol ul`) with visual indentation differentiation across all themes
+- [x] **FIX-07**: Theme CSS deduplication — extract shared structural rules to base, themes contain only token overrides
 - [ ] **FIX-08**: Print/PDF `@media print` styles in theme files (force backgrounds, hide nav, clean page breaks)
 - [ ] **FIX-09**: Dark variant connected to real background color (couple `data-background-color="dark"` to token-based background)
 - [ ] **FIX-10**: Master footer date auto-population from `presentationConfig.date` (default to current date if empty)
@@ -71,8 +71,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FIX-06 | Phase 7 | Pending |
-| FIX-07 | Phase 7 | Pending |
+| FIX-06 | Phase 7 | Complete |
+| FIX-07 | Phase 7 | Complete |
 | FIX-08 | Phase 10 | Pending |
 | FIX-09 | Phase 10 | Pending |
 | FIX-10 | Phase 7 | Pending |

@@ -151,7 +151,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 07-01-PLAN.md -- Theme CSS deduplication (extract shared structural rules to _base.css) and nested bullet list styles
+- [x] 07-01-PLAN.md -- Theme CSS deduplication (extract shared structural rules to _base.css) and nested bullet list styles
 - [ ] 07-02-PLAN.md -- Semantic state color tokens, hardcoded color replacement, and German date auto-population
 
 ### Phase 8: Pure CSS Components
