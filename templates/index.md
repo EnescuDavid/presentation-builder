@@ -27,6 +27,22 @@ Then open the specific template file to see the HTML structure, CSS, and slot de
 | Card Grid | `card-grid.html` | Service offerings. Feature overview. Team capabilities. 2-4 items. |
 | Framework/Matrix | `framework.html` | BCG matrix. Prioritization. 2x2 analysis. Quadrant mapping. |
 
+## Data Visualization Components (Phase 8)
+
+| Component | File | Use When |
+|-----------|------|----------|
+| Data Table | `data-table.html` | Financial data. Feature comparisons. Status matrices. Vendor evaluations. 2-6 columns, 3-12 rows. |
+| Harvey Balls | `harvey-balls.html` | Capability ratings. Maturity assessments. Inline in tables and comparisons. 0-100% in 5 states. |
+| Team/People | `team.html` | Team credentials. Leadership page. Project team. Advisory board. 2-6 members. |
+
+## Component Variants (Phase 8)
+
+| Base Component | Variant | Modifier Class | Use When |
+|----------------|---------|----------------|----------|
+| Metrics/KPI | Sparkline micro-charts | (add sparkline elements) | Trend indicators, mini bars, progress in metrics cards. |
+| Timeline/Process | Vertical layout | `comp-timeline--vertical` | 5-6 steps where horizontal becomes cramped. |
+| Card Grid | Compact layout | `comp-card-grid--compact` | 5-6 items needing smaller cards and tighter spacing. |
+
 ## How to Use
 
 1. Read this file to find the right component for your slide
@@ -55,6 +71,9 @@ Then open the specific template file to see the HTML structure, CSS, and slot de
 | Quote/Testimonial | Visible |
 | Card Grid | Visible |
 | Framework/Matrix | Visible |
+| Data Table | Visible |
+| Harvey Balls | (Utility -- used inside other components) |
+| Team/People | Visible |
 
 ## Design Tokens
 
