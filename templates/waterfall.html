@@ -1,0 +1,158 @@
+<!--
+  ============================================================================
+  COMPONENT: Waterfall/Bridge Chart (COMP-waterfall)
+  ============================================================================
+
+  USE WHEN:
+    Revenue walks. Cost bridges. Year-over-year change breakdowns.
+    Any consulting slide showing how a starting value transforms into
+    an ending value through positive and negative changes.
+
+  REQUIRES:
+    - Chart.js 4.5.x CDN script in the presentation (see _skeleton.html)
+    - chartjs-plugin-annotation for connector lines between bars
+    - Same lazy init infrastructure as chart.html -- initSlideCharts()
+      in the skeleton handles everything.
+
+  HOW IT WORKS:
+    Uses Chart.js floating bar technique where each data point is an
+    [start, end] tuple instead of a single value. This creates bars
+    that float above the x-axis, showing the incremental change.
+
+    Consulting convention for bar colors:
+      - Grey (#718096) for total/anchor bars (start and end values)
+      - Green (#38A169) for positive changes (increases)
+      - Red (#E53E3E) for negative changes (decreases)
+
+    Colors are set explicitly per bar via backgroundColor arrays
+    (not auto-assigned from tokens) since waterfall color semantics
+    are fixed by consulting convention.
+
+  CONNECTOR LINES:
+    Thin grey horizontal lines connect adjacent bars to show the
+    running total flow. These use the annotation plugin with line
+    annotations. The x-positions (xMin/xMax) may need fine-tuning
+    depending on bar width -- use N-0.1 to N+0.1 where N is the
+    boundary between bars (e.g., 0.4 to 0.6 for bar 0 to bar 1).
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  ============================================================================
+-->
+
+<!-- ==========================================================================
+     EXAMPLE 1: Revenue Bridge -- Umsatzbr&uuml;cke 2025 auf 2026
+     Demonstrates waterfall with floating bars, consulting colors,
+     and annotation connector lines between bars.
+     ========================================================================== -->
+<section data-component="waterfall">
+  <div class="comp-waterfall">
+    <h2>Umsatzbr&uuml;cke 2025 auf 2026</h2>
+    <div class="comp-waterfall__canvas-wrap">
+      <canvas id="chart-waterfall-revenue" data-chart-config='{
+        "type": "bar",
+        "data": {
+          "labels": ["Start 2025", "Neugesch&auml;ft", "Preiserh&ouml;hung", "Churn", "Ende 2026"],
+          "datasets": [{
+            "label": "Umsatz (Mio. &euro;)",
+            "data": [[0, 100], [100, 135], [135, 145], [125, 145], [0, 125]],
+            "backgroundColor": ["#718096", "#38A169", "#38A169", "#E53E3E", "#718096"],
+            "borderColor": ["#718096", "#38A169", "#38A169", "#E53E3E", "#718096"],
+            "borderSkipped": false,
+            "borderWidth": 1
+          }]
+        },
+        "options": {
+          "scales": {
+            "y": {
+              "beginAtZero": true,
+              "title": {
+                "display": true,
+                "text": "Mio. &euro;"
+              }
+            }
+          },
+          "plugins": {
+            "legend": { "display": false },
+            "annotation": {
+              "annotations": {
+                "conn1": {
+                  "type": "line",
+                  "xMin": 0.4, "xMax": 0.6,
+                  "yMin": 100, "yMax": 100,
+                  "borderColor": "#A0AEC0",
+                  "borderWidth": 1
+                },
+                "conn2": {
+                  "type": "line",
+                  "xMin": 1.4, "xMax": 1.6,
+                  "yMin": 135, "yMax": 135,
+                  "borderColor": "#A0AEC0",
+                  "borderWidth": 1
+                },
+                "conn3": {
+                  "type": "line",
+                  "xMin": 2.4, "xMax": 2.6,
+                  "yMin": 145, "yMax": 145,
+                  "borderColor": "#A0AEC0",
+                  "borderWidth": 1
+                },
+                "conn4": {
+                  "type": "line",
+                  "xMin": 3.4, "xMax": 3.6,
+                  "yMin": 125, "yMax": 125,
+                  "borderColor": "#A0AEC0",
+                  "borderWidth": 1
+                }
+              }
+            }
+          }
+        }
+      }'></canvas>
+    </div>
+    <p class="comp-waterfall__source">Quelle: Gesch&auml;ftsplanung 2026</p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     EXAMPLE 2: Cost Bridge -- Kostenentwicklung nach Kategorie
+     Demonstrates a cost waterfall with increases and one decrease
+     (Einsparungen). No connector lines for simplicity -- add
+     annotation config from Example 1 if desired.
+     ========================================================================== -->
+<section data-component="waterfall">
+  <div class="comp-waterfall">
+    <h2>Kostenentwicklung nach Kategorie</h2>
+    <div class="comp-waterfall__canvas-wrap">
+      <canvas id="chart-waterfall-costs" data-chart-config='{
+        "type": "bar",
+        "data": {
+          "labels": ["Ist 2025", "Personal", "IT-Infrastruktur", "Beratung", "Einsparungen", "Plan 2026"],
+          "datasets": [{
+            "label": "Kosten (Mio. &euro;)",
+            "data": [[0, 85], [85, 97], [97, 105], [105, 112], [104, 112], [0, 104]],
+            "backgroundColor": ["#718096", "#38A169", "#38A169", "#38A169", "#E53E3E", "#718096"],
+            "borderColor": ["#718096", "#38A169", "#38A169", "#38A169", "#E53E3E", "#718096"],
+            "borderSkipped": false,
+            "borderWidth": 1
+          }]
+        },
+        "options": {
+          "scales": {
+            "y": {
+              "beginAtZero": true,
+              "title": {
+                "display": true,
+                "text": "Mio. &euro;"
+              }
+            }
+          },
+          "plugins": {
+            "legend": { "display": false }
+          }
+        }
+      }'></canvas>
+    </div>
+    <p class="comp-waterfall__source">Quelle: Controlling, Stand Februar 2026</p>
+  </div>
+</section>

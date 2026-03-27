@@ -39,6 +39,8 @@ Then open the specific template file to see the HTML structure, CSS, and slot de
 
 | Component | File | Use When |
 |-----------|------|----------|
+| Chart | `chart.html` | Data visualization. Bar, line, pie, doughnut, radar charts with consulting-grade defaults, annotation support, and token-based colors. Requires Chart.js CDN. |
+| Waterfall | `waterfall.html` | Revenue walk. Cost bridge. Year-over-year change breakdown using floating bars. Consulting conventions: grey totals, green positive, red negative. Requires Chart.js CDN. |
 | Code Block | `code-block.html` | Technical deep-dives. API documentation. Code walkthroughs. Syntax-highlighted with step-through line highlighting. |
 | Mermaid Diagram | `mermaid-diagram.html` | Process flows. System architecture. Org charts. Project timelines. Pre-rendered SVG with fragment animation. |
 
