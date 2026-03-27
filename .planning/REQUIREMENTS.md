@@ -71,42 +71,42 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FIX-06 | TBD | Pending |
-| FIX-07 | TBD | Pending |
-| FIX-08 | TBD | Pending |
-| FIX-09 | TBD | Pending |
-| FIX-10 | TBD | Pending |
-| VIZ-01 | TBD | Pending |
-| VIZ-02 | TBD | Pending |
-| VIZ-03 | TBD | Pending |
-| VIZ-04 | TBD | Pending |
-| VIZ-05 | TBD | Pending |
-| VIZ-06 | TBD | Pending |
-| CONSULT-01 | TBD | Pending |
-| CONSULT-02 | TBD | Pending |
-| CONSULT-03 | TBD | Pending |
-| CONSULT-04 | TBD | Pending |
-| CONSULT-05 | TBD | Pending |
-| CONSULT-06 | TBD | Pending |
-| A11Y-01 | TBD | Pending |
-| A11Y-02 | TBD | Pending |
-| A11Y-03 | TBD | Pending |
-| A11Y-04 | TBD | Pending |
-| A11Y-05 | TBD | Pending |
-| A11Y-06 | TBD | Pending |
-| A11Y-07 | TBD | Pending |
-| PLAT-01 | TBD | Pending |
-| PLAT-02 | TBD | Pending |
-| PLAT-03 | TBD | Pending |
-| PLAT-04 | TBD | Pending |
-| PLAT-05 | TBD | Pending |
-| PLAT-06 | TBD | Pending |
-| PLAT-08 | TBD | Pending |
+| FIX-06 | Phase 7 | Pending |
+| FIX-07 | Phase 7 | Pending |
+| FIX-08 | Phase 10 | Pending |
+| FIX-09 | Phase 10 | Pending |
+| FIX-10 | Phase 7 | Pending |
+| VIZ-01 | Phase 9 | Pending |
+| VIZ-02 | Phase 9 | Pending |
+| VIZ-03 | Phase 8 | Pending |
+| VIZ-04 | Phase 9 | Pending |
+| VIZ-05 | Phase 8 | Pending |
+| VIZ-06 | Phase 8 | Pending |
+| CONSULT-01 | Phase 11 | Pending |
+| CONSULT-02 | Phase 11 | Pending |
+| CONSULT-03 | Phase 12 | Pending |
+| CONSULT-04 | Phase 11 | Pending |
+| CONSULT-05 | Phase 10 | Pending |
+| CONSULT-06 | Phase 11 | Pending |
+| A11Y-01 | Phase 12 | Pending |
+| A11Y-02 | Phase 10 | Pending |
+| A11Y-03 | Phase 10 | Pending |
+| A11Y-04 | Phase 12 | Pending |
+| A11Y-05 | Phase 7 | Pending |
+| A11Y-06 | Phase 10 | Pending |
+| A11Y-07 | Phase 13 | Pending |
+| PLAT-01 | Phase 11 | Pending |
+| PLAT-02 | Phase 12 | Pending |
+| PLAT-03 | Phase 8 | Pending |
+| PLAT-04 | Phase 9 | Pending |
+| PLAT-05 | Phase 8 | Pending |
+| PLAT-06 | Phase 8 | Pending |
+| PLAT-08 | Phase 11 | Pending |
 
 **Coverage:**
 - v2.0 requirements: 31 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 31
+- Mapped to phases: 31
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-27*
