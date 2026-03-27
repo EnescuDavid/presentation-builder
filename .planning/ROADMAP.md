@@ -167,7 +167,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md -- Data table, Harvey balls, and sparkline micro-charts for metrics
+- [x] 08-01-PLAN.md -- Data table, Harvey balls, and sparkline micro-charts for metrics
 - [ ] 08-02-PLAN.md -- Team/People component, timeline vertical and card grid compact variants, catalog update
 
 ### Phase 9: CDN-Dependent Components

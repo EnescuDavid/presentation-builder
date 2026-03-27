@@ -17,10 +17,10 @@
 
 - [ ] **VIZ-01**: Chart.js 4.x integration — bar, line, pie, doughnut, radar charts with consulting-grade defaults (token colors, no gridlines, clean axes, annotation support). Conditional CDN loading. Lazy initialization on slide change to handle hidden canvas.
 - [ ] **VIZ-02**: Mermaid 11.x diagram integration — flowcharts, sequence diagrams, Gantt charts, org charts. Conditional CDN loading. Theme-aware colors via token-to-Mermaid variable mapping. Fragment animation for progressive diagram reveal.
-- [ ] **VIZ-03**: Data table component — styled table with header row, alternating colors, right-aligned numbers, 2-6 columns, 3-12 rows. Pure CSS, token-aware.
+- [x] **VIZ-03**: Data table component — styled table with header row, alternating colors, right-aligned numbers, 2-6 columns, 3-12 rows. Pure CSS, token-aware.
 - [ ] **VIZ-04**: Waterfall/bridge chart component — revenue walks, cost bridges using Chart.js floating bar technique (not plugin). Consulting conventions: grey totals, colored changes.
-- [ ] **VIZ-05**: Harvey ball component — pure CSS capability-rating dots (0/25/50/75/100%). Inline rendering for tables and comparisons.
-- [ ] **VIZ-06**: Sparkline/KPI micro-charts — trend lines, mini bars, progress indicators inside metrics cards. Pure CSS/SVG.
+- [x] **VIZ-05**: Harvey ball component — pure CSS capability-rating dots (0/25/50/75/100%). Inline rendering for tables and comparisons.
+- [x] **VIZ-06**: Sparkline/KPI micro-charts — trend lines, mini bars, progress indicators inside metrics cards. Pure CSS/SVG.
 
 ### Consulting Intelligence
 
@@ -78,10 +78,10 @@
 | FIX-10 | Phase 7 | Complete |
 | VIZ-01 | Phase 9 | Pending |
 | VIZ-02 | Phase 9 | Pending |
-| VIZ-03 | Phase 8 | Pending |
+| VIZ-03 | Phase 8 | Complete |
 | VIZ-04 | Phase 9 | Pending |
-| VIZ-05 | Phase 8 | Pending |
-| VIZ-06 | Phase 8 | Pending |
+| VIZ-05 | Phase 8 | Complete |
+| VIZ-06 | Phase 8 | Complete |
 | CONSULT-01 | Phase 11 | Pending |
 | CONSULT-02 | Phase 11 | Pending |
 | CONSULT-03 | Phase 12 | Pending |
