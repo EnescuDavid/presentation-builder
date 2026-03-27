@@ -99,6 +99,57 @@
   vertical-align: middle;
 }
 
+/* --- Nested bullet styles (2nd level: open circle) --- */
+
+.reveal .slides section ul ul,
+.reveal .slides section ol ul {
+  padding-left: var(--spacing-md);
+}
+
+.reveal .slides section ul ul li::before,
+.reveal .slides section ol ul li::before {
+  background: transparent;
+  border: 1.5px solid var(--color-accent);
+  width: 5px;
+  height: 5px;
+}
+
+/* --- Nested bullet styles (3rd level: en-dash) --- */
+
+.reveal .slides section ul ul ul {
+  padding-left: var(--spacing-md);
+}
+
+.reveal .slides section ul ul ul li::before {
+  content: '\2013';
+  background: none;
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  color: var(--color-text-muted);
+  font-size: 0.8em;
+}
+
+/* --- Mixed nesting: ul inside ol uses open circle (handled above via ol ul) --- */
+
+/* --- Mixed nesting: ol inside ul uses numbered list --- */
+
+.reveal .slides section ul ol {
+  list-style: decimal;
+  padding-left: var(--spacing-lg);
+}
+
+.reveal .slides section ul ol li::before {
+  content: none;
+}
+
+/* --- Nested ordered lists: ol ol uses lower-alpha --- */
+
+.reveal .slides section ol ol {
+  list-style: lower-alpha;
+}
+
 /* ==========================================================================
    Card elevation refinement
    ========================================================================== */
