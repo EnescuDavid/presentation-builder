@@ -45,11 +45,12 @@
      Demonstrates waterfall with floating bars, consulting colors,
      and annotation connector lines between bars.
      ========================================================================== -->
-<section data-component="waterfall">
+<section data-component="waterfall" role="group" aria-label="Wasserfalldiagramm">
   <div class="comp-waterfall">
     <h2>Umsatzbr&uuml;cke 2025 auf 2026</h2>
     <div class="comp-waterfall__canvas-wrap">
-      <canvas id="chart-waterfall-revenue" data-chart-config='{
+      <!-- Replace canvas aria-label with waterfall chart description -->
+      <canvas id="chart-waterfall-revenue" role="img" aria-label="Wasserfalldiagramm: Umsatzbr&uuml;cke 2025 auf 2026" data-chart-config='{
         "type": "bar",
         "data": {
           "labels": ["Start 2025", "Neugesch&auml;ft", "Preiserh&ouml;hung", "Churn", "Ende 2026"],
@@ -120,11 +121,12 @@
      (Einsparungen). No connector lines for simplicity -- add
      annotation config from Example 1 if desired.
      ========================================================================== -->
-<section data-component="waterfall">
+<section data-component="waterfall" role="group" aria-label="Wasserfalldiagramm">
   <div class="comp-waterfall">
     <h2>Kostenentwicklung nach Kategorie</h2>
     <div class="comp-waterfall__canvas-wrap">
-      <canvas id="chart-waterfall-costs" data-chart-config='{
+      <!-- Replace canvas aria-label with waterfall chart description -->
+      <canvas id="chart-waterfall-costs" role="img" aria-label="Wasserfalldiagramm: Kostenentwicklung nach Kategorie" data-chart-config='{
         "type": "bar",
         "data": {
           "labels": ["Ist 2025", "Personal", "IT-Infrastruktur", "Beratung", "Einsparungen", "Plan 2026"],

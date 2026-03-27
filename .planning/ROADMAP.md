@@ -200,7 +200,7 @@ Plans:
 
 Plans:
 - [x] 10-01-PLAN.md -- Audience preset CSS (6 types), print/PDF @media print styling, dark variant background fix
-- [ ] 10-02-PLAN.md -- ARIA landmarks and alt text slots on all 21 templates, keyboard focus indicators
+- [x] 10-02-PLAN.md -- ARIA landmarks and alt text slots on all 21 templates, keyboard focus indicators
 
 ### Phase 11: Consulting Intelligence & AI Skill Layer
 **Goal**: AI assistants apply consulting methodology (SCQA, Pyramid Principle, action titles) when generating presentations, with platform-agnostic instruction files

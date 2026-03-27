@@ -41,11 +41,12 @@
      EXAMPLE 1: Bar Chart -- Quartalsumsatz 2026
      Demonstrates bar chart with annotation plugin target line.
      ========================================================================== -->
-<section data-component="chart">
+<section data-component="chart" role="group" aria-label="Diagramm">
   <div class="comp-chart">
     <h2>Quartalsumsatz 2026</h2>
     <div class="comp-chart__canvas-wrap">
-      <canvas id="chart-bar-quarterly" data-chart-config='{
+      <!-- Replace canvas aria-label with chart description, e.g. "Balkendiagramm zeigt Umsatz 2023-2026" -->
+      <canvas id="chart-bar-quarterly" role="img" aria-label="Balkendiagramm: Quartalsumsatz 2026" data-chart-config='{
         "type": "bar",
         "data": {
           "labels": ["Q1", "Q2", "Q3", "Q4"],
@@ -89,11 +90,12 @@
      EXAMPLE 2: Line Chart -- Marktanteil Entwicklung
      Demonstrates multi-dataset line chart with smooth curves.
      ========================================================================== -->
-<section data-component="chart">
+<section data-component="chart" role="group" aria-label="Diagramm">
   <div class="comp-chart">
     <h2>Marktanteil Entwicklung</h2>
     <div class="comp-chart__canvas-wrap">
-      <canvas id="chart-line-market" data-chart-config='{
+      <!-- Replace canvas aria-label with chart description -->
+      <canvas id="chart-line-market" role="img" aria-label="Liniendiagramm: Marktanteil Entwicklung" data-chart-config='{
         "type": "line",
         "data": {
           "labels": ["Jan", "Feb", "M&auml;r", "Apr", "Mai", "Jun"],
@@ -137,11 +139,12 @@
      EXAMPLE 3: Pie Chart -- Umsatzverteilung nach Region
      Demonstrates pie chart. Overrides scales to empty object (no axes).
      ========================================================================== -->
-<section data-component="chart">
+<section data-component="chart" role="group" aria-label="Diagramm">
   <div class="comp-chart">
     <h2>Umsatzverteilung nach Region</h2>
     <div class="comp-chart__canvas-wrap">
-      <canvas id="chart-pie-regions" data-chart-config='{
+      <!-- Replace canvas aria-label with chart description -->
+      <canvas id="chart-pie-regions" role="img" aria-label="Kreisdiagramm: Umsatzverteilung nach Region" data-chart-config='{
         "type": "pie",
         "data": {
           "labels": ["DACH", "Nordics", "UK", "Frankreich", "Sonstige"],
@@ -167,11 +170,12 @@
      EXAMPLE 4: Doughnut Chart -- Projektportfolio nach Status
      Demonstrates doughnut chart with cutout. Overrides scales to empty object.
      ========================================================================== -->
-<section data-component="chart">
+<section data-component="chart" role="group" aria-label="Diagramm">
   <div class="comp-chart">
     <h2>Projektportfolio nach Status</h2>
     <div class="comp-chart__canvas-wrap">
-      <canvas id="chart-doughnut-projects" data-chart-config='{
+      <!-- Replace canvas aria-label with chart description -->
+      <canvas id="chart-doughnut-projects" role="img" aria-label="Ringdiagramm: Projektportfolio nach Status" data-chart-config='{
         "type": "doughnut",
         "data": {
           "labels": ["Abgeschlossen", "In Bearbeitung", "Geplant", "Blockiert"],
@@ -198,11 +202,12 @@
      EXAMPLE 5: Radar Chart -- Kompetenzprofil: Team A vs. Team B
      Demonstrates radar chart with explicit r-scale and semi-transparent fill.
      ========================================================================== -->
-<section data-component="chart">
+<section data-component="chart" role="group" aria-label="Diagramm">
   <div class="comp-chart">
     <h2>Kompetenzprofil: Team A vs. Team B</h2>
     <div class="comp-chart__canvas-wrap">
-      <canvas id="chart-radar-competency" data-chart-config='{
+      <!-- Replace canvas aria-label with chart description -->
+      <canvas id="chart-radar-competency" role="img" aria-label="Netzdiagramm: Kompetenzprofil Team A vs. Team B" data-chart-config='{
         "type": "radar",
         "data": {
           "labels": ["Strategie", "Technologie", "Design", "Marketing", "Vertrieb", "Operations"],
@@ -257,11 +262,11 @@
      To use: uncomment this section and adapt the data-chart-config JSON.
      ========================================================================== -->
 <!--
-<section data-component="chart">
+<section data-component="chart" role="group" aria-label="Diagramm">
   <div class="comp-chart">
     <h2>Umsatzvergleich nach Quartal (progressiv)</h2>
     <div class="comp-chart__canvas-wrap">
-      <canvas id="chart-fragment-demo" data-chart-config='{
+      <canvas id="chart-fragment-demo" role="img" aria-label="Diagrammbeschreibung hier einf&uuml;gen" data-chart-config='{
         "type": "bar",
         "data": {
           "labels": ["Q1", "Q2", "Q3", "Q4"],

@@ -400,3 +400,23 @@
     transition-duration: 0s !important;
   }
 }
+
+/* ==========================================================================
+   Keyboard Focus Indicators (A11Y-06)
+   :focus-visible shows focus ring only for keyboard navigation, not mouse clicks
+   ========================================================================== */
+
+.reveal .slides a:focus-visible,
+.reveal .slides button:focus-visible,
+.reveal .slides [tabindex]:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Ensure focus is visible on dark backgrounds */
+.reveal .slides section[data-background-color="dark"] a:focus-visible,
+.reveal .slides section[data-background-color="dark"] button:focus-visible,
+.reveal .slides section[data-background-color="dark"] [tabindex]:focus-visible {
+  outline-color: var(--color-background);
+}

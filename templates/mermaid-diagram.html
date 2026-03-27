@@ -46,9 +46,10 @@
   Claude converts this to inline SVG at HTML generation time.
   Colors use resolved token values from the active theme.
 -->
-<section data-component="mermaid-diagram" class="comp-mermaid">
+<section data-component="mermaid-diagram" class="comp-mermaid" role="group" aria-label="Diagramm">
   <h2>Genehmigungsprozess</h2>
-  <div class="comp-mermaid__diagram">
+  <!-- Replace aria-label with diagram description -->
+  <div class="comp-mermaid__diagram" role="img" aria-label="Flussdiagramm: Genehmigungsprozess mit Pr&uuml;fung, Umsetzung und &Uuml;berarbeitung">
     <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', sans-serif;">
       <!-- Step 1: Antrag einreichen (always visible) -->
       <g>

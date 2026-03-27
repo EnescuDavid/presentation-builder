@@ -30,7 +30,7 @@
   FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE (structured):
-    <section data-component="data-table">
+    <section data-component="data-table" role="group" aria-label="Datentabelle">
       <div class="comp-data-table comp-data-table--structured">
         <h2>Headline</h2>
         <table>
@@ -42,7 +42,7 @@
     </section>
 
   EXAMPLE (minimal):
-    <section data-component="data-table">
+    <section data-component="data-table" role="group" aria-label="Datentabelle">
       <div class="comp-data-table comp-data-table--minimal">
         ...same structure...
       </div>
@@ -147,7 +147,7 @@
   }
 </style>
 
-<section data-component="data-table">
+<section data-component="data-table" role="group" aria-label="Datentabelle">
   <div class="comp-data-table comp-data-table--structured">
     <h2>Umsatzentwicklung nach Geschäftsbereich</h2>
     <table>
