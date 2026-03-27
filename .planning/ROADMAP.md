@@ -164,11 +164,11 @@ Plans:
   3. Sparkline/KPI micro-charts (trend lines, mini bars, progress indicators) render inside metrics cards without JavaScript
   4. Team/People component displays 2-6 team members with photo, name, role, and contact info in a responsive grid
   5. Timeline vertical variant (`comp-timeline--vertical`) and card grid compact variant (`comp-card-grid--compact`) work correctly with 5-6 items
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
+- [ ] 08-01-PLAN.md -- Data table, Harvey balls, and sparkline micro-charts for metrics
+- [ ] 08-02-PLAN.md -- Team/People component, timeline vertical and card grid compact variants, catalog update
 
 ### Phase 9: CDN-Dependent Components
 **Goal**: Chart.js and Mermaid integration gives users data visualization and diagramming capabilities with consulting-grade defaults and conditional loading
@@ -259,7 +259,7 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 5. Localization & Speaker Notes | v1.0 | 3/3 | Complete | 2026-03-25 |
 | 6. AI Integration & Tooling | v1.0 | 4/4 | Complete | 2026-03-25 |
 | 7. Foundation Fixes & Token Expansion | v2.0 | 0/2 | Planned | - |
-| 8. Pure CSS Components | v2.0 | 0/? | Not started | - |
+| 8. Pure CSS Components | v2.0 | 0/2 | Not started | - |
 | 9. CDN-Dependent Components | v2.0 | 0/? | Not started | - |
 | 10. Audience Presets & Accessibility CSS | v2.0 | 0/? | Not started | - |
 | 11. Consulting Intelligence & AI Skill Layer | v2.0 | 0/? | Not started | - |
