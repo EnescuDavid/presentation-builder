@@ -188,3 +188,88 @@
 .reveal .slides section[data-background-color="dark"] [class*="__subtitle"] {
   color: var(--color-dark-text-muted);
 }
+
+/* ==========================================================================
+   Code Block Component (PLAT-04)
+   ========================================================================== */
+
+.comp-code-block {
+  padding: var(--spacing-2xl);
+}
+
+.comp-code-block h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.comp-code-block pre {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.comp-code-block pre code {
+  padding: var(--spacing-lg) !important;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   Chart Container (VIZ-01, VIZ-04)
+   ========================================================================== */
+
+.comp-chart,
+.comp-waterfall {
+  padding: var(--spacing-2xl);
+}
+
+.comp-chart h2,
+.comp-waterfall h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.comp-chart__canvas-wrap,
+.comp-waterfall__canvas-wrap {
+  height: 420px;
+  position: relative;
+}
+
+.comp-chart__source,
+.comp-waterfall__source {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-sm);
+  text-align: right;
+}
+
+/* ==========================================================================
+   Mermaid Diagram Component (VIZ-02)
+   ========================================================================== */
+
+.comp-mermaid {
+  padding: var(--spacing-2xl);
+}
+
+.comp-mermaid h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.comp-mermaid__diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.comp-mermaid__diagram svg {
+  max-width: 100%;
+  max-height: 480px;
+}
+
+.comp-mermaid__source {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-sm);
+  text-align: right;
+}

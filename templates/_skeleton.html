@@ -46,6 +46,9 @@
   <!-- reveal.js CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
 
+  <!-- Code highlighting: Monokai theme (include when presentation uses code blocks) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.min.css">
+
   <!-- END MODE B ============================================================== -->
 
   <!-- MODE C: ZIP BUNDLE ======================================================
@@ -337,6 +340,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
 
+  <!-- Chart.js (include when presentation uses charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.1.0/chartjs-plugin-annotation.min.js"></script>
+
+  <!-- Code highlighting plugin (include when presentation uses code blocks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js"></script>
+
   <script>
     // Presentation configuration
     var presentationConfig = {
@@ -350,9 +360,88 @@
       }
     };
 
+    // --- Token Color Bridge (per D-04/D-23) ---
+    function getTokenColor(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function getChartColors() {
+      return [
+        getTokenColor('--color-chart-1'),
+        getTokenColor('--color-chart-2'),
+        getTokenColor('--color-chart-3'),
+        getTokenColor('--color-chart-4'),
+        getTokenColor('--color-chart-5')
+      ];
+    }
+
+    // --- Consulting Chart Defaults (per D-05) ---
+    function getConsultingDefaults() {
+      var fontFamily = getTokenColor('--font-family-body') || "'Inter', sans-serif";
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 800, easing: 'easeOutQuart' },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { font: { family: fontFamily, size: 12 } },
+            border: { display: true, color: getTokenColor('--color-border') }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { font: { family: fontFamily, size: 12 } },
+            border: { display: true, color: getTokenColor('--color-border') }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { usePointStyle: true, padding: 16, font: { family: fontFamily, size: 12 } }
+          }
+        }
+      };
+    }
+
+    // --- Deep Merge Utility ---
+    function deepMerge(target, source) {
+      var result = Object.assign({}, target);
+      for (var key in source) {
+        if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+          result[key] = deepMerge(result[key] || {}, source[key]);
+        } else {
+          result[key] = source[key];
+        }
+      }
+      return result;
+    }
+
+    // --- Lazy Chart Init (per D-03/D-24) ---
+    var chartInstances = {};
+
+    function initSlideCharts(slide) {
+      if (typeof Chart === 'undefined') return;
+      var canvases = slide.querySelectorAll('canvas[data-chart-config]');
+      canvases.forEach(function(canvas) {
+        var chartId = canvas.id;
+        if (!chartId || chartInstances[chartId]) return; // Animate-once per D-02
+        var configStr = canvas.getAttribute('data-chart-config');
+        var config = JSON.parse(configStr);
+        var defaults = getConsultingDefaults();
+        config.options = deepMerge(defaults, config.options || {});
+        // Auto-assign token colors if not explicitly set
+        var colors = getChartColors();
+        config.data.datasets.forEach(function(ds, i) {
+          if (!ds.backgroundColor) ds.backgroundColor = colors[i % colors.length];
+          if (!ds.borderColor) ds.borderColor = colors[i % colors.length];
+        });
+        chartInstances[chartId] = new Chart(canvas, config);
+      });
+    }
+
     // Initialize reveal.js
     Reveal.initialize({
-      plugins: [ RevealNotes ],
+      plugins: [ RevealNotes, typeof RevealHighlight !== 'undefined' ? RevealHighlight : null ].filter(Boolean),
       // 16:9 aspect ratio
       width: 1280,
       height: 720,
@@ -459,12 +548,14 @@
     Reveal.on('slidechanged', function(event) {
       updateMasterLayer(event.currentSlide);
       updateSlideNumber(event);
+      initSlideCharts(event.currentSlide);
     });
 
     // Initial state on ready
     Reveal.on('ready', function(event) {
       updateMasterLayer(event.currentSlide);
       updateSlideNumber(event);
+      initSlideCharts(event.currentSlide);
 
       // Populate master layer from presentationConfig
       var cfg = window.presentationConfig || {};
