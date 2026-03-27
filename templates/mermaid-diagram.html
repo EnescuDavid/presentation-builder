@@ -1,0 +1,148 @@
+<!--
+  COMPONENT: Mermaid Diagram (COMP-22)
+  USE WHEN: Process flows. System architecture. Org charts. Project timelines (Gantt).
+
+  REQUIRED SLOTS:
+    - Slide title (h2): Describes what the diagram shows
+    - Diagram SVG: Pre-rendered inline SVG (Claude generates from Mermaid syntax)
+
+  OPTIONAL SLOTS:
+    - Fragment animation: SVG groups with class="fragment" for progressive reveal
+    - Source attribution: Diagram methodology or data source
+
+  MASTER LAYER: Visible (default)
+
+  LAYOUT NOTES:
+    - Mermaid diagrams are PRE-RENDERED to inline SVG at generation time by Claude
+    - No Mermaid CDN is loaded at presentation runtime (fully offline)
+    - Claude writes the Mermaid syntax description, then generates the SVG directly into HTML
+    - Use resolved hex color values from theme tokens (not CSS var() references) in SVG
+    - Fragment animation: wrap SVG groups in <g class="fragment" data-fragment-index="N">
+    - Centered in .comp-mermaid__diagram container, max-height 480px
+    - German labels use HTML entities for umlauts
+  FRAGMENTS: Optional — wrap SVG <g> elements with class="fragment" for step-by-step reveal
+
+  SUPPORTED DIAGRAM TYPES:
+    1. Flowchart (rendered example below)
+    2. Sequence diagram (see commented pattern below)
+    3. Gantt chart (see commented pattern below)
+    4. Org chart (see commented pattern below)
+-->
+
+<style>
+  /* COMPONENT: Mermaid Diagram — structural styles are in themes/_base.css */
+  /* No additional component-specific styles needed */
+</style>
+
+<!-- EXAMPLE: Flowchart — Genehmigungsprozess (Approval Process) -->
+<!--
+  Generated from Mermaid syntax:
+    graph TD
+      A[Antrag einreichen] ~~> B{Pr&uuml;fung}
+      B ~~>|Genehmigt| C[Umsetzung starten]
+      B ~~>|Abgelehnt| D[&Uuml;berarbeitung]
+      D ~~> A
+
+  Claude converts this to inline SVG at HTML generation time.
+  Colors use resolved token values from the active theme.
+-->
+<section data-component="mermaid-diagram" class="comp-mermaid">
+  <h2>Genehmigungsprozess</h2>
+  <div class="comp-mermaid__diagram">
+    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', sans-serif;">
+      <!-- Step 1: Antrag einreichen (always visible) -->
+      <g>
+        <rect x="200" y="20" width="200" height="50" rx="8" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="1.5"/>
+        <text x="300" y="50" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">Antrag einreichen</text>
+      </g>
+
+      <!-- Connector: Step 1 to Decision -->
+      <g class="fragment" data-fragment-index="1">
+        <line x1="300" y1="70" x2="300" y2="130" stroke="#3182CE" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Step 2: Pr&#252;fung (Decision diamond) -->
+        <polygon points="300,130 370,170 300,210 230,170" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="1.5"/>
+        <text x="300" y="175" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="500">Pr&#252;fung</text>
+
+        <!-- Branch labels -->
+        <text x="415" y="165" text-anchor="start" fill="#1E3A5F" font-size="11" font-weight="600">Genehmigt</text>
+        <text x="120" y="165" text-anchor="end" fill="#E53E3E" font-size="11" font-weight="600">Abgelehnt</text>
+      </g>
+
+      <!-- Step 3: Outcomes (fragment reveal) -->
+      <g class="fragment" data-fragment-index="2">
+        <!-- Genehmigt path -->
+        <line x1="370" y1="170" x2="450" y2="170" stroke="#3182CE" stroke-width="2"/>
+        <line x1="450" y1="170" x2="450" y2="280" stroke="#3182CE" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <rect x="350" y="280" width="200" height="50" rx="8" fill="#38A169" stroke="#38A169" stroke-width="1.5"/>
+        <text x="450" y="310" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">Umsetzung starten</text>
+
+        <!-- Abgelehnt path -->
+        <line x1="230" y1="170" x2="150" y2="170" stroke="#3182CE" stroke-width="2"/>
+        <line x1="150" y1="170" x2="150" y2="280" stroke="#3182CE" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <rect x="50" y="280" width="200" height="50" rx="8" fill="#1E3A5F" stroke="#E53E3E" stroke-width="2" stroke-dasharray="6,3"/>
+        <text x="150" y="310" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="500">&#220;berarbeitung</text>
+
+        <!-- Loop back arrow from Ueberarbeitung to Antrag -->
+        <line x1="50" y1="305" x2="20" y2="305" stroke="#3182CE" stroke-width="2"/>
+        <line x1="20" y1="305" x2="20" y2="45" stroke="#3182CE" stroke-width="2"/>
+        <line x1="20" y1="45" x2="200" y2="45" stroke="#3182CE" stroke-width="2" marker-end="url(#arrowhead)"/>
+      </g>
+
+      <!-- Arrowhead marker definition -->
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#3182CE"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+  <p class="comp-mermaid__source">Quelle: Prozesshandbuch &mdash; Genehmigungsworkflow</p>
+</section>
+
+<!--
+  PATTERN: Sequence Diagram
+  Mermaid syntax:
+    sequenceDiagram
+      participant K as Kunde
+      participant S as Server
+      participant D as Datenbank
+      K->>S: Anfrage senden
+      S->>D: Daten abfragen
+      D->>S: Ergebnis
+      S->>K: Antwort
+
+  Claude generates SVG with horizontal lifelines, vertical message arrows,
+  and participant boxes at top. Use fragment groups for message steps.
+-->
+
+<!--
+  PATTERN: Gantt Chart
+  Mermaid syntax:
+    gantt
+      title Projektplan Q1-Q2 2026
+      dateFormat YYYY-MM-DD
+      section Analyse
+        Anforderungserhebung :a1, 2026-01-06, 3w
+        Machbarkeitsstudie   :a2, after a1, 2w
+      section Umsetzung
+        Entwicklung          :u1, after a2, 6w
+        Testing              :u2, after u1, 3w
+
+  Claude generates SVG with horizontal bars, date axis, and section grouping.
+  Use fragment groups per section for progressive reveal.
+-->
+
+<!--
+  PATTERN: Org Chart
+  Mermaid syntax:
+    graph TD
+      CEO[Gesch&auml;ftsf&uuml;hrung] ~~> CTO[Technik]
+      CEO ~~> CFO[Finanzen]
+      CEO ~~> COO[Betrieb]
+      CTO ~~> DEV[Entwicklung]
+      CTO ~~> OPS[IT-Betrieb]
+
+  Claude generates SVG with hierarchical boxes and connecting lines.
+  Use primary color for leadership, secondary for departments.
+-->

@@ -35,6 +35,13 @@ Then open the specific template file to see the HTML structure, CSS, and slot de
 | Harvey Balls | `harvey-balls.html` | Capability ratings. Maturity assessments. Inline in tables and comparisons. 0-100% in 5 states. |
 | Team/People | `team.html` | Team credentials. Leadership page. Project team. Advisory board. 2-6 members. |
 
+## CDN-Dependent Components (Phase 9)
+
+| Component | File | Use When |
+|-----------|------|----------|
+| Code Block | `code-block.html` | Technical deep-dives. API documentation. Code walkthroughs. Syntax-highlighted with step-through line highlighting. |
+| Mermaid Diagram | `mermaid-diagram.html` | Process flows. System architecture. Org charts. Project timelines. Pre-rendered SVG with fragment animation. |
+
 ## Component Variants (Phase 8)
 
 | Base Component | Variant | Modifier Class | Use When |
