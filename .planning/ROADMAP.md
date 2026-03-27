@@ -180,11 +180,11 @@ Plans:
   3. Waterfall/bridge chart displays revenue walks and cost bridges with grey totals and colored changes using Chart.js floating bar technique
   4. Code blocks (`pre`/`code`) are styled across all themes with RevealHighlight plugin loaded and syntax highlighting active
   5. CDN scripts load conditionally -- presentations without charts or diagrams incur zero additional payload
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 09-01: TBD
-- [ ] 09-02: TBD
+- [ ] 09-01-PLAN.md -- Skeleton CDN infrastructure (Chart.js, RevealHighlight, color bridge, lazy init) + code block and Mermaid diagram templates
+- [ ] 09-02-PLAN.md -- Chart.js component template (5 chart types) and waterfall/bridge chart template
 
 ### Phase 10: Audience Presets & Accessibility CSS
 **Goal**: Presentations adapt to their audience via CSS modifier classes, print cleanly, and meet baseline accessibility standards in HTML structure
@@ -260,7 +260,7 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 6. AI Integration & Tooling | v1.0 | 4/4 | Complete | 2026-03-25 |
 | 7. Foundation Fixes & Token Expansion | v2.0 | 0/2 | Planned | - |
 | 8. Pure CSS Components | v2.0 | 0/2 | Not started | - |
-| 9. CDN-Dependent Components | v2.0 | 0/? | Not started | - |
+| 9. CDN-Dependent Components | v2.0 | 0/2 | Not started | - |
 | 10. Audience Presets & Accessibility CSS | v2.0 | 0/? | Not started | - |
 | 11. Consulting Intelligence & AI Skill Layer | v2.0 | 0/? | Not started | - |
 | 12. Export Tools | v2.0 | 0/? | Not started | - |
