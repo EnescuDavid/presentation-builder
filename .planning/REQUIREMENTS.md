@@ -11,7 +11,7 @@
 - [x] **FIX-07**: Theme CSS deduplication — extract shared structural rules to base, themes contain only token overrides
 - [ ] **FIX-08**: Print/PDF `@media print` styles in theme files (force backgrounds, hide nav, clean page breaks)
 - [ ] **FIX-09**: Dark variant connected to real background color (couple `data-background-color="dark"` to token-based background)
-- [ ] **FIX-10**: Master footer date auto-population from `presentationConfig.date` (default to current date if empty)
+- [x] **FIX-10**: Master footer date auto-population from `presentationConfig.date` (default to current date if empty)
 
 ### Data Visualization
 
@@ -37,7 +37,7 @@
 - [ ] **A11Y-02**: ARIA landmarks in all 14+ component templates — `role`, `aria-label`, correct heading hierarchy.
 - [ ] **A11Y-03**: Alt text slots for visual components — required `alt`/`aria-label` on images, charts, diagrams, framework/matrix.
 - [ ] **A11Y-04**: Accessible linear HTML export — screen-reader-friendly version without reveal.js framework. Charts replaced with text descriptions.
-- [ ] **A11Y-05**: Semantic state color tokens — add `--color-warning`, `--color-info`, `--color-overlay`, `--color-on-primary`. Eliminate all hardcoded color values.
+- [x] **A11Y-05**: Semantic state color tokens — add `--color-warning`, `--color-info`, `--color-overlay`, `--color-on-primary`. Eliminate all hardcoded color values.
 - [ ] **A11Y-06**: Keyboard navigation verification — all interactive elements Tab-reachable, focus indicators visible, no keyboard traps.
 - [ ] **A11Y-07**: European Accessibility Act compliance checklist — document mapping framework features to EAA requirements, per-presentation checklist.
 
@@ -75,7 +75,7 @@
 | FIX-07 | Phase 7 | Complete |
 | FIX-08 | Phase 10 | Pending |
 | FIX-09 | Phase 10 | Pending |
-| FIX-10 | Phase 7 | Pending |
+| FIX-10 | Phase 7 | Complete |
 | VIZ-01 | Phase 9 | Pending |
 | VIZ-02 | Phase 9 | Pending |
 | VIZ-03 | Phase 8 | Pending |
@@ -92,7 +92,7 @@
 | A11Y-02 | Phase 10 | Pending |
 | A11Y-03 | Phase 10 | Pending |
 | A11Y-04 | Phase 12 | Pending |
-| A11Y-05 | Phase 7 | Pending |
+| A11Y-05 | Phase 7 | Complete |
 | A11Y-06 | Phase 10 | Pending |
 | A11Y-07 | Phase 13 | Pending |
 | PLAT-01 | Phase 11 | Pending |

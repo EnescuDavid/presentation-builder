@@ -152,7 +152,7 @@ Plans:
 
 Plans:
 - [x] 07-01-PLAN.md -- Theme CSS deduplication (extract shared structural rules to _base.css) and nested bullet list styles
-- [ ] 07-02-PLAN.md -- Semantic state color tokens, hardcoded color replacement, and German date auto-population
+- [x] 07-02-PLAN.md -- Semantic state color tokens, hardcoded color replacement, and German date auto-population
 
 ### Phase 8: Pure CSS Components
 **Goal**: Six new component templates extend the library to 20+ layouts using only CSS -- no external library dependencies
