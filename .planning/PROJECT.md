@@ -18,6 +18,17 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - **Tooling**: DeckTape PDF export, gallery/thumbnail view
 - **Codebase**: 2,508 lines core framework + 1,575 lines AI skill layer, 46 framework files
 
+## Current Milestone: v2.0 Data Viz, Consulting Intelligence & Platform
+
+**Goal:** Add data visualization components, consulting methodology intelligence, accessibility compliance, and platform expansion.
+
+**Target features:**
+- Data visualization: Chart.js, Mermaid, data tables, waterfall charts, Harvey balls, sparklines
+- Consulting intelligence: SCQA scaffolding, Pyramid Principle validation, "read the titles" export, audience preset CSS
+- Accessibility: WCAG 2.1 AA validation, ARIA landmarks, accessible HTML export, EAA compliance
+- Platform expansion: copilot-instructions.md, PPTX export, team/people component, code blocks
+- Polish: nested bullets, print CSS, theme dedup, dark variant fix, footer date auto-population
+
 ## Requirements
 
 ### Validated (v1.0)
