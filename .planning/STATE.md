@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Data Viz, Consulting Intelligence & Platform
-status: verifying
-stopped_at: Completed 08-02-PLAN.md
-last_updated: "2026-03-27T13:11:04.957Z"
+status: executing
+stopped_at: Completed 09-01-PLAN.md
+last_updated: "2026-03-27T20:12:51.163Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 7
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 6
+  completed_plans: 5
   percent: 0
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 08 — pure-css-components
+**Current focus:** Phase 09 — cdn-dependent-components
 
 ## Current Position
 
-Phase: 9
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 09 (cdn-dependent-components) — EXECUTING
+Plan: 2 of 2
+Status: Ready to execute
 Last activity: 2026-03-27
 
 Progress: [░░░░░░░░░░] 0%
@@ -60,6 +60,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 07 P02 | 3min | 3 tasks | 9 files |
 | Phase 08 P01 | 4min | 2 tasks | 3 files |
 | Phase 08 P02 | 3min | 3 tasks | 4 files |
+| Phase 09 P01 | 3min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,9 @@ Recent decisions affecting current work:
 - [Phase 07]: Added 6 semantic color tokens (warning, info, overlay, on-primary, dark-text, dark-text-muted) to design token system
 - [Phase 08]: Used conic-gradient for Harvey ball partial fills -- pure CSS, no SVG needed
 - [Phase 08]: Used HTML entities for umlauts in new templates for consistent rendering
+- [Phase 09]: Conditional RevealHighlight loading via typeof check for optional code highlighting
+- [Phase 09]: Chart animate-once via chartInstances tracking prevents re-rendering on revisit
+- [Phase 09]: Mermaid pre-rendered SVG eliminates 2MB runtime dependency
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T13:07:01.893Z
-Stopped at: Completed 08-02-PLAN.md
+Last session: 2026-03-27T20:12:51.161Z
+Stopped at: Completed 09-01-PLAN.md
 Resume file: None

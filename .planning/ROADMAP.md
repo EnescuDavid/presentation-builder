@@ -183,7 +183,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md -- Skeleton CDN infrastructure (Chart.js, RevealHighlight, color bridge, lazy init) + code block and Mermaid diagram templates
+- [x] 09-01-PLAN.md -- Skeleton CDN infrastructure (Chart.js, RevealHighlight, color bridge, lazy init) + code block and Mermaid diagram templates
 - [ ] 09-02-PLAN.md -- Chart.js component template (5 chart types) and waterfall/bridge chart template
 
 ### Phase 10: Audience Presets & Accessibility CSS

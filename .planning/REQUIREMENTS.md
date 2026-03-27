@@ -16,7 +16,7 @@
 ### Data Visualization
 
 - [ ] **VIZ-01**: Chart.js 4.x integration — bar, line, pie, doughnut, radar charts with consulting-grade defaults (token colors, no gridlines, clean axes, annotation support). Conditional CDN loading. Lazy initialization on slide change to handle hidden canvas.
-- [ ] **VIZ-02**: Mermaid 11.x diagram integration — flowcharts, sequence diagrams, Gantt charts, org charts. Conditional CDN loading. Theme-aware colors via token-to-Mermaid variable mapping. Fragment animation for progressive diagram reveal.
+- [x] **VIZ-02**: Mermaid 11.x diagram integration — flowcharts, sequence diagrams, Gantt charts, org charts. Conditional CDN loading. Theme-aware colors via token-to-Mermaid variable mapping. Fragment animation for progressive diagram reveal.
 - [x] **VIZ-03**: Data table component — styled table with header row, alternating colors, right-aligned numbers, 2-6 columns, 3-12 rows. Pure CSS, token-aware.
 - [ ] **VIZ-04**: Waterfall/bridge chart component — revenue walks, cost bridges using Chart.js floating bar technique (not plugin). Consulting conventions: grey totals, colored changes.
 - [x] **VIZ-05**: Harvey ball component — pure CSS capability-rating dots (0/25/50/75/100%). Inline rendering for tables and comparisons.
@@ -46,7 +46,7 @@
 - [ ] **PLAT-01**: copilot-instructions.md — GitHub Copilot CLI equivalent of CLAUDE.md framework teaching content.
 - [ ] **PLAT-02**: PPTX export via PptxGenJS — semantic mapping for core components with image fallback for complex layouts. Node.js script in tools/.
 - [x] **PLAT-03**: Team/People component (COMP-20) — photo grid with name, role, contact info. 2-6 team members.
-- [ ] **PLAT-04**: Code block styling — `pre`/`code` elements styled in all themes + RevealHighlight plugin loaded.
+- [x] **PLAT-04**: Code block styling — `pre`/`code` elements styled in all themes + RevealHighlight plugin loaded.
 - [x] **PLAT-05**: Timeline vertical variant — `comp-timeline--vertical` modifier class for 5-6 step layouts.
 - [x] **PLAT-06**: Card grid 5-6 item variant — `comp-card-grid--compact` modifier for larger item counts.
 - [ ] **PLAT-08**: Gallery UX for component selection — enhanced gallery showing all components with type badges and labels.
@@ -77,7 +77,7 @@
 | FIX-09 | Phase 10 | Pending |
 | FIX-10 | Phase 7 | Complete |
 | VIZ-01 | Phase 9 | Pending |
-| VIZ-02 | Phase 9 | Pending |
+| VIZ-02 | Phase 9 | Complete |
 | VIZ-03 | Phase 8 | Complete |
 | VIZ-04 | Phase 9 | Pending |
 | VIZ-05 | Phase 8 | Complete |
@@ -98,7 +98,7 @@
 | PLAT-01 | Phase 11 | Pending |
 | PLAT-02 | Phase 12 | Pending |
 | PLAT-03 | Phase 8 | Complete |
-| PLAT-04 | Phase 9 | Pending |
+| PLAT-04 | Phase 9 | Complete |
 | PLAT-05 | Phase 8 | Complete |
 | PLAT-06 | Phase 8 | Complete |
 | PLAT-08 | Phase 11 | Pending |
