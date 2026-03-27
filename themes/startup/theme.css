@@ -53,6 +53,14 @@
   --theme-gradient-start: var(--color-accent);
   --theme-gradient-end: var(--color-primary);
 
+  /* --- State & utility color overrides --- */
+  --color-warning:         #FFD166;
+  --color-info:            #118AB2;
+  --color-overlay:         rgba(0, 0, 0, 0.65);
+  --color-on-primary:      #FFFFFF;
+  --color-dark-text:       rgba(255, 255, 255, 0.9);
+  --color-dark-text-muted: rgba(255, 255, 255, 0.6);
+
   /* --- Master layer --- */
   --master-logo-height: 36px;
   --master-footer-color: var(--color-text-muted);

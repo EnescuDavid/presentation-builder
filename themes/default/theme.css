@@ -33,4 +33,12 @@
   /* Gradient direction for accent bar */
   --theme-gradient-start: var(--color-primary);
   --theme-gradient-end: var(--color-accent);
+
+  /* State & utility color overrides */
+  --color-warning:         #D69E2E;
+  --color-info:            #3182CE;
+  --color-overlay:         rgba(0, 0, 0, 0.7);
+  --color-on-primary:      #FFFFFF;
+  --color-dark-text:       rgba(255, 255, 255, 0.9);
+  --color-dark-text-muted: rgba(255, 255, 255, 0.6);
 }

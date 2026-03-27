@@ -8,7 +8,7 @@
    ========================================================================== */
 
 :root {
-  /* --- Colors (16 tokens) --- */
+  /* --- Colors (22 tokens) --- */
   --color-primary:      #1E3A5F;
   --color-secondary:    #2C5282;
   --color-accent:       #3182CE;
@@ -26,6 +26,14 @@
   --color-chart-3:      #D69E2E;
   --color-chart-4:      #E53E3E;
   --color-chart-5:      #805AD5;
+
+  /* --- State & Utility Colors --- */
+  --color-warning:         #D69E2E;   /* Amber -- attention, caution states */
+  --color-info:            #3182CE;   /* Blue -- informational states */
+  --color-overlay:         rgba(0, 0, 0, 0.7);   /* Dark overlay for image backgrounds */
+  --color-on-primary:      #FFFFFF;   /* Text color on primary/dark backgrounds */
+  --color-dark-text:       rgba(255, 255, 255, 0.9);   /* Body text on dark backgrounds */
+  --color-dark-text-muted: rgba(255, 255, 255, 0.6);   /* Muted text on dark backgrounds */
 
   /* --- Typography (5-level scale) --- */
   --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;
