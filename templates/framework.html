@@ -27,7 +27,7 @@
   FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
 
   EXAMPLE:
-    <section data-component="framework">
+    <section data-component="framework" role="group" aria-label="Framework-Matrix">
       <div class="comp-matrix">
         <h2 class="comp-matrix__title">Matrix</h2>
         <div class="comp-matrix__grid">
@@ -126,10 +126,10 @@
   }
 </style>
 
-<section data-component="framework">
+<section data-component="framework" role="group" aria-label="Framework-Matrix">
   <div class="comp-matrix">
     <h2 class="comp-matrix__title">Priorisierungsmatrix</h2>
-    <div class="comp-matrix__grid">
+    <div class="comp-matrix__grid" aria-label="2x2-Matrix">
       <div class="comp-matrix__y-label">Strategische Bedeutung</div>
       <div class="comp-matrix__quadrant">
         <h3>Beobachten</h3>

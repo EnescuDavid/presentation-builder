@@ -36,7 +36,7 @@
        Horizontal fill via inline style="width: N%"
 
   EXAMPLE:
-    <section data-component="metrics">
+    <section data-component="metrics" role="group" aria-label="Kennzahlen">
       <div class="comp-metrics">
         <h2 class="comp-metrics__title">Headline</h2>
         <div class="comp-metrics__grid">
@@ -177,7 +177,7 @@
   }
 </style>
 
-<section data-component="metrics">
+<section data-component="metrics" role="group" aria-label="Kennzahlen">
   <div class="comp-metrics">
     <h2 class="comp-metrics__title">Geschäftsentwicklung Q3</h2>
     <div class="comp-metrics__grid">
@@ -185,7 +185,7 @@
         <span class="comp-metrics__number">+23%</span>
         <span class="comp-metrics__label">Umsatzwachstum</span>
         <div class="comp-metrics__trend comp-metrics__trend--up">
-          <svg class="comp-metrics__trend-arrow" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="comp-metrics__trend-arrow" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M6 2L10 7H2L6 2Z" fill="currentColor"/>
           </svg>
           +5pp vs. Vorjahr
@@ -194,7 +194,7 @@
       <div class="comp-metrics__card">
         <span class="comp-metrics__number">4.2M</span>
         <span class="comp-metrics__label">Neue Nutzer</span>
-        <div class="comp-metrics__bars">
+        <div class="comp-metrics__bars" aria-hidden="true">
           <div class="comp-metrics__bar" style="height: 40%"></div>
           <div class="comp-metrics__bar" style="height: 55%"></div>
           <div class="comp-metrics__bar" style="height: 45%"></div>
@@ -206,7 +206,7 @@
       <div class="comp-metrics__card">
         <span class="comp-metrics__number">98.7%</span>
         <span class="comp-metrics__label">Verfügbarkeit</span>
-        <div class="comp-metrics__progress">
+        <div class="comp-metrics__progress" aria-hidden="true">
           <div class="comp-metrics__progress-fill" style="width: 99%"></div>
         </div>
       </div>
