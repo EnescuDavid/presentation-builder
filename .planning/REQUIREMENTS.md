@@ -1,103 +1,60 @@
-# Requirements: Presentation Builder
+# Requirements: Presentation Builder v2.0
 
-**Defined:** 2026-03-22
-**Core Value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant — regardless of which AI tool they use.
+**Defined:** 2026-03-27
+**Core Value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant.
 
-## v1 Requirements
+## v2.0 Requirements
 
-Requirements for initial release. Each maps to roadmap phases.
+### Polish & Fixes (remaining from v1.0 audit)
 
-### Core Framework
+- [ ] **FIX-06**: Nested bullet list styles (`ul ul`, `ol ul`) with visual indentation differentiation across all themes
+- [ ] **FIX-07**: Theme CSS deduplication — extract shared structural rules to base, themes contain only token overrides
+- [ ] **FIX-08**: Print/PDF `@media print` styles in theme files (force backgrounds, hide nav, clean page breaks)
+- [ ] **FIX-09**: Dark variant connected to real background color (couple `data-background-color="dark"` to token-based background)
+- [ ] **FIX-10**: Master footer date auto-population from `presentationConfig.date` (default to current date if empty)
 
-- [x] **CORE-01**: Framework provides a CSS custom property system for design tokens (colors, fonts, spacing, shadows, border-radius)
-- [x] **CORE-02**: Framework includes a base reveal.js configuration with sensible defaults (16:9, keyboard nav, progress bar, speaker notes enabled)
-- [x] **CORE-03**: Framework provides a reusable animation library with entrance classes (fadeUp, blurIn, slideL, slideR, scalePop, lineGrow) applicable via CSS class names
-- [x] **CORE-04**: Build pipeline assembles slides into a single self-contained HTML file
-- [x] **CORE-05**: Framework provides a master/persistent layer (logo, footer, slide numbers) that appears across all slides
-- [x] **CORE-06**: Presentations render correctly in Chrome, Firefox, and Safari without build tools or Node.js
+### Data Visualization
 
-### Component Library
+- [ ] **VIZ-01**: Chart.js 4.x integration — bar, line, pie, doughnut, radar charts with consulting-grade defaults (token colors, no gridlines, clean axes, annotation support). Conditional CDN loading. Lazy initialization on slide change to handle hidden canvas.
+- [ ] **VIZ-02**: Mermaid 11.x diagram integration — flowcharts, sequence diagrams, Gantt charts, org charts. Conditional CDN loading. Theme-aware colors via token-to-Mermaid variable mapping. Fragment animation for progressive diagram reveal.
+- [ ] **VIZ-03**: Data table component — styled table with header row, alternating colors, right-aligned numbers, 2-6 columns, 3-12 rows. Pure CSS, token-aware.
+- [ ] **VIZ-04**: Waterfall/bridge chart component — revenue walks, cost bridges using Chart.js floating bar technique (not plugin). Consulting conventions: grey totals, colored changes.
+- [ ] **VIZ-05**: Harvey ball component — pure CSS capability-rating dots (0/25/50/75/100%). Inline rendering for tables and comparisons.
+- [ ] **VIZ-06**: Sparkline/KPI micro-charts — trend lines, mini bars, progress indicators inside metrics cards. Pure CSS/SVG.
 
-- [x] **COMP-01**: Title/Cover slide component with hero text, subtitle, and optional background
-- [x] **COMP-02**: Section Break slide component with large heading and optional counter
-- [x] **COMP-03**: Text-Heavy slide component (single column with headline, body, and bullet points)
-- [x] **COMP-04**: Two-Column slide component with independently filled left/right regions
-- [x] **COMP-05**: Metrics/KPI Hero slide component displaying 1-3 large numbers with labels
-- [x] **COMP-06**: Image Full-Bleed slide component with optional text overlay
-- [x] **COMP-07**: Agenda slide component with numbered/bulleted list and active-item highlight
-- [x] **COMP-08**: Summary/Takeaway slide component with key points and call-to-action area
-- [x] **COMP-09**: Contact/CTA slide component with name, role, contact details, and logo
-- [x] **COMP-10**: Comparison slide component (side-by-side cards with labels, from/to or vs-style)
-- [x] **COMP-11**: Timeline/Process slide component showing 3-6 sequential steps with connectors
-- [x] **COMP-12**: Quote/Testimonial slide component with large quote text, attribution, and optional photo
-- [x] **COMP-13**: Card Grid slide component displaying 2-4 cards with icon/title/description
-- [x] **COMP-14**: Framework/Matrix slide component (2x2 grid with labeled quadrants)
-- [x] **COMP-15**: Each component has a semantic description file documenting when to use it, content requirements, and layout behavior
+### Consulting Intelligence
 
-### Theming & Branding
+- [ ] **CONSULT-01**: SCQA narrative scaffolding — strategist subagent structures presentations using Situation-Complication-Question-Answer framework. deck-plan.md includes SCQA markers.
+- [ ] **CONSULT-02**: Pyramid Principle validation — strategist checks slide sequence for top-down logic, flags titles without verbs, validates MECE groupings. Output: validation warnings in deck-plan.md.
+- [ ] **CONSULT-03**: "Read the titles" summary export — script extracts action titles from all slides into a one-page coherence check document.
+- [ ] **CONSULT-04**: Action title enforcement — component catalog, strategist prompts, and validation all require complete-sentence action titles (not topic labels).
+- [ ] **CONSULT-05**: Audience preset CSS implementation — modifier classes or `presentationConfig.audience` that adjusts font sizes, content density, animation density per audience type.
+- [ ] **CONSULT-06**: Slide count guidance per audience — strategist applies recommended ranges (C-Suite: 8-12, Technical: 15-25, etc.) and warns if deck-plan exceeds.
 
-- [x] **THEME-01**: Framework ships with one polished default theme (clean, consulting-grade)
-- [x] **THEME-02**: Theme CSS file overrides design tokens to apply corporate colors, fonts, and visual style
-- [x] **THEME-03**: Theme includes persistent logo placement configurable via CSS variable or HTML slot
-- [x] **THEME-04**: Theme includes footer bar with company name, optional confidentiality text, and slide number
-- [x] **THEME-05**: PPTX theme extraction tool parses a .pptx file and generates a CSS theme file (extracts 12 color slots, 2 font families, logo images)
-- [x] **THEME-06**: Theme supports dark/light background variants selectable per slide
+### Accessibility & Compliance
 
-### German-Ready Layouts
+- [ ] **A11Y-01**: WCAG contrast validation tool — script checks theme color combinations against 4.5:1 (normal text) and 3:1 (large text) ratios. Pass/fail report per color pair.
+- [ ] **A11Y-02**: ARIA landmarks in all 14+ component templates — `role`, `aria-label`, correct heading hierarchy.
+- [ ] **A11Y-03**: Alt text slots for visual components — required `alt`/`aria-label` on images, charts, diagrams, framework/matrix.
+- [ ] **A11Y-04**: Accessible linear HTML export — screen-reader-friendly version without reveal.js framework. Charts replaced with text descriptions.
+- [ ] **A11Y-05**: Semantic state color tokens — add `--color-warning`, `--color-info`, `--color-overlay`, `--color-on-primary`. Eliminate all hardcoded color values.
+- [ ] **A11Y-06**: Keyboard navigation verification — all interactive elements Tab-reachable, focus indicators visible, no keyboard traps.
+- [ ] **A11Y-07**: European Accessibility Act compliance checklist — document mapping framework features to EAA requirements, per-presentation checklist.
 
-- [x] **LANG-01**: All component layouts handle German text lengths (130-300% expansion) without overflow or visual breakage
-- [x] **LANG-02**: CSS includes German typography defaults (correct quotation marks, proper dash conventions, decimal comma formatting guidance)
-- [x] **LANG-03**: Example/demo presentation uses German content
+### Platform Expansion
 
-### Speaker Notes
+- [ ] **PLAT-01**: copilot-instructions.md — GitHub Copilot CLI equivalent of CLAUDE.md framework teaching content.
+- [ ] **PLAT-02**: PPTX export via PptxGenJS — semantic mapping for core components with image fallback for complex layouts. Node.js script in tools/.
+- [ ] **PLAT-03**: Team/People component (COMP-20) — photo grid with name, role, contact info. 2-6 team members.
+- [ ] **PLAT-04**: Code block styling — `pre`/`code` elements styled in all themes + RevealHighlight plugin loaded.
+- [ ] **PLAT-05**: Timeline vertical variant — `comp-timeline--vertical` modifier class for 5-6 step layouts.
+- [ ] **PLAT-06**: Card grid 5-6 item variant — `comp-card-grid--compact` modifier for larger item counts.
+- [ ] **PLAT-08**: Gallery UX for component selection — enhanced gallery showing all components with type badges and labels.
 
-- [x] **NOTE-01**: Speaker notes injection mechanism is documented and works via generation-time population of `<aside class="notes">` -- templates stay clean (per D-07), notes are injected when generating presentations
-- [x] **NOTE-02**: Documentation includes AI prompt patterns for generating speaker notes that match slide tone and audience
-- [x] **NOTE-03**: Documentation includes timing estimation guidance (words-per-minute to slide duration)
+## Future Requirements (deferred from v2.0)
 
-### AI Integration
-
-- [x] **AI-01**: Repository includes a CLAUDE.md that teaches Claude Code how to use the framework (component catalog, theme system, build process)
-- [x] **AI-02**: ~~Repository includes a copilot-instructions.md equivalent for GitHub Copilot CLI~~ DEFERRED to post-v1 (per D-23)
-- [x] **AI-03**: Component catalog is structured as an AI-readable reference (component name, description, when to use, content slots, variants)
-- [x] **AI-04**: Documentation includes audience presets (C-Suite, technical, sales, workshop, internal) with design rules an AI can apply
-
-### Export & Tooling
-
-- [x] **TOOL-01**: PDF export works via DeckTape CLI command
-- [x] **TOOL-02**: Browser presentation works with reveal.js keyboard navigation, speaker view, and fullscreen
-- [x] **TOOL-03**: Preview/gallery mode shows all slides as thumbnails on a single page
-
-## v2 Requirements
-
-### Extended Components
-
-- **COMP-20**: Team/People slide component with photo grid and role labels
-- **COMP-21**: Chart slide component with Chart.js integration (bar, line, pie)
-- **COMP-22**: Mermaid diagram slide component (flowcharts, sequence diagrams)
-- **COMP-23**: Data Table slide component with styled rows/columns
-- **COMP-24**: Icon Grid slide component with labeled icons in grid layout
-
-### Advanced Theming
-
-- **THEME-10**: Audience preset system that auto-adjusts font sizes, content density, and visual weight per audience type
-- **THEME-11**: Multiple bundled themes (consulting, startup, academic, creative)
-
-### Full i18n
-
-- **LANG-10**: Content files per language with locale switching
-- **LANG-11**: Sie/Du toggle per audience context
-- **LANG-12**: Swiss German (de-CH) variant support (no eszett, different number formatting)
-
-### Advanced Export
-
-- **TOOL-10**: PPTX export via PptxGenJS (editable PowerPoint output)
-- **TOOL-11**: PNG export of individual slides
-
-### AI Design Agent
-
-- **AI-10**: AI skill/agent that reads content and automatically selects optimal components per slide
-- **AI-11**: Structure mode to polish mode workflow with AI-guided refinement
+- **VIZ-07**: Data-bound slides (CSV/JSON data source) — v3 scope
+- **PLAT-07**: Presentation analytics (viewing tracking) — requires server component, conflicts with offline-first
 
 ## Out of Scope
 
@@ -105,64 +62,51 @@ Requirements for initial release. Each maps to roadmap phases.
 |---------|--------|
 | Real-time collaboration | Adds massive complexity, not needed for AI-assisted solo workflow |
 | SaaS/hosted version | This is a local framework, not a web app |
-| Custom chart rendering engine | Use Chart.js/Mermaid plugins, don't build our own |
 | WYSIWYG editor | The AI prompt is the editor |
-| Slide-by-slide animation timeline editor | Too complex, use CSS classes instead |
 | React/Vue component wrappers | Keep it plain HTML/CSS for maximum portability |
 | npm/npx distribution | Clone-and-use is simpler for the target audience |
+| Custom chart rendering engine | Use Chart.js for charts, Mermaid for diagrams |
 
 ## Traceability
 
-Which phases cover which requirements. Updated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CORE-01 | Phase 1: Foundation | Complete |
-| CORE-02 | Phase 1: Foundation | Complete |
-| CORE-03 | Phase 1: Foundation | Complete |
-| CORE-04 | Phase 1: Foundation | Complete |
-| CORE-05 | Phase 1: Foundation | Complete |
-| CORE-06 | Phase 1: Foundation | Complete |
-| COMP-01 | Phase 2: Essential Components | Complete |
-| COMP-02 | Phase 2: Essential Components | Complete |
-| COMP-03 | Phase 2: Essential Components | Complete |
-| COMP-04 | Phase 2: Essential Components | Complete |
-| COMP-05 | Phase 2: Essential Components | Complete |
-| COMP-06 | Phase 2: Essential Components | Complete |
-| COMP-07 | Phase 2: Essential Components | Complete |
-| COMP-08 | Phase 2: Essential Components | Complete |
-| COMP-09 | Phase 3: Extended Components | Complete |
-| COMP-10 | Phase 3: Extended Components | Complete |
-| COMP-11 | Phase 3: Extended Components | Complete |
-| COMP-12 | Phase 3: Extended Components | Complete |
-| COMP-13 | Phase 3: Extended Components | Complete |
-| COMP-14 | Phase 3: Extended Components | Complete |
-| THEME-01 | Phase 4: Theming & Branding | Complete |
-| THEME-02 | Phase 4: Theming & Branding | Complete |
-| THEME-03 | Phase 4: Theming & Branding | Complete |
-| THEME-04 | Phase 4: Theming & Branding | Complete |
-| THEME-05 | Phase 4: Theming & Branding | Complete |
-| THEME-06 | Phase 4: Theming & Branding | Complete |
-| LANG-01 | Phase 5: Localization & Speaker Notes | Complete |
-| LANG-02 | Phase 5: Localization & Speaker Notes | Complete |
-| LANG-03 | Phase 5: Localization & Speaker Notes | Complete |
-| NOTE-01 | Phase 5: Localization & Speaker Notes | Complete |
-| NOTE-02 | Phase 5: Localization & Speaker Notes | Complete |
-| NOTE-03 | Phase 5: Localization & Speaker Notes | Complete |
-| AI-01 | Phase 6: AI Integration & Tooling | Complete |
-| AI-02 | Phase 6: AI Integration & Tooling | Deferred |
-| AI-03 | Phase 6: AI Integration & Tooling | Complete |
-| AI-04 | Phase 6: AI Integration & Tooling | Complete |
-| COMP-15 | Phase 6: AI Integration & Tooling | Complete |
-| TOOL-01 | Phase 6: AI Integration & Tooling | Complete |
-| TOOL-02 | Phase 6: AI Integration & Tooling | Complete |
-| TOOL-03 | Phase 6: AI Integration & Tooling | Complete |
+| FIX-06 | TBD | Pending |
+| FIX-07 | TBD | Pending |
+| FIX-08 | TBD | Pending |
+| FIX-09 | TBD | Pending |
+| FIX-10 | TBD | Pending |
+| VIZ-01 | TBD | Pending |
+| VIZ-02 | TBD | Pending |
+| VIZ-03 | TBD | Pending |
+| VIZ-04 | TBD | Pending |
+| VIZ-05 | TBD | Pending |
+| VIZ-06 | TBD | Pending |
+| CONSULT-01 | TBD | Pending |
+| CONSULT-02 | TBD | Pending |
+| CONSULT-03 | TBD | Pending |
+| CONSULT-04 | TBD | Pending |
+| CONSULT-05 | TBD | Pending |
+| CONSULT-06 | TBD | Pending |
+| A11Y-01 | TBD | Pending |
+| A11Y-02 | TBD | Pending |
+| A11Y-03 | TBD | Pending |
+| A11Y-04 | TBD | Pending |
+| A11Y-05 | TBD | Pending |
+| A11Y-06 | TBD | Pending |
+| A11Y-07 | TBD | Pending |
+| PLAT-01 | TBD | Pending |
+| PLAT-02 | TBD | Pending |
+| PLAT-03 | TBD | Pending |
+| PLAT-04 | TBD | Pending |
+| PLAT-05 | TBD | Pending |
+| PLAT-06 | TBD | Pending |
+| PLAT-08 | TBD | Pending |
 
 **Coverage:**
-- v1 requirements: 40 total
-- Mapped to phases: 40
-- Unmapped: 0
+- v2.0 requirements: 31 total
+- Mapped to phases: 0 (pending roadmap)
+- Unmapped: 31
 
 ---
-*Requirements defined: 2026-03-22*
-*Last updated: 2026-03-22 after roadmap creation*
+*Requirements defined: 2026-03-27*
