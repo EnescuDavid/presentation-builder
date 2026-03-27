@@ -1,0 +1,139 @@
+/*
+ * SHARED BASE: Structural CSS for all themes
+ *
+ * This file contains layout and structural rules shared across all themes.
+ * Theme files (themes/*/theme.css) override only :root token values.
+ *
+ * Load order: tokens/base.css -> themes/_base.css -> themes/{name}/theme.css
+ * All rules use var() references that resolve per-theme via :root overrides.
+ */
+
+/* ==========================================================================
+   Theme-level slide styles
+   ========================================================================== */
+
+.reveal .slides section {
+  font-family: var(--font-family-body);
+  color: var(--color-text);
+  text-align: left;
+  padding: var(--spacing-2xl);
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.reveal .slides section h1 {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-tight);
+}
+
+.reveal .slides section h2 {
+  font-size: var(--font-size-heading);
+  line-height: var(--line-height-snug);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: var(--theme-heading-border);
+  display: inline-block;
+  margin-bottom: var(--spacing-lg);
+}
+
+.reveal .slides section h3 {
+  font-size: var(--font-size-subheading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.reveal .slides section p {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-md);
+}
+
+.reveal .slides section ul,
+.reveal .slides section ol {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  margin-left: var(--spacing-lg);
+}
+
+.reveal .slides section li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==========================================================================
+   Accent bar on content slides
+   ========================================================================== */
+
+.reveal .slides section:not([data-master="hide"])::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: var(--theme-accent-bar-height);
+  background: linear-gradient(90deg, var(--theme-gradient-start), var(--theme-gradient-end));
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Professional bullet styling
+   ========================================================================== */
+
+.reveal .slides section ul {
+  list-style: none;
+  padding-left: var(--spacing-lg);
+}
+
+.reveal .slides section ul li::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  margin-right: var(--spacing-sm);
+  margin-left: calc(var(--spacing-lg) * -1);
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Card elevation refinement
+   ========================================================================== */
+
+.reveal .slides section [class*="comp-"] .card,
+.reveal .slides section [class*="comp-"] [class*="__card"] {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   Dark background variant
+   ========================================================================== */
+
+.reveal .slides section[data-background-color="dark"] {
+  color: var(--color-background);
+}
+
+.reveal .slides section[data-background-color="dark"] h1,
+.reveal .slides section[data-background-color="dark"] h2 {
+  color: var(--color-background);
+}
+
+.reveal .slides section[data-background-color="dark"] h3 {
+  color: var(--color-surface);
+}
+
+.reveal .slides section[data-background-color="dark"] p,
+.reveal .slides section[data-background-color="dark"] li {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.reveal .slides section[data-background-color="dark"] .text-muted,
+.reveal .slides section[data-background-color="dark"] [class*="__label"],
+.reveal .slides section[data-background-color="dark"] [class*="__subtitle"] {
+  color: rgba(255, 255, 255, 0.6);
+}

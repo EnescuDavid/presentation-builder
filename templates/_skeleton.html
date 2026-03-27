@@ -74,8 +74,11 @@
          - themes/startup/theme.css    (Bold, vibrant — orange/blue, Space Grotesk)
          - themes/enterprise/theme.css (Conservative — navy/gray, traditional)
 
-       To use a theme: copy its CSS content into the style block below,
-       after the animation rules and before the master layer CSS.
+       Load order (within the <style> block):
+         1. tokens/base.css content (design tokens)
+         2. tokens/animations.css content (animation keyframes)
+         3. themes/_base.css content (shared structural rules -- ALWAYS include)
+         4. themes/{name}/theme.css content (token overrides for chosen theme)
 
        To switch themes: replace the theme CSS block with another theme's content.
        All 14 components adopt the new branding automatically via CSS custom properties.
@@ -203,6 +206,9 @@
     .fragment[data-delay="3"].visible { animation-delay: 0.3s; }
     .fragment[data-delay="4"].visible { animation-delay: 0.4s; }
     .fragment[data-delay="5"].visible { animation-delay: 0.5s; }
+
+    /* <!-- BASE THEME CSS --> */
+    /* Paste themes/_base.css content here (shared structural rules for all themes) */
 
     /* <!-- THEME CSS --> */
     /* Paste theme CSS here (from themes/default/theme.css or another theme) */

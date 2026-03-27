@@ -148,11 +148,11 @@ Plans:
   2. Theme CSS files contain only token overrides -- shared structural rules live in a single base file with no duplication
   3. Footer date auto-populates from `presentationConfig.date` and defaults to the current date when the field is empty
   4. Design tokens include `--color-warning`, `--color-info`, `--color-overlay`, and `--color-on-primary` with no hardcoded color values remaining in any CSS file
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
+- [ ] 07-01-PLAN.md -- Theme CSS deduplication (extract shared structural rules to _base.css) and nested bullet list styles
+- [ ] 07-02-PLAN.md -- Semantic state color tokens, hardcoded color replacement, and German date auto-population
 
 ### Phase 8: Pure CSS Components
 **Goal**: Six new component templates extend the library to 20+ layouts using only CSS -- no external library dependencies
@@ -258,7 +258,7 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 4. Theming & Branding | v1.0 | 3/3 | Complete | 2026-03-24 |
 | 5. Localization & Speaker Notes | v1.0 | 3/3 | Complete | 2026-03-25 |
 | 6. AI Integration & Tooling | v1.0 | 4/4 | Complete | 2026-03-25 |
-| 7. Foundation Fixes & Token Expansion | v2.0 | 0/? | Not started | - |
+| 7. Foundation Fixes & Token Expansion | v2.0 | 0/2 | Planned | - |
 | 8. Pure CSS Components | v2.0 | 0/? | Not started | - |
 | 9. CDN-Dependent Components | v2.0 | 0/? | Not started | - |
 | 10. Audience Presets & Accessibility CSS | v2.0 | 0/? | Not started | - |
