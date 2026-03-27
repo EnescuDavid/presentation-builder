@@ -9,8 +9,8 @@
 
 - [x] **FIX-06**: Nested bullet list styles (`ul ul`, `ol ul`) with visual indentation differentiation across all themes
 - [x] **FIX-07**: Theme CSS deduplication — extract shared structural rules to base, themes contain only token overrides
-- [ ] **FIX-08**: Print/PDF `@media print` styles in theme files (force backgrounds, hide nav, clean page breaks)
-- [ ] **FIX-09**: Dark variant connected to real background color (couple `data-background-color="dark"` to token-based background)
+- [x] **FIX-08**: Print/PDF `@media print` styles in theme files (force backgrounds, hide nav, clean page breaks)
+- [x] **FIX-09**: Dark variant connected to real background color (couple `data-background-color="dark"` to token-based background)
 - [x] **FIX-10**: Master footer date auto-population from `presentationConfig.date` (default to current date if empty)
 
 ### Data Visualization
@@ -28,7 +28,7 @@
 - [ ] **CONSULT-02**: Pyramid Principle validation — strategist checks slide sequence for top-down logic, flags titles without verbs, validates MECE groupings. Output: validation warnings in deck-plan.md.
 - [ ] **CONSULT-03**: "Read the titles" summary export — script extracts action titles from all slides into a one-page coherence check document.
 - [ ] **CONSULT-04**: Action title enforcement — component catalog, strategist prompts, and validation all require complete-sentence action titles (not topic labels).
-- [ ] **CONSULT-05**: Audience preset CSS implementation — modifier classes or `presentationConfig.audience` that adjusts font sizes, content density, animation density per audience type.
+- [x] **CONSULT-05**: Audience preset CSS implementation — modifier classes or `presentationConfig.audience` that adjusts font sizes, content density, animation density per audience type.
 - [ ] **CONSULT-06**: Slide count guidance per audience — strategist applies recommended ranges (C-Suite: 8-12, Technical: 15-25, etc.) and warns if deck-plan exceeds.
 
 ### Accessibility & Compliance
@@ -73,8 +73,8 @@
 |-------------|-------|--------|
 | FIX-06 | Phase 7 | Complete |
 | FIX-07 | Phase 7 | Complete |
-| FIX-08 | Phase 10 | Pending |
-| FIX-09 | Phase 10 | Pending |
+| FIX-08 | Phase 10 | Complete |
+| FIX-09 | Phase 10 | Complete |
 | FIX-10 | Phase 7 | Complete |
 | VIZ-01 | Phase 9 | Complete |
 | VIZ-02 | Phase 9 | Complete |
@@ -86,7 +86,7 @@
 | CONSULT-02 | Phase 11 | Pending |
 | CONSULT-03 | Phase 12 | Pending |
 | CONSULT-04 | Phase 11 | Pending |
-| CONSULT-05 | Phase 10 | Pending |
+| CONSULT-05 | Phase 10 | Complete |
 | CONSULT-06 | Phase 11 | Pending |
 | A11Y-01 | Phase 12 | Pending |
 | A11Y-02 | Phase 10 | Pending |
