@@ -1,0 +1,204 @@
+<!--
+  ============================================================================
+  COMPONENT: Data Table (COMP-15)
+  ============================================================================
+
+  USE WHEN:
+    Financial data. Feature comparisons. Status matrices. Vendor evaluations.
+    Any structured tabular content with 2-6 columns and 3-12 rows.
+
+  REQUIRED SLOTS:
+    - thead row with th cells
+    - At least 1 tbody row with td cells
+
+  OPTIONAL SLOTS:
+    - Slide title (h2)
+    - Summary/total row (tfoot)
+    - Column highlighting class (comp-data-table__highlight-col-N)
+    - Numeric cell class (comp-data-table__num) for right-aligned numbers
+
+  MASTER LAYER: Visible (no data-master attribute)
+
+  LAYOUT NOTES:
+    - Two variants: structured (default) and minimal
+    - Structured: alternating row colors, bold header with primary background
+    - Minimal: thin lines, no row backgrounds, clean whitespace
+    - Claude chooses variant based on data density and audience
+    - tabular-nums enabled for aligned numeric columns
+    - German decimal comma formatting (12,4 not 12.4)
+    - overflow-wrap and hyphens enabled for German compound words
+  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
+
+  EXAMPLE (structured):
+    <section data-component="data-table">
+      <div class="comp-data-table comp-data-table--structured">
+        <h2>Headline</h2>
+        <table>
+          <thead><tr><th>Name</th><th class="comp-data-table__num">Wert</th></tr></thead>
+          <tbody><tr><td>Zeile 1</td><td class="comp-data-table__num">1.234</td></tr></tbody>
+          <tfoot><tr><td>Gesamt</td><td class="comp-data-table__num">1.234</td></tr></tfoot>
+        </table>
+      </div>
+    </section>
+
+  EXAMPLE (minimal):
+    <section data-component="data-table">
+      <div class="comp-data-table comp-data-table--minimal">
+        ...same structure...
+      </div>
+    </section>
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Data Table Component --- */
+  .comp-data-table {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .comp-data-table h2 {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-body);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-data-table th {
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .comp-data-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .comp-data-table__num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-data-table tfoot td {
+    font-weight: var(--font-weight-bold);
+    border-top: 2px solid var(--color-primary);
+    border-bottom: none;
+    color: var(--color-primary);
+  }
+
+  /* --- Structured Variant (default) --- */
+  .comp-data-table--structured th {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .comp-data-table--structured tbody tr:nth-child(even) {
+    background: var(--color-surface);
+  }
+
+  /* --- Minimal Variant --- */
+  .comp-data-table--minimal th {
+    background: transparent;
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .comp-data-table--minimal td {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  }
+
+  .comp-data-table--minimal tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  /* --- Column Highlight Utility --- */
+  .comp-data-table--highlight-col-2 td:nth-child(2),
+  .comp-data-table--highlight-col-2 th:nth-child(2) {
+    background: var(--color-highlight);
+  }
+
+  .comp-data-table--highlight-col-3 td:nth-child(3),
+  .comp-data-table--highlight-col-3 th:nth-child(3) {
+    background: var(--color-highlight);
+  }
+
+  .comp-data-table--highlight-col-4 td:nth-child(4),
+  .comp-data-table--highlight-col-4 th:nth-child(4) {
+    background: var(--color-highlight);
+  }
+</style>
+
+<section data-component="data-table">
+  <div class="comp-data-table comp-data-table--structured">
+    <h2>Umsatzentwicklung nach Geschäftsbereich</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Geschäftsbereich</th>
+          <th class="comp-data-table__num">Umsatz (Mio. EUR)</th>
+          <th class="comp-data-table__num">Wachstum (%)</th>
+          <th class="comp-data-table__num">Marge (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Unternehmensberatung</td>
+          <td class="comp-data-table__num">142,8</td>
+          <td class="comp-data-table__num">+12,4</td>
+          <td class="comp-data-table__num">18,6</td>
+        </tr>
+        <tr>
+          <td>Digitale Transformation</td>
+          <td class="comp-data-table__num">98,3</td>
+          <td class="comp-data-table__num">+24,7</td>
+          <td class="comp-data-table__num">22,1</td>
+        </tr>
+        <tr>
+          <td>Strategieentwicklung</td>
+          <td class="comp-data-table__num">67,5</td>
+          <td class="comp-data-table__num">+8,2</td>
+          <td class="comp-data-table__num">31,4</td>
+        </tr>
+        <tr>
+          <td>Technologieberatung</td>
+          <td class="comp-data-table__num">53,1</td>
+          <td class="comp-data-table__num">+18,9</td>
+          <td class="comp-data-table__num">15,7</td>
+        </tr>
+        <tr>
+          <td>Personalentwicklung</td>
+          <td class="comp-data-table__num">31,6</td>
+          <td class="comp-data-table__num">+5,3</td>
+          <td class="comp-data-table__num">26,8</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Gesamt</td>
+          <td class="comp-data-table__num">393,3</td>
+          <td class="comp-data-table__num">+14,8</td>
+          <td class="comp-data-table__num">21,3</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>

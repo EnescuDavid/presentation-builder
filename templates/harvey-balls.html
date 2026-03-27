@@ -1,0 +1,232 @@
+<!--
+  ============================================================================
+  COMPONENT: Harvey Balls (Utility)
+  ============================================================================
+
+  USE WHEN:
+    Capability ratings in tables. Feature comparisons. Maturity assessments.
+    Vendor evaluations. Skill matrices. Compliance scorecards.
+
+  REQUIRED:
+    - One of 5 state classes: harvey-ball--0, harvey-ball--25, harvey-ball--50,
+      harvey-ball--75, harvey-ball--100
+
+  OPTIONAL:
+    - harvey-ball--color (color-coded variant: green=100, amber=50, red=0)
+    - harvey-ball--lg (larger size for standalone use, 1.5em)
+
+  MASTER LAYER: N/A (utility component, used inline within other components)
+
+  LAYOUT NOTES:
+    - Inline element, 1em default size — scales with surrounding font-size
+    - Uses conic-gradient for partial fills (25%, 50%, 75%)
+    - Renders inside table cells, comparison cards, list items
+    - Vertical-align: middle for inline alignment with text
+    - Color-coded variant maps fill level to semantic colors
+
+  INLINE USAGE:
+    <span class="harvey-ball harvey-ball--75"></span>
+    <span class="harvey-ball harvey-ball--color harvey-ball--50"></span>
+    <span class="harvey-ball harvey-ball--lg harvey-ball--100"></span>
+
+  EXAMPLE (in table cell):
+    <td><span class="harvey-ball harvey-ball--75"></span></td>
+
+  ============================================================================
+-->
+
+<style>
+  /* --- Harvey Ball Utility --- */
+  .harvey-ball {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-accent);
+    vertical-align: middle;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  /* --- Five Fill States --- */
+  .harvey-ball--0 {
+    background: transparent;
+  }
+
+  .harvey-ball--25 {
+    background: conic-gradient(var(--color-accent) 0deg 90deg, transparent 90deg 360deg);
+  }
+
+  .harvey-ball--50 {
+    background: conic-gradient(var(--color-accent) 0deg 180deg, transparent 180deg 360deg);
+  }
+
+  .harvey-ball--75 {
+    background: conic-gradient(var(--color-accent) 0deg 270deg, transparent 270deg 360deg);
+  }
+
+  .harvey-ball--100 {
+    background: var(--color-accent);
+  }
+
+  /* --- Size Variant --- */
+  .harvey-ball--lg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  /* --- Color-Coded Variant --- */
+  .harvey-ball--color.harvey-ball--100 {
+    border-color: var(--color-success);
+    background: var(--color-success);
+  }
+
+  .harvey-ball--color.harvey-ball--75 {
+    border-color: var(--color-chart-2);
+    background: conic-gradient(var(--color-chart-2) 0deg 270deg, transparent 270deg 360deg);
+  }
+
+  .harvey-ball--color.harvey-ball--50 {
+    border-color: var(--color-warning);
+    background: conic-gradient(var(--color-warning) 0deg 180deg, transparent 180deg 360deg);
+  }
+
+  .harvey-ball--color.harvey-ball--25 {
+    border-color: var(--color-chart-4);
+    background: conic-gradient(var(--color-chart-4) 0deg 90deg, transparent 90deg 360deg);
+  }
+
+  .harvey-ball--color.harvey-ball--0 {
+    border-color: var(--color-danger);
+    background: transparent;
+  }
+
+  /* --- Harvey Ball Demo Layout --- */
+  .harvey-balls-demo {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    gap: var(--spacing-xl);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .harvey-balls-demo h2 {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .harvey-balls-demo__row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    font-size: var(--font-size-subheading);
+  }
+
+  .harvey-balls-demo__label {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    min-width: 3em;
+    text-align: center;
+  }
+
+  .harvey-balls-demo table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-body);
+  }
+
+  .harvey-balls-demo th {
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .harvey-balls-demo td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    text-align: center;
+  }
+
+  .harvey-balls-demo td:first-child {
+    text-align: left;
+  }
+</style>
+
+<section data-component="harvey-balls">
+  <div class="harvey-balls-demo">
+    <h2>Harvey Balls: Bewertungsskala</h2>
+
+    <!-- Standalone demo: all 5 states -->
+    <div class="harvey-balls-demo__row">
+      <span class="harvey-ball harvey-ball--lg harvey-ball--0"></span>
+      <span class="harvey-balls-demo__label">0%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--25"></span>
+      <span class="harvey-balls-demo__label">25%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--50"></span>
+      <span class="harvey-balls-demo__label">50%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--75"></span>
+      <span class="harvey-balls-demo__label">75%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--100"></span>
+      <span class="harvey-balls-demo__label">100%</span>
+    </div>
+
+    <!-- Color-coded variant -->
+    <div class="harvey-balls-demo__row">
+      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--0"></span>
+      <span class="harvey-balls-demo__label">0%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--25"></span>
+      <span class="harvey-balls-demo__label">25%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--50"></span>
+      <span class="harvey-balls-demo__label">50%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--75"></span>
+      <span class="harvey-balls-demo__label">75%</span>
+      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--100"></span>
+      <span class="harvey-balls-demo__label">100%</span>
+    </div>
+
+    <!-- Embedded in comparison table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Fähigkeit</th>
+          <th>Anbieter A</th>
+          <th>Anbieter B</th>
+          <th>Anbieter C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cloud-Migration</td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--100"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--75"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--50"></span></td>
+        </tr>
+        <tr>
+          <td>Datenanalyse</td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--75"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--100"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--25"></span></td>
+        </tr>
+        <tr>
+          <td>Prozessautomatisierung</td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--50"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--75"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--100"></span></td>
+        </tr>
+        <tr>
+          <td>Änderungsmanagement</td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--100"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--50"></span></td>
+          <td><span class="harvey-ball harvey-ball--color harvey-ball--75"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
