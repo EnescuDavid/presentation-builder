@@ -355,6 +355,7 @@
       date: '',              // Footer date (defaults to current date if empty)
       logo: '',              // Logo image URL
       slideNumberStyle: 'progress', // 'simple' | 'progress' | 'hidden'
+      audience: '',         // Audience preset: 'c-suite', 'stakeholder', 'technical', 'sales', 'workshop', 'internal'
       masterDefaults: {
         hideOnTypes: ['title', 'full-bleed', 'section-break']
       }
@@ -583,6 +584,11 @@
       if (cfg.logo) {
         var el = document.querySelector('.master-logo img');
         if (el) el.src = cfg.logo;
+      }
+
+      // Apply audience preset class (D-01)
+      if (cfg.audience) {
+        document.querySelector('.reveal').classList.add('audience--' + cfg.audience);
       }
     });
   </script>
