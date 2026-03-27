@@ -15,10 +15,10 @@
 
 ### Data Visualization
 
-- [ ] **VIZ-01**: Chart.js 4.x integration — bar, line, pie, doughnut, radar charts with consulting-grade defaults (token colors, no gridlines, clean axes, annotation support). Conditional CDN loading. Lazy initialization on slide change to handle hidden canvas.
+- [x] **VIZ-01**: Chart.js 4.x integration — bar, line, pie, doughnut, radar charts with consulting-grade defaults (token colors, no gridlines, clean axes, annotation support). Conditional CDN loading. Lazy initialization on slide change to handle hidden canvas.
 - [x] **VIZ-02**: Mermaid 11.x diagram integration — flowcharts, sequence diagrams, Gantt charts, org charts. Conditional CDN loading. Theme-aware colors via token-to-Mermaid variable mapping. Fragment animation for progressive diagram reveal.
 - [x] **VIZ-03**: Data table component — styled table with header row, alternating colors, right-aligned numbers, 2-6 columns, 3-12 rows. Pure CSS, token-aware.
-- [ ] **VIZ-04**: Waterfall/bridge chart component — revenue walks, cost bridges using Chart.js floating bar technique (not plugin). Consulting conventions: grey totals, colored changes.
+- [x] **VIZ-04**: Waterfall/bridge chart component — revenue walks, cost bridges using Chart.js floating bar technique (not plugin). Consulting conventions: grey totals, colored changes.
 - [x] **VIZ-05**: Harvey ball component — pure CSS capability-rating dots (0/25/50/75/100%). Inline rendering for tables and comparisons.
 - [x] **VIZ-06**: Sparkline/KPI micro-charts — trend lines, mini bars, progress indicators inside metrics cards. Pure CSS/SVG.
 
@@ -76,10 +76,10 @@
 | FIX-08 | Phase 10 | Pending |
 | FIX-09 | Phase 10 | Pending |
 | FIX-10 | Phase 7 | Complete |
-| VIZ-01 | Phase 9 | Pending |
+| VIZ-01 | Phase 9 | Complete |
 | VIZ-02 | Phase 9 | Complete |
 | VIZ-03 | Phase 8 | Complete |
-| VIZ-04 | Phase 9 | Pending |
+| VIZ-04 | Phase 9 | Complete |
 | VIZ-05 | Phase 8 | Complete |
 | VIZ-06 | Phase 8 | Complete |
 | CONSULT-01 | Phase 11 | Pending |

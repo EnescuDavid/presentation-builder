@@ -184,7 +184,7 @@ Plans:
 
 Plans:
 - [x] 09-01-PLAN.md -- Skeleton CDN infrastructure (Chart.js, RevealHighlight, color bridge, lazy init) + code block and Mermaid diagram templates
-- [ ] 09-02-PLAN.md -- Chart.js component template (5 chart types) and waterfall/bridge chart template
+- [x] 09-02-PLAN.md -- Chart.js component template (5 chart types) and waterfall/bridge chart template
 
 ### Phase 10: Audience Presets & Accessibility CSS
 **Goal**: Presentations adapt to their audience via CSS modifier classes, print cleanly, and meet baseline accessibility standards in HTML structure
