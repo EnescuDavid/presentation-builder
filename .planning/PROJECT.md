@@ -2,89 +2,87 @@
 
 ## What This Is
 
-A shareable, code-based slide deck framework that turns structured content (YAML/Markdown) into polished, self-contained HTML presentations powered by reveal.js. Designed for strategic consultants who build decks constantly — pitch decks, board presentations, stakeholder updates, technical deep-dives — across different audiences and corporate brands. The framework provides a component library with semantic descriptions so any AI coding assistant (Claude Code, GitHub Copilot CLI) can automatically select the right layouts and assemble professional slides from natural language prompts.
+A shareable, code-based slide deck framework that turns natural language prompts into polished, self-contained HTML presentations powered by reveal.js. Designed for strategic consultants who build decks constantly — pitch decks, board presentations, stakeholder updates, technical deep-dives — across different audiences and corporate brands. The framework provides a 14-component library with semantic descriptions and a Claude Code skill with specialized subagents (researcher, strategist, builder) that orchestrate the full presentation pipeline.
 
 ## Core Value
 
 Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant — regardless of which AI tool they use.
 
+## Current State (v1.0 shipped 2026-03-27)
+
+- **14 component templates** with BEM-lite CSS, design token integration, German text handling
+- **3 bundled themes** (default, startup, enterprise) + PPTX extraction tool
+- **AI skill layer**: SKILL.md router, 3 workflows, 5 reference files, 3 subagents
+- **German localization**: typography conventions, global text handling CSS, full German demo
+- **Speaker notes**: YAML format with generation-time injection
+- **Tooling**: DeckTape PDF export, gallery/thumbnail view
+- **Codebase**: 2,508 lines core framework + 1,575 lines AI skill layer, 46 framework files
+
 ## Requirements
 
-### Validated
+### Validated (v1.0)
 
-(None yet — ship to validate)
+- [x] Reusable design token system (CSS custom properties for colors, fonts, spacing, shadows) — v1.0
+- [x] Animation library (fadeUp, blurIn, slideL, slideR, scalePop, lineGrow) — v1.0
+- [x] Self-contained HTML output — single file, zero runtime dependencies beyond CDN — v1.0
+- [x] 14 slide component templates (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework) — v1.0
+- [x] Theme layer with CSS custom property overrides — v1.0
+- [x] PPTX theme extraction tool (12 color slots, 2 font families, logos) — v1.0
+- [x] PDF export via DeckTape — v1.0
+- [x] Speaker notes infrastructure (YAML format, generation-time injection) — v1.0
+- [x] German-first typography (text handling CSS, conventions reference) — v1.0
+- [x] Semantic component descriptions in AI-readable catalog — v1.0
+- [x] Claude Code skill with subagent pipeline (researcher, strategist, builder) — v1.0
+- [x] Audience presets documented with design rules (6 types) — v1.0
+- [x] Clone-and-use installation — v1.0
 
 ### Active
 
-- [ ] Modular component library with 15+ slide layouts (title, section break, two-column, metrics, comparison, timeline, image-full, quote, agenda, summary, etc.)
-- [ ] Reusable design token system (CSS custom properties for colors, fonts, spacing, shadows)
-- [ ] Theme layer that applies corporate branding on top of the component library
-- [ ] PPTX theme extraction tool — parse .pptx templates to generate CSS theme files (colors, fonts, logos)
-- [ ] Two authoring modes: structure mode (fast wireframe iteration) and polish mode (final production deck)
-- [ ] Self-contained HTML output — single file, zero runtime dependencies beyond CDN-hosted reveal.js
-- [ ] PDF export via DeckTape
-- [ ] Speaker notes support with AI-assisted generation patterns
-- [ ] German-first multi-language support (handle text expansion, typography conventions, Sie/Du)
-- [ ] Semantic component descriptions so AI agents can match content to the right layout automatically
-- [ ] Platform-agnostic AI integration — works with Claude Code (CLAUDE.md) and GitHub Copilot CLI (copilot-instructions.md)
-- [ ] Animation library — reusable entrance/transition animations (fadeUp, blurIn, slideL, scalePop, etc.)
-- [ ] Audience presets — design rules per audience type (C-Suite, technical, sales, workshop, internal)
-- [ ] Clone-and-use installation — git clone, drop in theme, start prompting
+- [ ] Data visualization components (Chart.js, Mermaid, tables, waterfall, Harvey balls)
+- [ ] Consulting intelligence (SCQA scaffolding, Pyramid Principle validation, "read the titles" export)
+- [ ] WCAG 2.1 AA accessibility and EAA compliance
+- [ ] copilot-instructions.md for GitHub Copilot CLI (AI-02, deferred from v1)
+- [ ] PPTX export (PptxGenJS)
+- [ ] Audience preset CSS implementation (font size/density adjustments per audience)
 
 ### Out of Scope
 
-- Real-time collaboration (Pitch.com territory) — adds massive complexity, not needed for AI-assisted solo workflow
-- PPTX export to editable PowerPoint — complex reverse mapping, defer to v2 if needed
+- Real-time collaboration — adds massive complexity, not needed for AI-assisted solo workflow
 - SaaS/hosted version — this is a local framework, not a web app
-- Custom chart rendering engine — use Chart.js or Mermaid.js plugins, don't build our own
 - Slide-by-slide WYSIWYG editor — the AI prompt IS the editor
+- React/Vue component wrappers — keep it plain HTML/CSS for maximum portability
 
 ## Context
 
-- David built his first HTML slide deck (Sentinels pitch) using reveal.js 5.1.0 with extensive custom CSS — the quality exceeded PowerPoint but everything was in one monolithic file with no reuse
-- Target users are strategic consultants who build presentations daily for varied audiences (C-Suite, stakeholders, technical teams, sales)
-- Framework must work equally well from Claude Code (personal) and GitHub Copilot CLI (work) — platform-agnostic AI workflow is a hard requirement
-- The vision includes a future AI "design skill/agent" that reads the component catalog and makes layout decisions automatically — the framework must support this by having rich semantic descriptions for each component
-- German is the primary language (DACH business context), English secondary — layouts must handle 130-300% text expansion
-- Research identified 44 potential slide components across 14 categories, with a 3-phase implementation priority (15 core → 13 extended → 16 advanced)
-- Consulting design principles (Pyramid Principle, SCR framework, MECE) inform the component design
-- Existing tools (Gamma, Beautiful.ai, Canva) show what works (smart templates, brand systems) and what to avoid (broken exports, generic AI output, over-constraining layouts)
+- v1.0 shipped in 6 days (2026-03-22 → 2026-03-27), 6 phases, 18 plans, 50+ commits
+- Framework successfully generates consulting-grade German presentations with all 14 components
+- AI skill layer follows GSD pattern: researcher → strategist (deck-plan.md) → builder (presentation.html)
+- Research identified 40 additional requirements across 5 categories for v2 (data viz, consulting intelligence, accessibility, platform expansion, polish)
+- Known bugs: remaining umlaut errors in 4 templates, RevealNotes plugin not loaded, presentationConfig JS gap, clamp/vw units, two-column class bug
 
 ## Constraints
 
-- **No build step required**: The framework must work without Node.js/npm for end users — AI generates HTML directly from templates. Build tools (theme extractor, PDF export) are optional developer utilities.
-- **Platform agnostic**: No Claude Code-specific features (no MCP servers, no hooks) in the core framework. AI integration is via documentation files only (CLAUDE.md, copilot-instructions.md).
-- **Self-contained output**: Final presentations must be single HTML files that work offline (except CDN fonts/reveal.js, which can be bundled).
-- **German-first**: All default templates, example content, and documentation must work with German text lengths and typography conventions. English is a secondary locale.
-- **Consulting quality**: Output must match McKinsey/BCG deck quality — clean typography, proper hierarchy, restrained animation, professional color palettes.
+- **No build step required**: AI generates HTML directly from templates. Build tools are optional developer utilities.
+- **Platform agnostic**: Core framework uses documentation files only. Claude Code skill layer is an enhancement, not a requirement.
+- **Self-contained output**: Single HTML files that work offline (except CDN fonts/reveal.js).
+- **German-first**: All templates handle German text lengths and typography conventions.
+- **Consulting quality**: Output matches McKinsey/BCG deck quality.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| reveal.js as rendering engine | Mature (70K stars), best plugin ecosystem, supports speaker notes/PDF/fragments natively. User already has experience with it. | — Pending |
-| YAML/Markdown as authoring format | Simplest format for AI generation. LLMs produce Markdown reliably. YAML frontmatter for metadata/layout selection. | — Pending |
-| CSS custom properties for theming | No build step needed, works in any browser, easy for AI to override per-theme. SCSS available as optional developer tool. | — Pending |
-| Component library with semantic descriptions | Enables future AI design agent to match content → layout automatically. Descriptions serve as both human docs and AI context. | — Pending |
-| Clone-and-use distribution | Lower barrier than npm/npx. Strategic consultants aren't necessarily developers. Git clone + AI prompt = working deck. | — Pending |
-| Two-mode authoring (structure → polish) | Matches real workflow: iterate fast on structure/narrative, then deep-build the final visual deck. | — Pending |
+| reveal.js as rendering engine | Mature (70K stars), best plugin ecosystem, speaker notes/PDF/fragments natively | ✓ Good — solid foundation |
+| CSS custom properties for theming | No build step, works in any browser, easy for AI to override per-theme | ✓ Good — 3 themes prove the pattern |
+| Component library with semantic descriptions | Enables AI design agent to match content → layout automatically | ✓ Good — 14 components with AI-readable catalog |
+| Clone-and-use distribution | Lower barrier than npm/npx for strategic consultants | ✓ Good — git clone + AI prompt = working deck |
+| Claude Code skill with subagents | Mirrors GSD pattern (researcher → planner → executor) for structured AI workflow | ✓ Good — 3 specialized agents |
+| German-first design | DACH business context, layouts handle 130-300% text expansion | ✓ Good — typography conventions + global CSS |
+| Speaker notes as separate YAML file | Templates stay clean, notes injected at generation time | ✓ Good — per D-07 decision |
 
 ## Evolution
 
 This document evolves at phase transitions and milestone boundaries.
 
-**After each phase transition** (via `/gsd:transition`):
-1. Requirements invalidated? → Move to Out of Scope with reason
-2. Requirements validated? → Move to Validated with phase reference
-3. New requirements emerged? → Add to Active
-4. Decisions to log? → Add to Key Decisions
-5. "What This Is" still accurate? → Update if drifted
-
-**After each milestone** (via `/gsd:complete-milestone`):
-1. Full review of all sections
-2. Core Value check — still the right priority?
-3. Audit Out of Scope — reasons still valid?
-4. Update Context with current state
-
 ---
-*Last updated: 2026-03-22 after initialization*
+*Last updated: 2026-03-27 after v1.0 milestone*
