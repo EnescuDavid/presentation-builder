@@ -13,6 +13,9 @@
     - Slide title (h2)
     - Up to 6 metric cards
     - For 4-6 metrics use comp-metrics__grid--compact modifier
+    - Trend indicator (up/down/flat arrow with delta text)
+    - Mini bar chart (3-7 bars showing relative values)
+    - Progress bar (horizontal percentage fill)
 
   MASTER LAYER: Visible (no data-master attribute)
 
@@ -21,7 +24,16 @@
     - 4-6 metrics use compact CSS grid (3 columns) with heading-size numbers
     - scalePop animation on each card with stagger
     - tabular-nums on numbers for alignment
+    - Sparklines are optional enhancements inside metric cards
   FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
+
+  SPARKLINE TYPES:
+    1. Trend indicator: comp-metrics__trend + --up/--down/--flat modifier
+       Shows colored arrow SVG + delta text (e.g. "+5pp vs. Vorjahr")
+    2. Mini bar chart: comp-metrics__bars with comp-metrics__bar children
+       3-7 bars at varying heights via inline style="height: N%"
+    3. Progress bar: comp-metrics__progress with comp-metrics__progress-fill
+       Horizontal fill via inline style="width: N%"
 
   EXAMPLE:
     <section data-component="metrics">
@@ -31,6 +43,9 @@
           <div class="comp-metrics__card">
             <span class="comp-metrics__number">+23%</span>
             <span class="comp-metrics__label">Umsatzwachstum</span>
+            <div class="comp-metrics__trend comp-metrics__trend--up">
+              <svg>...</svg> +5pp vs. Vorjahr
+            </div>
           </div>
         </div>
       </div>
@@ -100,6 +115,66 @@
   .comp-metrics__grid--compact .comp-metrics__number {
     font-size: var(--font-size-heading);
   }
+
+  /* --- Sparkline: Trend Indicator --- */
+  .comp-metrics__trend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-caption);
+    margin-top: var(--spacing-xs);
+  }
+
+  .comp-metrics__trend--up {
+    color: var(--color-success);
+  }
+
+  .comp-metrics__trend--down {
+    color: var(--color-danger);
+  }
+
+  .comp-metrics__trend--flat {
+    color: var(--color-text-muted);
+  }
+
+  .comp-metrics__trend-arrow {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  /* --- Sparkline: Mini Bar Chart --- */
+  .comp-metrics__bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 32px;
+    margin-top: var(--spacing-sm);
+  }
+
+  .comp-metrics__bar {
+    width: 6px;
+    border-radius: 2px 2px 0 0;
+    background: var(--color-chart-1);
+    min-height: 3px;
+  }
+
+  /* --- Sparkline: Progress Indicator --- */
+  .comp-metrics__progress {
+    width: 100%;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+    margin-top: var(--spacing-sm);
+    overflow: hidden;
+  }
+
+  .comp-metrics__progress-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+  }
 </style>
 
 <section data-component="metrics">
@@ -109,14 +184,31 @@
       <div class="comp-metrics__card">
         <span class="comp-metrics__number">+23%</span>
         <span class="comp-metrics__label">Umsatzwachstum</span>
+        <div class="comp-metrics__trend comp-metrics__trend--up">
+          <svg class="comp-metrics__trend-arrow" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 2L10 7H2L6 2Z" fill="currentColor"/>
+          </svg>
+          +5pp vs. Vorjahr
+        </div>
       </div>
       <div class="comp-metrics__card">
         <span class="comp-metrics__number">4.2M</span>
         <span class="comp-metrics__label">Neue Nutzer</span>
+        <div class="comp-metrics__bars">
+          <div class="comp-metrics__bar" style="height: 40%"></div>
+          <div class="comp-metrics__bar" style="height: 55%"></div>
+          <div class="comp-metrics__bar" style="height: 45%"></div>
+          <div class="comp-metrics__bar" style="height: 65%"></div>
+          <div class="comp-metrics__bar" style="height: 75%"></div>
+          <div class="comp-metrics__bar" style="height: 80%"></div>
+        </div>
       </div>
       <div class="comp-metrics__card">
         <span class="comp-metrics__number">98.7%</span>
         <span class="comp-metrics__label">Verfügbarkeit</span>
+        <div class="comp-metrics__progress">
+          <div class="comp-metrics__progress-fill" style="width: 99%"></div>
+        </div>
       </div>
     </div>
   </div>
