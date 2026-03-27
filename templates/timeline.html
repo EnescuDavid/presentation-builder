@@ -20,6 +20,9 @@
     - Template shows horizontal layout (best for 3-4 steps)
     - For 5-6 steps switch to vertical by changing flex-direction on track
       and adjusting connector pseudo-elements
+    - Add comp-timeline--vertical modifier to .comp-timeline for 5-6 step
+      vertical layout. Claude picks vertical when step count exceeds 4 or
+      content is too long for horizontal.
     - Claude picks orientation based on content
     - Connectors use ::after pseudo-elements anchored to marker center
       (top: 18px = half of 36px marker)
@@ -122,6 +125,48 @@
     color: var(--color-text-muted);
     line-height: var(--line-height-normal);
   }
+
+  /* --- Vertical Variant --- */
+  .comp-timeline--vertical .comp-timeline__track {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: var(--spacing-2xl);
+  }
+
+  .comp-timeline--vertical .comp-timeline__step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 0 var(--spacing-xl) 0;
+    width: 100%;
+  }
+
+  .comp-timeline--vertical .comp-timeline__step:not(:last-child)::after {
+    top: 36px;
+    left: 17px;
+    right: auto;
+    width: 2px;
+    height: calc(100% - 36px);
+    bottom: 0;
+  }
+
+  .comp-timeline--vertical .comp-timeline__marker {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    margin-right: var(--spacing-lg);
+  }
+
+  .comp-timeline--vertical .comp-timeline__content {
+    padding-top: var(--spacing-xs);
+  }
+
+  .comp-timeline--vertical .comp-timeline__content h3 {
+    font-size: var(--font-size-subheading);
+  }
+
+  .comp-timeline--vertical .comp-timeline__content p {
+    font-size: var(--font-size-body);
+  }
 </style>
 
 <section data-component="timeline">
@@ -154,6 +199,50 @@
         <div class="comp-timeline__content">
           <h3>Rollout</h3>
           <p>Unternehmensweite Einführung und Schulung</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERTICAL VARIANT (5-6 steps): -->
+<section data-component="timeline">
+  <div class="comp-timeline comp-timeline--vertical">
+    <h2 class="comp-timeline__title">Digitalisierungsprojekt 2026</h2>
+    <div class="comp-timeline__track">
+      <div class="comp-timeline__step">
+        <div class="comp-timeline__marker">1</div>
+        <div class="comp-timeline__content">
+          <h3>Bestandsaufnahme</h3>
+          <p>Analyse bestehender Systeme und Prozesse, Identifikation von Optimierungspotenzialen</p>
+        </div>
+      </div>
+      <div class="comp-timeline__step">
+        <div class="comp-timeline__marker">2</div>
+        <div class="comp-timeline__content">
+          <h3>Anforderungsanalyse</h3>
+          <p>Workshops mit Fachbereichen, Definition der funktionalen und technischen Anforderungen</p>
+        </div>
+      </div>
+      <div class="comp-timeline__step">
+        <div class="comp-timeline__marker">3</div>
+        <div class="comp-timeline__content">
+          <h3>Konzeptentwicklung</h3>
+          <p>Erstellung der L&ouml;sungsarchitektur und detaillierter Umsetzungsplan</p>
+        </div>
+      </div>
+      <div class="comp-timeline__step">
+        <div class="comp-timeline__marker">4</div>
+        <div class="comp-timeline__content">
+          <h3>Pilotierung</h3>
+          <p>Implementierung im ausgew&auml;hlten Pilotbereich mit begleitendem Change Management</p>
+        </div>
+      </div>
+      <div class="comp-timeline__step">
+        <div class="comp-timeline__marker">5</div>
+        <div class="comp-timeline__content">
+          <h3>Unternehmensweiter Rollout</h3>
+          <p>Schrittweise Einf&uuml;hrung in allen Gesch&auml;ftsbereichen mit Schulungsprogramm</p>
         </div>
       </div>
     </div>
