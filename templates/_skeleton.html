@@ -114,11 +114,11 @@
       --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;
       --font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
 
-      --font-size-display:    clamp(2.5rem, 5vw, 3.75rem);
-      --font-size-heading:    clamp(1.75rem, 3.5vw, 2.25rem);
-      --font-size-subheading: clamp(1.25rem, 2.5vw, 1.5rem);
-      --font-size-body:       clamp(1rem, 2vw, 1.125rem);
-      --font-size-caption:    clamp(0.75rem, 1.5vw, 0.875rem);
+      --font-size-display:    3.125rem;
+      --font-size-heading:    2rem;
+      --font-size-subheading: 1.375rem;
+      --font-size-body:       1.0625rem;
+      --font-size-caption:    0.8125rem;
 
       --font-weight-light:    300;
       --font-weight-regular:  400;
@@ -329,19 +329,24 @@
 
   <!-- Mode B (Online): reveal.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
 
   <script>
     // Presentation configuration
     var presentationConfig = {
+      company: '',           // Footer company name
+      confidentiality: '',   // Footer confidentiality text
+      date: '',              // Footer date (defaults to current date if empty)
+      logo: '',              // Logo image URL
       slideNumberStyle: 'progress', // 'simple' | 'progress' | 'hidden'
       masterDefaults: {
-        // Component types that hide master layer by default
         hideOnTypes: ['title', 'full-bleed', 'section-break']
       }
     };
 
     // Initialize reveal.js
     Reveal.initialize({
+      plugins: [ RevealNotes ],
       // 16:9 aspect ratio
       width: 1280,
       height: 720,
@@ -417,11 +422,19 @@
 
       var masterAttr = slide.getAttribute('data-master');
       var hideAttr = slide.getAttribute('data-master-hide');
+      var componentType = slide.getAttribute('data-component');
+      var cfg = window.presentationConfig || {};
+      var hideOnTypes = (cfg.masterDefaults && cfg.masterDefaults.hideOnTypes) || [];
 
       // Reset all slots to visible
       master.querySelectorAll('[data-slot]').forEach(function(el) {
         el.style.display = '';
       });
+
+      // Auto-hide for configured component types (unless explicitly overridden)
+      if (!masterAttr && componentType && hideOnTypes.indexOf(componentType) !== -1) {
+        masterAttr = 'hide';
+      }
 
       if (masterAttr === 'hide') {
         master.style.display = 'none';
@@ -446,6 +459,25 @@
     Reveal.on('ready', function(event) {
       updateMasterLayer(event.currentSlide);
       updateSlideNumber(event);
+
+      // Populate master layer from presentationConfig
+      var cfg = window.presentationConfig || {};
+      if (cfg.company) {
+        var el = document.querySelector('.master-company');
+        if (el) el.textContent = cfg.company;
+      }
+      if (cfg.confidentiality) {
+        var el = document.querySelector('.master-confidential');
+        if (el) el.textContent = cfg.confidentiality;
+      }
+      if (cfg.date) {
+        var el = document.querySelector('.master-date');
+        if (el) el.textContent = cfg.date;
+      }
+      if (cfg.logo) {
+        var el = document.querySelector('.master-logo img');
+        if (el) el.src = cfg.logo;
+      }
     });
   </script>
 
