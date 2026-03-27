@@ -45,10 +45,10 @@
 
 - [ ] **PLAT-01**: copilot-instructions.md — GitHub Copilot CLI equivalent of CLAUDE.md framework teaching content.
 - [ ] **PLAT-02**: PPTX export via PptxGenJS — semantic mapping for core components with image fallback for complex layouts. Node.js script in tools/.
-- [ ] **PLAT-03**: Team/People component (COMP-20) — photo grid with name, role, contact info. 2-6 team members.
+- [x] **PLAT-03**: Team/People component (COMP-20) — photo grid with name, role, contact info. 2-6 team members.
 - [ ] **PLAT-04**: Code block styling — `pre`/`code` elements styled in all themes + RevealHighlight plugin loaded.
-- [ ] **PLAT-05**: Timeline vertical variant — `comp-timeline--vertical` modifier class for 5-6 step layouts.
-- [ ] **PLAT-06**: Card grid 5-6 item variant — `comp-card-grid--compact` modifier for larger item counts.
+- [x] **PLAT-05**: Timeline vertical variant — `comp-timeline--vertical` modifier class for 5-6 step layouts.
+- [x] **PLAT-06**: Card grid 5-6 item variant — `comp-card-grid--compact` modifier for larger item counts.
 - [ ] **PLAT-08**: Gallery UX for component selection — enhanced gallery showing all components with type badges and labels.
 
 ## Future Requirements (deferred from v2.0)
@@ -97,10 +97,10 @@
 | A11Y-07 | Phase 13 | Pending |
 | PLAT-01 | Phase 11 | Pending |
 | PLAT-02 | Phase 12 | Pending |
-| PLAT-03 | Phase 8 | Pending |
+| PLAT-03 | Phase 8 | Complete |
 | PLAT-04 | Phase 9 | Pending |
-| PLAT-05 | Phase 8 | Pending |
-| PLAT-06 | Phase 8 | Pending |
+| PLAT-05 | Phase 8 | Complete |
+| PLAT-06 | Phase 8 | Complete |
 | PLAT-08 | Phase 11 | Pending |
 
 **Coverage:**
