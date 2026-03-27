@@ -476,9 +476,18 @@
         var el = document.querySelector('.master-confidential');
         if (el) el.textContent = cfg.confidentiality;
       }
-      if (cfg.date) {
-        var el = document.querySelector('.master-date');
-        if (el) el.textContent = cfg.date;
+      var dateEl = document.querySelector('.master-date');
+      if (dateEl) {
+        if (cfg.date) {
+          dateEl.textContent = cfg.date;
+        } else {
+          // Auto-populate with current date in German format (e.g., "27. Marz 2026")
+          dateEl.textContent = new Date().toLocaleDateString('de-DE', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+        }
       }
       if (cfg.logo) {
         var el = document.querySelector('.master-logo img');
