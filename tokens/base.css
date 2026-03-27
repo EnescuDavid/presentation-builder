@@ -34,6 +34,7 @@
   --color-on-primary:      #FFFFFF;   /* Text color on primary/dark backgrounds */
   --color-dark-text:       rgba(255, 255, 255, 0.9);   /* Body text on dark backgrounds */
   --color-dark-text-muted: rgba(255, 255, 255, 0.6);   /* Muted text on dark backgrounds */
+  --color-dark-bg: var(--color-primary);  /* Background color for dark variant slides */
 
   /* --- Typography (5-level scale) --- */
   --font-family-body:    'Inter', system-ui, -apple-system, sans-serif;

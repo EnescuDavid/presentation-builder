@@ -166,6 +166,7 @@
    ========================================================================== */
 
 .reveal .slides section[data-background-color="dark"] {
+  background-color: var(--color-dark-bg) !important;
   color: var(--color-background);
 }
 
@@ -272,4 +273,130 @@
   color: var(--color-text-muted);
   margin-top: var(--spacing-sm);
   text-align: right;
+}
+
+/* ==========================================================================
+   Audience Presets — font size and animation overrides
+   Per D-01: .audience--{type} class on .reveal container
+   Per D-04: Lightweight overrides — font sizes + animation durations only
+   ========================================================================== */
+
+/* C-Suite: 44-48pt titles, 24pt minimum body, minimal animation */
+.audience--c-suite {
+  --font-size-display:    3rem;
+  --font-size-heading:    2.75rem;
+  --font-size-subheading: 1.75rem;
+  --font-size-body:       1.5rem;
+  --font-size-caption:    1.5rem;
+  --duration-fast:   0.3s;
+  --duration-normal: 0.4s;
+  --duration-slow:   0.5s;
+}
+
+/* Stakeholder: 36-44pt titles, 20pt minimum body, no animation */
+.audience--stakeholder {
+  --font-size-display:    2.75rem;
+  --font-size-heading:    2.25rem;
+  --font-size-subheading: 1.375rem;
+  --font-size-body:       1.25rem;
+  --font-size-caption:    1.25rem;
+  --duration-fast:   0s;
+  --duration-normal: 0s;
+  --duration-slow:   0s;
+}
+
+/* Technical: 32-40pt titles, 16pt body, no animation */
+.audience--technical {
+  --font-size-display:    2.5rem;
+  --font-size-heading:    2rem;
+  --font-size-subheading: 1.25rem;
+  --font-size-body:       1rem;
+  --font-size-caption:    0.875rem;
+  --duration-fast:   0s;
+  --duration-normal: 0s;
+  --duration-slow:   0s;
+}
+
+/* Sales: 44-60pt titles, 24pt body, cinematic animation */
+.audience--sales {
+  --font-size-display:    3.75rem;
+  --font-size-heading:    2.75rem;
+  --font-size-subheading: 2.25rem;
+  --font-size-body:       1.5rem;
+  --font-size-caption:    1.5rem;
+  --duration-fast:   0.6s;
+  --duration-normal: 0.9s;
+  --duration-slow:   1.1s;
+}
+
+/* Workshop: 32-40pt titles, 18pt body, step reveals */
+.audience--workshop {
+  --font-size-display:    2.5rem;
+  --font-size-heading:    2rem;
+  --font-size-subheading: 1.375rem;
+  --font-size-body:       1.125rem;
+  --font-size-caption:    1rem;
+  --duration-fast:   0.5s;
+  --duration-normal: 0.7s;
+  --duration-slow:   0.85s;
+}
+
+/* Internal: 32-36pt titles, 16pt body, no animation */
+.audience--internal {
+  --font-size-display:    2.25rem;
+  --font-size-heading:    2rem;
+  --font-size-subheading: 1.25rem;
+  --font-size-body:       1rem;
+  --font-size-caption:    0.875rem;
+  --duration-fast:   0s;
+  --duration-normal: 0s;
+  --duration-slow:   0s;
+}
+
+/* ==========================================================================
+   Print / PDF Styles
+   Per D-06: Single @media print block in _base.css shared by all themes
+   Per D-07: Master footer kept visible for branding/legal context
+   ========================================================================== */
+
+@media print {
+  /* Force backgrounds and colors */
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  /* One slide per page */
+  .reveal .slides section {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+
+  /* Hide reveal.js chrome */
+  .reveal .controls,
+  .reveal .progress,
+  .reveal .slide-number {
+    display: none !important;
+  }
+
+  /* Keep master footer visible (D-07) */
+  #masterLayer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+  }
+
+  /* Show all fragments in print */
+  .reveal .fragment {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Disable animations in print */
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
 }
