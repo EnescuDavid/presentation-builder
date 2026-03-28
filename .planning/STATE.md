@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Data Viz, Consulting Intelligence & Platform
 status: verifying
-stopped_at: Completed 12-01-PLAN.md
-last_updated: "2026-03-28T09:52:53.996Z"
+stopped_at: Completed 12-02-PLAN.md
+last_updated: "2026-03-28T09:58:16.680Z"
 last_activity: 2026-03-28
 progress:
   total_phases: 7
   completed_phases: 4
-  total_plans: 9
-  completed_plans: 11
+  total_plans: 7
+  completed_plans: 12
   percent: 71
 ---
 
@@ -67,6 +67,7 @@ Progress: [███████░░░] 71%
 | Phase 11 P01 | 12min | 2 tasks | 2 files |
 | Phase 11 P02 | 3min | 2 tasks | 2 files |
 | Phase 12 P01 | 3min | 2 tasks | 3 files |
+| Phase 12 P02 | 3min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -98,6 +99,8 @@ Recent decisions affecting current work:
 - [Phase 11]: Removed .claude/skills path references from copilot-instructions.md for platform-agnostic constraint
 - [Phase 12]: Used cheerio 1.0.0 (latest stable) instead of nonexistent 1.2.0
 - [Phase 12]: Skip rgba() tokens in contrast check -- context-dependent alpha
+- [Phase 12]: Accessible export uses cheerio DOM parsing with h1/h2/h3 heading hierarchy and German labels
+- [Phase 12]: PPTX export uses image-based slides (full visual fidelity) via DeckTape screenshots + PptxGenJS assembly
 
 ### Pending Todos
 
@@ -110,6 +113,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T09:52:53.994Z
-Stopped at: Completed 12-01-PLAN.md
+Last session: 2026-03-28T09:58:16.678Z
+Stopped at: Completed 12-02-PLAN.md
 Resume file: None
