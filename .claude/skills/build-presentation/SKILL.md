@@ -1,6 +1,6 @@
 ---
 name: build-presentation
-description: Build consulting-grade HTML presentations from natural language prompts using reveal.js, CSS design tokens, and 14 component templates.
+description: Build consulting-grade HTML presentations from natural language prompts using reveal.js, CSS design tokens, and 21 component templates.
 ---
 
 <essential_principles>
@@ -9,7 +9,7 @@ description: Build consulting-grade HTML presentations from natural language pro
 This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Themes in `themes/` override these tokens. Components in `templates/` reference tokens via `var()` and adapt automatically to any theme.
 
 **Key facts:**
-- 14 component templates in `templates/` (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework)
+- 21 component templates in `templates/` (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework, data-table, harvey-balls, chart, mermaid-diagram, waterfall, code-block, team)
 - CSS design tokens in `tokens/base.css` (colors, typography, spacing, shadows) + `tokens/animations.css`
 - Three bundled themes in `themes/`: default, startup, enterprise
 - Generated presentations live in `projects/{name}/`
@@ -60,7 +60,7 @@ Run these checks to ensure the presentation is healthy:
 
 All in `references/`:
 
-- **component-catalog.md** -- 14 slide components with semantic descriptions, required/optional slots, HTML patterns, audience fit
+- **component-catalog.md** -- 21 slide components with semantic descriptions, required/optional slots, HTML patterns, audience fit
 - **audience-presets.md** -- 6 audience types (C-Suite, Stakeholder, Technical, Sales, Workshop, Internal) with quantified design rules
 - **design-principles.md** -- Consulting-grade design rules: typography hierarchy, color usage, spacing, visual hierarchy, content density
 - **theme-system.md** -- Full CSS token catalog, theme file structure, PPTX extraction, footer configuration

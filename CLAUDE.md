@@ -1,6 +1,6 @@
 ## Presentation Builder Framework
 
-A code-based slide deck framework for consulting-grade presentations. AI assistants generate single-file HTML presentations using reveal.js, CSS design tokens, and 14 component templates.
+A code-based slide deck framework for consulting-grade presentations. AI assistants generate single-file HTML presentations using reveal.js, CSS design tokens, and 21 component templates.
 
 ### Quick Start
 
@@ -8,7 +8,7 @@ To build a presentation, describe what you want to build, the audience, and key 
 
 Skill location: `.claude/skills/build-presentation/SKILL.md`
 
-### Component Library (14 layouts)
+### Component Library (21 layouts)
 
 | Component | Use When |
 |-----------|----------|
@@ -26,6 +26,13 @@ Skill location: `.claude/skills/build-presentation/SKILL.md`
 | quote | Customer quote, expert endorsement |
 | card-grid | Service offerings, feature overview (2-4 cards) |
 | framework | BCG matrix, 2x2 analysis, quadrant mapping |
+| data-table | Structured data, financials, feature comparison |
+| harvey-balls | Maturity/capability ratings in tables (0-100%) |
+| chart | Bar, line, pie, doughnut, radar charts (Chart.js) |
+| mermaid-diagram | Flowcharts, sequence, Gantt, org charts (pre-rendered SVG) |
+| waterfall | Revenue walks, cost bridges (Chart.js floating bar) |
+| code-block | Code snippets with syntax highlighting |
+| team | Team members with photo, name, role (2-6 persons) |
 
 Full details: `references/component-catalog.md`
 
@@ -79,8 +86,10 @@ A shareable, code-based slide deck framework that turns structured content (YAML
 - **reveal.js 5.2.1** (CDN) -- presentation engine, handles slides, fragments, navigation, speaker notes
 - **Inter** (Google Fonts CDN) -- sole default body and display font
 - **CSS Custom Properties** -- design token system in `tokens/base.css` (colors, typography, spacing, shadows)
-- **DeckTape 3.15.0** (optional) -- PDF export via `tools/export-pdf.sh`
+- **Chart.js 4.x** (CDN, conditional) -- bar, line, pie, doughnut, radar charts with consulting-grade defaults
+- **DeckTape 3.15.0** (optional) -- PDF export via `tools/export-pdf.sh`, PPTX slide capture via `tools/export-pptx.js`
 - **adm-zip + fast-xml-parser** (optional) -- PPTX theme extraction via `tools/extract-theme.js`
+- **cheerio + pptxgenjs** (optional) -- accessible HTML export, PPTX assembly, title extraction
 <!-- GSD:stack-end -->
 
 <!-- GSD:conventions-start source:CONVENTIONS.md -->
@@ -98,12 +107,12 @@ A shareable, code-based slide deck framework that turns structured content (YAML
 ## Architecture
 
 ```
-templates/          # 14 component HTML templates + _skeleton.html + index.md
+templates/          # 21 component HTML templates + _skeleton.html + index.md
 tokens/             # base.css (design tokens) + animations.css
 themes/             # default/, startup/, enterprise/ theme CSS files
-tools/              # extract-theme.js, export-pdf.sh, gallery.html
+tools/              # extract-theme.js, export-pdf.sh, export-pptx.js, export-accessible.js, check-contrast.js, extract-titles.js, gallery.html
 projects/           # Generated presentations ({name}/ folders)
-docs/               # german-typography.md, speaker-notes.md
+docs/               # german-typography.md, speaker-notes.md, eaa-compliance.md, presentation-checklist.md
 .claude/skills/     # build-presentation skill (SKILL.md + workflows/ + references/)
 .claude/agents/     # presentation-researcher, strategist, builder subagents
 ```
