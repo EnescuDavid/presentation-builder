@@ -230,7 +230,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 12-01: TBD
+- [x] 12-01: TBD
 - [ ] 12-02: TBD
 
 ### Phase 13: Documentation & Compliance
@@ -263,5 +263,5 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 9. CDN-Dependent Components | v2.0 | 0/2 | Not started | - |
 | 10. Audience Presets & Accessibility CSS | v2.0 | 1/2 | In Progress|  |
 | 11. Consulting Intelligence & AI Skill Layer | v2.0 | 1/2 | In Progress | - |
-| 12. Export Tools | v2.0 | 0/? | Not started | - |
+| 12. Export Tools | v2.0 | 1/2 | In Progress|  |
 | 13. Documentation & Compliance | v2.0 | 0/? | Not started | - |

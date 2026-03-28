@@ -26,14 +26,14 @@
 
 - [x] **CONSULT-01**: SCQA narrative scaffolding — strategist subagent structures presentations using Situation-Complication-Question-Answer framework. deck-plan.md includes SCQA markers.
 - [x] **CONSULT-02**: Pyramid Principle validation — strategist checks slide sequence for top-down logic, flags titles without verbs, validates MECE groupings. Output: validation warnings in deck-plan.md.
-- [ ] **CONSULT-03**: "Read the titles" summary export — script extracts action titles from all slides into a one-page coherence check document.
+- [x] **CONSULT-03**: "Read the titles" summary export — script extracts action titles from all slides into a one-page coherence check document.
 - [x] **CONSULT-04**: Action title enforcement — component catalog, strategist prompts, and validation all require complete-sentence action titles (not topic labels).
 - [x] **CONSULT-05**: Audience preset CSS implementation — modifier classes or `presentationConfig.audience` that adjusts font sizes, content density, animation density per audience type.
 - [x] **CONSULT-06**: Slide count guidance per audience — strategist applies recommended ranges (C-Suite: 8-12, Technical: 15-25, etc.) and warns if deck-plan exceeds.
 
 ### Accessibility & Compliance
 
-- [ ] **A11Y-01**: WCAG contrast validation tool — script checks theme color combinations against 4.5:1 (normal text) and 3:1 (large text) ratios. Pass/fail report per color pair.
+- [x] **A11Y-01**: WCAG contrast validation tool — script checks theme color combinations against 4.5:1 (normal text) and 3:1 (large text) ratios. Pass/fail report per color pair.
 - [x] **A11Y-02**: ARIA landmarks in all 14+ component templates — `role`, `aria-label`, correct heading hierarchy.
 - [x] **A11Y-03**: Alt text slots for visual components — required `alt`/`aria-label` on images, charts, diagrams, framework/matrix.
 - [ ] **A11Y-04**: Accessible linear HTML export — screen-reader-friendly version without reveal.js framework. Charts replaced with text descriptions.
@@ -84,11 +84,11 @@
 | VIZ-06 | Phase 8 | Complete |
 | CONSULT-01 | Phase 11 | Complete |
 | CONSULT-02 | Phase 11 | Complete |
-| CONSULT-03 | Phase 12 | Pending |
+| CONSULT-03 | Phase 12 | Complete |
 | CONSULT-04 | Phase 11 | Complete |
 | CONSULT-05 | Phase 10 | Complete |
 | CONSULT-06 | Phase 11 | Complete |
-| A11Y-01 | Phase 12 | Pending |
+| A11Y-01 | Phase 12 | Complete |
 | A11Y-02 | Phase 10 | Complete |
 | A11Y-03 | Phase 10 | Complete |
 | A11Y-04 | Phase 12 | Pending |
