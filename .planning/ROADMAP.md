@@ -135,7 +135,7 @@ Plans:
 - [ ] **Phase 10: Audience Presets & Accessibility CSS** - Audience modifier classes, print CSS, dark variant fix, ARIA landmarks, keyboard nav
 - [ ] **Phase 11: Consulting Intelligence & AI Skill Layer** - SCQA scaffolding, Pyramid Principle, action titles, slide count guidance, copilot-instructions.md, gallery UX
 - [ ] **Phase 12: Export Tools** - PPTX export, accessible HTML export, WCAG contrast validator, read-the-titles script
-- [ ] **Phase 13: Documentation & Compliance** - EAA compliance checklist and accessibility documentation
+- [x] **Phase 13: Documentation & Compliance** - EAA compliance checklist and accessibility documentation (completed 2026-03-28)
 
 ## Phase Details
 
@@ -243,7 +243,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 13-01: TBD
+- [x] 13-01: TBD
 
 ## Progress
 
@@ -264,4 +264,4 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 10. Audience Presets & Accessibility CSS | v2.0 | 1/2 | In Progress|  |
 | 11. Consulting Intelligence & AI Skill Layer | v2.0 | 1/2 | In Progress | - |
 | 12. Export Tools | v2.0 | 1/2 | In Progress|  |
-| 13. Documentation & Compliance | v2.0 | 0/? | Not started | - |
+| 13. Documentation & Compliance | v2.0 | 1/1 | Complete   | 2026-03-28 |

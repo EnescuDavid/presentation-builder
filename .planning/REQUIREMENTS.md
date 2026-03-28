@@ -39,7 +39,7 @@
 - [x] **A11Y-04**: Accessible linear HTML export — screen-reader-friendly version without reveal.js framework. Charts replaced with text descriptions.
 - [x] **A11Y-05**: Semantic state color tokens — add `--color-warning`, `--color-info`, `--color-overlay`, `--color-on-primary`. Eliminate all hardcoded color values.
 - [x] **A11Y-06**: Keyboard navigation verification — all interactive elements Tab-reachable, focus indicators visible, no keyboard traps.
-- [ ] **A11Y-07**: European Accessibility Act compliance checklist — document mapping framework features to EAA requirements, per-presentation checklist.
+- [x] **A11Y-07**: European Accessibility Act compliance checklist — document mapping framework features to EAA requirements, per-presentation checklist.
 
 ### Platform Expansion
 
@@ -94,7 +94,7 @@
 | A11Y-04 | Phase 12 | Complete |
 | A11Y-05 | Phase 7 | Complete |
 | A11Y-06 | Phase 10 | Complete |
-| A11Y-07 | Phase 13 | Pending |
+| A11Y-07 | Phase 13 | Complete |
 | PLAT-01 | Phase 11 | Complete |
 | PLAT-02 | Phase 12 | Complete |
 | PLAT-03 | Phase 8 | Complete |
