@@ -59,6 +59,19 @@
       color: #666;
       border-top: 1px solid #eee;
     }
+
+    .slide-card__badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: #e8f0fe;
+      color: #1a73e8;
+      border-radius: 4px;
+      text-transform: lowercase;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
@@ -87,9 +100,32 @@
 
       const label = document.createElement('div');
       label.className = 'slide-label';
-      label.textContent = `Slide ${i + 1}`;
+
+      const labelText = document.createElement('span');
+      labelText.textContent = `Slide ${i + 1}`;
+      label.appendChild(labelText);
 
       card.appendChild(iframe);
+
+      // Extract component type badge from iframe content after load
+      iframe.addEventListener('load', () => {
+        try {
+          const doc = iframe.contentDocument;
+          if (doc) {
+            const section = doc.querySelector('section[data-component]');
+            if (section) {
+              const type = section.getAttribute('data-component');
+              const badge = document.createElement('span');
+              badge.className = 'slide-card__badge';
+              badge.textContent = type;
+              label.insertBefore(badge, labelText);
+            }
+          }
+        } catch (e) {
+          // Cross-origin or loading error -- degrade gracefully (show slide number only)
+        }
+      });
+
       card.appendChild(label);
 
       card.addEventListener('click', () => {
