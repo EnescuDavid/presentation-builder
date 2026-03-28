@@ -174,7 +174,6 @@ function extractSlideContent($slide, slideIndex) {
       // Include images with alt text
       $content('img').each(function () {
         const alt = $content(this).attr('alt') || '';
-        const src = $content(this).attr('src') || '';
         if (alt) {
           parts.push(`<p><em>Bild: ${alt}</em></p>`);
         }

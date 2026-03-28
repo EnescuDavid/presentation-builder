@@ -107,7 +107,7 @@ try {
 
     console.log(`Found ${htmlSlideCount} slides in HTML`);
 
-    htmlSlides.each((i, el) => {
+    htmlSlides.each((_i, el) => {
       const $slide = $(el);
       // Check for <aside class="notes"> content
       const notesEl = $slide.find('aside.notes');
