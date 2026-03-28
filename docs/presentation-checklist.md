@@ -123,7 +123,7 @@ Copy this template for each presentation. Check each item before distributing. I
 
 ## 7. Title Quality
 
-- [ ] **[Auto] Action title check:** Run `node tools/read-titles.js {presentation.html}` -- verify all slides have action titles (complete sentences with verbs, not topic labels).
+- [ ] **[Auto] Action title check:** Run `node tools/extract-titles.js {presentation.html}` -- verify all slides have action titles (complete sentences with verbs, not topic labels).
   - *Pass:* Each title is a complete sentence stating the slide's key message
   - *Fail:* Titles are topic labels like "Marktanalyse" or "Ergebnisse"
 

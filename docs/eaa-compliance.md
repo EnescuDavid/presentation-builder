@@ -17,11 +17,11 @@ This document covers:
 
 | Principle | Total Criteria | AUTOMATED | PARTIAL | N/A |
 |-----------|---------------|-----------|---------|-----|
-| Perceivable | 15 | 3 | 7 | 5 |
-| Operable | 17 | 12 | 3 | 2 |
-| Understandable | 8 | 4 | 1 | 3 |
+| Perceivable | 20 | 3 | 10 | 7 |
+| Operable | 17 | 12 | 4 | 1 |
+| Understandable | 10 | 4 | 1 | 5 |
 | Robust | 3 | 1 | 2 | 0 |
-| **Total** | **43** | **20** | **13** | **10** |
+| **Total** | **50** | **20** | **17** | **13** |
 
 **Status definitions:**
 
