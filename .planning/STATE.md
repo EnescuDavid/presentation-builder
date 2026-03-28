@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Data Viz, Consulting Intelligence & Platform
-status: verifying
-stopped_at: Completed 10-01-PLAN.md and 10-02-PLAN.md
-last_updated: "2026-03-27T21:33:14.000Z"
-last_activity: 2026-03-27
+status: executing
+stopped_at: Completed 11-01-PLAN.md
+last_updated: "2026-03-28T01:17:40Z"
+last_activity: 2026-03-28
 progress:
   total_phases: 7
-  completed_phases: 2
-  total_plans: 6
-  completed_plans: 8
-  percent: 0
+  completed_phases: 4
+  total_plans: 14
+  completed_plans: 9
+  percent: 64
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 10 — audience-presets-accessibility-css
+**Current focus:** Phase 11 — consulting-intelligence-ai-skill-layer
 
 ## Current Position
 
-Phase: 10
-Plan: Both plans complete
-Status: Phase execution complete — ready for verification
-Last activity: 2026-03-27
+Phase: 11
+Plan: 1 of 2 complete
+Status: Executing phase 11
+Last activity: 2026-03-28
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██████░░░░] 64%
 
 ## Performance Metrics
 
@@ -64,6 +64,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 09 P02 | 3min | 2 tasks | 3 files |
 | Phase 10 P01 | 2min | 2 tasks | 3 files |
 | Phase 10 P02 | 4min | 2 tasks | 22 files |
+| Phase 11 P01 | 12min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,10 @@ Recent decisions affecting current work:
 - [Phase 10]: Used role=group (not region) to avoid screen reader landmark pollution per WCAG guidance
 - [Phase 10]: German aria-labels on all templates consistent with German-first convention (D-09)
 - [Phase 10]: Used :focus-visible (not :focus) for keyboard-only focus indicators
+- [Phase 11]: SCQA conditional on audience type -- skip for Internal/Workshop
+- [Phase 11]: All validation advisory/non-blocking -- strategist never refuses to generate
+- [Phase 11]: Action title exceptions for structural slides (section-break, agenda, contact)
+- [Phase 11]: Slide count ranges sourced from audience-presets.md Quick Reference table
 
 ### Pending Todos
 
@@ -100,6 +105,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T21:33:14.000Z
-Stopped at: Completed 10-01-PLAN.md and 10-02-PLAN.md
+Last session: 2026-03-28T01:17:40Z
+Stopped at: Completed 11-01-PLAN.md
 Resume file: None

@@ -212,10 +212,10 @@ Plans:
   3. Component catalog, strategist prompts, and validation all enforce complete-sentence action titles (not topic labels)
   4. Strategist applies audience-specific slide count ranges (C-Suite: 8-12, Technical: 15-25) and warns when deck-plan exceeds the recommended range
   5. copilot-instructions.md exists with equivalent framework teaching content for GitHub Copilot CLI, and the gallery view shows all components with type badges and labels
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 11-01: TBD
+- [x] 11-01-PLAN.md -- Strategist SCQA/Pyramid/action-title/slide-count upgrades and component catalog action title guidance
 - [ ] 11-02: TBD
 
 ### Phase 12: Export Tools
@@ -262,6 +262,6 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 8. Pure CSS Components | v2.0 | 0/2 | Not started | - |
 | 9. CDN-Dependent Components | v2.0 | 0/2 | Not started | - |
 | 10. Audience Presets & Accessibility CSS | v2.0 | 1/2 | In Progress|  |
-| 11. Consulting Intelligence & AI Skill Layer | v2.0 | 0/? | Not started | - |
+| 11. Consulting Intelligence & AI Skill Layer | v2.0 | 1/2 | In Progress | - |
 | 12. Export Tools | v2.0 | 0/? | Not started | - |
 | 13. Documentation & Compliance | v2.0 | 0/? | Not started | - |
