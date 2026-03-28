@@ -28,6 +28,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Opening slide of any presentation. Sets tone and context. First impression for the audience.
 - **Required slots:** Hero text (h1, keep under 8 words), Subtitle (p, context line)
 - **Optional slots:** Background image (data-background-image), secondary subtitle, divider line
+- **Action title guidance:** Hero text IS the action title -- state the core message or thesis. Good: "Cloud-Migration senkt Kosten um 30%". Bad: "Einleitung", "Willkommen".
 - **Variants:** Light/dark background, background image with overlay, gradient, split layout
 - **Master layer:** Hidden (data-master="hide")
 - **Animation:** h1 blurIn, divider lineGrow, subtitle fadeUp
@@ -49,6 +50,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Dividing major sections. Chapter marker with visual breathing room. Signals topic change.
 - **Required slots:** Heading (h2, section title)
 - **Optional slots:** Counter (span, e.g. "01", "02")
+- **Action title guidance:** EXCEPTION -- use short topic labels (2-4 words), not action titles. This is a structural divider. Good: "Marktanalyse", "Naechste Schritte". Bad: full sentences.
 - **Variants:** Dark/light background, accent color, with background image
 - **Master layer:** Hidden (data-master="hide")
 - **Animation:** Counter fadeUp, divider lineGrow, heading blurIn
@@ -70,6 +72,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Explaining a concept. Key arguments. Bullet-heavy content. Detailed analysis.
 - **Required slots:** Headline (h2, action title), Body content (paragraphs, bullets, or mixed)
 - **Optional slots:** Subheading (h3), Lead paragraph (intro text before bullets)
+- **Action title guidance:** State the argument or conclusion the text supports. Good: "Drei Faktoren treiben das Wachstum". Bad: "Hintergrund", "Details".
 - **Variants:** Dense (reduced gap), with lead paragraph, subheaded sections
 - **Master layer:** Visible
 - **Animation:** fadeUp on body elements
@@ -90,6 +93,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Comparing two things. Text + image side-by-side. Before/after (flat, no cards).
 - **Required slots:** Left column content, Right column content
 - **Optional slots:** Headline (h2, above columns), Column sub-headers (h3)
+- **Action title guidance:** State the comparison insight or relationship. Good: "Kosten sinken, waehrend Qualitaet steigt". Bad: "Vergleich", "Uebersicht".
 - **Variants:** 50/50 (default), 60/40 (flex:3/flex:2), 70/30 (flex:7/flex:3). Any content in any column.
 - **Master layer:** Visible
 - **Animation:** Left column slideL, right column slideR
@@ -111,6 +115,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Highlighting 1-6 key numbers. KPIs. Revenue, growth, users. Performance data.
 - **Required slots:** At least 1 metric card (number + label)
 - **Optional slots:** Slide title (h2), up to 6 cards. Use --compact modifier for 4-6 metrics.
+- **Action title guidance:** State what the numbers prove, not what they are. Good: "Umsatz stieg um 15% durch APAC-Expansion". Bad: "Kennzahlen", "Umsatzuebersicht".
 - **Variants:** Standard (1-3, large flexbox), Compact (4-6, CSS grid 3-col with smaller numbers)
 - **Master layer:** Visible
 - **Animation:** scalePop on each card with stagger (data-delay)
@@ -136,6 +141,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Visual impact. Product shots. Team photos. Mood/atmosphere setting.
 - **Required slots:** Background image (data-background-image on section)
 - **Optional slots:** Headline overlay (h2), supporting text overlay (p)
+- **Action title guidance:** State the emotional or aspirational message. Good: "Unsere Vision fuer 2030". Bad: "Bild", "Impression".
 - **Variants:** Dark overlay (white text on dark gradient), light overlay (dark text), no overlay (image only)
 - **Master layer:** Hidden (data-master="hide")
 - **Animation:** fadeUp on overlay text
@@ -157,6 +163,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Presentation roadmap. Meeting structure. Outlining what's coming. After title slide.
 - **Required slots:** Agenda items (list of topics, 3-8 items)
 - **Optional slots:** Slide title (h2), item descriptions (secondary text per item)
+- **Action title guidance:** EXCEPTION -- use "Agenda" or "Tagesordnung". Structural slide, not content slide.
 - **Variants:** Active item highlighted (accent border + bold), progressive reveal, numbered
 - **Master layer:** Visible
 - **Animation:** fadeUp on items
@@ -180,6 +187,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Closing slide. Key takeaways. Recap of main points. Call to action.
 - **Required slots:** Key points (list of 2-5 takeaways)
 - **Optional slots:** Slide title (h2), CTA zone (next steps, contact info, QR code)
+- **Action title guidance:** State the key takeaway. Good: "Drei Massnahmen sichern den Projekterfolg". Bad: "Zusammenfassung", "Fazit".
 - **Variants:** Clean summary (default), with CTA zone (border-top separator)
 - **Master layer:** Visible
 - **Animation:** fadeUp on points, scalePop on CTA
@@ -205,6 +213,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Closing slide. Contact details. Call to action. Speaker info.
 - **Required slots:** Name, Role
 - **Optional slots:** Photo (img 120x120 rounded), Email, Phone, Divider line
+- **Action title guidance:** EXCEPTION -- use speaker name or "Kontakt". Structural slide.
 - **Variants:** With/without photo, horizontal contact row
 - **Master layer:** Visible
 - **Animation:** fadeUp on name/role, lineGrow on divider
@@ -228,6 +237,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Before/after. A vs B. Pros/cons. Current vs target state (IST/SOLL).
 - **Required slots:** Left card content, Right card content
 - **Optional slots:** Slide title (h2), left/right labels (e.g. "IST-Zustand"/"SOLL-Zustand"), center divider
+- **Action title guidance:** State the verdict or recommendation. Good: "Loesung B uebertrifft A in allen Kriterien". Bad: "IST vs. SOLL", "Vergleich".
 - **Variants:** With/without labels, with center arrow/VS divider, color-coded badges
 - **Master layer:** Visible
 - **Animation:** slideL on left card, slideR on right card
@@ -258,6 +268,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Project roadmap. Process flow. Milestones. Sequential steps. Implementation phases.
 - **Required slots:** 3-6 steps, each with marker label and content title
 - **Optional slots:** Slide title (h2), step description text
+- **Action title guidance:** State the outcome or milestone. Good: "Migration abgeschlossen bis Q2 2027". Bad: "Zeitplan", "Roadmap".
 - **Variants:** Horizontal (3-4 steps), vertical (5-6 steps, change flex-direction)
 - **Master layer:** Visible
 - **Animation:** fadeUp on steps with stagger
@@ -284,6 +295,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Customer quote. Expert endorsement. Key statement emphasis. CEO vision statement.
 - **Required slots:** Quote text, Author name
 - **Optional slots:** Author role, Author photo (56x56 rounded)
+- **Action title guidance:** State why the quote matters or what it proves. Good: "Kundenzufriedenheit bestaetigt den Ansatz". Bad: "Zitat", "Kundenstimme".
 - **Variants:** With/without photo, with role attribution
 - **Master layer:** Visible
 - **Animation:** blurIn on quote text, fadeUp on attribution
@@ -307,6 +319,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** Service offerings. Feature overview. Team capabilities. 2-4 items with icon and description.
 - **Required slots:** 2-4 cards, each with title
 - **Optional slots:** Card icon (inline SVG, not emoji), card description, slide title (h2)
+- **Action title guidance:** State what the collection demonstrates. Good: "Vier Services decken die gesamte Wertschoepfungskette ab". Bad: "Services", "Angebot".
 - **Variants:** 2-column, 3-column, 4-column (auto-fit handles layout). Cards have surface bg + shadow.
 - **Master layer:** Visible
 - **Animation:** scalePop on cards with stagger
@@ -333,6 +346,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Use when:** BCG matrix. Prioritization grid. 2x2 analysis. Quadrant mapping. Strategic framework.
 - **Required slots:** 4 quadrant contents (title + description each)
 - **Optional slots:** Slide title (h2), Y-axis label, X-axis label
+- **Action title guidance:** State the insight the matrix reveals. Good: "Produkt A dominiert im Wachstumssegment". Bad: "BCG-Matrix", "Framework".
 - **Variants:** With/without axis labels, color-coded quadrants
 - **Master layer:** Visible
 - **Animation:** fadeUp on quadrants with stagger
