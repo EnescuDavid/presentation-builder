@@ -1,6 +1,14 @@
-<!-- Last synced with CLAUDE.md: 2026-03-28 -->
+<!-- Last synced with CLAUDE.md: 2026-03-30 -->
 <!-- This file mirrors CLAUDE.md framework teaching for GitHub Copilot CLI users. -->
 <!-- Update when framework changes. See CLAUDE.md for authoritative source. -->
+
+<!-- Copilot CLI integration files:
+  .github/copilot-instructions.md   -- this file (framework docs, always loaded)
+  .github/agents/*.agent.md         -- presentation pipeline agents (orchestrator, researcher, strategist, builder)
+  .github/hooks/presentation.json   -- template/token protection hooks
+  .claude/skills/build-presentation/ -- shared skill (read by both Claude Code and Copilot CLI)
+  AGENTS.md                          -- repo conventions for all AI tools
+-->
 
 # Presentation Builder Framework
 

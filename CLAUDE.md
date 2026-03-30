@@ -113,8 +113,11 @@ themes/             # default/, startup/, enterprise/ theme CSS files
 tools/              # extract-theme.js, export-pdf.sh, export-pptx.js, export-accessible.js, check-contrast.js, extract-titles.js, gallery.html
 projects/           # Generated presentations ({name}/ folders)
 docs/               # german-typography.md, speaker-notes.md, eaa-compliance.md, presentation-checklist.md
-.claude/skills/     # build-presentation skill (SKILL.md + workflows/ + references/)
-.claude/agents/     # presentation-researcher, strategist, builder subagents
+AGENTS.md           # Cross-tool repo conventions (read by Copilot, Claude Code, Cursor, Gemini CLI, etc.)
+.claude/skills/     # build-presentation skill (SKILL.md + workflows/ + references/) -- shared by both tools
+.claude/agents/     # Claude Code subagents (presentation-researcher, strategist, builder)
+.github/agents/     # Copilot CLI agents (orchestrator + researcher, strategist, builder ports)
+.github/hooks/      # Copilot CLI hooks (template/token protection)
 ```
 <!-- GSD:architecture-end -->
 

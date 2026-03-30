@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": ".github/hooks/scripts/protect-templates.sh",
+        "comment": "Warn before modifying component templates or base design tokens"
+      }
+    ]
+  }
+}
