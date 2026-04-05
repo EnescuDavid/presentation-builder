@@ -130,7 +130,7 @@ Plans:
 **Milestone Goal:** Rewrite the presentation builder from a single-strategist, template-ignoring system into a multi-agent pipeline with locked CSS, visual argumentation, brand awareness, and consensus debate.
 
 - [x] **Phase 1: Component Architecture** - Monolithic components.css, @layer skeleton, --comp-* variable contract, template rewrite, builder agent rewrite (completed 2026-04-05)
-- [x] **Phase 2: Visual Vocabulary** - 15 content archetypes, bullet-list smell test, curated icons, CSS property map, slide-stylist agent (completed 2026-04-05)
+- [ ] **Phase 2: Visual Vocabulary** - 15 content archetypes, bullet-list smell test, curated icons, CSS property map, slide-stylist agent (gap closure in progress)
 - [ ] **Phase 3: Brand System** - brands/ directory, brand.yaml + rules.md per brand, brand-checker/profiler agents, onboard-brand workflow
 - [ ] **Phase 4: Orchestration & Entry Points** - SKILL.md rewrite, /build /refine /onboard commands, workflow rewrites, pipeline resumability
 - [ ] **Phase 5: Strategist Debate** - Narrative-planner, architect, critic agents, verdict-driven debate protocol, rich deck-plan.md, audience hard/soft rules, slide-editor agent
@@ -167,11 +167,12 @@ Plans:
   3. Curated Lucide icon set is mapped to common consulting concepts (growth, risk, timeline, etc.)
   4. CSS property map reference documents every `--comp-*` variable and safe CSS properties for the slide-stylist agent
   5. Slide-stylist agent produces per-slide CSS tweaks via `@layer overrides` without modifying components.css
-**Plans**: 2 plans
+**Plans**: 3 plans
 
 Plans:
 - [x] 02-01-PLAN.md -- Visual vocabulary reference (15 archetypes, smell test, 50 icons) and CSS property map (91 variables)
 - [x] 02-02-PLAN.md -- Slide-stylist agent definition, strategist integration, and catalog archetype cross-references
+- [ ] 02-03-PLAN.md -- Gap closure: CSS property map reference for slide-stylist agent (VIS-03)
 
 ### Phase 3: Brand System
 **Goal**: Corporate branding is managed through a structured brands/ directory with machine-readable profiles, automated extraction, and agent-driven validation
@@ -230,7 +231,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1. Component Architecture | v2.0 | 5/5 | Complete | 2026-04-05 |
-| 2. Visual Vocabulary | v2.0 | 2/2 | Complete   | 2026-04-05 |
+| 2. Visual Vocabulary | v2.0 | 2/3 | Gap closure | - |
 | 3. Brand System | v2.0 | 0/0 | Not started | - |
 | 4. Orchestration & Entry Points | v2.0 | 0/0 | Not started | - |
 | 5. Strategist Debate | v2.0 | 0/0 | Not started | - |
