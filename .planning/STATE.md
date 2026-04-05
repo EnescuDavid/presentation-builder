@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
 milestone: v2.0
-milestone_name: Data Viz, Consulting Intelligence & Platform
-status: verifying
-stopped_at: Completed 01-05-PLAN.md
-last_updated: "2026-04-05T17:53:52.554Z"
+milestone_name: Agent Pipeline + Component Architecture
+status: active
+stopped_at: Phase 1 complete — ready for Phase 2
+last_updated: "2026-04-05T20:00:00.000Z"
 last_activity: 2026-04-05
 progress:
-  total_phases: 7
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 71
+  total_phases: 6
+  completed_phases: 1
+  total_plans: 5
+  completed_plans: 5
+  percent: 17
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 11 — consulting-intelligence-ai-skill-layer
+**Current focus:** Phase 2 — Visual Vocabulary
 
 ## Current Position
 
-Phase: 7
+Phase: 2
 Plan: Not started
-Status: Phase complete — ready for verification
+Status: Ready for discuss-phase
 Last activity: 2026-04-05
 
-Progress: [███████░░░] 71%
+Progress: [██░░░░░░░░] 17%
 
 ## Performance Metrics
 
@@ -78,8 +78,8 @@ Progress: [███████░░░] 71%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- v2.0 roadmap: 7 phases (7-13) derived from 31 requirements across 5 categories
-- v2.0 phase ordering: foundation fixes first, then pure CSS, then CDN, then accessibility, then AI, then export, then docs
+- v2.0 roadmap: 6 phases (1-6) — component architecture, visual vocabulary, brand system, orchestration, strategist debate, review pipeline
+- v2.0 phase ordering: locked CSS first, then visual vocabulary, then brands, then orchestration, then debate, then review
 - Research: Mermaid offline strategy needs spike (2MB payload), PptxGenJS needs per-component proof-of-concept
 - [Phase 07]: Used --theme-gradient-start/end tokens for per-theme accent bar gradient direction
 - [Phase 07]: Skeleton uses inline CSS comment markers for _base.css (not link tags) matching actual architecture
