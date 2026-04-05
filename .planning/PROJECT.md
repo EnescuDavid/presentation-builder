@@ -2,32 +2,23 @@
 
 ## What This Is
 
-A shareable, code-based slide deck framework that turns natural language prompts into polished, self-contained HTML presentations powered by reveal.js. Designed for strategic consultants who build decks constantly — pitch decks, board presentations, stakeholder updates, technical deep-dives — across different audiences and corporate brands. The framework provides a 14-component library with semantic descriptions and a Claude Code skill with specialized subagents (researcher, strategist, builder) that orchestrate the full presentation pipeline.
+A shareable, code-based slide deck framework that turns natural language prompts into polished, self-contained HTML presentations powered by reveal.js. Designed for strategic consultants who build decks constantly — pitch decks, board presentations, stakeholder updates, technical deep-dives — across different audiences and corporate brands. The framework provides a 21-component library with semantic descriptions so any AI coding assistant can automatically select the right layouts and assemble professional slides from natural language prompts.
 
 ## Core Value
 
 Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant — regardless of which AI tool they use.
 
-## Current State (v1.0 shipped 2026-03-27)
+## Current Milestone: v2.0 Agent Pipeline + Component Architecture
 
-- **14 component templates** with BEM-lite CSS, design token integration, German text handling
-- **3 bundled themes** (default, startup, enterprise) + PPTX extraction tool
-- **AI skill layer**: SKILL.md router, 3 workflows, 5 reference files, 3 subagents
-- **German localization**: typography conventions, global text handling CSS, full German demo
-- **Speaker notes**: YAML format with generation-time injection
-- **Tooling**: DeckTape PDF export, gallery/thumbnail view
-- **Codebase**: 2,508 lines core framework + 1,575 lines AI skill layer, 46 framework files
-
-## Current Milestone: v2.0 Data Viz, Consulting Intelligence & Platform
-
-**Goal:** Add data visualization components, consulting methodology intelligence, accessibility compliance, and platform expansion.
+**Goal:** Rewrite the presentation builder from a single-strategist, template-ignoring system into a 10-agent pipeline with locked CSS, visual argumentation, brand awareness, and consensus debate.
 
 **Target features:**
-- Data visualization: Chart.js, Mermaid, data tables, waterfall charts, Harvey balls, sparklines
-- Consulting intelligence: SCQA scaffolding, Pyramid Principle validation, "read the titles" export, audience preset CSS
-- Accessibility: WCAG 2.1 AA validation, ARIA landmarks, accessible HTML export, EAA compliance
-- Platform expansion: copilot-instructions.md, PPTX export, team/people component, code blocks
-- Polish: nested bullets, print CSS, theme dedup, dark variant fix, footer date auto-population
+- Component Architecture — Monolithic `components.css` with `@layer` structure, `--comp-*` variables as only customization surface, builder copies CSS verbatim (fixes 40-50% adherence gap)
+- Visual Vocabulary + Stylist — 15 content archetypes, bullet-list smell test, curated icons, slide-stylist agent for `@layer overrides`
+- Brand System — `brands/` directory replacing `themes/`, `brand.yaml` + `rules.md` per brand, brand-checker/profiler agents, onboard-brand workflow
+- SKILL.md + Slash Commands — Model comprehension routing (not keyword dispatch), `/build` `/refine` `/onboard` commands, pipeline resumability
+- Strategist Overhaul — 3-agent consensus debate (planner/architect/critic), slide-editor agent, rich deck-plan.md format, audience hard/soft rules
+- Review Pipeline — presentation-reviewer agent, Playwright screenshots, build-log.yaml
 
 ## Requirements
 
@@ -36,7 +27,7 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - [x] Reusable design token system (CSS custom properties for colors, fonts, spacing, shadows) — v1.0
 - [x] Animation library (fadeUp, blurIn, slideL, slideR, scalePop, lineGrow) — v1.0
 - [x] Self-contained HTML output — single file, zero runtime dependencies beyond CDN — v1.0
-- [x] 14 slide component templates (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework) — v1.0
+- [x] 21 slide component templates — v1.0
 - [x] Theme layer with CSS custom property overrides — v1.0
 - [x] PPTX theme extraction tool (12 color slots, 2 font families, logos) — v1.0
 - [x] PDF export via DeckTape — v1.0
@@ -47,14 +38,36 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - [x] Audience presets documented with design rules (6 types) — v1.0
 - [x] Clone-and-use installation — v1.0
 
-### Active
+### Validated (Phase 1 — Component Architecture, 2026-04-05)
 
-- [ ] Data visualization components (Chart.js, Mermaid, tables, waterfall, Harvey balls)
-- [ ] Consulting intelligence (SCQA scaffolding, Pyramid Principle validation, "read the titles" export)
-- [ ] WCAG 2.1 AA accessibility and EAA compliance
-- [ ] copilot-instructions.md for GitHub Copilot CLI (AI-02, deferred from v1)
-- [ ] PPTX export (PptxGenJS)
-- [ ] Audience preset CSS implementation (font size/density adjustments per audience)
+- [x] Monolithic `components.css` with pre-written CSS for all 21 components
+- [x] `@layer` structure in skeleton (tokens, animations, base-theme, theme, components, overrides)
+- [x] `--comp-*` CSS variables as only builder customization surface
+- [x] State variants and visual micro-patterns per component
+
+### Active
+- [ ] Visual vocabulary reference (15 content archetypes, bullet-list smell test, curated icons)
+- [ ] CSS property map reference for slide-stylist agent
+- [ ] Slide-stylist agent for per-slide `@layer overrides` tweaks
+- [ ] `brands/` directory with `brand.yaml` + `rules.md` + `theme.css` per brand
+- [ ] Brand-checker agent (pre-debate gate producing brand-context.md)
+- [ ] Brand-profiler agent (generates brand.yaml from corporate assets)
+- [ ] Onboard-brand workflow with test-presentation generation
+- [ ] SKILL.md rewrite with model comprehension routing
+- [ ] `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers
+- [ ] `build-new-deck.md` workflow rewrite with orchestration logic + pipeline resumability
+- [ ] `refine-deck.md` workflow rewrite with change-scope routing
+- [ ] Narrative-planner agent (SCQA, Pyramid, action titles, visual treatment)
+- [ ] Presentation-architect agent (10 structural checks, pacing, rhythm)
+- [ ] Presentation-critic agent (6 adversarial checks, evidence gaps, "So What" test)
+- [ ] Slide-editor agent for surgical HTML edits
+- [ ] Verdict-driven debate protocol (auto-gate, 3-round ceiling)
+- [ ] Rich deck-plan.md format with Narrative Flow Map
+- [ ] Audience-presets.md rewrite with hard/soft rules
+- [ ] Presentation-reviewer agent (story + visual + brand compliance)
+- [ ] Playwright screenshot capture tool
+- [ ] Build-log.yaml format for pipeline traceability
+- [ ] Builder agent rewrite (copies locked CSS, exact class names, `--comp-*` vars only)
 
 ### Out of Scope
 
@@ -62,14 +75,17 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - SaaS/hosted version — this is a local framework, not a web app
 - Slide-by-slide WYSIWYG editor — the AI prompt IS the editor
 - React/Vue component wrappers — keep it plain HTML/CSS for maximum portability
+- Copilot CLI port — deferred until all Claude Code agents are finalized (after Phase 6)
+- Migration paths from v1 presentations — POC mode, wholesale rewrites acceptable
 
 ## Context
 
 - v1.0 shipped in 6 days (2026-03-22 → 2026-03-27), 6 phases, 18 plans, 50+ commits
-- Framework successfully generates consulting-grade German presentations with all 14 components
-- AI skill layer follows GSD pattern: researcher → strategist (deck-plan.md) → builder (presentation.html)
-- Research identified 40 additional requirements across 5 categories for v2 (data viz, consulting intelligence, accessibility, platform expansion, polish)
-- Known bugs: remaining umlaut errors in 4 templates, RevealNotes plugin not loaded, presentationConfig JS gap, clamp/vw units, two-column class bug
+- Template audit finding: templates are B+ to A quality, but the AI ignores them (~40-50% adherence gap). Fixing adherence matters 4x more than fixing template quality.
+- 17 design decisions resolved during v2 design review (see `new_insights/TODO.md`)
+- 5 detailed feature plans in `new_insights/plans/` covering all 6 phases
+- Full agent architecture spec in `new_insights/agent-architecture-spec.md`
+- POC mode: wholesale rewrites acceptable, existing presentations will break
 
 ## Constraints
 
@@ -78,22 +94,37 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - **Self-contained output**: Single HTML files that work offline (except CDN fonts/reveal.js).
 - **German-first**: All templates handle German text lengths and typography conventions.
 - **Consulting quality**: Output matches McKinsey/BCG deck quality.
+- **POC mode**: No migration constraints. Wholesale rewrites and breaking changes acceptable.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| reveal.js as rendering engine | Mature (70K stars), best plugin ecosystem, speaker notes/PDF/fragments natively | ✓ Good — solid foundation |
-| CSS custom properties for theming | No build step, works in any browser, easy for AI to override per-theme | ✓ Good — 3 themes prove the pattern |
-| Component library with semantic descriptions | Enables AI design agent to match content → layout automatically | ✓ Good — 14 components with AI-readable catalog |
-| Clone-and-use distribution | Lower barrier than npm/npx for strategic consultants | ✓ Good — git clone + AI prompt = working deck |
-| Claude Code skill with subagents | Mirrors GSD pattern (researcher → planner → executor) for structured AI workflow | ✓ Good — 3 specialized agents |
-| German-first design | DACH business context, layouts handle 130-300% text expansion | ✓ Good — typography conventions + global CSS |
-| Speaker notes as separate YAML file | Templates stay clean, notes injected at generation time | ✓ Good — per D-07 decision |
+| Monolithic components.css over per-component files | Eliminates builder selection logic; single file copied verbatim | — Pending |
+| Verdict-driven debate gate (not orchestrator-judged) | Architect + Critic BLOCKINGs auto-gate the loop. Orchestrator is traffic controller only | — Pending |
+| 3-agent consensus debate over single-agent role-play | Real disagreement > self-anchoring. Independent contexts per OMX pattern | — Pending |
+| brands/ directory replacing themes/ | A brand is more than a theme.css — includes rules, preferences, component biases | — Pending |
+| Model comprehension routing in SKILL.md | Natural language understanding, not keyword dispatch. Proven by Superpowers/OMX | — Pending |
+| deck-plan.md as markdown convention, not YAML schema | Planner (opus) needs creative freedom; builder (sonnet) needs unambiguous instructions | — Pending |
+| slide-editor agent separate from builder and stylist | Surgical HTML edits vs generation vs CSS-only. Most-used agent in refine-deck | — Pending |
+| Pipeline resumability via .pipeline/ state detection | Prevents wasting expensive opus debate rounds on context resets | — Pending |
 
 ## Evolution
 
 This document evolves at phase transitions and milestone boundaries.
 
+**After each phase transition** (via `/gsd:transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd:complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
 ---
-*Last updated: 2026-03-27 after v1.0 milestone*
+*Last updated: 2026-04-05 after milestone v2.0 start*
