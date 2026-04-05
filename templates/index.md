@@ -44,6 +44,8 @@ Do NOT read individual template HTML files as primary input — this catalog sup
 
 ### Content Archetypes
 
+Structural component — not mapped to content archetypes. Used for deck structure, not content visualization.
+
 - **Pitch deck opener**: Company name + tagline as title, investor round as subtitle
 - **Report cover**: Report title + subtitle + date/quarter as tagline
 - **Presentation start**: Topic + audience/event as subtitle
@@ -84,6 +86,8 @@ Do NOT read individual template HTML files as primary input — this catalog sup
 | (none) | Section break is a structural divider with no state variants |
 
 ### Content Archetypes
+
+Structural component — not mapped to content archetypes. Used for deck structure, not content visualization.
 
 - **Chapter divider**: Section number + section title + brief descriptor
 - **Agenda marker**: "Teil 1" + section name
@@ -131,6 +135,13 @@ Do NOT read individual template HTML files as primary input — this catalog sup
 
 ### Content Archetypes
 
+Archetypes served by this component:
+- **definition-concept** (fallback): When a concept requires extended explanation without a richer visual. Use quote as primary instead when a single clear statement can anchor the concept.
+- **evidence-proof** (fallback): When evidence needs narrative context around a quoted result. Use quote+metrics as primary instead.
+- **list-of-items** (last-resort fallback): Only when no richer visual fits. MUST apply the Bullet-List Smell Test before using text-heavy for list content.
+
+> Note: `text-heavy` is the fallback of last resort — apply the Bullet-List Smell Test before using. If any of the 7 smell-test questions yields YES, use a richer component instead.
+
 - **Key arguments**: 3-5 bullet points with optional highlighted lead insight
 - **Problem statement**: Narrative body paragraph followed by supporting bullets
 - **Analysis findings**: Ordered list of conclusions with one highlighted recommendation
@@ -177,6 +188,11 @@ Do NOT read individual template HTML files as primary input — this catalog sup
 | (none) | Layout component — apply states to children as needed |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **definition-concept** (fallback): Visual left + text explanation right — when a concept needs a visual anchor alongside narrative
+- **evidence-proof** (fallback): Evidence/metric on one side + analysis context on the other
+- **comparison** (fallback): Side-by-side contrast without cards — for flat, non-card layouts
 
 - **Text + image**: Left column body text, right column photograph or diagram
 - **Two arguments**: Equal columns each with subheading + bullet list
@@ -248,6 +264,10 @@ Sparkline variants (add inside `comp-metrics__card`):
 
 ### Content Archetypes
 
+Archetypes served by this component:
+- **quantity-metric** (primary): Hero numbers, KPIs, percentages, revenue figures — the canonical component for numeric data
+- **evidence-proof** (fallback): When the evidence IS the metric (e.g., "42% of clients reported...") and a sparkline supports it
+
 - **Revenue dashboard**: 3-4 large numbers with trend arrows (up/down/flat)
 - **KPI scorecard**: 4-6 compact metrics in `--compact` grid with progress bars
 - **Single hero metric**: 1 very large number centered with supporting context
@@ -286,6 +306,8 @@ Sparkline variants (add inside `comp-metrics__card`):
 | (none) | Structural full-screen slide with no state variants |
 
 ### Content Archetypes
+
+Structural component — not mapped to content archetypes. Used for visual impact, not content visualization.
 
 - **Mood opener**: Atmospheric photo with optional caption
 - **Product showcase**: Product image with branding caption
@@ -342,6 +364,8 @@ Sparkline variants (add inside `comp-metrics__card`):
 
 ### Content Archetypes
 
+Structural component — not mapped to content archetypes. Used for deck structure, not content visualization.
+
 - **Meeting agenda**: 3-5 numbered topics with current item highlighted
 - **Progress tracker**: Show completed vs. remaining sections mid-presentation
 - **Topic overview**: Simple list without state modifiers for pure roadmap view
@@ -392,6 +416,9 @@ Sparkline variants (add inside `comp-metrics__card`):
 | `.comp-summary__item--negative` | Danger color — risk or concern |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **recommendation** (primary): Numbered action items and next steps — the canonical closing component for "we recommend" content
 
 - **Key takeaways**: 3-5 concise action statements
 - **Next steps**: Numbered list of decisions and owners
@@ -444,6 +471,8 @@ Sparkline variants (add inside `comp-metrics__card`):
 | (none) | Contact is a static closing slide with no state variants |
 
 ### Content Archetypes
+
+Structural component — not mapped to content archetypes. Used for deck structure, not content visualization.
 
 - **Speaker card**: Photo + name + role + email + phone
 - **Team contact**: Multiple contact items in `comp-contact__details`
@@ -508,6 +537,9 @@ Sparkline variants (add inside `comp-metrics__card`):
 | `.comp-comparison__card--neutral` | Border only, 70% opacity — reference item |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **comparison** (primary): The canonical component for A vs B, before/after, IST/SOLL, pros/cons — two labeled cards with color coding
 
 - **IST/SOLL**: Current state (warning) vs target state (success)
 - **Option A vs B**: Two options with `--recommended` on preferred choice
@@ -579,6 +611,10 @@ Sparkline variants (add inside `comp-metrics__card`):
 
 ### Content Archetypes
 
+Archetypes served by this component:
+- **sequential-process** (primary): Ordered steps, phases, milestones — the canonical component for "first/then/finally" content
+- **cause-effect** (secondary): Linear causal chains where each step causes the next — repurpose steps as cause → effect nodes
+
 - **Project roadmap**: Q1-Q4 milestones with completed/current/target states
 - **Process flow**: Sequential steps with active step highlighted
 - **Decision path**: 3-5 steps showing where we are and where we're going
@@ -621,6 +657,10 @@ Sparkline variants (add inside `comp-metrics__card`):
 | `.comp-quote__text--highlighted` | Accent color on quote text — for emphasis |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **evidence-proof** (primary): Customer testimonial, analyst quote, case study result with attribution — name, role, company required
+- **definition-concept** (fallback): Large callout text anchoring a concept or principle — use when a single clear statement defines the idea
 
 - **Customer testimonial**: Quote + customer name + company/role
 - **Expert endorsement**: Research quote + author + institution
@@ -687,6 +727,12 @@ Sparkline variants (add inside `comp-metrics__card`):
 
 ### Content Archetypes
 
+Archetypes served by this component:
+- **list-of-items** (primary): 3+ parallel items with no inherent order — services, features, challenges, capabilities; each item gets a card with icon
+- **categories** (primary): Types, groups, or classifications with no ordering — color-code cards per category
+- **recommendation** (fallback): Action-oriented cards where each card = one recommendation or next step
+- **cause-effect** (fallback): Causal chain displayed as cards when flow chart is too complex for the audience
+
 - **Service catalog**: 2-4 service areas with icon + title + description
 - **Feature overview**: Product capabilities in equal-sized cards
 - **Team expertise**: Skill areas with brief descriptor
@@ -748,6 +794,9 @@ Sparkline variants (add inside `comp-metrics__card`):
 | `.comp-framework__cell--muted` | 45% opacity — de-emphasized quadrant |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **matrix-positioning** (primary): 2-axis quadrant mapping — BCG, Ansoff, risk-impact, priority grids; axis labels on all 4 sides
 
 - **BCG matrix**: Stars/Cash Cows/Question Marks/Dogs quadrant layout
 - **Priority matrix**: Impact vs Effort with quick wins highlighted
@@ -815,6 +864,11 @@ Sparkline variants (add inside `comp-metrics__card`):
 | `.comp-data-table__cell--muted` | 45% opacity — de-emphasized cell |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **comparison** (primary): Feature matrix or vendor evaluation with highlighted best-option cells — tabular A vs B
+- **ranking** (primary): Sorted rows by value, priority, or score with sort indicator column
+- **status-readiness** (fallback): RAG status grids with `vis-traffic-light` cells when Harvey balls are not needed
 
 - **Financial table**: Revenues, costs, margins with positive/negative coloring
 - **Feature matrix**: Products vs features with highlighted cells
@@ -884,6 +938,9 @@ Set `--hb-fill` as an inline CSS variable on the `.comp-harvey-balls__ball` elem
 
 ### Content Archetypes
 
+Archetypes served by this component:
+- **status-readiness** (primary): Maturity levels, capability ratings, readiness assessments — the canonical component for circular fill indicators (0/25/50/75/100%)
+
 - **Maturity assessment**: Rows = business areas, cols = dimensions, balls = maturity level
 - **Capability rating**: Provider/vendor x capability dimension grid
 - **Status matrix**: Projects x criteria with partial completion shown
@@ -940,6 +997,12 @@ The skeleton's `initSlideCharts()` function reads `data-chart-config` and initia
 
 ### Content Archetypes
 
+Archetypes served by this component:
+- **proportion** (primary): Pie or doughnut chart type — parts of a whole, market share, budget allocation, segment mix
+- **trend** (primary): Line chart type — time series, growth over quarters/years, performance trajectory
+- **ranking** (primary): Horizontal bar chart type — sorted descending, top-N lists, priority comparisons
+- **quantity-metric** (secondary): Vertical bar chart type — period-over-period KPI comparison
+
 - **Bar chart**: Categorical comparison — revenues, costs, market shares by year or segment
 - **Line chart**: Trend over time — growth, performance, market evolution
 - **Pie/doughnut**: Composition — market share, budget allocation, segment mix
@@ -987,6 +1050,11 @@ Mermaid diagrams must be pre-rendered to SVG before embedding. Use the Mermaid L
 | (none) | Diagram is a static pre-rendered SVG with no state variants |
 
 ### Content Archetypes
+
+Archetypes served by this component:
+- **hierarchy** (primary): Org chart subtype — reporting structures, organizational trees, nested groupings
+- **cause-effect** (primary): Flowchart subtype — directional arrows showing causation, "leads to" chains, cascading effects
+- **sequential-process** (secondary): Flowchart with numbered/labeled steps — use when branching is present (otherwise prefer timeline)
 
 - **Flowchart**: Decision trees, process paths, approval flows
 - **Sequence diagram**: API interactions, communication flows, system handoffs
@@ -1056,6 +1124,11 @@ Waterfall uses Chart.js floating bars (`data: [[start, end]]`). Colors follow co
 
 ### Content Archetypes
 
+Financial walk component — used for period-over-period change visualization. No direct content archetype mapping.
+
+- **trend** (secondary): Period-over-period direction visible in the bridge shape
+- **quantity-metric** (secondary): Absolute value walk from start to end total
+
 - **Revenue walk**: Start revenue + growth drivers + headwinds = end revenue
 - **Cost bridge**: Cost base + inflation + savings = net cost change
 - **P&L bridge**: EBITDA bridge showing year-over-year change components
@@ -1109,6 +1182,10 @@ RevealHighlight plugin is loaded conditionally via `typeof RevealHighlight` chec
 | `.comp-code-block__code--highlighted` | Accent border around code block — key snippet callout |
 
 ### Content Archetypes
+
+Technical content component — no content archetype mapping. Used for Technical audience only.
+
+- **definition-concept** (secondary): Technical explanation via example — code as the definition of how something works
 
 - **Code walkthrough**: Single function or class with step-through highlights
 - **API reference**: Endpoint definition + request/response example
@@ -1166,6 +1243,11 @@ RevealHighlight plugin is loaded conditionally via `typeof RevealHighlight` chec
 | `.comp-team__member--muted` | 45% opacity — supporting or de-emphasized member |
 
 ### Content Archetypes
+
+Structural component — not mapped to content archetypes. Used for deck structure, not content visualization.
+
+- **list-of-items** (secondary): Team members as parallel items when the emphasis is on the roster itself
+- **categories** (secondary): Team organized by role or department when categorization is the message
 
 - **Project team**: 3-6 members with role descriptions
 - **Leadership page**: C-level or senior team with larger photos

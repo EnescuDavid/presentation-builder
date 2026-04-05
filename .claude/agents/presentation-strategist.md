@@ -17,6 +17,7 @@ Load these reference files before planning. They contain the framework's compone
 1. `.claude/skills/build-presentation/references/component-catalog.md` -- All 14+ components with use-when guidance, slots, HTML patterns, audience fit, and action title guidance
 2. `.claude/skills/build-presentation/references/audience-presets.md` -- Quantified design rules per audience type (slide count, density, font sizes, component bias)
 3. `.claude/skills/build-presentation/references/design-principles.md` -- Typography hierarchy, color usage, whitespace, and consulting quality standards
+4. `references/visual-vocabulary.md` -- 15 content archetypes with detection signals, visual treatments, bullet-list smell test, and curated Lucide icon set. Classify every content slide into an archetype.
 </required_reading>
 
 <execution_flow>
@@ -54,6 +55,18 @@ Identify the audience type from the brief. Load the matching audience preset rul
 - **Animation density:** Follow the preset's animation guidance
 - **Font size ranges:** Note the title/body minimums
 - **Tone:** Match the preset's tone guidance
+
+## Step 3b: Classify Content Archetypes
+
+For every content slide (not title, section-break, contact, or agenda), assign a content archetype from `references/visual-vocabulary.md`:
+
+1. Read the slide's content and identify which archetype's detection signals match
+2. Apply the Bullet-List Smell Test: if the slide would default to text-heavy with bullets, check if a different archetype fits better using the 7-question smell test in visual-vocabulary.md
+3. Record the archetype slug in the deck-plan entry as `**Content archetype:** {slug}`
+4. Add visual treatment notes as `**Visual hints for stylist:** {free-text}` for any slide that needs emphasis, de-emphasis, or special styling
+5. In the Validation Warnings section, add a "Visual Treatment Audit" block flagging any text-heavy slides that match a different archetype
+
+Every content slide MUST have a content archetype assigned. No slide defaults to bullet list without explicit justification via the smell test.
 
 ## Step 4: Design Narrative Arc
 
@@ -116,6 +129,8 @@ scqa:
 
 - **Component:** metrics
 - **SCQA phase:** situation
+- **Content archetype:** quantity-metric
+- **Visual hints for stylist:** emphasize the +15% metric with larger number size, mute NPS card
 - **Content:** 3 metric cards: Revenue +15%, APAC share 42%, Customer NPS 78
 - **Theme variant:** default
 - **Master layer:** visible
@@ -136,12 +151,17 @@ scqa:
 
 > **Action Titles:**
 > - [warnings here, or "All titles are action titles"]
+
+> **Visual Treatment Audit:**
+> - [warnings here for text-heavy slides that match a richer archetype, or "All slides use optimal visual treatment"]
 ```
 
 Each slide section specifies:
 - **Component:** The component type from component-catalog.md
 - **Content:** Summary of headline + key points (not full text -- the builder will expand)
 - **SCQA phase:** (content slides only, when SCQA is applicable) situation, complication, question, or answer
+- **Content archetype:** (content slides only) archetype slug from visual-vocabulary.md
+- **Visual hints for stylist:** (optional) free-text notes for the slide-stylist agent, e.g., "emphasize the 42% metric, mute secondary cards"
 - **Theme variant:** default or dark
 - **Master layer:** visible or hidden (per component default from catalog)
 - **Animation:** Recommended animation classes from the catalog
@@ -215,7 +235,8 @@ Output in the `## Validation Warnings` > `Slide Count` section. If within range,
 - Has one H2 section per slide
 - Each slide specifies: component type, content summary, theme variant, master layer, animation
 - Content slides have `SCQA phase:` field (when SCQA is applicable)
-- `## Validation Warnings` section exists at end of deck-plan.md with Pyramid Principle, Slide Count, and Action Titles sub-sections
+- Every content slide has `Content archetype:` field with a slug from visual-vocabulary.md
+- `## Validation Warnings` section exists at end of deck-plan.md with Pyramid Principle, Slide Count, Action Titles, and Visual Treatment Audit sub-sections
 - Topic-label titles are flagged with suggested verb-based alternatives
 - Slide count warning appears when total exceeds audience-specific range
 - Total slide count matches the audience preset guidance range
