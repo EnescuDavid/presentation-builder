@@ -1,8 +1,8 @@
 # Component Catalog
 
-AI reference for the 14 slide components in the Presentation Builder framework. Use this file to select the right component for each slide, understand required/optional slots, and match components to audience types.
+AI reference for all 21 slide components in the Presentation Builder framework. Use this file to select the right component for each slide, understand required/optional slots, and match components to audience types.
 
-Each component is an HTML template in `templates/`. Copy the `<section>` block and its `<style>` into your presentation. All components use CSS custom properties from `tokens/base.css` and adapt automatically to any theme.
+Each component is an HTML template in `templates/`. Copy the `<section>` block into your presentation. All components use CSS custom properties from `tokens/base.css` and adapt automatically to any theme. Each component lists **Archetypes** — cross-references to `visual-vocabulary.md` archetype slugs where this component is the primary or fallback choice.
 
 ## Quick Reference
 
@@ -22,6 +22,13 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 | quote | Customer quote, expert endorsement | Quote text, author name | Sales, C-Suite |
 | card-grid | Service offerings, feature overview | 2-4 cards with titles | Sales, Workshop |
 | framework | BCG matrix, 2x2 analysis | 4 quadrant contents | C-Suite, Technical |
+| data-table | Financial data, feature comparisons, status matrices | Table header + rows | Technical, Stakeholder |
+| harvey-balls | Capability ratings, maturity assessments | Rating table | C-Suite, Stakeholder |
+| chart | Bar, line, pie, doughnut, radar (Chart.js) | Chart config | All |
+| mermaid-diagram | Process flows, org charts, system diagrams | Pre-rendered SVG | Technical, Stakeholder |
+| waterfall | Revenue walks, cost bridges (Chart.js) | Chart config | C-Suite, Stakeholder |
+| code-block | Code snippets, API docs, technical walkthroughs | pre/code | Technical |
+| team | Team credentials, leadership page (2-6 members) | Photo, name, role | Sales, Stakeholder |
 
 ## Title
 
@@ -33,6 +40,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Hidden (data-master="hide")
 - **Animation:** h1 blurIn, divider lineGrow, subtitle fadeUp
 - **Audience fit:** All audiences. C-Suite and Sales prefer dramatic/minimal. Internal can be simpler.
+- **Archetypes:** recommendation, definition-concept
 - **German:** Hero text may need font-size reduction for long compound words. Use hyphenated breaks.
 - **HTML pattern:**
   ```html
@@ -55,6 +63,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Hidden (data-master="hide")
 - **Animation:** Counter fadeUp, divider lineGrow, heading blurIn
 - **Audience fit:** All audiences. Use short punchy titles (2-4 words).
+- **Archetypes:** (none — structural divider slide, not a content archetype)
 - **German:** Keep section titles concise. Avoid full sentences here.
 - **HTML pattern:**
   ```html
@@ -77,6 +86,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** fadeUp on body elements
 - **Audience fit:** Technical (primary), Workshop, Internal. Avoid for C-Suite and Sales.
+- **Archetypes:** definition-concept, evidence-proof (last-resort fallback for list-of-items when no richer visual fits)
 - **German:** overflow-wrap and hyphens enabled. Handles 2-8 bullets. Use action title pattern.
 - **HTML pattern:**
   ```html
@@ -98,6 +108,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** Left column slideL, right column slideR
 - **Audience fit:** All audiences. Flexible layout for any content pairing.
+- **Archetypes:** comparison, definition-concept, evidence-proof
 - **German:** overflow-wrap and hyphens enabled. Allow wider left column for text-heavy German content.
 - **HTML pattern:**
   ```html
@@ -120,6 +131,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** scalePop on each card with stagger (data-delay)
 - **Audience fit:** C-Suite (1-3 big numbers), Stakeholder (3-5 with context), Sales (1-2 hero metrics)
+- **Archetypes:** quantity-metric (primary), trend (fallback for single direction KPI)
 - **German:** Use German number formatting: comma decimal (23,5%), Mio./Mrd. abbreviations, tabular-nums.
 - **HTML pattern:**
   ```html
@@ -146,6 +158,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Hidden (data-master="hide")
 - **Animation:** fadeUp on overlay text
 - **Audience fit:** Sales/Pitch (primary), C-Suite (aspirational imagery). Avoid for Technical.
+- **Archetypes:** definition-concept (emotional/aspirational framing), recommendation (closing impact visual)
 - **German:** Overlay text should be brief. Gradient starts from bottom, fading to transparent at 70%.
 - **HTML pattern:**
   ```html
@@ -168,6 +181,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** fadeUp on items
 - **Audience fit:** All audiences. Essential for presentations with 4+ sections.
+- **Archetypes:** sequential-process (structural agenda of phases), list-of-items (agenda topics as parallel items)
 - **German:** Topic labels may be longer. Allow adequate horizontal space.
 - **HTML pattern:**
   ```html
@@ -192,6 +206,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** fadeUp on points, scalePop on CTA
 - **Audience fit:** All audiences. C-Suite wants 2-3 sharp takeaways. Workshop wants comprehensive recap.
+- **Archetypes:** recommendation (primary)
 - **German:** Use numbered points for clarity. Full sentence takeaways with action title pattern.
 - **HTML pattern:**
   ```html
@@ -218,6 +233,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** fadeUp on name/role, lineGrow on divider
 - **Audience fit:** Sales/Pitch (always), Stakeholder (often). Less common for Internal/Technical.
+- **Archetypes:** recommendation (closing CTA slide)
 - **German:** Use formal titles (Dr., Prof.) and formal address conventions.
 - **HTML pattern:**
   ```html
@@ -242,6 +258,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** slideL on left card, slideR on right card
 - **Audience fit:** All audiences. Especially effective for C-Suite transformation stories.
+- **Archetypes:** comparison (primary)
 - **German:** Labels like "IST-Zustand", "SOLL-Zustand", "Vorher", "Nachher". Cards use shadow (unlike flat two-column).
 - **HTML pattern:**
   ```html
@@ -273,6 +290,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** fadeUp on steps with stagger
 - **Audience fit:** Stakeholder (roadmaps), Technical (process flows). Good for any audience needing sequence.
+- **Archetypes:** sequential-process (primary), cause-effect (secondary — linear chains)
 - **German:** Step content uses compact font sizes. Connectors use ::after pseudo-elements (top: 18px).
 - **HTML pattern:**
   ```html
@@ -300,6 +318,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** blurIn on quote text, fadeUp on attribution
 - **Audience fit:** Sales (testimonials), C-Suite (vision statements). Use sparingly.
+- **Archetypes:** evidence-proof (primary), definition-concept (fallback for concept anchors)
 - **German:** Decorative German quotation marks via ::before/::after. Max-width 800px. Use proper characters.
 - **HTML pattern:**
   ```html
@@ -324,6 +343,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** scalePop on cards with stagger
 - **Audience fit:** Sales (offerings), Workshop (capabilities), Internal (team areas).
+- **Archetypes:** list-of-items (primary), categories (primary)
 - **German:** Grid uses auto-fit minmax(220px, 1fr). Use inline Lucide SVGs for professional icons.
 - **HTML pattern:**
   ```html
@@ -351,6 +371,7 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
 - **Master layer:** Visible
 - **Animation:** fadeUp on quadrants with stagger
 - **Audience fit:** C-Suite (strategic frameworks), Technical (prioritization). Core consulting component.
+- **Archetypes:** matrix-positioning (primary), categories (secondary — 4-quadrant classification)
 - **German:** CRITICAL: Apply min-width: 0 on quadrant cells to prevent compound words from breaking grid. Use writing-mode vertical-lr + rotate(180deg) for Y-axis label.
 - **HTML pattern:**
   ```html
@@ -364,6 +385,194 @@ Each component is an HTML template in `templates/`. Copy the `<section>` block a
         <div class="comp-framework__quadrant">...</div>
         <div class="comp-framework__quadrant">...</div>
         <div class="comp-framework__x-label">...</div>
+      </div>
+    </div>
+  </section>
+  ```
+
+## Data Table
+
+- **Use when:** Financial data, feature comparison matrices, vendor evaluations, status grids. Use for 2-6 columns, 3-12 rows.
+- **Required slots:** Table header row (th), at least one data row (td)
+- **Optional slots:** Slide title (h2), cell modifiers (positive/negative/highlighted)
+- **Action title guidance:** State the conclusion the data supports. Good: "Loesung A dominiert in allen Bewertungsdimensionen". Bad: "Vergleich", "Daten".
+- **Variants:** Default (alternating row bg), with positive/negative cell coloring, with highlighted cells
+- **Master layer:** Visible
+- **Animation:** fadeUp on table
+- **Audience fit:** Technical (primary), Stakeholder (financial tables). Avoid for C-Suite (too dense).
+- **Archetypes:** comparison (primary), ranking (primary), status-readiness (fallback with traffic-light cells)
+- **German:** Right-align numeric columns. Use German number format (comma decimal, period thousands). Apply `comp-data-table__cell--positive` / `--negative` for color coding.
+- **HTML pattern:**
+  ```html
+  <section data-component="data-table">
+    <div class="comp-data-table">
+      <h2 class="comp-data-table__title">...</h2>
+      <table class="comp-data-table__table">
+        <thead class="comp-data-table__thead"><tr><th>...</th></tr></thead>
+        <tbody class="comp-data-table__tbody">
+          <tr><td class="comp-data-table__cell">...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  ```
+
+## Harvey Balls
+
+- **Use when:** Capability ratings, maturity assessments, feature coverage matrices. Inline circular fill indicators (0/25/50/75/100%).
+- **Required slots:** Rating table (comp-harvey-balls__table) with at least one harvey ball cell
+- **Optional slots:** Slide title (h2), legend row
+- **Action title guidance:** State the maturity insight. Good: "Digitale Reife fehlt in Kernprozessen". Bad: "Maturity Assessment", "Bewertung".
+- **Variants:** Stand-alone table, inline in data-table cells. Five states: empty (0%), quarter (25%), half (50%), three-quarter (75%), full (100%).
+- **Master layer:** Visible
+- **Animation:** fadeUp on table
+- **Audience fit:** C-Suite (maturity at a glance), Stakeholder (capability gaps). Rarely for Technical.
+- **Archetypes:** status-readiness (primary)
+- **German:** Column headers may be long. Use `writing-mode: vertical-lr` or abbrevations. Apply `lang="de"` for hyphenation.
+- **HTML pattern:**
+  ```html
+  <section data-component="harvey-balls">
+    <div class="comp-harvey-balls">
+      <h2 class="comp-harvey-balls__title">...</h2>
+      <table class="comp-harvey-balls__table">
+        <thead><tr><th>Bereich</th><th>Strategie</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Einkauf</td>
+            <td><div class="comp-harvey-ball comp-harvey-ball--half" aria-label="50%"></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  ```
+
+## Chart
+
+- **Use when:** Bar, line, pie, doughnut, or radar data visualization. Requires Chart.js CDN (loaded conditionally via skeleton).
+- **Required slots:** Canvas element (id="chart-N"), initialization script
+- **Optional slots:** Slide title (h2), supporting text, chart type config
+- **Action title guidance:** State what the data proves. Good: "APAC-Wachstum uebertrifft alle anderen Regionen". Bad: "Umsatzentwicklung", "Chart".
+- **Variants:** bar, line (trend), pie/doughnut (proportion), radar (multi-axis comparison)
+- **Master layer:** Visible
+- **Animation:** Chart animates on slide entry (Chart.js built-in)
+- **Audience fit:** All audiences. Use sparingly for C-Suite (1-2 key charts max). Technical can handle complex multi-series.
+- **Archetypes:** proportion (pie/doughnut), trend (line), ranking (horizontal bar), quantity-metric (vertical bar for KPIs)
+- **German:** Use German number formatting in dataset labels. Chart title via slide h2, not Chart.js title plugin.
+- **HTML pattern:**
+  ```html
+  <section data-component="chart">
+    <div class="comp-chart">
+      <h2 class="comp-chart__title">...</h2>
+      <div class="comp-chart__canvas-wrap">
+        <canvas id="chart-1" class="comp-chart__canvas"></canvas>
+      </div>
+    </div>
+  </section>
+  <script>/* Chart.js init for chart-1 */</script>
+  ```
+
+## Mermaid Diagram
+
+- **Use when:** Process flows, org charts, system architecture diagrams, sequence diagrams, Gantt charts. Pre-render to SVG (no CDN dependency at runtime).
+- **Required slots:** Pre-rendered SVG (comp-mermaid__svg)
+- **Optional slots:** Slide title (h2), supporting caption
+- **Action title guidance:** State what the diagram reveals. Good: "Drei Systemgrenzen erfordern klare Schnittstellen". Bad: "Architektur", "Diagramm".
+- **Variants:** flowchart (graph LR/TD), org chart (graph TD with org style), sequence, Gantt
+- **Master layer:** Visible
+- **Animation:** fadeUp on SVG container
+- **Audience fit:** Technical (primary), Stakeholder (high-level process). Avoid for C-Suite (too complex).
+- **Archetypes:** hierarchy (org charts), sequential-process (flowcharts), cause-effect (causal flows)
+- **German:** SVG text uses German labels. Pre-render with `%%{init: {'theme':'base','themeVariables':{'primaryColor':'...'}}}%%`. Inline SVG avoids CDN.
+- **HTML pattern:**
+  ```html
+  <section data-component="mermaid-diagram">
+    <div class="comp-mermaid">
+      <h2 class="comp-mermaid__title">...</h2>
+      <div class="comp-mermaid__svg" aria-label="Prozessdiagramm">
+        <!-- Pre-rendered SVG from mermaid.live -->
+        <svg>...</svg>
+      </div>
+    </div>
+  </section>
+  ```
+
+## Waterfall
+
+- **Use when:** Revenue walks, cost bridges, period-over-period change breakdown. Shows how components contribute to a total. Requires Chart.js CDN.
+- **Required slots:** Canvas element (id="waterfall-N"), initialization script with floating bar dataset
+- **Optional slots:** Slide title (h2), supporting annotation text
+- **Action title guidance:** State the net change message. Good: "Effizienzgewinne ueberwiegen Kostensteigerungen". Bad: "Kostenentwicklung", "Bridge".
+- **Variants:** Vertical waterfall (default), horizontal bridge. Consulting colors: grey (totals), green (positive), red (negative).
+- **Master layer:** Visible
+- **Animation:** Chart animates on slide entry
+- **Audience fit:** C-Suite (revenue/cost narrative), Stakeholder (budget bridges). Not for Technical.
+- **Archetypes:** trend (period-over-period), quantity-metric (absolute value walk)
+- **German:** Use German axis labels and number format. Totals in grey, not accent color.
+- **HTML pattern:**
+  ```html
+  <section data-component="waterfall">
+    <div class="comp-waterfall">
+      <h2 class="comp-waterfall__title">...</h2>
+      <div class="comp-waterfall__canvas-wrap">
+        <canvas id="waterfall-1" class="comp-waterfall__canvas"></canvas>
+      </div>
+    </div>
+  </section>
+  <script>/* Chart.js floating bar init for waterfall-1 */</script>
+  ```
+
+## Code Block
+
+- **Use when:** Technical deep-dives, API documentation, code walkthroughs, syntax-highlighted snippets. Uses RevealHighlight plugin (loaded conditionally).
+- **Required slots:** pre + code elements with language class
+- **Optional slots:** Slide title (h2), filename label, line highlight data-line-numbers
+- **Action title guidance:** State the key insight from the code. Good: "Zwei Zeilen ersetzen 200 Zeilen Legacy-Code". Bad: "Code-Beispiel", "Implementation".
+- **Variants:** With/without title, with line numbers, with highlighted lines
+- **Master layer:** Visible
+- **Animation:** fadeUp on code block
+- **Audience fit:** Technical (primary only). Never use for C-Suite, Sales, or Workshop.
+- **Archetypes:** definition-concept (technical explanation via example)
+- **German:** Slide title and annotations in German. Code itself stays in English (code is language-agnostic).
+- **HTML pattern:**
+  ```html
+  <section data-component="code-block">
+    <div class="comp-code-block">
+      <h2 class="comp-code-block__title">...</h2>
+      <div class="comp-code-block__wrap">
+        <pre class="comp-code-block__pre">
+          <code class="language-typescript" data-line-numbers="1-3">
+            // code here
+          </code>
+        </pre>
+      </div>
+    </div>
+  </section>
+  ```
+
+## Team
+
+- **Use when:** Team credentials, leadership page, project team introduction, advisory board. 2-6 members in a responsive photo grid.
+- **Required slots:** At least 2 team member cards (photo, name, role)
+- **Optional slots:** Slide title (h2), email, phone, social link per member
+- **Action title guidance:** State why the team is qualified. Good: "Erfahrenes Team aus drei Kompetenzbereichen". Bad: "Team", "Unser Team".
+- **Variants:** 2-column, 3-column, 4-column (auto-fit handles layout). Photo is round-cropped.
+- **Master layer:** Visible
+- **Animation:** fadeUp on cards with stagger
+- **Audience fit:** Sales (team credentials), Stakeholder (project team). Less common for Technical/Internal.
+- **Archetypes:** list-of-items (team members as parallel items), categories (by role or department)
+- **German:** Formal academic titles (Dr., Prof.) precede name. Role names may be long compound words — allow hyphens.
+- **HTML pattern:**
+  ```html
+  <section data-component="team">
+    <div class="comp-team">
+      <h2 class="comp-team__title">...</h2>
+      <div class="comp-team__grid">
+        <div class="comp-team__member">
+          <img class="comp-team__photo" src="..." alt="Name" />
+          <h3 class="comp-team__name">...</h3>
+          <p class="comp-team__role">...</p>
+        </div>
       </div>
     </div>
   </section>
