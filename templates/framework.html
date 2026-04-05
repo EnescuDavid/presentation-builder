@@ -1,153 +1,104 @@
 <!--
   ============================================================================
-  COMPONENT: Framework/Matrix (COMP-14)
+  COMPONENT: framework
   ============================================================================
 
   USE WHEN:
-    BCG matrix. Prioritization grid. 2x2 analysis. Quadrant mapping.
-    Strategic framework.
+    BCG matrix. Prioritization 2x2 grid. Strategic quadrant mapping.
+    Effort vs. impact analysis. Risk vs. reward assessment.
 
   REQUIRED SLOTS:
-    - 4 quadrant contents (title + description)
+    - comp-framework__title: Slide heading (h2)
+    - comp-framework__grid: 2x2 grid container (must have exactly 4 cells)
+    - comp-framework__cell (x4): One cell per quadrant, top-left to bottom-right
 
   OPTIONAL SLOTS:
-    - Slide title (h2)
-    - Y-axis label
-    - X-axis label
+    - comp-framework__label: Quadrant label (caption size, uppercase)
+    - comp-framework__body: Quadrant description text
+    - comp-framework__axis-x: X-axis label (below grid, horizontal)
+    - comp-framework__axis-y: Y-axis label (left of grid, vertical rotated)
+
+  CSS VARIABLES (set on the <section> wrapper to customize):
+    --comp-framework-padding      Outer padding. Default: var(--spacing-2xl) var(--spacing-3xl)
+    --comp-framework-gap          Grid gap between cells. Default: var(--spacing-md)
+    --comp-framework-title-color  Slide title color. Default: var(--color-primary)
+    --comp-framework-cell-bg      Cell background. Default: var(--color-surface)
+    --comp-framework-cell-radius  Cell border radius. Default: var(--radius-md)
+
+  STATE MODIFIERS (on comp-framework__cell):
+    .comp-framework__cell--highlighted  Accent background + border, featured quadrant
+    .comp-framework__cell--active       Accent border only, current focus quadrant
+    .comp-framework__cell--muted        Reduced opacity, de-emphasized quadrant
 
   MASTER LAYER: Visible
 
-  LAYOUT NOTES:
-    - CSS Grid with 3 columns (auto 1fr 1fr) and 4 rows (auto 1fr 1fr auto)
-      for axis labels + quadrants
-    - Y-axis uses writing-mode vertical-lr with rotate(180deg) for
-      bottom-to-top reading
-    - CRITICAL: Apply min-width: 0 on quadrant cells to prevent German
-      compound words from breaking grid alignment
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE:
-    <section data-component="framework" role="group" aria-label="Framework-Matrix">
-      <div class="comp-matrix">
-        <h2 class="comp-matrix__title">Matrix</h2>
-        <div class="comp-matrix__grid">
-          <div class="comp-matrix__y-label">Y-Achse</div>
-          <div class="comp-matrix__quadrant">
-            <h3>Quadrant</h3>
-            <p>Beschreibung</p>
-          </div>
-          <!-- 3 more quadrants -->
-          <div class="comp-matrix__x-label">X-Achse</div>
-        </div>
-      </div>
-    </section>
-
+  LAYOUT NOTES (D-02 structural fix):
+    - comp-framework__grid uses CSS Grid 2x2 (grid-template-columns: 1fr 1fr,
+      grid-template-rows: 1fr 1fr) — explicit row + column sizing
+    - comp-framework__axis-x is positioned below grid (absolute, bottom)
+    - comp-framework__axis-y is positioned left of grid (absolute, left, writing-mode vertical)
+    - comp-framework__grid has position: relative for axis label positioning
+    - overflow-wrap and hyphens enabled for German compound words
+    - Cell order: top-left, top-right, bottom-left, bottom-right (reading order)
   ============================================================================
 -->
 
-<style>
-  /* --- Framework/Matrix Component --- */
-  .comp-matrix {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    min-height: 100%;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
+<section id="slide-1" data-component="framework" role="group" aria-label="Framework-Matrix">
+  <div class="comp-framework">
 
-  .comp-matrix__title {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
-  }
+    <h2 class="comp-framework__title">Strategische Priorisierung</h2>
 
-  .comp-matrix__grid {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: auto 1fr 1fr auto;
-    gap: var(--spacing-xs);
-    flex: 1;
-  }
+    <div class="comp-framework__grid">
 
-  .comp-matrix__y-label {
-    grid-column: 1;
-    grid-row: 2 / 4;
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-caption);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding-right: var(--spacing-md);
-  }
-
-  .comp-matrix__x-label {
-    grid-column: 2 / 4;
-    grid-row: 4;
-    text-align: center;
-    font-size: var(--font-size-caption);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding-top: var(--spacing-md);
-  }
-
-  .comp-matrix__quadrant {
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    min-width: 0;
-  }
-
-  .comp-matrix__quadrant h3 {
-    font-size: var(--font-size-subheading);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-primary);
-  }
-
-  .comp-matrix__quadrant p {
-    font-size: var(--font-size-caption);
-    color: var(--color-text);
-    line-height: var(--line-height-normal);
-  }
-</style>
-
-<section data-component="framework" role="group" aria-label="Framework-Matrix">
-  <div class="comp-matrix">
-    <h2 class="comp-matrix__title">Priorisierungsmatrix</h2>
-    <div class="comp-matrix__grid" aria-label="2x2-Matrix">
-      <div class="comp-matrix__y-label">Strategische Bedeutung</div>
-      <div class="comp-matrix__quadrant">
-        <h3>Beobachten</h3>
-        <p>Hohe strategische Bedeutung, aber geringe Dringlichkeit -- langfristig im Blick behalten</p>
+      <!-- Top-left quadrant -->
+      <div class="comp-framework__cell comp-framework__cell--highlighted">
+        <div class="comp-framework__label">Schnelle Gewinne</div>
+        <div class="comp-framework__body">
+          Hohe Wirkung, geringer Aufwand — sofort umsetzen. Digitalisierung der
+          Auftragsabwicklung.
+        </div>
       </div>
-      <div class="comp-matrix__quadrant">
-        <h3>Sofort umsetzen</h3>
-        <p>Hohe Dringlichkeit und hohe Bedeutung -- höchste Priorität für Ressourceneinsatz</p>
+
+      <!-- Top-right quadrant -->
+      <div class="comp-framework__cell">
+        <div class="comp-framework__label">Strategische Projekte</div>
+        <div class="comp-framework__body">
+          Hohe Wirkung, hoher Aufwand — langfristig planen. KI-gestuetzte
+          Kundenanalyse.
+        </div>
       </div>
-      <div class="comp-matrix__quadrant">
-        <h3>Zurückstellen</h3>
-        <p>Niedrige Dringlichkeit und niedrige Bedeutung -- nur bei freien Kapazitäten angehen</p>
+
+      <!-- Bottom-left quadrant -->
+      <div class="comp-framework__cell comp-framework__cell--muted">
+        <div class="comp-framework__label">Geringer Fokus</div>
+        <div class="comp-framework__body">
+          Geringe Wirkung, geringer Aufwand — bei Gelegenheit erledigen.
+          Berichtsformat-Updates.
+        </div>
       </div>
-      <div class="comp-matrix__quadrant">
-        <h3>Delegieren</h3>
-        <p>Hohe Dringlichkeit, aber geringe strategische Bedeutung -- an operative Teams abgeben</p>
+
+      <!-- Bottom-right quadrant -->
+      <div class="comp-framework__cell">
+        <div class="comp-framework__label">Aufwand ueberdenken</div>
+        <div class="comp-framework__body">
+          Geringe Wirkung, hoher Aufwand — kritisch hinterfragen oder eliminieren.
+          Legacy-Systemmigrationen.
+        </div>
       </div>
-      <div class="comp-matrix__x-label">Dringlichkeit</div>
+
+      <!-- Axis labels (positioned absolutely relative to grid) -->
+      <div class="comp-framework__axis-x">Aufwand &#x2192;</div>
+      <div class="comp-framework__axis-y">Wirkung &#x2192;</div>
+
     </div>
+
   </div>
 </section>
+
+<!-- STATE MODIFIER EXAMPLE: active quadrant -->
+<!--
+<div class="comp-framework__cell comp-framework__cell--active">
+  <div class="comp-framework__label">Aktuelle Prioritaet</div>
+  <div class="comp-framework__body">Laufende Massnahme mit hoher Aufmerksamkeit.</div>
+</div>
+-->
