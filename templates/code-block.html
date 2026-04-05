@@ -1,84 +1,122 @@
 <!--
-  COMPONENT: Code Block (COMP-21)
-  USE WHEN: Technical deep-dives. API documentation. Code walkthroughs. Architecture reviews.
+  ============================================================================
+  COMPONENT: code-block
+  ============================================================================
+
+  USE WHEN:
+    Technical deep-dives. API documentation. Code walkthroughs.
+    Architecture reviews. Configuration examples. CLI commands.
 
   REQUIRED SLOTS:
-    - Slide title (h2): Describes what the code demonstrates
-    - Code block (pre > code): Source code with language class for syntax highlighting
+    - comp-code-block__title: Slide heading (h2)
+    - comp-code-block__code: A <pre><code> block with language class
 
   OPTIONAL SLOTS:
-    - data-line-numbers: Line number display and step-through highlighting
-    - Source attribution: Citation or file path reference
+    - comp-code-block__code--highlighted: Accent border, key snippet callout
+    - comp-code-block__caption: File path or source attribution below code
 
-  MASTER LAYER: Visible (default)
+  REQUIRES (CDN/Plugin):
+    - RevealHighlight plugin (conditional load in skeleton)
+    - Syntax highlighting via class="language-{lang}" on <code> element
+    - Languages: python, javascript, typescript, java, sql, bash, html, css, json, yaml
+
+  CSS VARIABLES (set on the <section> wrapper to customize):
+    --comp-code-block-padding     Outer padding. Default: var(--spacing-2xl) var(--spacing-3xl)
+    --comp-code-block-title-color Slide title color. Default: var(--color-primary)
+    --comp-code-block-bg          Code block background. Default: #1E1E2E (dark)
+    --comp-code-block-code-color  Code text color. Default: #CDD6F4 (light on dark)
+    --comp-code-block-radius      Code block border radius. Default: var(--radius-md)
+
+  STATE MODIFIERS (on comp-code-block__code):
+    .comp-code-block__code--highlighted  Accent border, featured code snippet
+
+  MASTER LAYER: Visible
 
   LAYOUT NOTES:
-    - RevealHighlight plugin provides syntax highlighting via language-{lang} class
-    - Monokai dark theme applied automatically for readability
-    - data-trim removes leading/trailing whitespace from code content
-    - Step-through: use data-line-numbers="1-3|5-8|10-12" with pipe syntax for fragment-based
-      line highlighting (each pipe group appears on next fragment advance)
-    - Supported languages: python, javascript, typescript, java, sql, bash, html, css, json, yaml, etc.
-    - German comments in code examples use HTML entities for umlauts
-  FRAGMENTS: Built into data-line-numbers pipe syntax for step-through highlighting
+    - hyphens: none on __code container (code must not be hyphenated)
+    - overflow-wrap: normal on __code container (code wraps at spaces only)
+    - data-trim attribute removes leading/trailing whitespace from code
+    - Step-through highlighting: data-line-numbers="1-3|5-8|10-12" (pipe = next fragment)
+    - Dark background (#1E1E2E) is hardcoded default for readability; override via --comp-code-block-bg
+  ============================================================================
 -->
 
-<style>
-  /* COMPONENT: Code Block — structural styles are in themes/_base.css */
-  /* No additional component-specific styles needed — Monokai theme + _base.css handles all */
-</style>
+<section id="slide-1" data-component="code-block" role="group" aria-label="Code-Beispiel">
+  <div class="comp-code-block">
 
-<!-- VARIANT 1: Basic code block (no line highlighting) -->
-<section data-component="code-block" class="comp-code-block" role="group" aria-label="Codebeispiel">
-  <h2>API-Authentifizierung</h2>
-  <pre><code class="language-python" data-trim>
+    <h2 class="comp-code-block__title">API-Integration Beispiel</h2>
+
+    <pre class="comp-code-block__code language-python" data-trim data-line-numbers>
+      <code>
+# Datenabruf aus der Unternehmens-API
+# Authentifizierung via OAuth 2.0
+
 import requests
 from datetime import datetime
 
-class APIClient:
-    """Basis-Client f&uuml;r die REST-API-Authentifizierung."""
+def hole_umsatzdaten(quartal: str, jahr: int) -> dict:
+    """Laed Umsatzdaten fuer ein Quartal aus der ERP-API."""
+    basis_url = "https://api.unternehmen.de/v2"
+    endpunkt = f"{basis_url}/finanzen/umsatz"
 
-    def __init__(self, base_url, api_key):
-        self.base_url = base_url
-        self.session = requests.Session()
-        self.session.headers.update({
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json'
-        })
+    antwort = requests.get(endpunkt, params={
+        "quartal": quartal,
+        "jahr": jahr,
+        "waehrung": "EUR"
+    }, headers={"Authorization": f"Bearer {TOKEN}"})
 
-    def get(self, endpoint):
-        """GET-Anfrage mit automatischer Fehlerbehandlung."""
-        response = self.session.get(f'{self.base_url}{endpoint}')
-        response.raise_for_status()
-        return response.json()
-  </code></pre>
-  <p class="comp-code-block__source">Quelle: internal/api/client.py</p>
+    antwort.raise_for_status()
+    return antwort.json()
+
+# Aufruf
+daten = hole_umsatzdaten("Q4", 2024)
+print(f"Umsatz Q4/2024: {daten['gesamt']:,.2f} EUR")
+      </code>
+    </pre>
+
+    <div class="comp-code-block__caption">
+      Quelle: tools/api-integration.py &mdash; Internes ERP-Integrations-Framework
+    </div>
+
+  </div>
 </section>
 
-<!-- VARIANT 2: Step-through code block (fragment-based line highlighting) -->
-<section data-component="code-block" class="comp-code-block" role="group" aria-label="Codebeispiel">
-  <h2>Datenverarbeitungs-Pipeline</h2>
-  <pre><code class="language-python" data-trim data-line-numbers="1-4|6-10|12-18">
-# Schritt 1: Daten laden und validieren
-import pandas as pd
-df = pd.read_csv('umsatzdaten_2025.csv')
-df = df.dropna(subset=['betrag', 'datum'])
+<!-- STEP-THROUGH HIGHLIGHTING EXAMPLE: -->
+<!--
+<pre class="comp-code-block__code language-python" data-trim data-line-numbers="1-4|6-12|14-16">
+  <code>
+# Schritt 1: Import und Konfiguration
+import requests
+TOKEN = "..."
+BASIS_URL = "https://api.example.de/v2"
 
-# Schritt 2: Transformation und Aggregation
-df['quartal'] = pd.to_datetime(df['datum']).dt.quarter
-df['jahr'] = pd.to_datetime(df['datum']).dt.year
-zusammenfassung = df.groupby(['jahr', 'quartal']).agg(
-    gesamt_umsatz=('betrag', 'sum')
-)
+# Schritt 2: Datenabruf-Funktion
+def hole_daten(endpunkt):
+    antwort = requests.get(
+        f"{BASIS_URL}/{endpunkt}",
+        headers={"Authorization": f"Bearer {TOKEN}"}
+    )
+    return antwort.json()
 
-# Schritt 3: Ergebnis exportieren
-zusammenfassung.to_excel(
-    'quartalsbericht.xlsx',
-    sheet_name='&Uuml;bersicht',
-    index=True,
-    float_format='%.2f'
-)
-print(f'Bericht erstellt: {len(zusammenfassung)} Quartale')
-  </code></pre>
-  <p class="comp-code-block__source">Quelle: etl/pipeline.py &mdash; Quartalsbericht-Generierung</p>
-</section>
+# Schritt 3: Ausfuehren und Ausgeben
+ergebnis = hole_daten("finanzen/q4")
+print(ergebnis)
+  </code>
+</pre>
+-->
+
+<!-- HIGHLIGHTED CODE EXAMPLE: -->
+<!--
+<pre class="comp-code-block__code comp-code-block__code--highlighted language-sql" data-trim>
+  <code>
+SELECT
+  abteilung,
+  SUM(umsatz) AS gesamt_eur,
+  COUNT(*) AS anzahl_transaktionen
+FROM vertrieb.buchungen
+WHERE datum >= '2024-10-01'
+GROUP BY abteilung
+ORDER BY gesamt_eur DESC;
+  </code>
+</pre>
+-->

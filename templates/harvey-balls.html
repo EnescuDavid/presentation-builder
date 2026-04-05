@@ -1,232 +1,133 @@
 <!--
   ============================================================================
-  COMPONENT: Harvey Balls (Utility)
+  COMPONENT: harvey-balls
   ============================================================================
 
   USE WHEN:
-    Capability ratings in tables. Feature comparisons. Maturity assessments.
+    Capability ratings in tables. Maturity assessments. Feature comparisons.
     Vendor evaluations. Skill matrices. Compliance scorecards.
 
-  REQUIRED:
-    - One of 5 state classes: harvey-ball--0, harvey-ball--25, harvey-ball--50,
-      harvey-ball--75, harvey-ball--100
+  REQUIRED SLOTS:
+    - comp-harvey-balls__title: Slide heading (h2)
+    - comp-harvey-balls__table: The HTML table element with thead/tbody
+    - comp-harvey-balls__cell: Individual data cells (td elements)
+    - comp-harvey-balls__ball: Harvey ball circle element with --hb-fill inline var
 
-  OPTIONAL:
-    - harvey-ball--color (color-coded variant: green=100, amber=50, red=0)
-    - harvey-ball--lg (larger size for standalone use, 1.5em)
+  OPTIONAL SLOTS:
+    - comp-harvey-balls__cell--highlighted: Accent border, key cell callout
+    - comp-harvey-balls__cell--risk: Danger color, risk flag on ball
 
-  MASTER LAYER: N/A (utility component, used inline within other components)
+  CSS VARIABLES (set on the <section> wrapper to customize):
+    --comp-harvey-balls-padding     Outer padding. Default: var(--spacing-2xl) var(--spacing-3xl)
+    --comp-harvey-balls-title-color Slide title color. Default: var(--color-primary)
+    --comp-harvey-balls-ball-size   Ball diameter. Default: 24px
+    --comp-harvey-balls-fill-color  Fill color of ball. Default: var(--color-primary)
+    --comp-harvey-balls-empty-color Empty (unfilled) color. Default: var(--color-border)
+
+  STATE MODIFIERS (on comp-harvey-balls__cell):
+    .comp-harvey-balls__cell--highlighted  Accent border, key cell callout
+    .comp-harvey-balls__cell--risk         Danger color on the ball fill
+
+  BALL FILL VALUES (set via --hb-fill inline style on comp-harvey-balls__ball):
+    style="--hb-fill:0%"    Empty (leer)
+    style="--hb-fill:25%"   Quarter full (ein Viertel)
+    style="--hb-fill:50%"   Half full (halb)
+    style="--hb-fill:75%"   Three-quarter full (dreiviertel)
+    style="--hb-fill:100%"  Full (vollstaendig)
+
+  MASTER LAYER: Visible
 
   LAYOUT NOTES:
-    - Inline element, 1em default size — scales with surrounding font-size
-    - Uses conic-gradient for partial fills (25%, 50%, 75%)
-    - Renders inside table cells, comparison cards, list items
-    - Vertical-align: middle for inline alignment with text
-    - Color-coded variant maps fill level to semantic colors
-
-  INLINE USAGE:
-    <span class="harvey-ball harvey-ball--75"></span>
-    <span class="harvey-ball harvey-ball--color harvey-ball--50"></span>
-    <span class="harvey-ball harvey-ball--lg harvey-ball--100"></span>
-
-  EXAMPLE (in table cell):
-    <td><span class="harvey-ball harvey-ball--75"></span></td>
-
+    - Harvey balls render via conic-gradient, no SVG dependency
+    - Ball cells should center-align text for visual balance
+    - overflow-wrap and hyphens enabled for German compound words
+    - Align ball columns to center: style="text-align:center"
   ============================================================================
 -->
 
-<style>
-  /* --- Harvey Ball Utility --- */
-  .harvey-ball {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    border-radius: var(--radius-full);
-    border: 2px solid var(--color-accent);
-    vertical-align: middle;
-    box-sizing: border-box;
-    flex-shrink: 0;
-  }
+<section id="slide-1" data-component="harvey-balls" role="group" aria-label="Reifegradanalyse">
+  <div class="comp-harvey-balls">
 
-  /* --- Five Fill States --- */
-  .harvey-ball--0 {
-    background: transparent;
-  }
+    <h2 class="comp-harvey-balls__title">Reifegradanalyse: Digitale Faehigkeiten</h2>
 
-  .harvey-ball--25 {
-    background: conic-gradient(var(--color-accent) 0deg 90deg, transparent 90deg 360deg);
-  }
-
-  .harvey-ball--50 {
-    background: conic-gradient(var(--color-accent) 0deg 180deg, transparent 180deg 360deg);
-  }
-
-  .harvey-ball--75 {
-    background: conic-gradient(var(--color-accent) 0deg 270deg, transparent 270deg 360deg);
-  }
-
-  .harvey-ball--100 {
-    background: var(--color-accent);
-  }
-
-  /* --- Size Variant --- */
-  .harvey-ball--lg {
-    width: 1.5em;
-    height: 1.5em;
-  }
-
-  /* --- Color-Coded Variant --- */
-  .harvey-ball--color.harvey-ball--100 {
-    border-color: var(--color-success);
-    background: var(--color-success);
-  }
-
-  .harvey-ball--color.harvey-ball--75 {
-    border-color: var(--color-chart-2);
-    background: conic-gradient(var(--color-chart-2) 0deg 270deg, transparent 270deg 360deg);
-  }
-
-  .harvey-ball--color.harvey-ball--50 {
-    border-color: var(--color-warning);
-    background: conic-gradient(var(--color-warning) 0deg 180deg, transparent 180deg 360deg);
-  }
-
-  .harvey-ball--color.harvey-ball--25 {
-    border-color: var(--color-chart-4);
-    background: conic-gradient(var(--color-chart-4) 0deg 90deg, transparent 90deg 360deg);
-  }
-
-  .harvey-ball--color.harvey-ball--0 {
-    border-color: var(--color-danger);
-    background: transparent;
-  }
-
-  /* --- Harvey Ball Demo Layout --- */
-  .harvey-balls-demo {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    gap: var(--spacing-xl);
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
-
-  .harvey-balls-demo h2 {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .harvey-balls-demo__row {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
-    font-size: var(--font-size-subheading);
-  }
-
-  .harvey-balls-demo__label {
-    font-size: var(--font-size-caption);
-    color: var(--color-text-muted);
-    min-width: 3em;
-    text-align: center;
-  }
-
-  .harvey-balls-demo table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: var(--font-size-body);
-  }
-
-  .harvey-balls-demo th {
-    text-align: left;
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-border);
-  }
-
-  .harvey-balls-demo td {
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text);
-    text-align: center;
-  }
-
-  .harvey-balls-demo td:first-child {
-    text-align: left;
-  }
-</style>
-
-<section data-component="harvey-balls" role="group" aria-label="Bewertungsmatrix">
-  <div class="harvey-balls-demo">
-    <h2>Harvey Balls: Bewertungsskala</h2>
-
-    <!-- Standalone demo: all 5 states -->
-    <div class="harvey-balls-demo__row">
-      <span class="harvey-ball harvey-ball--lg harvey-ball--0" role="img" aria-label="Bewertung: 0%"></span>
-      <span class="harvey-balls-demo__label">0%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--25" role="img" aria-label="Bewertung: 25%"></span>
-      <span class="harvey-balls-demo__label">25%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--50" role="img" aria-label="Bewertung: 50%"></span>
-      <span class="harvey-balls-demo__label">50%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--75" role="img" aria-label="Bewertung: 75%"></span>
-      <span class="harvey-balls-demo__label">75%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--100" role="img" aria-label="Bewertung: 100%"></span>
-      <span class="harvey-balls-demo__label">100%</span>
-    </div>
-
-    <!-- Color-coded variant -->
-    <div class="harvey-balls-demo__row">
-      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--0" role="img" aria-label="Bewertung: 0%"></span>
-      <span class="harvey-balls-demo__label">0%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--25" role="img" aria-label="Bewertung: 25%"></span>
-      <span class="harvey-balls-demo__label">25%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--50" role="img" aria-label="Bewertung: 50%"></span>
-      <span class="harvey-balls-demo__label">50%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--75" role="img" aria-label="Bewertung: 75%"></span>
-      <span class="harvey-balls-demo__label">75%</span>
-      <span class="harvey-ball harvey-ball--lg harvey-ball--color harvey-ball--100" role="img" aria-label="Bewertung: 100%"></span>
-      <span class="harvey-balls-demo__label">100%</span>
-    </div>
-
-    <!-- Embedded in comparison table -->
-    <table>
+    <table class="comp-harvey-balls__table" role="table" aria-label="Reifegradmatrix">
       <thead>
         <tr>
-          <th>Fähigkeit</th>
-          <th>Anbieter A</th>
-          <th>Anbieter B</th>
-          <th>Anbieter C</th>
+          <th scope="col">Faehigkeit</th>
+          <th scope="col" style="text-align:center">Strategie</th>
+          <th scope="col" style="text-align:center">Prozesse</th>
+          <th scope="col" style="text-align:center">Technologie</th>
+          <th scope="col" style="text-align:center">Kompetenz</th>
+          <th scope="col">Bemerkung</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Cloud-Migration</td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--100" role="img" aria-label="Bewertung: 100%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--75" role="img" aria-label="Bewertung: 75%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--50" role="img" aria-label="Bewertung: 50%"></span></td>
+          <td class="comp-harvey-balls__cell">Datenstrategie</td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:75%" aria-label="Dreiviertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:50%" aria-label="Halb"></span>
+          </td>
+          <td class="comp-harvey-balls__cell comp-harvey-balls__cell--highlighted" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:100%" aria-label="Vollstaendig"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:25%" aria-label="Ein Viertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell">Schulungsbedarf identifiziert</td>
         </tr>
         <tr>
-          <td>Datenanalyse</td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--75" role="img" aria-label="Bewertung: 75%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--100" role="img" aria-label="Bewertung: 100%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--25" role="img" aria-label="Bewertung: 25%"></span></td>
+          <td class="comp-harvey-balls__cell">Cloud-Infrastruktur</td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:100%" aria-label="Vollstaendig"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:75%" aria-label="Dreiviertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:75%" aria-label="Dreiviertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:50%" aria-label="Halb"></span>
+          </td>
+          <td class="comp-harvey-balls__cell">Stark aufgestellt</td>
         </tr>
         <tr>
-          <td>Prozessautomatisierung</td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--50" role="img" aria-label="Bewertung: 50%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--75" role="img" aria-label="Bewertung: 75%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--100" role="img" aria-label="Bewertung: 100%"></span></td>
+          <td class="comp-harvey-balls__cell">KI &amp; Automatisierung</td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:25%" aria-label="Ein Viertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:0%" aria-label="Leer"></span>
+          </td>
+          <td class="comp-harvey-balls__cell comp-harvey-balls__cell--risk" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:25%" aria-label="Ein Viertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:0%" aria-label="Leer"></span>
+          </td>
+          <td class="comp-harvey-balls__cell">Dringender Handlungsbedarf</td>
         </tr>
         <tr>
-          <td>Änderungsmanagement</td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--100" role="img" aria-label="Bewertung: 100%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--50" role="img" aria-label="Bewertung: 50%"></span></td>
-          <td><span class="harvey-ball harvey-ball--color harvey-ball--75" role="img" aria-label="Bewertung: 75%"></span></td>
+          <td class="comp-harvey-balls__cell">Cybersicherheit</td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:50%" aria-label="Halb"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:75%" aria-label="Dreiviertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:50%" aria-label="Halb"></span>
+          </td>
+          <td class="comp-harvey-balls__cell" style="text-align:center">
+            <span class="comp-harvey-balls__ball" style="--hb-fill:75%" aria-label="Dreiviertel"></span>
+          </td>
+          <td class="comp-harvey-balls__cell">Auditprozess laeuft</td>
         </tr>
       </tbody>
     </table>
+
   </div>
 </section>
