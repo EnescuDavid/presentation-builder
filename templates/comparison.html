@@ -1,171 +1,67 @@
 <!--
-  ============================================================================
-  COMPONENT: Comparison (COMP-10)
-  ============================================================================
-
-  USE WHEN:
-    Before/after. A vs B. Pros/cons. Current vs target state. From-to transformation.
-
-  REQUIRED SLOTS:
-    - Left card content
-    - Right card content
-
-  OPTIONAL SLOTS:
-    - Slide title (h2)
-    - Left label (e.g. "IST-Zustand")
-    - Right label (e.g. "SOLL-Zustand")
-    - Center divider with label (arrow or "VS")
-
-  MASTER LAYER: Visible (no data-master attribute)
-
+  COMPONENT: comparison
+  USE WHEN: Before/after, A vs. B, pros/cons, IST vs. SOLL transformation analysis.
+  SLOTS:
+    REQUIRED: __title (h2): slide title (e.g. "IST vs. SOLL", "Option A vs. Option B")
+    REQUIRED: __grid: 2-column grid container
+    REQUIRED: __card (×2): left and right comparison cards — apply --current / --target modifiers
+    REQUIRED: __header (div inside __card): card label row (e.g. "IST-Zustand", "SOLL-Zustand")
+    REQUIRED: __body (div inside __card): card content area
+    OPTIONAL: __list (ul inside __body): bullet list of comparison points
+  CSS VARIABLES (--comp-*):
+    --comp-comparison-padding: var(--spacing-2xl) var(--spacing-3xl) — outer padding
+    --comp-comparison-gap: var(--spacing-xl) — gap between the two cards
+    --comp-comparison-title-color: var(--color-primary) — title text color
+    --comp-comparison-card-bg: var(--color-surface) — default card background
+    --comp-comparison-card-radius: var(--radius-lg) — card corner radius
+  STATE MODIFIERS:
+    .comp-comparison__card--current — warning border + tinted header (IST state, what is now)
+    .comp-comparison__card--target — success border + tinted header (SOLL state, desired future)
+    .comp-comparison__card--recommended — accent ring + highlight header (preferred option)
+    .comp-comparison__card--highlighted — accent background + border (featured side)
+    .comp-comparison__card--neutral — border-only, reduced opacity (reference item)
+  MASTER LAYER: yes — visible
   LAYOUT NOTES:
-    - Uses cards with box-shadow (unlike two-column which is flat)
-    - Color-coded label badges distinguish sides
-    - Center divider element provides visual separation
-    - Left card uses --color-callout + --color-danger for label
-    - Right card uses --color-highlight + --color-accent for label
-    - overflow-wrap and hyphens enabled for German compound words
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  DIFFERENTIATION FROM TWO-COLUMN:
-    1. Cards with background, border-radius, and box-shadow (two-column is flat)
-    2. Color-coded label badges with uppercase styling
-    3. Center divider element between the two cards
-
-  EXAMPLE:
-    <section data-component="comparison" role="group" aria-label="Vergleich">
-      <div class="comp-comparison">
-        <h2>Headline</h2>
-        <div class="comp-comparison__cards">
-          <div class="comp-comparison__card comp-comparison__card--left">
-            <span class="comp-comparison__label">IST-Zustand</span>
-            <div class="comp-comparison__body">
-              <ul><li>Point</li></ul>
-            </div>
-          </div>
-          <div class="comp-comparison__divider">&#x2192;</div>
-          <div class="comp-comparison__card comp-comparison__card--right">
-            <span class="comp-comparison__label">SOLL-Zustand</span>
-            <div class="comp-comparison__body">
-              <ul><li>Point</li></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  ============================================================================
+    CSS Grid 2-column (1fr 1fr). Cards: flex column with overflow: hidden.
+    __header: colored band at top of card (background via color-mix in components.css).
+    __body: padding var(--spacing-lg), flex: 1 to fill remaining card height.
+    German text: hyphens: auto handles "IST-Zustand", "SOLL-Zustand" compound labels.
+    Consulting convention: left card = IST (--current), right card = SOLL (--target).
 -->
 
-<style>
-  /* --- Comparison Component --- */
-  .comp-comparison {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    min-height: 100%;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
+<!-- Component CSS: see tokens/components.css -> comp-comparison section -->
 
-  .comp-comparison h2 {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .comp-comparison__cards {
-    display: flex;
-    gap: 0;
-    align-items: stretch;
-    flex: 1;
-  }
-
-  .comp-comparison__card {
-    flex: 1;
-    background: var(--color-surface);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    min-width: 0;
-  }
-
-  .comp-comparison__label {
-    font-size: var(--font-size-caption);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--radius-sm);
-    display: inline-block;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .comp-comparison__card--left .comp-comparison__label {
-    background: var(--color-callout);
-    color: var(--color-danger);
-  }
-
-  .comp-comparison__card--right .comp-comparison__label {
-    background: var(--color-highlight);
-    color: var(--color-accent);
-  }
-
-  .comp-comparison__body {
-    font-size: var(--font-size-body);
-    line-height: var(--line-height-normal);
-    color: var(--color-text);
-  }
-
-  .comp-comparison__body ul {
-    margin-left: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-
-  .comp-comparison__divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 var(--spacing-md);
-    font-size: var(--font-size-heading);
-    color: var(--color-text-muted);
-  }
-</style>
-
-<section data-component="comparison" role="group" aria-label="Vergleich">
+<section id="slide-10" data-component="comparison" role="group" aria-label="Vergleich IST vs. SOLL">
   <div class="comp-comparison">
-    <h2>Digitale Reife: Transformation</h2>
-    <div class="comp-comparison__cards">
-      <div class="comp-comparison__card comp-comparison__card--left">
-        <span class="comp-comparison__label">IST-Zustand</span>
+    <h2 class="comp-comparison__title">Digitale Reife: IST vs. SOLL</h2>
+    <div class="comp-comparison__grid">
+
+      <div class="comp-comparison__card comp-comparison__card--current">
+        <div class="comp-comparison__header">IST-Zustand (2025)</div>
         <div class="comp-comparison__body">
-          <ul>
+          <ul class="comp-comparison__list">
             <li>Manuelle Prozesse in 60% der Kernbereiche</li>
-            <li>Isolierte Datensilos ohne zentrale Analyse</li>
-            <li>Reaktive Kundenbetreuung per Telefon und E-Mail</li>
-            <li>Durchlaufzeit von 14 Tagen für Standardaufträge</li>
+            <li>Isolierte Datensilos, kein zentrales Reporting</li>
+            <li>Reaktive Kundenbetreuung per Telefon</li>
+            <li>Durchlaufzeit Standardauftrag: 14 Tage</li>
+            <li>Digitale Reife: 42% (Branchen-Benchmark: 67%)</li>
           </ul>
         </div>
       </div>
-      <div class="comp-comparison__divider">&#x2192;</div>
-      <div class="comp-comparison__card comp-comparison__card--right">
-        <span class="comp-comparison__label">SOLL-Zustand</span>
+
+      <div class="comp-comparison__card comp-comparison__card--target">
+        <div class="comp-comparison__header">SOLL-Zustand (2027)</div>
         <div class="comp-comparison__body">
-          <ul>
+          <ul class="comp-comparison__list">
             <li>End-to-End-Automatisierung der Kernprozesse</li>
             <li>Einheitliche Datenplattform mit Echtzeit-Dashboards</li>
-            <li>Proaktiver Self-Service über digitale Kanäle</li>
-            <li>Durchlaufzeit unter 3 Tagen durch Workflow-Optimierung</li>
+            <li>Proaktiver Self-Service &uuml;ber digitale Kan&auml;le</li>
+            <li>Durchlaufzeit Standardauftrag: unter 3 Tage</li>
+            <li>Digitale Reife: 75% (Marktf&uuml;hrerposition)</li>
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 </section>

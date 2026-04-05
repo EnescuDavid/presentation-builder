@@ -1,250 +1,87 @@
 <!--
-  ============================================================================
-  COMPONENT: Timeline/Process (COMP-11)
-  ============================================================================
-
-  USE WHEN:
-    Project roadmap. Process flow. Milestones. Sequential steps.
-    Implementation phases.
-
-  REQUIRED SLOTS:
-    - 3-6 steps each with marker label and content title
-
-  OPTIONAL SLOTS:
-    - Slide title (h2)
-    - Step description text
-
-  MASTER LAYER: Visible
-
+  COMPONENT: timeline
+  USE WHEN: Project roadmap, implementation phases, process flow, milestones, sequential steps.
+  SLOTS:
+    REQUIRED: __title (h2): slide title (e.g. "Umsetzungsplan 2025-2026")
+    REQUIRED: __track (div): vertical track container (has ::before connector line)
+    REQUIRED: __step (div inside __track): one milestone/phase — supports state modifiers
+    REQUIRED: __marker (div inside __step): circular marker dot (positioned left of track)
+    REQUIRED: __content (div inside __step): text block for heading + body
+    OPTIONAL: __date (span inside __content): date/quarter label above heading
+    OPTIONAL: __heading (h3 inside __content): milestone name
+    OPTIONAL: __body (p inside __content): brief description
+  CSS VARIABLES (--comp-*):
+    --comp-timeline-padding: var(--spacing-2xl) var(--spacing-3xl) — outer padding
+    --comp-timeline-title-color: var(--color-primary) — title text color
+    --comp-timeline-line-color: var(--color-border) — vertical connector line color
+    --comp-timeline-marker-size: 20px — diameter of step marker circles
+    --comp-timeline-step-gap: var(--spacing-lg) — vertical gap between steps
+  STATE MODIFIERS:
+    .comp-timeline__step--completed — success color on marker + heading (past milestone)
+    .comp-timeline__step--active — accent color on marker + heading (current step in focus)
+    .comp-timeline__step--current — warning color on marker + heading (IST position now)
+    .comp-timeline__step--target — success border on marker + heading (SOLL milestone)
+    .comp-timeline__step--muted — reduced opacity (0.45), future steps not yet started
+  MASTER LAYER: yes — visible
   LAYOUT NOTES:
-    - Template shows horizontal layout (best for 3-4 steps)
-    - For 5-6 steps switch to vertical by changing flex-direction on track
-      and adjusting connector pseudo-elements
-    - Add comp-timeline--vertical modifier to .comp-timeline for 5-6 step
-      vertical layout. Claude picks vertical when step count exceeds 4 or
-      content is too long for horizontal.
-    - Claude picks orientation based on content
-    - Connectors use ::after pseudo-elements anchored to marker center
-      (top: 18px = half of 36px marker)
-    - Step content uses compact font sizes for German text
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE:
-    <section data-component="timeline" role="group" aria-label="Zeitstrahl">
-      <div class="comp-timeline">
-        <h2 class="comp-timeline__title">Projektfahrplan</h2>
-        <div class="comp-timeline__track">
-          <div class="comp-timeline__step">
-            <div class="comp-timeline__marker">Q1</div>
-            <div class="comp-timeline__content">
-              <h3>Phase 1</h3>
-              <p>Kurze Beschreibung</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  ============================================================================
+    Vertical layout (flex column). __track has padding-left to make space for the marker.
+    __track::before: 2px vertical line, position: absolute, left at marker center.
+    __marker: position: absolute, left: -(marker-size + spacing-md), top: 2px.
+    German compound milestone names: hyphens: auto handles Umsetzungsplan, Pilotierung, etc.
 -->
 
-<style>
-  /* --- Timeline/Process Component --- */
-  .comp-timeline {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    min-height: 100%;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
+<!-- Component CSS: see tokens/components.css -> comp-timeline section -->
 
-  .comp-timeline__title {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .comp-timeline__track {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    padding: 0 var(--spacing-lg);
-    flex: 1;
-  }
-
-  .comp-timeline__step {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 0 var(--spacing-sm);
-  }
-
-  /* Connector line between markers */
-  .comp-timeline__step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 18px;
-    left: calc(50% + 20px);
-    right: calc(-50% + 20px);
-    height: 2px;
-    background: var(--color-border);
-  }
-
-  .comp-timeline__marker {
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-full);
-    background: var(--color-accent);
-    color: var(--color-on-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-caption);
-    z-index: 1;
-    flex-shrink: 0;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .comp-timeline__content h3 {
-    font-size: var(--font-size-subheading);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .comp-timeline__content p {
-    font-size: var(--font-size-caption);
-    color: var(--color-text-muted);
-    line-height: var(--line-height-normal);
-  }
-
-  /* --- Vertical Variant --- */
-  .comp-timeline--vertical .comp-timeline__track {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: var(--spacing-2xl);
-  }
-
-  .comp-timeline--vertical .comp-timeline__step {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    padding: 0 0 var(--spacing-xl) 0;
-    width: 100%;
-  }
-
-  .comp-timeline--vertical .comp-timeline__step:not(:last-child)::after {
-    top: 36px;
-    left: 17px;
-    right: auto;
-    width: 2px;
-    height: calc(100% - 36px);
-    bottom: 0;
-  }
-
-  .comp-timeline--vertical .comp-timeline__marker {
-    flex-shrink: 0;
-    margin-bottom: 0;
-    margin-right: var(--spacing-lg);
-  }
-
-  .comp-timeline--vertical .comp-timeline__content {
-    padding-top: var(--spacing-xs);
-  }
-
-  .comp-timeline--vertical .comp-timeline__content h3 {
-    font-size: var(--font-size-subheading);
-  }
-
-  .comp-timeline--vertical .comp-timeline__content p {
-    font-size: var(--font-size-body);
-  }
-</style>
-
-<section data-component="timeline" role="group" aria-label="Zeitstrahl">
+<section id="slide-11" data-component="timeline" role="group" aria-label="Umsetzungsplan">
   <div class="comp-timeline">
-    <h2 class="comp-timeline__title">Projektfahrplan 2026-2027</h2>
+    <h2 class="comp-timeline__title">Umsetzungsplan 2025&ndash;2026</h2>
     <div class="comp-timeline__track">
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">Q1</div>
-        <div class="comp-timeline__content">
-          <h3>Analyse</h3>
-          <p>Marktforschung und Bedarfsanalyse der Zielgruppen</p>
-        </div>
-      </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">Q2</div>
-        <div class="comp-timeline__content">
-          <h3>Konzeption</h3>
-          <p>Strategieentwicklung und Pilotplanung</p>
-        </div>
-      </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">Q3</div>
-        <div class="comp-timeline__content">
-          <h3>Pilotphase</h3>
-          <p>Prototyp-Entwicklung und Nutzertests</p>
-        </div>
-      </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">Q4</div>
-        <div class="comp-timeline__content">
-          <h3>Rollout</h3>
-          <p>Unternehmensweite Einführung und Schulung</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- VERTICAL VARIANT (5-6 steps): -->
-<section data-component="timeline" role="group" aria-label="Zeitstrahl">
-  <div class="comp-timeline comp-timeline--vertical">
-    <h2 class="comp-timeline__title">Digitalisierungsprojekt 2026</h2>
-    <div class="comp-timeline__track">
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">1</div>
+      <div class="comp-timeline__step comp-timeline__step--completed">
+        <div class="comp-timeline__marker"></div>
         <div class="comp-timeline__content">
-          <h3>Bestandsaufnahme</h3>
-          <p>Analyse bestehender Systeme und Prozesse, Identifikation von Optimierungspotenzialen</p>
+          <span class="comp-timeline__date">Q2 2025</span>
+          <h3 class="comp-timeline__heading">Analysephase abgeschlossen</h3>
+          <p class="comp-timeline__body">Marktforschung, Bedarfsanalyse und Stakeholder-Interviews abgeschlossen. Bericht vorliegend.</p>
         </div>
       </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">2</div>
+
+      <div class="comp-timeline__step comp-timeline__step--active">
+        <div class="comp-timeline__marker"></div>
         <div class="comp-timeline__content">
-          <h3>Anforderungsanalyse</h3>
-          <p>Workshops mit Fachbereichen, Definition der funktionalen und technischen Anforderungen</p>
+          <span class="comp-timeline__date">Q3 2025</span>
+          <h3 class="comp-timeline__heading">Strategieentwicklung (laufend)</h3>
+          <p class="comp-timeline__body">Erarbeitung der strategischen Optionen, Bewertung und Priorisierung mit Vorstandsteam.</p>
         </div>
       </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">3</div>
+
+      <div class="comp-timeline__step comp-timeline__step--current">
+        <div class="comp-timeline__marker"></div>
         <div class="comp-timeline__content">
-          <h3>Konzeptentwicklung</h3>
-          <p>Erstellung der L&ouml;sungsarchitektur und detaillierter Umsetzungsplan</p>
+          <span class="comp-timeline__date">Q4 2025</span>
+          <h3 class="comp-timeline__heading">Pilotprojekt</h3>
+          <p class="comp-timeline__body">Prototyp-Entwicklung und Nutzertests in ausgew&auml;hltem Gesch&auml;ftsbereich (Zielmarkt: DACH-S&uuml;d).</p>
         </div>
       </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">4</div>
+
+      <div class="comp-timeline__step comp-timeline__step--target">
+        <div class="comp-timeline__marker"></div>
         <div class="comp-timeline__content">
-          <h3>Pilotierung</h3>
-          <p>Implementierung im ausgew&auml;hlten Pilotbereich mit begleitendem Change Management</p>
+          <span class="comp-timeline__date">Q2 2026</span>
+          <h3 class="comp-timeline__heading">Unternehmensweiter Rollout</h3>
+          <p class="comp-timeline__body">Schrittweise Einf&uuml;hrung in allen Gesch&auml;ftsbereichen mit begleitendem Change-Management-Programm.</p>
         </div>
       </div>
-      <div class="comp-timeline__step">
-        <div class="comp-timeline__marker">5</div>
+
+      <div class="comp-timeline__step comp-timeline__step--muted">
+        <div class="comp-timeline__marker"></div>
         <div class="comp-timeline__content">
-          <h3>Unternehmensweiter Rollout</h3>
-          <p>Schrittweise Einf&uuml;hrung in allen Gesch&auml;ftsbereichen mit Schulungsprogramm</p>
+          <span class="comp-timeline__date">Q4 2026</span>
+          <h3 class="comp-timeline__heading">Optimierung &amp; Skalierung</h3>
+          <p class="comp-timeline__body">Datengetriebene Optimierung, Erweiterung der Plattformkapazit&auml;ten und internationale Ausdehnung.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
