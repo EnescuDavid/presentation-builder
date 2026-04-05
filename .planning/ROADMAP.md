@@ -167,7 +167,10 @@ Plans:
   3. Curated Lucide icon set is mapped to common consulting concepts (growth, risk, timeline, etc.)
   4. CSS property map reference documents every `--comp-*` variable and safe CSS properties for the slide-stylist agent
   5. Slide-stylist agent produces per-slide CSS tweaks via `@layer overrides` without modifying components.css
-**Plans**: TBD
+**Plans**: 3 plans (TBD = planning in progress)
+
+Plans:
+- [x] 02-01-PLAN.md -- Visual vocabulary reference (15 archetypes, smell test, Lucide icons) + component catalog extension to 21 components
 
 ### Phase 3: Brand System
 **Goal**: Corporate branding is managed through a structured brands/ directory with machine-readable profiles, automated extraction, and agent-driven validation
@@ -226,7 +229,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1. Component Architecture | v2.0 | 5/5 | Complete | 2026-04-05 |
-| 2. Visual Vocabulary | v2.0 | 0/0 | Not started | - |
+| 2. Visual Vocabulary | v2.0 | 1/3 | In Progress | - |
 | 3. Brand System | v2.0 | 0/0 | Not started | - |
 | 4. Orchestration & Entry Points | v2.0 | 0/0 | Not started | - |
 | 5. Strategist Debate | v2.0 | 0/0 | Not started | - |

@@ -19,8 +19,8 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 
 ### Visual Vocabulary
 
-- [ ] **VIS-01**: Visual vocabulary reference with 15 content archetypes and bullet-list smell test
-- [ ] **VIS-02**: Curated Lucide icon set mapped to common consulting concepts
+- [x] **VIS-01**: Visual vocabulary reference with 15 content archetypes and bullet-list smell test
+- [x] **VIS-02**: Curated Lucide icon set mapped to common consulting concepts
 - [ ] **VIS-03**: CSS property map reference for slide-stylist agent
 - [ ] **VIS-04**: Slide-stylist agent produces per-slide CSS tweaks via `@layer overrides`
 
@@ -91,8 +91,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-06 | Phase 1 | Pending |
 | COMP-07 | Phase 1 | Pending |
 | BRAND-06 | Phase 1 | Pending |
-| VIS-01 | Phase 2 | Pending |
-| VIS-02 | Phase 2 | Pending |
+| VIS-01 | Phase 2 | Complete |
+| VIS-02 | Phase 2 | Complete |
 | VIS-03 | Phase 2 | Pending |
 | VIS-04 | Phase 2 | Pending |
 | BRAND-01 | Phase 3 | Pending |
