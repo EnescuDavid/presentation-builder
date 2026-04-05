@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Data Viz, Consulting Intelligence & Platform
 status: verifying
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-04-05T17:25:38.297Z"
+stopped_at: Completed 01-04-PLAN.md
+last_updated: "2026-04-05T17:40:43.069Z"
 last_activity: 2026-04-05
 progress:
   total_phases: 7
@@ -69,7 +69,7 @@ Progress: [███████░░░] 71%
 | Phase 12 P01 | 3min | 2 tasks | 3 files |
 | Phase 12 P02 | 3min | 2 tasks | 2 files |
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
-| Phase 01 P02 | 5 | 2 tasks | 11 files |
+| Phase 01 P04 | 6 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -104,8 +104,9 @@ Recent decisions affecting current work:
 - [Phase 12]: Accessible export uses cheerio DOM parsing with h1/h2/h3 heading hierarchy and German labels
 - [Phase 12]: PPTX export uses image-based slides (full visual fidelity) via DeckTape screenshots + PptxGenJS assembly
 - [Phase 13]: Three-tier compliance status (AUTOMATED/PARTIAL/N/A) for honest EAA gap documentation
-- [Phase 01]: HTML entity umlauts used in templates for consistent cross-tool rendering
-- [Phase 01]: D-02 structural fix: two-column uses CSS Grid, contact uses centered flex column
+- [Phase 01]: @layer order is strict: tokens < animations < base-theme < theme < components < overrides (D-11)
+- [Phase 01]: themes/_base.css embedded in skeleton @layer base-theme without audience presets (D-12, D-14)
+- [Phase 01]: Theme reference changed from themes/ to brands/{name}/theme.css (D-13)
 
 ### Pending Todos
 
@@ -118,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-05T17:25:38.294Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-04-05T17:40:43.066Z
+Stopped at: Completed 01-04-PLAN.md
 Resume file: None
