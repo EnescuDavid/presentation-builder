@@ -1,0 +1,1636 @@
+/*
+ * tokens/components.css -- Pre-written CSS for all 21 components
+ *
+ * USAGE: Copy this entire file's content verbatim into the @layer components
+ * block of every generated presentation. Never modify this content in a
+ * generated presentation. Customization goes in @layer overrides only.
+ *
+ * Builder contract:
+ *   - Copy verbatim
+ *   - Set --comp-* variables on <section id="slide-N"> elements
+ *   - Never write CSS rules inside @layer components
+ */
+
+@layer components {
+
+  /* ---- comp-title ---- */
+  /*
+   * Supported states: (none — title is a static opening slide)
+   */
+  .comp-title {
+    --comp-title-padding: var(--spacing-3xl);
+    --comp-title-title-size: var(--font-size-display);
+    --comp-title-title-color: var(--color-primary);
+    --comp-title-subtitle-size: var(--font-size-subheading);
+    --comp-title-divider-color: var(--color-accent);
+    --comp-title-divider-width: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: var(--comp-title-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-title__title {
+    font-size: var(--comp-title-title-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-title-title-color);
+    line-height: var(--line-height-tight);
+    max-width: 900px;
+  }
+
+  .comp-title__divider {
+    width: var(--comp-title-divider-width);
+    height: 3px;
+    background: var(--comp-title-divider-color);
+    border-radius: var(--radius-full);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .comp-title__subtitle {
+    font-size: var(--comp-title-subtitle-size);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .comp-title__tagline {
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-sm);
+    font-weight: var(--font-weight-regular);
+  }
+
+
+  /* ---- comp-section-break ---- */
+  /*
+   * Supported states: (none — section break is a structural divider slide)
+   */
+  .comp-section-break {
+    --comp-section-break-bg: var(--color-primary);
+    --comp-section-break-title-color: var(--color-on-primary);
+    --comp-section-break-subtitle-color: var(--color-dark-text-muted);
+    --comp-section-break-padding: var(--spacing-3xl);
+    --comp-section-break-title-size: var(--font-size-display);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: var(--comp-section-break-padding);
+    background: var(--comp-section-break-bg);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-section-break__title {
+    font-size: var(--comp-section-break-title-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-section-break-title-color);
+    line-height: var(--line-height-tight);
+    max-width: 800px;
+  }
+
+  .comp-section-break__subtitle {
+    font-size: var(--font-size-subheading);
+    color: var(--comp-section-break-subtitle-color);
+    margin-top: var(--spacing-lg);
+    font-weight: var(--font-weight-regular);
+    max-width: 700px;
+  }
+
+
+  /* ---- comp-text-heavy ---- */
+  /*
+   * Supported states: (applied on __item)
+   *   .comp-text-heavy__item--highlighted — accent background, key point callout
+   *   .comp-text-heavy__item--muted — reduced opacity, secondary info
+   */
+  .comp-text-heavy {
+    --comp-text-heavy-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-text-heavy-title-color: var(--color-primary);
+    --comp-text-heavy-body-color: var(--color-text);
+    --comp-text-heavy-list-gap: var(--spacing-md);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: var(--comp-text-heavy-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-text-heavy__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-text-heavy-title-color);
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-text-heavy__body {
+    font-size: var(--font-size-body);
+    color: var(--comp-text-heavy-body-color);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-text-heavy__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--comp-text-heavy-list-gap);
+  }
+
+  .comp-text-heavy__item {
+    font-size: var(--font-size-body);
+    color: var(--comp-text-heavy-body-color);
+    line-height: var(--line-height-normal);
+    padding-left: var(--spacing-lg);
+    position: relative;
+  }
+
+  .comp-text-heavy__item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .comp-text-heavy__item--highlighted {
+    background: var(--color-highlight);
+    border-left: 3px solid var(--color-accent);
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .comp-text-heavy__item--highlighted::before {
+    content: none;
+  }
+
+  .comp-text-heavy__item--muted {
+    opacity: 0.45;
+  }
+
+
+  /* ---- comp-two-column ---- */
+  /*
+   * Supported states: (none — layout component, state on children)
+   */
+  .comp-two-column {
+    --comp-two-column-gap: var(--spacing-xl);
+    --comp-two-column-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-two-column-title-color: var(--color-primary);
+    --comp-two-column-split: 1fr 1fr;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-two-column-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-two-column__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-two-column-title-color);
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-two-column__grid {
+    display: grid;
+    grid-template-columns: var(--comp-two-column-split);
+    gap: var(--comp-two-column-gap);
+    flex: 1;
+    align-items: start;
+  }
+
+  .comp-two-column__col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .comp-two-column__body {
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+
+  .comp-two-column__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+  }
+
+
+  /* ---- comp-metrics ---- */
+  /*
+   * Supported states: (applied on __card)
+   *   .comp-metrics__card--highlighted — accent border + highlight background, hero metric
+   *   .comp-metrics__card--positive — success color on number
+   *   .comp-metrics__card--negative — danger color on number
+   *   .comp-metrics__card--muted — reduced opacity, secondary metric
+   *   .comp-metrics__card--risk — danger border, risk flag
+   */
+  .comp-metrics {
+    --comp-metrics-gap: var(--spacing-3xl);
+    --comp-metrics-card-padding: var(--spacing-lg);
+    --comp-metrics-number-size: var(--font-size-display);
+    --comp-metrics-label-size: var(--font-size-caption);
+    --comp-metrics-card-bg: transparent;
+    --comp-metrics-number-color: var(--color-primary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: var(--spacing-2xl) var(--spacing-3xl);
+    text-align: center;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-metrics__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .comp-metrics__grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--comp-metrics-gap);
+    flex-wrap: wrap;
+  }
+
+  .comp-metrics__grid--compact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .comp-metrics__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--comp-metrics-card-padding);
+    background: var(--comp-metrics-card-bg);
+    border-radius: var(--radius-md);
+  }
+
+  .comp-metrics__number {
+    font-size: var(--comp-metrics-number-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-metrics-number-color);
+    line-height: var(--line-height-tight);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-metrics__grid--compact .comp-metrics__number {
+    font-size: var(--font-size-heading);
+  }
+
+  .comp-metrics__label {
+    font-size: var(--comp-metrics-label-size);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* State modifiers on __card */
+  .comp-metrics__card--highlighted {
+    background: var(--color-highlight);
+    border: 2px solid var(--color-accent);
+  }
+
+  .comp-metrics__card--highlighted .comp-metrics__number {
+    color: var(--color-accent);
+  }
+
+  .comp-metrics__card--positive .comp-metrics__number {
+    color: var(--color-success);
+  }
+
+  .comp-metrics__card--negative .comp-metrics__number {
+    color: var(--color-danger);
+  }
+
+  .comp-metrics__card--muted {
+    opacity: 0.45;
+  }
+
+  .comp-metrics__card--risk {
+    border: 2px solid var(--color-danger);
+    background: var(--color-callout);
+  }
+
+  /* Sparkline: trend */
+  .comp-metrics__trend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-caption);
+    margin-top: var(--spacing-xs);
+  }
+
+  .comp-metrics__trend--up { color: var(--color-success); }
+  .comp-metrics__trend--down { color: var(--color-danger); }
+  .comp-metrics__trend--flat { color: var(--color-text-muted); }
+
+  .comp-metrics__trend-arrow {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Sparkline: mini bars */
+  .comp-metrics__bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 32px;
+    margin-top: var(--spacing-sm);
+  }
+
+  .comp-metrics__bar {
+    width: 6px;
+    border-radius: 2px 2px 0 0;
+    background: var(--color-chart-1);
+    min-height: 3px;
+  }
+
+  /* Sparkline: progress */
+  .comp-metrics__progress {
+    width: 100%;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+    margin-top: var(--spacing-sm);
+    overflow: hidden;
+  }
+
+  .comp-metrics__progress-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+  }
+
+
+  /* ---- comp-image-full-bleed ---- */
+  /*
+   * Supported states: (none — structural full-screen image slide)
+   */
+  .comp-image-full-bleed {
+    --comp-image-full-bleed-overlay: var(--color-overlay);
+    --comp-image-full-bleed-caption-color: var(--color-on-primary);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-image-full-bleed__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .comp-image-full-bleed__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--comp-image-full-bleed-overlay);
+    z-index: 1;
+  }
+
+  .comp-image-full-bleed__caption {
+    position: relative;
+    z-index: 2;
+    font-size: var(--font-size-body);
+    color: var(--comp-image-full-bleed-caption-color);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    text-align: center;
+    font-weight: var(--font-weight-regular);
+  }
+
+
+  /* ---- comp-agenda ---- */
+  /*
+   * Supported states: (applied on __item)
+   *   .comp-agenda__item--active — accent background, current agenda item
+   *   .comp-agenda__item--completed — muted/checkmark, past items
+   *   .comp-agenda__item--muted — reduced opacity, future items
+   */
+  .comp-agenda {
+    --comp-agenda-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-agenda-item-gap: var(--spacing-md);
+    --comp-agenda-number-color: var(--color-accent);
+    --comp-agenda-title-color: var(--color-primary);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: var(--comp-agenda-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-agenda__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-agenda-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-agenda__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--comp-agenda-item-gap);
+  }
+
+  .comp-agenda__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    transition: background var(--duration-fast) var(--ease-entrance);
+  }
+
+  .comp-agenda__number {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-agenda-number-color);
+    min-width: 1.5em;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* State modifiers */
+  .comp-agenda__item--active {
+    background: var(--color-highlight);
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .comp-agenda__item--active .comp-agenda__number {
+    color: var(--color-accent);
+  }
+
+  .comp-agenda__item--completed {
+    color: var(--color-success);
+  }
+
+  .comp-agenda__item--completed .comp-agenda__number {
+    color: var(--color-success);
+  }
+
+  .comp-agenda__item--muted {
+    opacity: 0.45;
+  }
+
+
+  /* ---- comp-summary ---- */
+  /*
+   * Supported states: (applied on __item)
+   *   .comp-summary__item--highlighted — accent border, key takeaway
+   *   .comp-summary__item--positive — success color indicator
+   *   .comp-summary__item--negative — danger color indicator
+   */
+  .comp-summary {
+    --comp-summary-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-summary-title-color: var(--color-primary);
+    --comp-summary-item-gap: var(--spacing-md);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: var(--comp-summary-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-summary__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-summary-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-summary__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--comp-summary-item-gap);
+  }
+
+  .comp-summary__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comp-summary__item:last-child {
+    border-bottom: none;
+  }
+
+  .comp-summary__item--highlighted {
+    background: var(--color-highlight);
+    border-left: 3px solid var(--color-accent);
+    border-bottom: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .comp-summary__item--positive {
+    color: var(--color-success);
+  }
+
+  .comp-summary__item--negative {
+    color: var(--color-danger);
+  }
+
+
+  /* ---- comp-contact ---- */
+  /*
+   * Supported states: (none — contact is a closing static slide)
+   */
+  .comp-contact {
+    --comp-contact-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-contact-name-size: var(--font-size-heading);
+    --comp-contact-name-color: var(--color-primary);
+    --comp-contact-role-color: var(--color-text-muted);
+    --comp-contact-photo-size: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: var(--comp-contact-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-contact__photo {
+    width: var(--comp-contact-photo-size);
+    height: var(--comp-contact-photo-size);
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    margin-bottom: var(--spacing-lg);
+    border: 3px solid var(--color-border);
+  }
+
+  .comp-contact__name {
+    font-size: var(--comp-contact-name-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-contact-name-color);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .comp-contact__role {
+    font-size: var(--font-size-subheading);
+    color: var(--comp-contact-role-color);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+    align-items: center;
+  }
+
+  .comp-contact__detail-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+
+  /* ---- comp-comparison ---- */
+  /*
+   * Supported states: (applied on __card)
+   *   .comp-comparison__card--current — warning color, IST state
+   *   .comp-comparison__card--target — success color, SOLL state
+   *   .comp-comparison__card--recommended — accent ring, preferred option
+   *   .comp-comparison__card--highlighted — accent background, featured side
+   *   .comp-comparison__card--neutral — border only, reference item
+   */
+  .comp-comparison {
+    --comp-comparison-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-comparison-gap: var(--spacing-xl);
+    --comp-comparison-title-color: var(--color-primary);
+    --comp-comparison-card-bg: var(--color-surface);
+    --comp-comparison-card-radius: var(--radius-lg);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-comparison-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-comparison__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-comparison-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-comparison__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--comp-comparison-gap);
+    flex: 1;
+  }
+
+  .comp-comparison__card {
+    display: flex;
+    flex-direction: column;
+    background: var(--comp-comparison-card-bg);
+    border-radius: var(--comp-comparison-card-radius);
+    border: 2px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .comp-comparison__header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+
+  .comp-comparison__body {
+    padding: var(--spacing-lg);
+    flex: 1;
+  }
+
+  .comp-comparison__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+
+  /* State modifiers */
+  .comp-comparison__card--current {
+    border-color: var(--color-warning);
+  }
+
+  .comp-comparison__card--current .comp-comparison__header {
+    background: color-mix(in srgb, var(--color-warning) 10%, white);
+    color: var(--color-warning);
+    border-bottom-color: var(--color-warning);
+  }
+
+  .comp-comparison__card--target {
+    border-color: var(--color-success);
+  }
+
+  .comp-comparison__card--target .comp-comparison__header {
+    background: color-mix(in srgb, var(--color-success) 10%, white);
+    color: var(--color-success);
+    border-bottom-color: var(--color-success);
+  }
+
+  .comp-comparison__card--recommended {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-highlight);
+  }
+
+  .comp-comparison__card--recommended .comp-comparison__header {
+    background: var(--color-highlight);
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .comp-comparison__card--highlighted {
+    background: var(--color-highlight);
+    border-color: var(--color-accent);
+  }
+
+  .comp-comparison__card--neutral {
+    border-color: var(--color-border);
+    opacity: 0.7;
+  }
+
+
+  /* ---- comp-timeline ---- */
+  /*
+   * Supported states: (applied on __step)
+   *   .comp-timeline__step--active — accent, current step in focus
+   *   .comp-timeline__step--completed — success color + line through
+   *   .comp-timeline__step--current — warning (IST position)
+   *   .comp-timeline__step--target — success border (SOLL milestone)
+   *   .comp-timeline__step--muted — reduced opacity, future steps
+   */
+  .comp-timeline {
+    --comp-timeline-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-timeline-title-color: var(--color-primary);
+    --comp-timeline-line-color: var(--color-border);
+    --comp-timeline-marker-size: 20px;
+    --comp-timeline-step-gap: var(--spacing-lg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: var(--comp-timeline-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-timeline__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-timeline-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-timeline__track {
+    display: flex;
+    flex-direction: column;
+    gap: var(--comp-timeline-step-gap);
+    position: relative;
+    padding-left: calc(var(--comp-timeline-marker-size) + var(--spacing-md));
+  }
+
+  .comp-timeline__track::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--comp-timeline-marker-size) / 2);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--comp-timeline-line-color);
+  }
+
+  .comp-timeline__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .comp-timeline__marker {
+    position: absolute;
+    left: calc(-1 * var(--comp-timeline-marker-size) - var(--spacing-md));
+    top: 2px;
+    width: var(--comp-timeline-marker-size);
+    height: var(--comp-timeline-marker-size);
+    border-radius: var(--radius-full);
+    background: var(--color-border);
+    border: 2px solid var(--color-background);
+    z-index: 1;
+  }
+
+  .comp-timeline__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .comp-timeline__date {
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .comp-timeline__heading {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  .comp-timeline__body {
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+
+  /* State modifiers */
+  .comp-timeline__step--active .comp-timeline__marker {
+    background: var(--color-accent);
+  }
+
+  .comp-timeline__step--active .comp-timeline__heading {
+    color: var(--color-accent);
+  }
+
+  .comp-timeline__step--completed .comp-timeline__marker {
+    background: var(--color-success);
+  }
+
+  .comp-timeline__step--completed .comp-timeline__heading {
+    color: var(--color-success);
+  }
+
+  .comp-timeline__step--current .comp-timeline__marker {
+    background: var(--color-warning);
+  }
+
+  .comp-timeline__step--current .comp-timeline__heading {
+    color: var(--color-warning);
+  }
+
+  .comp-timeline__step--target .comp-timeline__marker {
+    background: var(--color-success);
+    border: 2px solid var(--color-success);
+  }
+
+  .comp-timeline__step--target .comp-timeline__heading {
+    color: var(--color-success);
+  }
+
+  .comp-timeline__step--muted {
+    opacity: 0.45;
+  }
+
+
+  /* ---- comp-quote ---- */
+  /*
+   * Supported states: (applied on __text)
+   *   .comp-quote__text--highlighted — accent color, emphasize quote
+   */
+  .comp-quote {
+    --comp-quote-padding: var(--spacing-3xl);
+    --comp-quote-text-size: var(--font-size-heading);
+    --comp-quote-text-color: var(--color-primary);
+    --comp-quote-accent-color: var(--color-accent);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: var(--comp-quote-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-quote__text {
+    font-size: var(--comp-quote-text-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-quote-text-color);
+    line-height: var(--line-height-snug);
+    max-width: 800px;
+    position: relative;
+  }
+
+  .comp-quote__text::before {
+    content: "\201C";
+    font-size: 4em;
+    line-height: 0;
+    color: var(--comp-quote-accent-color);
+    position: absolute;
+    top: 0.3em;
+    left: -0.4em;
+    opacity: 0.3;
+  }
+
+  .comp-quote__text--highlighted {
+    color: var(--color-accent);
+  }
+
+  .comp-quote__author {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin-top: var(--spacing-xl);
+  }
+
+  .comp-quote__role {
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
+    font-weight: var(--font-weight-regular);
+  }
+
+
+  /* ---- comp-card-grid ---- */
+  /*
+   * Supported states: (applied on __card)
+   *   .comp-card-grid__card--highlighted — accent border, featured card
+   *   .comp-card-grid__card--muted — reduced opacity, secondary card
+   *   .comp-card-grid__card--recommended — accent ring, preferred option
+   */
+  .comp-card-grid {
+    --comp-card-grid-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-card-grid-gap: var(--spacing-lg);
+    --comp-card-grid-card-padding: var(--spacing-lg);
+    --comp-card-grid-card-bg: var(--color-surface);
+    --comp-card-grid-title-color: var(--color-primary);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-card-grid-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-card-grid__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-card-grid-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-card-grid__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--comp-card-grid-gap);
+    flex: 1;
+    align-content: start;
+  }
+
+  .comp-card-grid__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--comp-card-grid-card-padding);
+    background: var(--comp-card-grid-card-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .comp-card-grid__icon {
+    font-size: var(--font-size-heading);
+    line-height: 1;
+  }
+
+  .comp-card-grid__heading {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  .comp-card-grid__body {
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+
+  /* State modifiers */
+  .comp-card-grid__card--highlighted {
+    border-color: var(--color-accent);
+    background: var(--color-highlight);
+  }
+
+  .comp-card-grid__card--highlighted .comp-card-grid__heading {
+    color: var(--color-accent);
+  }
+
+  .comp-card-grid__card--muted {
+    opacity: 0.45;
+  }
+
+  .comp-card-grid__card--recommended {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-highlight);
+  }
+
+
+  /* ---- comp-framework ---- */
+  /*
+   * Supported states: (applied on __cell)
+   *   .comp-framework__cell--highlighted — accent background, featured quadrant
+   *   .comp-framework__cell--active — accent border, current focus
+   *   .comp-framework__cell--muted — reduced opacity, de-emphasized quadrant
+   */
+  .comp-framework {
+    --comp-framework-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-framework-gap: var(--spacing-md);
+    --comp-framework-title-color: var(--color-primary);
+    --comp-framework-cell-bg: var(--color-surface);
+    --comp-framework-cell-radius: var(--radius-md);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-framework-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-framework__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-framework-title-color);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-framework__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--comp-framework-gap);
+    flex: 1;
+    position: relative;
+  }
+
+  .comp-framework__cell {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    background: var(--comp-framework-cell-bg);
+    border-radius: var(--comp-framework-cell-radius);
+    border: 1px solid var(--color-border);
+    gap: var(--spacing-sm);
+  }
+
+  .comp-framework__label {
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .comp-framework__body {
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+  }
+
+  .comp-framework__axis-x {
+    position: absolute;
+    bottom: calc(-1 * var(--spacing-lg));
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .comp-framework__axis-y {
+    position: absolute;
+    left: calc(-1 * var(--spacing-xl));
+    top: 0;
+    bottom: 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* State modifiers */
+  .comp-framework__cell--highlighted {
+    background: var(--color-highlight);
+    border-color: var(--color-accent);
+  }
+
+  .comp-framework__cell--highlighted .comp-framework__label {
+    color: var(--color-accent);
+  }
+
+  .comp-framework__cell--active {
+    border: 2px solid var(--color-accent);
+  }
+
+  .comp-framework__cell--muted {
+    opacity: 0.45;
+  }
+
+
+  /* ---- comp-data-table ---- */
+  /*
+   * Supported states: (applied on __cell or table rows via tr)
+   *   .comp-data-table__cell--highlighted — accent background, key data cell
+   *   .comp-data-table__cell--positive — success color
+   *   .comp-data-table__cell--negative — danger color
+   *   .comp-data-table__cell--muted — reduced opacity
+   */
+  .comp-data-table {
+    --comp-data-table-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-data-table-title-color: var(--color-primary);
+    --comp-data-table-header-bg: var(--color-primary);
+    --comp-data-table-header-color: var(--color-on-primary);
+    --comp-data-table-stripe-bg: var(--color-surface);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-data-table-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-data-table__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-data-table-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-data-table__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-body);
+  }
+
+  .comp-data-table__thead {
+    background: var(--comp-data-table-header-bg);
+    color: var(--comp-data-table-header-color);
+  }
+
+  .comp-data-table__thead th {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .comp-data-table__tbody tr:nth-child(even) {
+    background: var(--comp-data-table-stripe-bg);
+  }
+
+  .comp-data-table__tbody tr {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comp-data-table__cell {
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    vertical-align: top;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* State modifiers */
+  .comp-data-table__cell--highlighted {
+    background: var(--color-highlight);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent);
+  }
+
+  .comp-data-table__cell--positive {
+    color: var(--color-success);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .comp-data-table__cell--negative {
+    color: var(--color-danger);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .comp-data-table__cell--muted {
+    opacity: 0.45;
+  }
+
+
+  /* ---- comp-harvey-balls ---- */
+  /*
+   * Supported states: (applied on __cell)
+   *   .comp-harvey-balls__cell--highlighted — accent border, key cell
+   *   .comp-harvey-balls__cell--risk — danger color, risk flag
+   */
+  .comp-harvey-balls {
+    --comp-harvey-balls-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-harvey-balls-title-color: var(--color-primary);
+    --comp-harvey-balls-ball-size: 24px;
+    --comp-harvey-balls-fill-color: var(--color-primary);
+    --comp-harvey-balls-empty-color: var(--color-border);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-harvey-balls-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-harvey-balls__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-harvey-balls-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-harvey-balls__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-body);
+  }
+
+  .comp-harvey-balls__table thead tr {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  .comp-harvey-balls__table thead th {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .comp-harvey-balls__table tbody tr:nth-child(even) {
+    background: var(--color-surface);
+  }
+
+  .comp-harvey-balls__table tbody tr {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comp-harvey-balls__cell {
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--color-text);
+    vertical-align: middle;
+  }
+
+  .comp-harvey-balls__ball {
+    display: inline-block;
+    width: var(--comp-harvey-balls-ball-size);
+    height: var(--comp-harvey-balls-ball-size);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--comp-harvey-balls-fill-color);
+    background: conic-gradient(
+      var(--comp-harvey-balls-fill-color) var(--hb-fill, 0%),
+      var(--comp-harvey-balls-empty-color) var(--hb-fill, 0%)
+    );
+    vertical-align: middle;
+  }
+
+  /* Preset fill values — set via --hb-fill inline variable */
+  /* 0% = empty, 25% = quarter, 50% = half, 75% = three-quarter, 100% = full */
+
+  /* State modifiers */
+  .comp-harvey-balls__cell--highlighted {
+    background: var(--color-highlight);
+    border: 1px solid var(--color-accent);
+  }
+
+  .comp-harvey-balls__cell--risk .comp-harvey-balls__ball {
+    border-color: var(--color-danger);
+    background: conic-gradient(
+      var(--color-danger) var(--hb-fill, 0%),
+      var(--comp-harvey-balls-empty-color) var(--hb-fill, 0%)
+    );
+  }
+
+
+  /* ---- comp-chart ---- */
+  /*
+   * Supported states: (none — chart visual state controlled by Chart.js data)
+   */
+  .comp-chart {
+    --comp-chart-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-chart-title-color: var(--color-primary);
+    --comp-chart-canvas-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-chart-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-chart__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-chart-title-color);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-chart__canvas {
+    flex: 1;
+    max-height: var(--comp-chart-canvas-height);
+    width: 100%;
+  }
+
+  .comp-chart__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    justify-content: center;
+  }
+
+  .comp-chart__legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+  }
+
+  .comp-chart__legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+
+
+  /* ---- comp-mermaid-diagram ---- */
+  /*
+   * Supported states: (none — diagram is a pre-rendered SVG)
+   */
+  .comp-mermaid-diagram {
+    --comp-mermaid-diagram-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-mermaid-diagram-title-color: var(--color-primary);
+    --comp-mermaid-diagram-caption-color: var(--color-text-muted);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-mermaid-diagram-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-mermaid-diagram__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-mermaid-diagram-title-color);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-mermaid-diagram__diagram {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .comp-mermaid-diagram__diagram svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .comp-mermaid-diagram__caption {
+    font-size: var(--font-size-caption);
+    color: var(--comp-mermaid-diagram-caption-color);
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-weight: var(--font-weight-regular);
+  }
+
+
+  /* ---- comp-waterfall ---- */
+  /*
+   * Supported states: (none — chart visual state controlled by Chart.js data/colors)
+   */
+  .comp-waterfall {
+    --comp-waterfall-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-waterfall-title-color: var(--color-primary);
+    --comp-waterfall-canvas-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-waterfall-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-waterfall__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-waterfall-title-color);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-waterfall__canvas {
+    flex: 1;
+    max-height: var(--comp-waterfall-canvas-height);
+    width: 100%;
+  }
+
+  .comp-waterfall__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    justify-content: center;
+  }
+
+  .comp-waterfall__legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+  }
+
+  .comp-waterfall__legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+
+
+  /* ---- comp-code-block ---- */
+  /*
+   * Supported states: (applied on __code)
+   *   .comp-code-block__code--highlighted — accent border, key snippet callout
+   */
+  .comp-code-block {
+    --comp-code-block-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-code-block-title-color: var(--color-primary);
+    --comp-code-block-bg: #1E1E2E;
+    --comp-code-block-code-color: #CDD6F4;
+    --comp-code-block-radius: var(--radius-md);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-code-block-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-code-block__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-code-block-title-color);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .comp-code-block__code {
+    flex: 1;
+    background: var(--comp-code-block-bg);
+    color: var(--comp-code-block-code-color);
+    border-radius: var(--comp-code-block-radius);
+    padding: var(--spacing-lg);
+    overflow: auto;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-relaxed);
+    hyphens: none;
+    overflow-wrap: normal;
+  }
+
+  .comp-code-block__code--highlighted {
+    border: 2px solid var(--color-accent);
+  }
+
+  .comp-code-block__caption {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-md);
+    font-weight: var(--font-weight-regular);
+  }
+
+
+  /* ---- comp-team ---- */
+  /*
+   * Supported states: (applied on __member)
+   *   .comp-team__member--highlighted — accent border, featured member
+   *   .comp-team__member--muted — reduced opacity, de-emphasized member
+   */
+  .comp-team {
+    --comp-team-padding: var(--spacing-2xl) var(--spacing-3xl);
+    --comp-team-gap: var(--spacing-xl);
+    --comp-team-title-color: var(--color-primary);
+    --comp-team-photo-size: 96px;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--comp-team-padding);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .comp-team__title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--comp-team-title-color);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .comp-team__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--comp-team-gap);
+    align-content: start;
+  }
+
+  .comp-team__member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .comp-team__photo {
+    width: var(--comp-team-photo-size);
+    height: var(--comp-team-photo-size);
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+  }
+
+  .comp-team__name {
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  .comp-team__role {
+    font-size: var(--font-size-body);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+  }
+
+  /* State modifiers */
+  .comp-team__member--highlighted {
+    border-color: var(--color-accent);
+    background: var(--color-highlight);
+  }
+
+  .comp-team__member--highlighted .comp-team__name {
+    color: var(--color-accent);
+  }
+
+  .comp-team__member--muted {
+    opacity: 0.45;
+  }
+
+} /* end @layer components */
