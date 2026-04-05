@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
 milestone: v2.0
-milestone_name: Agent Pipeline + Component Architecture
-status: executing
-stopped_at: Completed 02-visual-vocabulary-02-02-PLAN.md
-last_updated: "2026-04-05T21:48:19.053Z"
+milestone_name: Data Viz, Consulting Intelligence & Platform
+status: verifying
+stopped_at: Completed 02-visual-vocabulary 02-03-PLAN.md
+last_updated: "2026-04-05T22:10:56.964Z"
 last_activity: 2026-04-05
 progress:
-  total_phases: 6
-  completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
-  percent: 17
+  total_phases: 7
+  completed_phases: 5
+  total_plans: 8
+  completed_plans: 13
+  percent: 71
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 02 — visual-vocabulary
+**Current focus:** Phase 11 — consulting-intelligence-ai-skill-layer
 
 ## Current Position
 
-Phase: 02 (visual-vocabulary) — EXECUTING
-Plan: 2 of 2
-Status: Ready to execute
+Phase: 11
+Plan: 2 of 2 complete
+Status: Phase complete — ready for verification
 Last activity: 2026-04-05
 
-Progress: [██░░░░░░░░] 17%
+Progress: [███████░░░] 71%
 
 ## Performance Metrics
 
@@ -69,8 +69,7 @@ Progress: [██░░░░░░░░] 17%
 | Phase 12 P01 | 3min | 2 tasks | 3 files |
 | Phase 12 P02 | 3min | 2 tasks | 2 files |
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
-| Phase 01-component-architecture P05 | 268 | 1 tasks | 1 files |
-| Phase 02-visual-vocabulary P02 | 4 | 2 tasks | 3 files |
+| Phase 02-visual-vocabulary P03 | 3 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -79,8 +78,8 @@ Progress: [██░░░░░░░░] 17%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- v2.0 roadmap: 6 phases (1-6) — component architecture, visual vocabulary, brand system, orchestration, strategist debate, review pipeline
-- v2.0 phase ordering: locked CSS first, then visual vocabulary, then brands, then orchestration, then debate, then review
+- v2.0 roadmap: 7 phases (7-13) derived from 31 requirements across 5 categories
+- v2.0 phase ordering: foundation fixes first, then pure CSS, then CDN, then accessibility, then AI, then export, then docs
 - Research: Mermaid offline strategy needs spike (2MB payload), PptxGenJS needs per-component proof-of-concept
 - [Phase 07]: Used --theme-gradient-start/end tokens for per-theme accent bar gradient direction
 - [Phase 07]: Skeleton uses inline CSS comment markers for _base.css (not link tags) matching actual architecture
@@ -105,12 +104,8 @@ Recent decisions affecting current work:
 - [Phase 12]: Accessible export uses cheerio DOM parsing with h1/h2/h3 heading hierarchy and German labels
 - [Phase 12]: PPTX export uses image-based slides (full visual fidelity) via DeckTape screenshots + PptxGenJS assembly
 - [Phase 13]: Three-tier compliance status (AUTOMATED/PARTIAL/N/A) for honest EAA gap documentation
-- [Phase 01-component-architecture]: Builder reads templates/index.md as sole source of class names — no individual template HTML files
-- [Phase 01-component-architecture]: MUST/NEVER constraints replace improvisation-permissive language in builder agent — architectural enforcement of CSS contract (COMP-07)
-- [Phase 01-component-architecture]: @layer overrides SLIDE MAP comment pattern mandated in builder self-check — all --comp-* customizations must appear in comment map (D-10)
-- [Phase 02-visual-vocabulary]: Slide-stylist reads deck-plan visual hints first (priority over autonomous scan), per D-06
-- [Phase 02-visual-vocabulary]: Strategist Step 3b added between audience preset and narrative arc — archetype classification before component selection
-- [Phase 02-visual-vocabulary]: text-heavy marked as last-resort fallback with Bullet-List Smell Test note in component catalog
+- [Phase 02-visual-vocabulary]: css-property-map.md covers all 21 components as lookup table for slide-stylist natural language requests
+- [Phase 02-visual-vocabulary]: slide-stylist uses @layer overrides with #slide-{n} scope — zero risk to other slides or component CSS
 
 ### Pending Todos
 
@@ -123,6 +118,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-05T21:48:19.051Z
-Stopped at: Completed 02-visual-vocabulary-02-02-PLAN.md
+Last session: 2026-04-05T22:10:56.962Z
+Stopped at: Completed 02-visual-vocabulary 02-03-PLAN.md
 Resume file: None
