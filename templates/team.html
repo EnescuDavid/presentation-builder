@@ -1,192 +1,92 @@
 <!--
   ============================================================================
-  COMPONENT: Team/People (COMP-20)
+  COMPONENT: team
   ============================================================================
 
   USE WHEN:
     Team credentials slide. Leadership page. Project team introduction.
-    Advisory board. 2-6 members.
+    Advisory board presentation. 2-6 members with photo, name, and role.
 
   REQUIRED SLOTS:
-    - 2-6 team members, each with name and role
+    - comp-team__title: Slide heading (h2)
+    - comp-team__grid: Grid container holding member cards
+    - comp-team__member (x2-6): Individual member card
+    - comp-team__name: Member full name
+    - comp-team__role: Member role/title
 
   OPTIONAL SLOTS:
-    - Slide title (h2)
-    - Photo (circular crop)
-    - Contact info (email/phone)
-    - Short bio text
+    - comp-team__photo: Headshot image (circular crop, 96x96)
+    - [contact info below role]: Add plain text or link for email/phone
+
+  CSS VARIABLES (set on the <section> wrapper to customize):
+    --comp-team-padding      Outer padding. Default: var(--spacing-2xl) var(--spacing-3xl)
+    --comp-team-gap          Grid gap between members. Default: var(--spacing-xl)
+    --comp-team-title-color  Slide title color. Default: var(--color-primary)
+    --comp-team-photo-size   Photo diameter. Default: 96px
+
+  STATE MODIFIERS (on comp-team__member):
+    .comp-team__member--highlighted  Accent border + highlight background, featured member (e.g. team lead)
+    .comp-team__member--muted        Reduced opacity, de-emphasized member
 
   MASTER LAYER: Visible
 
   LAYOUT NOTES:
-    - Three layout variants -- photo grid (default), card-based, text-only
-    - Claude picks variant based on content provided:
-      * Default (photo grid): when photos are available
-      * comp-team--cards: when members need more structured card layout
-      * comp-team--text: when no photos, text-only credentials
-    - CSS Grid auto-fit handles 2-6 members automatically
-    - Photos are circular crop via border-radius: radius-full
-    - German names and roles with overflow-wrap for compound words
-  FRAGMENTS: Optional -- Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE:
-    <section data-component="team">
-      <div class="comp-team">
-        <h2>Unser Fuehrungsteam</h2>
-        <div class="comp-team__grid">
-          <div class="comp-team__member">
-            <img class="comp-team__photo" src="photo.jpg" alt="Name" />
-            <div class="comp-team__name">Dr. Maria Schmidt</div>
-            <div class="comp-team__role">Geschaeftsfuehrerin</div>
-            <div class="comp-team__contact">m.schmidt@firma.de</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    - CSS Grid auto-fit minmax(180px, 1fr) handles 2-6 members automatically
+    - Photos use border-radius: var(--radius-full) for circular crop
+    - object-fit: cover on photo for consistent framing
+    - overflow-wrap and hyphens enabled for German compound titles
+    - For no photo: omit the img element; grid adjusts automatically
   ============================================================================
 -->
 
-<style>
-  /* --- Team/People Component --- */
-
-  /* Base layout */
-  .comp-team {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    min-height: 100%;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
-
-  .comp-team h2 {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .comp-team__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--spacing-xl);
-    justify-items: center;
-  }
-
-  /* Photo grid variant (default) */
-  .comp-team__member {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--spacing-sm);
-  }
-
-  .comp-team__photo {
-    width: 100px;
-    height: 100px;
-    border-radius: var(--radius-full);
-    object-fit: cover;
-    box-shadow: var(--shadow-md);
-  }
-
-  .comp-team__name {
-    font-size: var(--font-size-subheading);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-primary);
-  }
-
-  .comp-team__role {
-    font-size: var(--font-size-caption);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .comp-team__contact {
-    font-size: var(--font-size-caption);
-    color: var(--color-text-muted);
-  }
-
-  .comp-team__bio {
-    font-size: var(--font-size-caption);
-    color: var(--color-text);
-    line-height: var(--line-height-normal);
-    max-width: 200px;
-  }
-
-  /* Card variant */
-  .comp-team--cards .comp-team__grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .comp-team--cards .comp-team__member {
-    background: var(--color-surface);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-card);
-    align-items: center;
-    width: 100%;
-  }
-
-  .comp-team--cards .comp-team__photo {
-    width: 80px;
-    height: 80px;
-  }
-
-  /* Text-only variant (no photos) */
-  .comp-team--text .comp-team__grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-lg);
-  }
-
-  .comp-team--text .comp-team__member {
-    align-items: flex-start;
-    text-align: left;
-    padding-left: var(--spacing-md);
-    border-left: 3px solid var(--color-accent);
-  }
-</style>
-
-<!-- Replace alt with actual team member name -->
-<section data-component="team" role="group" aria-label="Team">
+<section id="slide-1" data-component="team" role="group" aria-label="Projektteam">
   <div class="comp-team">
-    <h2>Unser F&uuml;hrungsteam</h2>
+
+    <h2 class="comp-team__title">Unser Projektteam</h2>
+
     <div class="comp-team__grid">
-      <div class="comp-team__member">
-        <img class="comp-team__photo" src="https://via.placeholder.com/100" alt="Dr. Maria Schmidt" />
-        <div class="comp-team__name">Dr. Maria Schmidt</div>
-        <div class="comp-team__role">Gesch&auml;ftsf&uuml;hrerin</div>
-        <div class="comp-team__contact">m.schmidt@firma.de</div>
-      </div>
-      <div class="comp-team__member">
-        <img class="comp-team__photo" src="https://via.placeholder.com/100" alt="Thomas M&uuml;ller" />
-        <div class="comp-team__name">Thomas M&uuml;ller</div>
-        <div class="comp-team__role">Leiter Strategie</div>
-        <div class="comp-team__contact">t.mueller@firma.de</div>
-      </div>
-      <div class="comp-team__member">
-        <img class="comp-team__photo" src="https://via.placeholder.com/100" alt="Dr. Anna Weber" />
+
+      <div class="comp-team__member comp-team__member--highlighted">
+        <img class="comp-team__photo"
+          src="https://via.placeholder.com/96"
+          alt="Dr. Anna Weber, Projektleiterin" />
         <div class="comp-team__name">Dr. Anna Weber</div>
-        <div class="comp-team__role">Leiterin Digitalisierung</div>
-        <div class="comp-team__contact">a.weber@firma.de</div>
+        <div class="comp-team__role">Projektleiterin</div>
       </div>
+
       <div class="comp-team__member">
-        <img class="comp-team__photo" src="https://via.placeholder.com/100" alt="Jan Hoffmann" />
-        <div class="comp-team__name">Jan Hoffmann</div>
+        <img class="comp-team__photo"
+          src="https://via.placeholder.com/96"
+          alt="Markus Schmidt, Senior Berater" />
+        <div class="comp-team__name">Markus Schmidt</div>
         <div class="comp-team__role">Senior Berater</div>
-        <div class="comp-team__contact">j.hoffmann@firma.de</div>
       </div>
+
+      <div class="comp-team__member">
+        <img class="comp-team__photo"
+          src="https://via.placeholder.com/96"
+          alt="Julia Hoffmann, Datenanalystin" />
+        <div class="comp-team__name">Julia Hoffmann</div>
+        <div class="comp-team__role">Datenanalystin</div>
+      </div>
+
+      <div class="comp-team__member">
+        <img class="comp-team__photo"
+          src="https://via.placeholder.com/96"
+          alt="Thomas Bauer, IT-Architekt" />
+        <div class="comp-team__name">Thomas Bauer</div>
+        <div class="comp-team__role">IT-Architekt</div>
+      </div>
+
     </div>
+
   </div>
 </section>
 
-<!-- CARDS VARIANT: Replace the outer div class to use card layout:
-  <div class="comp-team comp-team--cards">
--->
-
-<!-- TEXT-ONLY VARIANT: Replace the outer div class and remove photo elements:
-  <div class="comp-team comp-team--text">
+<!-- STATE MODIFIER EXAMPLE: muted member -->
+<!--
+<div class="comp-team__member comp-team__member--muted">
+  <div class="comp-team__name">Externe Beraterin</div>
+  <div class="comp-team__role">Teilzeit-Unterstu&#x0308;tzung</div>
+</div>
 -->
