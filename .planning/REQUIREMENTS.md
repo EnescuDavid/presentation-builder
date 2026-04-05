@@ -1,112 +1,127 @@
-# Requirements: Presentation Builder v2.0
+# Requirements: Presentation Builder
 
-**Defined:** 2026-03-27
-**Core Value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant.
+**Defined:** 2026-04-05
+**Core Value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
 
 ## v2.0 Requirements
 
-### Polish & Fixes (remaining from v1.0 audit)
+Requirements for the Agent Pipeline + Component Architecture milestone. Each maps to roadmap phases.
 
-- [x] **FIX-06**: Nested bullet list styles (`ul ul`, `ol ul`) with visual indentation differentiation across all themes
-- [x] **FIX-07**: Theme CSS deduplication — extract shared structural rules to base, themes contain only token overrides
-- [x] **FIX-08**: Print/PDF `@media print` styles in theme files (force backgrounds, hide nav, clean page breaks)
-- [x] **FIX-09**: Dark variant connected to real background color (couple `data-background-color="dark"` to token-based background)
-- [x] **FIX-10**: Master footer date auto-population from `presentationConfig.date` (default to current date if empty)
+### Component Architecture
 
-### Data Visualization
+- [x] **COMP-01**: Builder copies monolithic `components.css` verbatim into every presentation (pre-written CSS for all 21 components)
+- [ ] **COMP-02**: Skeleton template uses `@layer` structure (tokens, animations, base-theme, theme, components, overrides)
+- [x] **COMP-03**: Each component exposes `--comp-*` CSS custom properties as only customization surface
+- [x] **COMP-04**: Components include state variants and visual micro-patterns
+- [ ] **COMP-05**: All 21 templates refactored with exact BEM class names matching components.css
+- [ ] **COMP-06**: Component catalog enriched with per-component `--comp-*` variable reference
+- [ ] **COMP-07**: Builder agent rewritten to copy locked CSS, use exact class names, `--comp-*` vars only
 
-- [x] **VIZ-01**: Chart.js 4.x integration — bar, line, pie, doughnut, radar charts with consulting-grade defaults (token colors, no gridlines, clean axes, annotation support). Conditional CDN loading. Lazy initialization on slide change to handle hidden canvas.
-- [x] **VIZ-02**: Mermaid 11.x diagram integration — flowcharts, sequence diagrams, Gantt charts, org charts. Conditional CDN loading. Theme-aware colors via token-to-Mermaid variable mapping. Fragment animation for progressive diagram reveal.
-- [x] **VIZ-03**: Data table component — styled table with header row, alternating colors, right-aligned numbers, 2-6 columns, 3-12 rows. Pure CSS, token-aware.
-- [x] **VIZ-04**: Waterfall/bridge chart component — revenue walks, cost bridges using Chart.js floating bar technique (not plugin). Consulting conventions: grey totals, colored changes.
-- [x] **VIZ-05**: Harvey ball component — pure CSS capability-rating dots (0/25/50/75/100%). Inline rendering for tables and comparisons.
-- [x] **VIZ-06**: Sparkline/KPI micro-charts — trend lines, mini bars, progress indicators inside metrics cards. Pure CSS/SVG.
+### Visual Vocabulary
 
-### Consulting Intelligence
+- [ ] **VIS-01**: Visual vocabulary reference with 15 content archetypes and bullet-list smell test
+- [ ] **VIS-02**: Curated Lucide icon set mapped to common consulting concepts
+- [ ] **VIS-03**: CSS property map reference for slide-stylist agent
+- [ ] **VIS-04**: Slide-stylist agent produces per-slide CSS tweaks via `@layer overrides`
 
-- [x] **CONSULT-01**: SCQA narrative scaffolding — strategist subagent structures presentations using Situation-Complication-Question-Answer framework. deck-plan.md includes SCQA markers.
-- [x] **CONSULT-02**: Pyramid Principle validation — strategist checks slide sequence for top-down logic, flags titles without verbs, validates MECE groupings. Output: validation warnings in deck-plan.md.
-- [x] **CONSULT-03**: "Read the titles" summary export — script extracts action titles from all slides into a one-page coherence check document.
-- [x] **CONSULT-04**: Action title enforcement — component catalog, strategist prompts, and validation all require complete-sentence action titles (not topic labels).
-- [x] **CONSULT-05**: Audience preset CSS implementation — modifier classes or `presentationConfig.audience` that adjusts font sizes, content density, animation density per audience type.
-- [x] **CONSULT-06**: Slide count guidance per audience — strategist applies recommended ranges (C-Suite: 8-12, Technical: 15-25, etc.) and warns if deck-plan exceeds.
+### Brand System
 
-### Accessibility & Compliance
+- [ ] **BRAND-01**: `brands/` directory replaces `themes/`, each brand has `brand.yaml` + `rules.md` + `theme.css`
+- [ ] **BRAND-02**: Hand-written `brand.yaml` for 3 bundled brands (default, startup, enterprise)
+- [ ] **BRAND-03**: Brand-checker agent validates brief against brand profile and produces `brand-context.md`
+- [ ] **BRAND-04**: Brand-profiler agent generates `brand.yaml` from corporate assets (PPTX, PDF)
+- [ ] **BRAND-05**: Onboard-brand workflow with test-presentation generation per component type
+- [ ] **BRAND-06**: `_base.css` embedded in skeleton's `@layer base-theme` (not in brands/)
 
-- [x] **A11Y-01**: WCAG contrast validation tool — script checks theme color combinations against 4.5:1 (normal text) and 3:1 (large text) ratios. Pass/fail report per color pair.
-- [x] **A11Y-02**: ARIA landmarks in all 14+ component templates — `role`, `aria-label`, correct heading hierarchy.
-- [x] **A11Y-03**: Alt text slots for visual components — required `alt`/`aria-label` on images, charts, diagrams, framework/matrix.
-- [x] **A11Y-04**: Accessible linear HTML export — screen-reader-friendly version without reveal.js framework. Charts replaced with text descriptions.
-- [x] **A11Y-05**: Semantic state color tokens — add `--color-warning`, `--color-info`, `--color-overlay`, `--color-on-primary`. Eliminate all hardcoded color values.
-- [x] **A11Y-06**: Keyboard navigation verification — all interactive elements Tab-reachable, focus indicators visible, no keyboard traps.
-- [x] **A11Y-07**: European Accessibility Act compliance checklist — document mapping framework features to EAA requirements, per-presentation checklist.
+### Orchestration & Entry Points
 
-### Platform Expansion
+- [ ] **ORCH-01**: SKILL.md rewritten with model comprehension routing (no keyword dispatch)
+- [ ] **ORCH-02**: `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers
+- [ ] **ORCH-03**: `build-new-deck.md` workflow rewrite with 9-agent orchestration + pipeline resumability
+- [ ] **ORCH-04**: `refine-deck.md` workflow rewrite with change-scope routing to appropriate agents
+- [ ] **ORCH-05**: Pipeline state detection from `.pipeline/` artifacts on entry (resume or start fresh)
 
-- [x] **PLAT-01**: copilot-instructions.md — GitHub Copilot CLI equivalent of CLAUDE.md framework teaching content.
-- [x] **PLAT-02**: PPTX export via PptxGenJS — semantic mapping for core components with image fallback for complex layouts. Node.js script in tools/.
-- [x] **PLAT-03**: Team/People component (COMP-20) — photo grid with name, role, contact info. 2-6 team members.
-- [x] **PLAT-04**: Code block styling — `pre`/`code` elements styled in all themes + RevealHighlight plugin loaded.
-- [x] **PLAT-05**: Timeline vertical variant — `comp-timeline--vertical` modifier class for 5-6 step layouts.
-- [x] **PLAT-06**: Card grid 5-6 item variant — `comp-card-grid--compact` modifier for larger item counts.
-- [x] **PLAT-08**: Gallery UX for component selection — enhanced gallery showing all components with type badges and labels.
+### Strategist Debate
 
-## Future Requirements (deferred from v2.0)
+- [ ] **DEBATE-01**: Narrative-planner agent (SCQA, Pyramid Principle, action titles, visual treatment)
+- [ ] **DEBATE-02**: Presentation-architect agent (10 structural checks including brand + brief compliance)
+- [ ] **DEBATE-03**: Presentation-critic agent (6 adversarial checks, evidence gaps, "So What" test)
+- [ ] **DEBATE-04**: Verdict-driven debate protocol (zero BLOCKINGs = pass, 3-round ceiling, user escalation)
+- [ ] **DEBATE-05**: Rich deck-plan.md format with Narrative Flow Map and per-slide specs
+- [ ] **DEBATE-06**: Audience-presets.md rewrite with hard rules (enforced) and soft rules (suggested)
+- [ ] **DEBATE-07**: Slide-editor agent for surgical HTML edits (content, component swaps, element add/remove)
 
-- **VIZ-07**: Data-bound slides (CSV/JSON data source) — v3 scope
-- **PLAT-07**: Presentation analytics (viewing tracking) — requires server component, conflicts with offline-first
+### Review Pipeline
+
+- [ ] **REVIEW-01**: Presentation-reviewer agent with story + visual + brand compliance checks
+- [ ] **REVIEW-02**: Playwright screenshot capture tool (`tools/capture-slides.py`)
+- [ ] **REVIEW-03**: Build-log.yaml for pipeline traceability
+- [ ] **REVIEW-04**: Review integration in build-new-deck workflow (BLOCKER -> builder auto-fix, max 2 rounds)
+
+## Future Requirements
+
+### Platform Expansion (deferred from v1.0 scope)
+
+- **PLAT-01**: PPTX export via PptxGenJS
+- **PLAT-02**: Copilot CLI agent port (after v2.0 agents finalized)
 
 ## Out of Scope
 
 | Feature | Reason |
 |---------|--------|
-| Real-time collaboration | Adds massive complexity, not needed for AI-assisted solo workflow |
+| Real-time collaboration | Massive complexity, not needed for AI-assisted solo workflow |
 | SaaS/hosted version | This is a local framework, not a web app |
-| WYSIWYG editor | The AI prompt is the editor |
+| Slide-by-slide WYSIWYG editor | The AI prompt IS the editor |
 | React/Vue component wrappers | Keep it plain HTML/CSS for maximum portability |
-| npm/npx distribution | Clone-and-use is simpler for the target audience |
-| Custom chart rendering engine | Use Chart.js for charts, Mermaid for diagrams |
+| Migration paths from v1 presentations | POC mode, wholesale rewrites acceptable |
+| Data visualization components (Chart.js, Mermaid, etc.) | Already shipped in v1.0 component set |
+| WCAG/EAA accessibility compliance | Deferred -- focus on pipeline architecture first |
 
 ## Traceability
 
+Which phases cover which requirements. Updated during roadmap creation.
+
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FIX-06 | Phase 7 | Complete |
-| FIX-07 | Phase 7 | Complete |
-| FIX-08 | Phase 10 | Complete |
-| FIX-09 | Phase 10 | Complete |
-| FIX-10 | Phase 7 | Complete |
-| VIZ-01 | Phase 9 | Complete |
-| VIZ-02 | Phase 9 | Complete |
-| VIZ-03 | Phase 8 | Complete |
-| VIZ-04 | Phase 9 | Complete |
-| VIZ-05 | Phase 8 | Complete |
-| VIZ-06 | Phase 8 | Complete |
-| CONSULT-01 | Phase 11 | Complete |
-| CONSULT-02 | Phase 11 | Complete |
-| CONSULT-03 | Phase 12 | Complete |
-| CONSULT-04 | Phase 11 | Complete |
-| CONSULT-05 | Phase 10 | Complete |
-| CONSULT-06 | Phase 11 | Complete |
-| A11Y-01 | Phase 12 | Complete |
-| A11Y-02 | Phase 10 | Complete |
-| A11Y-03 | Phase 10 | Complete |
-| A11Y-04 | Phase 12 | Complete |
-| A11Y-05 | Phase 7 | Complete |
-| A11Y-06 | Phase 10 | Complete |
-| A11Y-07 | Phase 13 | Complete |
-| PLAT-01 | Phase 11 | Complete |
-| PLAT-02 | Phase 12 | Complete |
-| PLAT-03 | Phase 8 | Complete |
-| PLAT-04 | Phase 9 | Complete |
-| PLAT-05 | Phase 8 | Complete |
-| PLAT-06 | Phase 8 | Complete |
-| PLAT-08 | Phase 11 | Complete |
+| COMP-01 | Phase 1 | Complete |
+| COMP-02 | Phase 1 | Pending |
+| COMP-03 | Phase 1 | Complete |
+| COMP-04 | Phase 1 | Complete |
+| COMP-05 | Phase 1 | Pending |
+| COMP-06 | Phase 1 | Pending |
+| COMP-07 | Phase 1 | Pending |
+| BRAND-06 | Phase 1 | Pending |
+| VIS-01 | Phase 2 | Pending |
+| VIS-02 | Phase 2 | Pending |
+| VIS-03 | Phase 2 | Pending |
+| VIS-04 | Phase 2 | Pending |
+| BRAND-01 | Phase 3 | Pending |
+| BRAND-02 | Phase 3 | Pending |
+| BRAND-03 | Phase 3 | Pending |
+| BRAND-04 | Phase 3 | Pending |
+| BRAND-05 | Phase 3 | Pending |
+| ORCH-01 | Phase 4 | Pending |
+| ORCH-02 | Phase 4 | Pending |
+| ORCH-03 | Phase 4 | Pending |
+| ORCH-04 | Phase 4 | Pending |
+| ORCH-05 | Phase 4 | Pending |
+| DEBATE-01 | Phase 5 | Pending |
+| DEBATE-02 | Phase 5 | Pending |
+| DEBATE-03 | Phase 5 | Pending |
+| DEBATE-04 | Phase 5 | Pending |
+| DEBATE-05 | Phase 5 | Pending |
+| DEBATE-06 | Phase 5 | Pending |
+| DEBATE-07 | Phase 5 | Pending |
+| REVIEW-01 | Phase 6 | Pending |
+| REVIEW-02 | Phase 6 | Pending |
+| REVIEW-03 | Phase 6 | Pending |
+| REVIEW-04 | Phase 6 | Pending |
 
 **Coverage:**
-- v2.0 requirements: 31 total
-- Mapped to phases: 31
+- v2.0 requirements: 33 total
+- Mapped to phases: 33
 - Unmapped: 0
 
 ---
-*Requirements defined: 2026-03-27*
+*Requirements defined: 2026-04-05*
+*Last updated: 2026-04-05 after roadmap creation*

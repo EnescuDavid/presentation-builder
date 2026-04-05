@@ -39,10 +39,10 @@ Rewrite the presentation builder from a single-strategist, template-ignoring sys
   3. Builder customizes component appearance only through `--comp-*` CSS custom properties, never by writing raw CSS rules
   4. All 21 HTML templates use exact BEM class names that match `components.css` definitions, and the component catalog documents every `--comp-*` variable
   5. Components support state variants (e.g., active, highlighted, compact) that the builder can toggle via class names
-**Plans:** 5 plans
+**Plans:** 1/5 plans executed
 
 Plans:
-- [ ] 01-01-PLAN.md -- Author components.css (21 components) and visuals.css (9 micro-patterns)
+- [x] 01-01-PLAN.md -- Author components.css (21 components) and visuals.css (9 micro-patterns)
 - [ ] 01-02-PLAN.md -- Rewrite 11 templates (title through timeline)
 - [ ] 01-03-PLAN.md -- Rewrite 10 templates (quote through team)
 - [ ] 01-04-PLAN.md -- Enrich component catalog + rewrite skeleton with @layer structure
@@ -118,7 +118,7 @@ Wave 3: Phase 6 (after all prior phases)
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Component Architecture | 0/5 | Planned | - |
+| 1. Component Architecture | 1/5 | In Progress|  |
 | 2. Visual Vocabulary + Stylist | 0/TBD | Not started | - |
 | 3. Brand System | 0/TBD | Not started | - |
 | 4. SKILL.md + Slash Commands + Workflows | 0/TBD | Not started | - |
