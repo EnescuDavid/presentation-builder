@@ -1,85 +1,51 @@
 <!--
-  COMPONENT: Two-Column (COMP-04)
-  USE WHEN: Comparing two things. Text + image. Before/after. Side-by-side arguments.
-
-  REQUIRED SLOTS:
-    - Left column content
-    - Right column content
-
-  OPTIONAL SLOTS:
-    - Headline (h2): Above columns, spanning full width
-    - Column sub-headers (h3): Individual column titles
-
-  MASTER LAYER: Visible (no data-master attribute)
-
+  COMPONENT: two-column
+  USE WHEN: Side-by-side content — text + image, argument vs. counterargument, before/after.
+  SLOTS:
+    REQUIRED: __title (h2): slide title spanning full width
+    REQUIRED: __grid: 2-column grid container
+    REQUIRED: __col (×2): individual column — place any content inside
+    OPTIONAL: __body (p inside __col): paragraph text
+    OPTIONAL: __image (img inside __col): media column — image with object-fit cover
+  CSS VARIABLES (--comp-*):
+    --comp-two-column-gap: var(--spacing-xl) — gap between the two columns
+    --comp-two-column-padding: var(--spacing-2xl) var(--spacing-3xl) — outer padding
+    --comp-two-column-title-color: var(--color-primary) — title text color
+    --comp-two-column-split: 1fr 1fr — grid-template-columns (change for 60/40, 70/30, etc.)
+  STATE MODIFIERS:
+    (none — layout component; state modifiers go on child elements inside each column)
+  MASTER LAYER: yes — visible
   LAYOUT NOTES:
-    - Default 50/50 split
-    - For 60/40 use style="flex: 3" on left and style="flex: 2" on right
-    - For 70/30 use style="flex: 7" and style="flex: 3"
-    - Any content type in any column (text, images, lists, metrics)
-    - overflow-wrap and hyphens enabled for German compound words
-    - Animations: left column uses anim-slideL, right column uses anim-slideR
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
+    CSS Grid with grid-template-columns: var(--comp-two-column-split).
+    Override split on <section> style: --comp-two-column-split: 3fr 2fr for 60/40.
+    Each column is a flex column with gap: var(--spacing-md).
+    German compound words handled by overflow-wrap: break-word + hyphens: auto on wrapper.
+    D-02 structural fix: uses CSS Grid (not flex) for equal-height columns.
+    Image in __col: use <img class="comp-two-column__image"> for cover-fit media.
 -->
 
-<style>
-  /* COMPONENT: Two-Column */
-  .comp-two-col {
-    display: flex;
-    gap: var(--spacing-2xl);
-    padding-top: var(--spacing-md);
-    min-height: 0;
-    align-items: flex-start;
-  }
+<!-- Component CSS: see tokens/components.css -> comp-two-column section -->
 
-  .comp-two-col__left,
-  .comp-two-col__right {
-    flex: 1;
-    min-width: 0;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
-
-  .comp-two-col h3 {
-    font-size: var(--font-size-subheading);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-secondary);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .comp-two-col p,
-  .comp-two-col li {
-    font-size: var(--font-size-body);
-    line-height: var(--line-height-normal);
-  }
-
-  .comp-two-col ul {
-    margin-left: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-</style>
-
-<section data-component="two-column" role="group" aria-label="Zwei-Spalten-Folie">
-  <div class="comp-two-col" style="padding: var(--spacing-2xl) var(--spacing-3xl); min-height: 100%;">
-    <h2>Wettbewerbsvergleich</h2>
-    <div class="comp-two-col">
-      <div class="comp-two-col__left">
-        <h3>Aktuelle Position</h3>
-        <ul>
-          <li>Marktanteil von 23% im DACH-Raum mit rückläufiger Tendenz</li>
-          <li>Produktportfolio auf drei Kernbereiche konzentriert</li>
-          <li>Vertriebsstruktur überwiegend auf Direktvertrieb ausgerichtet</li>
+<section id="slide-4" data-component="two-column" role="group" aria-label="Zwei-Spalten-Folie">
+  <div class="comp-two-column">
+    <h2 class="comp-two-column__title">Wettbewerbsvergleich: Aktuelle Position vs. Zielbild 2027</h2>
+    <div class="comp-two-column__grid">
+      <div class="comp-two-column__col">
+        <p class="comp-two-column__body"><strong>Aktuelle Position</strong></p>
+        <p class="comp-two-column__body">Marktanteil von 23% im DACH-Raum mit r&uuml;ckl&auml;ufiger Tendenz. Produktportfolio auf drei Kernbereiche konzentriert.</p>
+        <ul class="comp-two-column__body" style="list-style: disc; padding-left: var(--spacing-lg);">
+          <li>Vertrieb &uuml;berwiegend Direktvertrieb</li>
+          <li>Digitale Reife: 42% (Benchmark: 67%)</li>
+          <li>Kundenzufriedenheit NPS: 34</li>
         </ul>
       </div>
-      <div class="comp-two-col__right">
-        <h3>Zielbild 2027</h3>
-        <ul>
-          <li>Marktanteil von 30% durch gezielte Akquisitionen und Partnerschaften</li>
-          <li>Erweiterung um zwei neue Geschäftsfelder im digitalen Bereich</li>
-          <li>Hybrides Vertriebsmodell mit starkem Online-Kanal</li>
+      <div class="comp-two-column__col">
+        <p class="comp-two-column__body"><strong>Zielbild 2027</strong></p>
+        <p class="comp-two-column__body">Marktanteil von 30% durch gezielte Akquisitionen und Partnerschaften. Erweiterung um zwei neue Gesch&auml;ftsfelder.</p>
+        <ul class="comp-two-column__body" style="list-style: disc; padding-left: var(--spacing-lg);">
+          <li>Hybrides Vertriebsmodell mit Online-Kanal</li>
+          <li>Digitale Reife: 75% (Marktf&uuml;hrer)</li>
+          <li>Kundenzufriedenheit NPS: 55+</li>
         </ul>
       </div>
     </div>
