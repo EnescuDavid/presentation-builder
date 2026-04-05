@@ -1,9 +1,13 @@
-# Roadmap: Presentation Builder
+# Roadmap: Presentation Builder v2.0
+
+## Overview
+
+Rewrite the presentation builder from a single-strategist, template-ignoring system into a 10-agent pipeline with locked CSS, visual argumentation, brand awareness, and consensus debate. Three parallel foundation tracks (component architecture, visual vocabulary, brand system) feed into orchestration and strategist overhaul, culminating in a review pipeline that closes the quality loop.
 
 ## Milestones
 
-- ✅ **v1.0 MVP** - Phases 1-6 (shipped 2026-03-27)
-- 🚧 **v2.0 Data Viz, Consulting Intelligence & Platform** - Phases 7-13 (in progress)
+- v1.0 MVP (Shipped: 2026-03-27) -- 6 phases, 18 plans
+- v2.0 Agent Pipeline + Component Architecture (In progress)
 
 ## Phases
 
@@ -11,257 +15,112 @@
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-Decimal phases appear between their surrounding integers in numeric order.
+**Dependency Waves:**
+- Wave 1 (parallel): Phases 1, 2, 3
+- Wave 2 (needs Wave 1 subsets): Phases 4, 5
+- Wave 3 (needs everything): Phase 6
 
-<details>
-<summary>v1.0 MVP (Phases 1-6) - SHIPPED 2026-03-27</summary>
-
-- [x] **Phase 1: Foundation** - Design tokens, reveal.js config, animations, build pipeline, and master layer (completed 2026-03-23)
-- [x] **Phase 2: Essential Components** - Eight core slide layouts that cover 80% of consulting presentations
-- [x] **Phase 3: Extended Components** - Six specialized layouts for comparison, timeline, grid, and matrix slides (completed 2026-03-24)
-- [x] **Phase 4: Theming & Branding** - Theme system, default theme, PPTX extraction, dark/light variants (completed 2026-03-24)
-- [x] **Phase 5: Localization & Speaker Notes** - German-ready layouts, typography conventions, and speaker notes support
-- [x] **Phase 6: AI Integration & Tooling** - AI instruction files, semantic component catalog, audience presets, PDF export, and gallery mode (completed 2026-03-25)
-
-### Phase 1: Foundation
-**Goal**: A working reveal.js scaffold where developers can create slides using design tokens, animations, and a persistent master layer -- all assembling into a single self-contained HTML file
-**Depends on**: Nothing (first phase)
-**Requirements**: CORE-01, CORE-02, CORE-03, CORE-04, CORE-05, CORE-06
-**Success Criteria** (what must be TRUE):
-  1. Developer can create a slide using CSS custom properties for colors, fonts, spacing, and shadows -- changing a token value updates every slide that references it
-  2. A reveal.js presentation loads in 16:9 with keyboard navigation, progress bar, and speaker notes enabled out of the box
-  3. Developer can apply entrance animation classes (fadeUp, blurIn, slideL, scalePop) to any element and see smooth transitions during presentation
-  4. Running the build command produces a single self-contained HTML file that opens and renders correctly in Chrome, Firefox, and Safari
-  5. Every slide shows a persistent logo, footer bar, and slide number from the master layer
-**Plans**: 2 plans
-
-Plans:
-- [x] 01-01-PLAN.md -- Design tokens, animation library, and reveal.js skeleton template
-- [x] 01-02-PLAN.md -- Default theme, example presentation assembly, and browser verification
-
-### Phase 2: Essential Components
-**Goal**: Eight foundational slide components are available as copy-paste HTML templates, covering the layouts used in the vast majority of consulting decks
-**Depends on**: Phase 1
-**Requirements**: COMP-01, COMP-02, COMP-03, COMP-04, COMP-05, COMP-06, COMP-07, COMP-08
-**Success Criteria** (what must be TRUE):
-  1. Developer can create a title slide with hero text, subtitle, and background image by copying the COMP-01 template and filling content slots
-  2. Developer can build a section break, text-heavy, two-column, metrics, image full-bleed, agenda, and summary slide -- each from its own distinct template
-  3. All eight components render cleanly within the design token system and respect the master layer (logo, footer, slide numbers visible)
-  4. Each component works with placeholder content of varying lengths without layout breakage
-**Plans**: 3 plans
-
-Plans:
-- [x] 02-01-PLAN.md -- Title/Cover, Section Break, Text-Heavy, and Two-Column component templates
-- [x] 02-02-PLAN.md -- Metrics/KPI, Image Full-Bleed, Agenda, and Summary/Takeaway component templates
-- [x] 02-03-PLAN.md -- Component index catalog and example presentation with all 8 components
-
-### Phase 3: Extended Components
-**Goal**: Six specialized slide components complete the 14-layout library, enabling advanced consulting patterns like comparisons, timelines, and frameworks
-**Depends on**: Phase 2
-**Requirements**: COMP-09, COMP-10, COMP-11, COMP-12, COMP-13, COMP-14
-**Success Criteria** (what must be TRUE):
-  1. Developer can create contact/CTA, comparison, timeline, quote, card grid, and framework/matrix slides from templates
-  2. Timeline component correctly renders 3-6 sequential steps with visual connectors
-  3. Framework/matrix component displays a labeled 2x2 quadrant grid that maintains alignment across content lengths
-  4. All six components integrate with existing design tokens, animations, and master layer from Phases 1-2
-**Plans**: 3 plans
-
-Plans:
-- [x] 03-01-PLAN.md -- Contact/CTA, Quote/Testimonial, and Comparison component templates
-- [x] 03-02-PLAN.md -- Timeline/Process, Card Grid, and Framework/Matrix component templates
-- [x] 03-03-PLAN.md -- Component index catalog update and example presentation with all 14 components
-
-### Phase 4: Theming & Branding
-**Goal**: Corporate branding can be applied on top of the component library via a theme layer, including automated extraction from PowerPoint templates
-**Depends on**: Phase 3
-**Requirements**: THEME-01, THEME-02, THEME-03, THEME-04, THEME-05, THEME-06
-**Success Criteria** (what must be TRUE):
-  1. Framework ships with a polished default theme that produces consulting-grade output (clean typography, proper hierarchy, professional color palette)
-  2. Developer can create a new theme CSS file that overrides design tokens, and all 14 components adopt the new branding automatically
-  3. Running the PPTX extraction tool against a corporate .pptx template generates a CSS theme file with extracted colors (12 slots), fonts (2 families), and logo images
-  4. Developer can set a slide to dark or light background variant, and text/element colors adjust accordingly
-  5. Logo placement and footer content (company name, confidentiality text, slide number) are configurable per theme
-**Plans**: 3 plans
-
-Plans:
-- [x] 04-01-PLAN.md -- Polish default theme, create startup and enterprise personality themes, dark/light variants
-- [x] 04-02-PLAN.md -- PPTX theme extraction tool with test fixture and verification
-- [x] 04-03-PLAN.md -- Themed showcase presentation and skeleton template update with visual checkpoint
-
-### Phase 5: Localization & Speaker Notes
-**Goal**: All components handle German text gracefully, with typography conventions documented and speaker notes infrastructure in place
-**Depends on**: Phase 4
-**Requirements**: LANG-01, LANG-02, LANG-03, NOTE-01, NOTE-02, NOTE-03
-**Success Criteria** (what must be TRUE):
-  1. All 14 components render correctly with German text at 130-300% expansion -- no overflow, truncation, or visual breakage
-  2. CSS includes German typography defaults (quotation marks, dash conventions, decimal comma guidance) that apply automatically
-  3. A complete demo presentation exists with German content showcasing all components
-  4. Speaker notes injection mechanism is documented with file format and HTML examples, and notes display correctly in reveal.js speaker view when injected at generation time
-  5. Documentation provides AI prompt patterns for generating speaker notes and timing estimation guidance (words-per-minute to duration)
-**Plans**: 3 plans
-
-Plans:
-- [x] 05-01-PLAN.md -- Global German text handling CSS, umlaut fixes, and typography conventions reference
-- [x] 05-02-PLAN.md -- Speaker notes infrastructure documentation with file format and injection mechanism
-- [x] 05-03-PLAN.md -- Complete German demo presentation with all 14 components and speaker notes
-
-### Phase 6: AI Integration & Tooling
-**Goal**: Any AI coding assistant can generate professional presentations from natural language prompts using the framework's documentation and component catalog
-**Depends on**: Phase 5
-**Requirements**: AI-01, AI-02, AI-03, AI-04, COMP-15, TOOL-01, TOOL-02, TOOL-03
-**Success Criteria** (what must be TRUE):
-  1. CLAUDE.md exists and teaches Claude Code the full framework: component catalog, theme system, build process, and audience presets
-  2. copilot-instructions.md exists with equivalent guidance for GitHub Copilot CLI
-  3. Each of the 14 components has a semantic description file documenting when to use it, required content slots, optional variants, and layout behavior
-  4. Audience presets (C-Suite, technical, sales, workshop, internal) are documented with design rules an AI can apply (font sizes, content density, visual weight)
-  5. PDF export works via DeckTape, presentation works with full reveal.js navigation, and a gallery/thumbnail view shows all slides on one page
-**Plans**: 4 plans
-
-Plans:
-- [x] 06-01-PLAN.md -- Reference files: component catalog, audience presets, design principles, theme system, animation guide
-- [x] 06-02-PLAN.md -- DeckTape PDF export, gallery view, AI-02 deferral housekeeping
-- [x] 06-03-PLAN.md -- Skill router (SKILL.md), three workflows, CLAUDE.md framework teaching content
-- [x] 06-04-PLAN.md -- Three subagent definitions (researcher, strategist, builder)
-
-</details>
-
-### v2.0 Data Viz, Consulting Intelligence & Platform
-
-**Milestone Goal:** Add data visualization components, consulting methodology intelligence, accessibility compliance, and platform expansion to transform the framework from a layout tool into a full consulting presentation platform.
-
-- [ ] **Phase 7: Foundation Fixes & Token Expansion** - Fix v1 bugs, deduplicate theme CSS, expand design token palette
-- [ ] **Phase 8: Pure CSS Components** - Data tables, Harvey balls, sparklines, team/people, timeline vertical, card grid compact
-- [ ] **Phase 9: CDN-Dependent Components** - Chart.js charts, Mermaid diagrams, waterfall charts, code blocks
-- [ ] **Phase 10: Audience Presets & Accessibility CSS** - Audience modifier classes, print CSS, dark variant fix, ARIA landmarks, keyboard nav
-- [ ] **Phase 11: Consulting Intelligence & AI Skill Layer** - SCQA scaffolding, Pyramid Principle, action titles, slide count guidance, copilot-instructions.md, gallery UX
-- [ ] **Phase 12: Export Tools** - PPTX export, accessible HTML export, WCAG contrast validator, read-the-titles script
-- [x] **Phase 13: Documentation & Compliance** - EAA compliance checklist and accessibility documentation (completed 2026-03-28)
+- [ ] **Phase 1: Component Architecture** - Monolithic locked CSS, @layer skeleton, --comp-* variables, template refactoring, builder rewrite
+- [ ] **Phase 2: Visual Vocabulary + Stylist** - 15 content archetypes, icon set, CSS property map, slide-stylist agent
+- [ ] **Phase 3: Brand System** - brands/ directory, brand.yaml for 3 brands, brand-checker/profiler agents, onboard workflow
+- [ ] **Phase 4: SKILL.md + Slash Commands + Workflows** - Comprehension routing, /build /refine /onboard commands, pipeline resumability
+- [ ] **Phase 5: Strategist Overhaul** - 3-agent debate (planner/architect/critic), slide-editor, deck-plan format, audience presets
+- [ ] **Phase 6: Review Pipeline** - Presentation-reviewer, Playwright screenshots, build-log, review integration
 
 ## Phase Details
 
-### Phase 7: Foundation Fixes & Token Expansion
-**Goal**: The existing v1 framework is bug-free, theme CSS is deduplicated for maintainability, and the design token palette covers all semantic use cases including state colors
-**Depends on**: Phase 6
-**Requirements**: FIX-06, FIX-07, FIX-10, A11Y-05
+### Phase 1: Component Architecture
+**Goal**: Builder produces presentations with near-100% CSS adherence by copying locked, pre-written component CSS verbatim
+**Depends on**: Nothing (Wave 1)
+**Requirements**: COMP-01, COMP-02, COMP-03, COMP-04, COMP-05, COMP-06, COMP-07, BRAND-06
 **Success Criteria** (what must be TRUE):
-  1. Nested bullet lists (`ul ul`, `ol ul`) display with visually distinct indentation across all three themes
-  2. Theme CSS files contain only token overrides -- shared structural rules live in a single base file with no duplication
-  3. Footer date auto-populates from `presentationConfig.date` and defaults to the current date when the field is empty
-  4. Design tokens include `--color-warning`, `--color-info`, `--color-overlay`, and `--color-on-primary` with no hardcoded color values remaining in any CSS file
-**Plans**: 2 plans
+  1. A generated presentation includes a single `components.css` block containing pre-written CSS for all 21 components -- builder never writes component CSS from scratch
+  2. The skeleton template layers CSS in strict order (tokens, animations, base-theme, theme, components, overrides) and each layer is independently overridable
+  3. Builder customizes component appearance only through `--comp-*` CSS custom properties, never by writing raw CSS rules
+  4. All 21 HTML templates use exact BEM class names that match `components.css` definitions, and the component catalog documents every `--comp-*` variable
+  5. Components support state variants (e.g., active, highlighted, compact) that the builder can toggle via class names
+**Plans:** 5 plans
 
 Plans:
-- [x] 07-01-PLAN.md -- Theme CSS deduplication (extract shared structural rules to _base.css) and nested bullet list styles
-- [x] 07-02-PLAN.md -- Semantic state color tokens, hardcoded color replacement, and German date auto-population
+- [ ] 01-01-PLAN.md -- Author components.css (21 components) and visuals.css (9 micro-patterns)
+- [ ] 01-02-PLAN.md -- Rewrite 11 templates (title through timeline)
+- [ ] 01-03-PLAN.md -- Rewrite 10 templates (quote through team)
+- [ ] 01-04-PLAN.md -- Enrich component catalog + rewrite skeleton with @layer structure
+- [ ] 01-05-PLAN.md -- Rewrite builder agent with locked CSS contract
 
-### Phase 8: Pure CSS Components
-**Goal**: Six new component templates extend the library to 20+ layouts using only CSS -- no external library dependencies
-**Depends on**: Phase 7
-**Requirements**: VIZ-03, VIZ-05, VIZ-06, PLAT-03, PLAT-05, PLAT-06
+**UI hint**: yes
+
+### Phase 2: Visual Vocabulary + Stylist
+**Goal**: AI agents select visual treatments based on content archetypes instead of defaulting to bullet lists
+**Depends on**: Nothing (Wave 1, parallel with Phases 1 and 3)
+**Requirements**: VIS-01, VIS-02, VIS-03, VIS-04
 **Success Criteria** (what must be TRUE):
-  1. Data table component renders 2-6 columns and 3-12 rows with header styling, alternating row colors, and right-aligned numbers using design tokens
-  2. Harvey ball component displays 5 states (0/25/50/75/100%) as pure CSS dots that render inline within tables and comparison slides
-  3. Sparkline/KPI micro-charts (trend lines, mini bars, progress indicators) render inside metrics cards without JavaScript
-  4. Team/People component displays 2-6 team members with photo, name, role, and contact info in a responsive grid
-  5. Timeline vertical variant (`comp-timeline--vertical`) and card grid compact variant (`comp-card-grid--compact`) work correctly with 5-6 items
-**Plans**: 2 plans
-
-Plans:
-- [x] 08-01-PLAN.md -- Data table, Harvey balls, and sparkline micro-charts for metrics
-- [x] 08-02-PLAN.md -- Team/People component, timeline vertical and card grid compact variants, catalog update
-
-### Phase 9: CDN-Dependent Components
-**Goal**: Chart.js and Mermaid integration gives users data visualization and diagramming capabilities with consulting-grade defaults and conditional loading
-**Depends on**: Phase 8
-**Requirements**: VIZ-01, VIZ-02, VIZ-04, PLAT-04
-**Success Criteria** (what must be TRUE):
-  1. Chart.js renders bar, line, pie, doughnut, and radar charts with token-based colors, no gridlines, clean axes, and annotation support -- charts initialize correctly on slide change
-  2. Mermaid renders flowcharts, sequence diagrams, Gantt charts, and org charts with theme-aware colors derived from design tokens
-  3. Waterfall/bridge chart displays revenue walks and cost bridges with grey totals and colored changes using Chart.js floating bar technique
-  4. Code blocks (`pre`/`code`) are styled across all themes with RevealHighlight plugin loaded and syntax highlighting active
-  5. CDN scripts load conditionally -- presentations without charts or diagrams incur zero additional payload
-**Plans**: 2 plans
-
-Plans:
-- [x] 09-01-PLAN.md -- Skeleton CDN infrastructure (Chart.js, RevealHighlight, color bridge, lazy init) + code block and Mermaid diagram templates
-- [x] 09-02-PLAN.md -- Chart.js component template (5 chart types) and waterfall/bridge chart template
-
-### Phase 10: Audience Presets & Accessibility CSS
-**Goal**: Presentations adapt to their audience via CSS modifier classes, print cleanly, and meet baseline accessibility standards in HTML structure
-**Depends on**: Phase 9
-**Requirements**: CONSULT-05, FIX-08, FIX-09, A11Y-02, A11Y-03, A11Y-06
-**Success Criteria** (what must be TRUE):
-  1. Setting `presentationConfig.audience` (or adding a modifier class) adjusts font sizes, content density, and animation density for the target audience type
-  2. Print/PDF output via `@media print` forces backgrounds, hides navigation, and produces clean page breaks across all themes
-  3. Dark variant slides correctly derive background color from design tokens when `data-background-color="dark"` is set
-  4. All 20+ component templates include correct ARIA landmarks (`role`, `aria-label`) and maintain proper heading hierarchy (h1 > h2 > h3)
-  5. All interactive elements are Tab-reachable with visible focus indicators, and visual components (images, charts, diagrams, frameworks) have required alt text or aria-label slots
-**Plans**: 2 plans
-
-Plans:
-- [x] 10-01-PLAN.md -- Audience preset CSS (6 types), print/PDF @media print styling, dark variant background fix
-- [x] 10-02-PLAN.md -- ARIA landmarks and alt text slots on all 21 templates, keyboard focus indicators
-
-### Phase 11: Consulting Intelligence & AI Skill Layer
-**Goal**: AI assistants apply consulting methodology (SCQA, Pyramid Principle, action titles) when generating presentations, with platform-agnostic instruction files
-**Depends on**: Phase 10
-**Requirements**: CONSULT-01, CONSULT-02, CONSULT-04, CONSULT-06, PLAT-01, PLAT-08
-**Success Criteria** (what must be TRUE):
-  1. Strategist subagent structures presentations using SCQA framework and includes SCQA markers in deck-plan.md
-  2. Strategist validates slide sequences for top-down logic, flags titles without verbs, checks MECE groupings, and outputs validation warnings in deck-plan.md
-  3. Component catalog, strategist prompts, and validation all enforce complete-sentence action titles (not topic labels)
-  4. Strategist applies audience-specific slide count ranges (C-Suite: 8-12, Technical: 15-25) and warns when deck-plan exceeds the recommended range
-  5. copilot-instructions.md exists with equivalent framework teaching content for GitHub Copilot CLI, and the gallery view shows all components with type badges and labels
-**Plans**: 2 plans
-
-Plans:
-- [x] 11-01-PLAN.md -- Strategist SCQA/Pyramid/action-title/slide-count upgrades and component catalog action title guidance
-- [ ] 11-02: TBD
-
-### Phase 12: Export Tools
-**Goal**: Users can export presentations to PPTX, accessible HTML, and title-summary formats, with automated WCAG contrast checking
-**Depends on**: Phase 11
-**Requirements**: PLAT-02, A11Y-01, A11Y-04, CONSULT-03
-**Success Criteria** (what must be TRUE):
-  1. Running the PPTX export script produces an editable .pptx file with semantic component mappings for core layouts and image fallbacks for complex ones
-  2. Accessible HTML export generates a screen-reader-friendly linear document without reveal.js framework, with charts replaced by text descriptions
-  3. WCAG contrast validator checks all theme color combinations against 4.5:1 (normal text) and 3:1 (large text) ratios and produces a pass/fail report
-  4. "Read the titles" script extracts action titles from all slides into a one-page coherence check document
+  1. Strategist can look up any of 15 content archetypes (e.g., "comparison", "process flow", "single metric") and get a recommended component + visual treatment
+  2. Builder can insert semantically appropriate Lucide icons for common consulting concepts (growth, risk, timeline, etc.) without inventing icon names
+  3. Slide-stylist agent can produce per-slide CSS overrides in `@layer overrides` that adjust spacing, emphasis, or color without touching component CSS
+  4. A bullet-list smell test flags slides that could use a richer visual treatment, preventing lazy text-heavy defaults
 **Plans**: TBD
 
-Plans:
-- [x] 12-01: TBD
-- [ ] 12-02: TBD
-
-### Phase 13: Documentation & Compliance
-**Goal**: The framework's accessibility compliance is documented with a traceable checklist mapping features to European Accessibility Act requirements
-**Depends on**: Phase 12
-**Requirements**: A11Y-07
+### Phase 3: Brand System
+**Goal**: Users can onboard their corporate brand once and have every presentation automatically follow brand rules
+**Depends on**: Nothing (Wave 1, parallel with Phases 1 and 2)
+**Requirements**: BRAND-01, BRAND-02, BRAND-03, BRAND-04, BRAND-05
 **Success Criteria** (what must be TRUE):
-  1. EAA compliance checklist exists mapping framework features to European Accessibility Act requirements
-  2. Per-presentation checklist template allows users to verify their specific deck meets EAA requirements before distribution
+  1. Each brand lives in `brands/{name}/` with `brand.yaml` (colors, fonts, logo, component biases), `rules.md` (do/don't guidelines), and `theme.css` (CSS overrides)
+  2. Three bundled brands (default, startup, enterprise) ship with complete hand-written `brand.yaml` files ready for immediate use
+  3. Brand-checker agent reads the user's brief and brand profile, then produces a `brand-context.md` that downstream agents consume for brand-consistent decisions
+  4. Brand-profiler agent can generate a `brand.yaml` from a corporate PPTX or PDF, extracting colors, fonts, and logo
+  5. Onboard-brand workflow generates a test presentation exercising multiple component types to verify the new brand looks correct
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 4: SKILL.md + Slash Commands + Workflows
+**Goal**: Users invoke the pipeline through natural slash commands and the system resumes interrupted pipelines without losing work
+**Depends on**: Phase 1, Phase 2, Phase 3
+**Requirements**: ORCH-01, ORCH-02, ORCH-03, ORCH-04, ORCH-05
+**Success Criteria** (what must be TRUE):
+  1. SKILL.md routes user intent through model comprehension (understanding what the user wants) rather than keyword matching
+  2. `/build`, `/refine`, and `/onboard` commands initialize the correct workspace and launch the appropriate workflow with minimal user friction
+  3. `build-new-deck` workflow orchestrates the full 9-agent pipeline from brief through debate through build, with each agent receiving the right context
+  4. `refine-deck` workflow routes change requests to the appropriate agent (stylist for CSS, editor for content, full debate for structural changes)
+  5. Pipeline detects existing `.pipeline/` artifacts on entry and offers to resume from last checkpoint instead of starting over
 **Plans**: TBD
 
-Plans:
-- [x] 13-01: TBD
+### Phase 5: Strategist Overhaul
+**Goal**: Deck plans emerge from genuine multi-agent debate rather than single-agent self-review, producing richer narrative structure
+**Depends on**: Phase 2, Phase 3
+**Requirements**: DEBATE-01, DEBATE-02, DEBATE-03, DEBATE-04, DEBATE-05, DEBATE-06, DEBATE-07
+**Success Criteria** (what must be TRUE):
+  1. Narrative-planner produces a deck plan with SCQA framing, Pyramid Principle structure, action titles, and per-slide visual treatment recommendations
+  2. Presentation-architect runs 10 structural checks (including brand compliance and brief alignment) and can issue BLOCKING verdicts that prevent progression
+  3. Presentation-critic runs 6 adversarial checks (evidence gaps, "So What" test, audience mismatch) independently from the architect
+  4. Debate resolves automatically when zero BLOCKINGs remain, caps at 3 rounds, and escalates to user if stuck
+  5. Slide-editor agent can make surgical HTML edits (swap a component, change content, add/remove elements) without regenerating the entire presentation
+**Plans**: TBD
+
+### Phase 6: Review Pipeline
+**Goal**: Every generated presentation passes automated quality checks before delivery, catching visual and narrative issues the builder missed
+**Depends on**: Phase 1, Phase 3, Phase 4, Phase 5
+**Requirements**: REVIEW-01, REVIEW-02, REVIEW-03, REVIEW-04
+**Success Criteria** (what must be TRUE):
+  1. Presentation-reviewer agent checks story coherence, visual consistency, and brand compliance against the deck plan and brand profile
+  2. Playwright captures a screenshot of every slide, giving the reviewer visual evidence to judge layout and readability
+  3. Build-log.yaml records every pipeline decision (which agents ran, what verdicts were given, what was changed) for traceability
+  4. Review integration in build-new-deck triggers auto-fix via builder when reviewer issues BLOCKERs, with a 2-round ceiling before escalating to user
+**Plans**: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
+Wave 1 (parallel): Phases 1, 2, 3
+Wave 2: Phases 4, 5 (after their dependencies complete)
+Wave 3: Phase 6 (after all prior phases)
 
-| Phase | Milestone | Plans Complete | Status | Completed |
-|-------|-----------|----------------|--------|-----------|
-| 1. Foundation | v1.0 | 2/2 | Complete | 2026-03-23 |
-| 2. Essential Components | v1.0 | 3/3 | Complete | 2026-03-23 |
-| 3. Extended Components | v1.0 | 3/3 | Complete | 2026-03-24 |
-| 4. Theming & Branding | v1.0 | 3/3 | Complete | 2026-03-24 |
-| 5. Localization & Speaker Notes | v1.0 | 3/3 | Complete | 2026-03-25 |
-| 6. AI Integration & Tooling | v1.0 | 4/4 | Complete | 2026-03-25 |
-| 7. Foundation Fixes & Token Expansion | v2.0 | 0/2 | Planned | - |
-| 8. Pure CSS Components | v2.0 | 0/2 | Not started | - |
-| 9. CDN-Dependent Components | v2.0 | 0/2 | Not started | - |
-| 10. Audience Presets & Accessibility CSS | v2.0 | 1/2 | In Progress|  |
-| 11. Consulting Intelligence & AI Skill Layer | v2.0 | 1/2 | In Progress | - |
-| 12. Export Tools | v2.0 | 1/2 | In Progress|  |
-| 13. Documentation & Compliance | v2.0 | 1/1 | Complete   | 2026-03-28 |
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Component Architecture | 0/5 | Planned | - |
+| 2. Visual Vocabulary + Stylist | 0/TBD | Not started | - |
+| 3. Brand System | 0/TBD | Not started | - |
+| 4. SKILL.md + Slash Commands + Workflows | 0/TBD | Not started | - |
+| 5. Strategist Overhaul | 0/TBD | Not started | - |
+| 6. Review Pipeline | 0/TBD | Not started | - |
