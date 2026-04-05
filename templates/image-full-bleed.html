@@ -1,103 +1,37 @@
 <!--
-  ============================================================================
-  COMPONENT: Image Full-Bleed (COMP-06)
-  ============================================================================
-
-  USE WHEN:
-    Visual impact. Product shots. Team photos. Mood/atmosphere.
-
-  REQUIRED SLOTS:
-    - Background image (via data-background-image on section)
-
-  OPTIONAL SLOTS:
-    - Headline overlay (h2)
-    - Supporting text overlay (p)
-
-  MASTER LAYER: Hidden by default (data-master="hide")
-
+  COMPONENT: image-full-bleed
+  USE WHEN: Visual impact — product shots, team photos, mood/atmosphere, inspiring imagery.
+  SLOTS:
+    REQUIRED: __image (img): the background image (absolute, inset: 0, object-fit: cover)
+    OPTIONAL: __overlay (div): dark/semi-transparent overlay layer (z-index: 1)
+    OPTIONAL: __caption (div/p): text overlay on top of image (z-index: 2)
+  CSS VARIABLES (--comp-*):
+    --comp-image-full-bleed-overlay: var(--color-overlay) — overlay color/opacity
+    --comp-image-full-bleed-caption-color: var(--color-on-primary) — caption text color
+  STATE MODIFIERS:
+    (none — structural full-screen image slide, no interactive states)
+  MASTER LAYER: no — hidden (data-master="hide")
   LAYOUT NOTES:
-    - Two overlay variants:
-      - Dark overlay for light images (white text on dark gradient)
-      - Light overlay for dark images (dark text on light gradient)
-    - Overlay is optional -- omit the overlay div for image-only slides
-    - Gradient starts from bottom, fading to transparent at 70%
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE (dark overlay):
-    <section data-background-image="path/to/image.jpg"
-             data-background-size="cover"
-             data-master="hide"
-             data-component="image-full-bleed">
-      <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
-        <h2>Headline</h2>
-        <p>Supporting text</p>
-      </div>
-    </section>
-
-  EXAMPLE (light overlay):
-    Replace comp-full-bleed__overlay--dark with comp-full-bleed__overlay--light
-
-  EXAMPLE (no overlay -- image only):
-    Omit the overlay div entirely.
-
-  ============================================================================
+    .comp-image-full-bleed is position: relative, height: 100%, overflow: hidden.
+    __image is position: absolute, inset: 0 (fills entire slide behind overlay).
+    __overlay is position: absolute, inset: 0 (sits between image and caption).
+    __caption is position: relative, z-index: 2 (text above overlay).
+    Layout: flex column, justify-content: flex-end (caption at bottom).
+    For image-only slides: omit __overlay and __caption entirely.
+    For reveal.js data-background-image: use section attribute instead of __image element.
 -->
 
-<style>
-  /* --- Image Full-Bleed Component --- */
-  .comp-full-bleed__overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: var(--spacing-3xl);
-    overflow-wrap: break-word;
-  }
+<!-- Component CSS: see tokens/components.css -> comp-image-full-bleed section -->
 
-  /* Dark overlay: white text on dark gradient (for light images) */
-  .comp-full-bleed__overlay--dark {
-    background: linear-gradient(to top, var(--color-overlay) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 70%);
-    color: var(--color-on-primary);
-  }
-
-  .comp-full-bleed__overlay--dark h2 {
-    color: var(--color-on-primary);
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .comp-full-bleed__overlay--dark p {
-    color: var(--color-dark-text);
-    font-size: var(--font-size-body);
-  }
-
-  /* Light overlay: dark text on light gradient (for dark images) */
-  .comp-full-bleed__overlay--light {
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 40%, transparent 70%);
-    color: var(--color-text);
-  }
-
-  .comp-full-bleed__overlay--light h2 {
-    color: var(--color-primary);
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .comp-full-bleed__overlay--light p {
-    color: var(--color-text);
-    font-size: var(--font-size-body);
-  }
-</style>
-
-<!-- Replace aria-label with descriptive text for the background image -->
-<section data-background-image="path/to/image.jpg"
-         data-background-size="cover"
-         data-master="hide"
-         data-component="image-full-bleed"
-         role="group" aria-label="Vollbild" aria-roledescription="Bildfolie">
-  <div class="comp-full-bleed__overlay comp-full-bleed__overlay--dark">
-    <h2>Unser Team vor Ort</h2>
-    <p>Standort Frankfurt -- Innovationszentrum</p>
+<section id="slide-6" data-component="image-full-bleed" data-master="hide" role="group" aria-label="Vollbild-Bildfolie">
+  <div class="comp-image-full-bleed">
+    <!-- Replace src with actual image path; use alt text for accessibility -->
+    <img class="comp-image-full-bleed__image"
+         src="path/to/bild.jpg"
+         alt="Skyline Frankfurt bei Sonnenuntergang — Innovationsstandort DACH">
+    <div class="comp-image-full-bleed__overlay"></div>
+    <div class="comp-image-full-bleed__caption">
+      <p>Unsere Vision &mdash; Digitale F&uuml;hrerschaft im DACH-Raum bis 2027</p>
+    </div>
   </div>
 </section>

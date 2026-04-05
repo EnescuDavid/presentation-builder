@@ -1,141 +1,51 @@
 <!--
-  ============================================================================
-  COMPONENT: Agenda (COMP-07)
-  ============================================================================
-
-  USE WHEN:
-    Presentation roadmap. Meeting structure. Outlining what's coming.
-
-  REQUIRED SLOTS:
-    - Agenda items (list of topics)
-
-  OPTIONAL SLOTS:
-    - Slide title (h2)
-    - Item descriptions (secondary text per item)
-
-  MASTER LAYER: Visible (no data-master attribute)
-
+  COMPONENT: agenda
+  USE WHEN: Presentation roadmap, meeting structure, outlining what's coming next.
+  SLOTS:
+    REQUIRED: __title (h2): "Agenda" or presentation-specific title
+    REQUIRED: __list (ul): ordered list of agenda items
+    REQUIRED: __item (li): individual agenda entry — supports state modifiers
+    REQUIRED: __number (span inside __item): section number (01, 02, etc.)
+    OPTIONAL: description text inside __item after the number span
+  CSS VARIABLES (--comp-*):
+    --comp-agenda-padding: var(--spacing-2xl) var(--spacing-3xl) — outer padding
+    --comp-agenda-item-gap: var(--spacing-md) — gap between agenda items
+    --comp-agenda-number-color: var(--color-accent) — number badge color
+    --comp-agenda-title-color: var(--color-primary) — title text color
+  STATE MODIFIERS:
+    .comp-agenda__item--active — accent background + left border, currently active section
+    .comp-agenda__item--completed — success color, past/finished section
+    .comp-agenda__item--muted — reduced opacity (0.45), future / skipped items
+  MASTER LAYER: yes — visible
   LAYOUT NOTES:
-    - Active item highlighted with left-border accent + bold weight
-    - Inactive items muted
-    - Claude picks highlight style (accent border shown here, but progressive
-      reveal, bold+color, etc. all work)
-    - Works with 3-8 agenda items
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE:
-    <section data-component="agenda" role="group" aria-label="Agenda">
-      <div class="comp-agenda">
-        <h2 class="comp-agenda__title">Agenda</h2>
-        <div class="comp-agenda__list">
-          <div class="comp-agenda__item">
-            <span class="comp-agenda__item-number">01</span>
-            <div class="comp-agenda__item-text">Marktanalyse</div>
-          </div>
-          <div class="comp-agenda__item comp-agenda__item--active">
-            <span class="comp-agenda__item-number">02</span>
-            <div class="comp-agenda__item-text">Strategische Optionen</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  WITH DESCRIPTIONS:
-    <div class="comp-agenda__item-text">
-      Marktanalyse
-      <div class="comp-agenda__item-desc">Wettbewerb und Markttrends</div>
-    </div>
-
-  ============================================================================
+    Flex column, justify-content: center, full height. Works with 3-8 agenda items.
+    Active item: background highlight + left accent border (3px solid --color-accent).
+    Number badge uses min-width: 1.5em so numbers align across items.
+    German section titles: hyphens: auto handles compound nouns.
 -->
 
-<style>
-  /* --- Agenda Component --- */
-  .comp-agenda {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    min-height: 100%;
-    gap: var(--spacing-xl);
-  }
+<!-- Component CSS: see tokens/components.css -> comp-agenda section -->
 
-  .comp-agenda__title {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-  }
-
-  .comp-agenda__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .comp-agenda__item {
-    display: flex;
-    align-items: baseline;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-left: 3px solid transparent;
-    border-radius: var(--radius-sm);
-    font-size: var(--font-size-body);
-    color: var(--color-text-muted);
-    transition: none;
-  }
-
-  .comp-agenda__item--active {
-    border-left-color: var(--color-accent);
-    background: var(--color-highlight);
-    color: var(--color-text);
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .comp-agenda__item-number {
-    font-size: var(--font-size-subheading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent);
-    min-width: 32px;
-  }
-
-  .comp-agenda__item--active .comp-agenda__item-number {
-    color: var(--color-primary);
-  }
-
-  .comp-agenda__item-text {
-    flex: 1;
-  }
-
-  .comp-agenda__item-desc {
-    font-size: var(--font-size-caption);
-    color: var(--color-text-muted);
-    font-weight: var(--font-weight-regular);
-    margin-top: var(--spacing-xs);
-  }
-</style>
-
-<section data-component="agenda" role="group" aria-label="Agenda">
+<section id="slide-7" data-component="agenda" role="group" aria-label="Agenda">
   <div class="comp-agenda">
     <h2 class="comp-agenda__title">Agenda</h2>
-    <div class="comp-agenda__list">
-      <div class="comp-agenda__item">
-        <span class="comp-agenda__item-number">01</span>
-        <div class="comp-agenda__item-text">Marktanalyse</div>
-      </div>
-      <div class="comp-agenda__item comp-agenda__item--active">
-        <span class="comp-agenda__item-number">02</span>
-        <div class="comp-agenda__item-text">Strategische Optionen</div>
-      </div>
-      <div class="comp-agenda__item">
-        <span class="comp-agenda__item-number">03</span>
-        <div class="comp-agenda__item-text">Finanzplanung</div>
-      </div>
-      <div class="comp-agenda__item">
-        <span class="comp-agenda__item-number">04</span>
-        <div class="comp-agenda__item-text">Nächste Schritte</div>
-      </div>
-    </div>
+    <ul class="comp-agenda__list">
+      <li class="comp-agenda__item comp-agenda__item--completed">
+        <span class="comp-agenda__number">01</span>
+        Marktanalyse und Wettbewerbslandschaft
+      </li>
+      <li class="comp-agenda__item comp-agenda__item--active">
+        <span class="comp-agenda__number">02</span>
+        Strategische Optionen und Bewertung
+      </li>
+      <li class="comp-agenda__item">
+        <span class="comp-agenda__number">03</span>
+        Finanzplanung und Investitionsrahmen
+      </li>
+      <li class="comp-agenda__item comp-agenda__item--muted">
+        <span class="comp-agenda__number">04</span>
+        Umsetzungsplan und n&auml;chste Schritte
+      </li>
+    </ul>
   </div>
 </section>

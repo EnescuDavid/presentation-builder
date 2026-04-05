@@ -1,109 +1,50 @@
 <!--
-  ============================================================================
-  COMPONENT: Contact/CTA (COMP-09)
-  ============================================================================
-
-  USE WHEN:
-    Closing slide. Contact details. Call to action. Speaker info.
-
-  REQUIRED SLOTS:
-    - Name
-    - Role
-
-  OPTIONAL SLOTS:
-    - Photo (img 120x120 rounded)
-    - Email
-    - Phone
-    - Divider line
-
-  MASTER LAYER: Visible (no data-master attribute)
-
+  COMPONENT: contact
+  USE WHEN: Speaker info, call to action, closing slide with presenter details.
+  SLOTS:
+    REQUIRED: __name (h2): presenter's full name with title (e.g. "Dr. Maria Schmidt")
+    REQUIRED: __role (p): job title and company or team name
+    OPTIONAL: __photo (img): headshot, 120x120px, circular (border-radius: 50%)
+    OPTIONAL: __details (div): contact detail rows container
+    OPTIONAL: __detail-item (div inside __details): one row (icon + label or plain text)
+  CSS VARIABLES (--comp-*):
+    --comp-contact-padding: var(--spacing-2xl) var(--spacing-3xl) — outer padding
+    --comp-contact-name-size: var(--font-size-heading) — name font size
+    --comp-contact-name-color: var(--color-primary) — name text color
+    --comp-contact-role-color: var(--color-text-muted) — role text color
+    --comp-contact-photo-size: 120px — photo diameter
+  STATE MODIFIERS:
+    (none — contact is a closing static slide)
+  MASTER LAYER: yes — visible
   LAYOUT NOTES:
-    - Centered column layout, photo optional
-    - Divider via anim-lineGrow
-    - Contact details in horizontal row
-    - overflow-wrap and hyphens enabled for German compound words
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE:
-    <section data-component="contact" role="group" aria-label="Kontakt">
-      <div class="comp-contact">
-        <img class="comp-contact__photo" src="photo.jpg" alt="Name" />
-        <h2 class="comp-contact__name">Dr. Maria Schmidt</h2>
-        <p class="comp-contact__role">Geschäftsführerin</p>
-        <div class="comp-contact__divider"></div>
-        <div class="comp-contact__details">
-          <span class="comp-contact__detail">m.schmidt@firma.de</span>
-          <span class="comp-contact__detail">+49 30 1234 5678</span>
-        </div>
-      </div>
-    </section>
-
-  ============================================================================
+    D-02 structural fix: centered flex column layout (not a grid).
+    Photo: position: relative, width/height: --comp-contact-photo-size, border-radius: 50%.
+    Name hierarchy: __photo → __name (h2) → __role → __details.
+    Details: flex column with gap: var(--spacing-xs), center-aligned items.
+    Each __detail-item: flex row with gap: var(--spacing-sm) for icon + text pairs.
+    German phone format: +49 89 1234 5678. German email: vorname.nachname@firma.de
 -->
 
-<style>
-  /* --- Contact/CTA Component --- */
-  .comp-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-    padding: var(--spacing-3xl);
-    gap: var(--spacing-lg);
-  }
+<!-- Component CSS: see tokens/components.css -> comp-contact section -->
 
-  .comp-contact__photo {
-    width: 120px;
-    height: 120px;
-    border-radius: var(--radius-full);
-    object-fit: cover;
-    box-shadow: var(--shadow-md);
-  }
-
-  .comp-contact__name {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-  }
-
-  .comp-contact__role {
-    font-size: var(--font-size-subheading);
-    color: var(--color-text-muted);
-    font-weight: var(--font-weight-light);
-  }
-
-  .comp-contact__divider {
-    width: 60px;
-    height: 2px;
-    background: var(--color-accent);
-  }
-
-  .comp-contact__details {
-    display: flex;
-    gap: var(--spacing-2xl);
-    font-size: var(--font-size-body);
-    color: var(--color-text);
-  }
-
-  .comp-contact__detail {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-  }
-</style>
-
-<section data-component="contact" role="group" aria-label="Kontakt">
+<section id="slide-9" data-component="contact" role="group" aria-label="Kontaktfolie">
   <div class="comp-contact">
-    <img class="comp-contact__photo" src="https://via.placeholder.com/120" alt="Dr. Maria Schmidt" />
+    <!-- Replace src with real photo path; use empty alt if photo is decorative -->
+    <img class="comp-contact__photo"
+         src="path/to/foto.jpg"
+         alt="Dr. Maria Schmidt, Senior Partnerin">
     <h2 class="comp-contact__name">Dr. Maria Schmidt</h2>
-    <p class="comp-contact__role">Geschäftsführerin Digitale Transformation</p>
-    <div class="comp-contact__divider"></div>
+    <p class="comp-contact__role">Senior Partnerin &middot; Strategie &amp; Transformation</p>
     <div class="comp-contact__details">
-      <span class="comp-contact__detail">m.schmidt@unternehmen.de</span>
-      <span class="comp-contact__detail">+49 30 1234 5678</span>
+      <div class="comp-contact__detail-item">
+        m.schmidt@beratung-gmbh.de
+      </div>
+      <div class="comp-contact__detail-item">
+        +49 89 1234 5678
+      </div>
+      <div class="comp-contact__detail-item">
+        linkedin.com/in/dr-maria-schmidt
+      </div>
     </div>
   </div>
 </section>

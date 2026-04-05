@@ -1,132 +1,49 @@
 <!--
-  ============================================================================
-  COMPONENT: Summary/Takeaway (COMP-08)
-  ============================================================================
-
-  USE WHEN:
-    Closing slide. Key takeaways. Recap of main points. Call to action.
-
-  REQUIRED SLOTS:
-    - Key points (list of 2-5 takeaways)
-
-  OPTIONAL SLOTS:
-    - Slide title (h2)
-    - CTA zone (div with next steps, contact info, or QR code placeholder)
-
-  MASTER LAYER: Visible (no data-master attribute)
-
+  COMPONENT: summary
+  USE WHEN: Closing slide — key takeaways, recap, call to action, next steps.
+  SLOTS:
+    REQUIRED: __title (h2): "Zusammenfassung" or "Kernaussagen" or similar
+    REQUIRED: __list (ul): list of key takeaway items
+    REQUIRED: __item (li): individual takeaway — supports state modifiers
+    OPTIONAL: __subtitle: brief framing paragraph before the list
+  CSS VARIABLES (--comp-*):
+    --comp-summary-padding: var(--spacing-2xl) var(--spacing-3xl) — outer padding
+    --comp-summary-title-color: var(--color-primary) — title text color
+    --comp-summary-item-gap: var(--spacing-md) — gap between list items
+  STATE MODIFIERS:
+    .comp-summary__item--highlighted — accent background + left border, key takeaway (most important)
+    .comp-summary__item--positive — success color on text, favorable outcome
+    .comp-summary__item--negative — danger color on text, risk / unfavorable outcome
+  MASTER LAYER: yes — visible
   LAYOUT NOTES:
-    - Clean summary by default
-    - CTA zone separated by a top border or background color change
-    - Claude decides whether CTA is appropriate based on presentation context
-  FRAGMENTS: Optional — Claude adds fragment classes for progressive reveal when requested
-
-  EXAMPLE:
-    <section data-component="summary" role="group" aria-label="Zusammenfassung">
-      <div class="comp-summary">
-        <h2>Zusammenfassung</h2>
-        <div class="comp-summary__points">
-          <div class="comp-summary__point">
-            <span class="comp-summary__point-icon">1</span>
-            <span>Key takeaway text</span>
-          </div>
-        </div>
-        <div class="comp-summary__cta">
-          <p><strong>Nächste Schritte:</strong> Action item here</p>
-        </div>
-      </div>
-    </section>
-
-  WITHOUT CTA:
-    Simply omit the comp-summary__cta div.
-
-  ============================================================================
+    Flex column, justify-content: center, full height. 2-5 items work best.
+    Each __item has a bottom border separator; last-child removes it.
+    Highlighted item: removes bottom border, adds left accent border.
+    Items use flex row with align-items: flex-start for multi-line support.
+    German text: overflow-wrap: break-word + hyphens: auto on .comp-summary.
 -->
 
-<style>
-  /* --- Summary/Takeaway Component --- */
-  .comp-summary {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: var(--spacing-2xl) var(--spacing-3xl);
-    min-height: 100%;
-    gap: var(--spacing-lg);
-  }
+<!-- Component CSS: see tokens/components.css -> comp-summary section -->
 
-  .comp-summary h2 {
-    font-size: var(--font-size-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-  }
-
-  .comp-summary__points {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    flex: 1;
-  }
-
-  .comp-summary__point {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-    font-size: var(--font-size-body);
-    line-height: var(--line-height-normal);
-    color: var(--color-text);
-  }
-
-  .comp-summary__point-icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    background: var(--color-accent);
-    color: var(--color-on-primary);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-caption);
-    font-weight: var(--font-weight-bold);
-    margin-top: 2px;
-  }
-
-  .comp-summary__cta {
-    margin-top: auto;
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .comp-summary__cta p {
-    font-size: var(--font-size-body);
-    color: var(--color-text-muted);
-  }
-
-  .comp-summary__cta strong {
-    color: var(--color-primary);
-    font-weight: var(--font-weight-semibold);
-  }
-</style>
-
-<section data-component="summary" role="group" aria-label="Zusammenfassung">
+<section id="slide-8" data-component="summary" role="group" aria-label="Zusammenfassung">
   <div class="comp-summary">
-    <h2>Zusammenfassung</h2>
-    <div class="comp-summary__points">
-      <div class="comp-summary__point">
-        <span class="comp-summary__point-icon">1</span>
-        <span>Die Marktanalyse zeigt klaren Bedarf für strategische Neupositionierung im Enterprise-Segment</span>
-      </div>
-      <div class="comp-summary__point">
-        <span class="comp-summary__point-icon">2</span>
-        <span>Investitionen in Digitalisierung und Teamaufbau sind entscheidend für nachhaltiges Wachstum</span>
-      </div>
-      <div class="comp-summary__point">
-        <span class="comp-summary__point-icon">3</span>
-        <span>Zeitplan für Umsetzung: Q4 2026 Pilotphase, Q1 2027 vollständiger Rollout</span>
-      </div>
-    </div>
-    <div class="comp-summary__cta">
-      <p><strong>Nächste Schritte:</strong> Freigabe des Pilotbudgets bis Ende Q3 und Kickoff-Workshop mit allen Stakeholdern im Oktober</p>
-    </div>
+    <h2 class="comp-summary__title">Kernaussagen</h2>
+    <ul class="comp-summary__list">
+      <li class="comp-summary__item comp-summary__item--highlighted">
+        Digitale Transformation ist kein Projekt &mdash; sie ist eine dauerhafte strategische Priorit&auml;t
+      </li>
+      <li class="comp-summary__item comp-summary__item--positive">
+        Investitionen von EUR 12 Mio. &uuml;ber 3 Jahre erm&ouml;glichen 30% Umsatzwachstum bis 2027
+      </li>
+      <li class="comp-summary__item">
+        Zwei neue Gesch&auml;ftsfelder (KI-Services, Plattformgesch&auml;ft) erschlie&szlig;en zus&auml;tzliche M&auml;rkte
+      </li>
+      <li class="comp-summary__item comp-summary__item--negative">
+        Ohne Handlung: Marktanteilsverlust von 8&ndash;12pp bis Ende 2026 gem&auml;&szlig; Szenario B
+      </li>
+      <li class="comp-summary__item">
+        N&auml;chster Schritt: Vorstandsfreigabe f&uuml;r Pilotbudget bis 30. Oktober 2025
+      </li>
+    </ul>
   </div>
 </section>
