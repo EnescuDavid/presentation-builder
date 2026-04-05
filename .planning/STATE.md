@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Data Viz, Consulting Intelligence & Platform
 status: verifying
-stopped_at: Completed 01-04-PLAN.md
-last_updated: "2026-04-05T17:40:43.069Z"
+stopped_at: Completed 01-05-PLAN.md
+last_updated: "2026-04-05T17:48:18.458Z"
 last_activity: 2026-04-05
 progress:
   total_phases: 7
@@ -69,7 +69,7 @@ Progress: [███████░░░] 71%
 | Phase 12 P01 | 3min | 2 tasks | 3 files |
 | Phase 12 P02 | 3min | 2 tasks | 2 files |
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
-| Phase 01 P04 | 6 | 2 tasks | 4 files |
+| Phase 01-component-architecture P05 | 268 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -104,9 +104,9 @@ Recent decisions affecting current work:
 - [Phase 12]: Accessible export uses cheerio DOM parsing with h1/h2/h3 heading hierarchy and German labels
 - [Phase 12]: PPTX export uses image-based slides (full visual fidelity) via DeckTape screenshots + PptxGenJS assembly
 - [Phase 13]: Three-tier compliance status (AUTOMATED/PARTIAL/N/A) for honest EAA gap documentation
-- [Phase 01]: @layer order is strict: tokens < animations < base-theme < theme < components < overrides (D-11)
-- [Phase 01]: themes/_base.css embedded in skeleton @layer base-theme without audience presets (D-12, D-14)
-- [Phase 01]: Theme reference changed from themes/ to brands/{name}/theme.css (D-13)
+- [Phase 01-component-architecture]: Builder reads templates/index.md as sole source of class names — no individual template HTML files
+- [Phase 01-component-architecture]: MUST/NEVER constraints replace improvisation-permissive language in builder agent — architectural enforcement of CSS contract (COMP-07)
+- [Phase 01-component-architecture]: @layer overrides SLIDE MAP comment pattern mandated in builder self-check — all --comp-* customizations must appear in comment map (D-10)
 
 ### Pending Todos
 
@@ -119,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-05T17:40:43.066Z
-Stopped at: Completed 01-04-PLAN.md
+Last session: 2026-04-05T17:48:18.456Z
+Stopped at: Completed 01-05-PLAN.md
 Resume file: None
