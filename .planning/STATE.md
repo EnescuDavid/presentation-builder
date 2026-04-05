@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Agent Pipeline + Component Architecture
 status: executing
-stopped_at: Phase 2 context gathered
-last_updated: "2026-04-05T21:24:32.931Z"
-last_activity: 2026-04-05 -- Phase 02 execution started
+stopped_at: Completed 02-visual-vocabulary-02-02-PLAN.md
+last_updated: "2026-04-05T21:48:19.053Z"
+last_activity: 2026-04-05
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 7
   percent: 17
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 02 (visual-vocabulary) — EXECUTING
-Plan: 1 of 2
-Status: Executing Phase 02
-Last activity: 2026-04-05 -- Phase 02 execution started
+Plan: 2 of 2
+Status: Ready to execute
+Last activity: 2026-04-05
 
 Progress: [██░░░░░░░░] 17%
 
@@ -70,6 +70,7 @@ Progress: [██░░░░░░░░] 17%
 | Phase 12 P02 | 3min | 2 tasks | 2 files |
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
 | Phase 01-component-architecture P05 | 268 | 1 tasks | 1 files |
+| Phase 02-visual-vocabulary P02 | 4 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -107,6 +108,9 @@ Recent decisions affecting current work:
 - [Phase 01-component-architecture]: Builder reads templates/index.md as sole source of class names — no individual template HTML files
 - [Phase 01-component-architecture]: MUST/NEVER constraints replace improvisation-permissive language in builder agent — architectural enforcement of CSS contract (COMP-07)
 - [Phase 01-component-architecture]: @layer overrides SLIDE MAP comment pattern mandated in builder self-check — all --comp-* customizations must appear in comment map (D-10)
+- [Phase 02-visual-vocabulary]: Slide-stylist reads deck-plan visual hints first (priority over autonomous scan), per D-06
+- [Phase 02-visual-vocabulary]: Strategist Step 3b added between audience preset and narrative arc — archetype classification before component selection
+- [Phase 02-visual-vocabulary]: text-heavy marked as last-resort fallback with Bullet-List Smell Test note in component catalog
 
 ### Pending Todos
 
@@ -119,6 +123,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-05T20:54:15.887Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-visual-vocabulary/02-CONTEXT.md
+Last session: 2026-04-05T21:48:19.051Z
+Stopped at: Completed 02-visual-vocabulary-02-02-PLAN.md
+Resume file: None
