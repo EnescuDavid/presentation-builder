@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Data Viz, Consulting Intelligence & Platform
 status: verifying
-stopped_at: Completed 13-01-PLAN.md
-last_updated: "2026-03-28T13:04:44.597Z"
-last_activity: 2026-03-28
+stopped_at: Completed 01-05-PLAN.md
+last_updated: "2026-04-05T17:48:18.458Z"
+last_activity: 2026-04-05
 progress:
   total_phases: 7
   completed_phases: 5
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 Phase: 11
 Plan: 2 of 2 complete
 Status: Phase complete — ready for verification
-Last activity: 2026-03-28
+Last activity: 2026-04-05
 
 Progress: [███████░░░] 71%
 
@@ -69,6 +69,7 @@ Progress: [███████░░░] 71%
 | Phase 12 P01 | 3min | 2 tasks | 3 files |
 | Phase 12 P02 | 3min | 2 tasks | 2 files |
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
+| Phase 01-component-architecture P05 | 268 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -103,6 +104,9 @@ Recent decisions affecting current work:
 - [Phase 12]: Accessible export uses cheerio DOM parsing with h1/h2/h3 heading hierarchy and German labels
 - [Phase 12]: PPTX export uses image-based slides (full visual fidelity) via DeckTape screenshots + PptxGenJS assembly
 - [Phase 13]: Three-tier compliance status (AUTOMATED/PARTIAL/N/A) for honest EAA gap documentation
+- [Phase 01-component-architecture]: Builder reads templates/index.md as sole source of class names — no individual template HTML files
+- [Phase 01-component-architecture]: MUST/NEVER constraints replace improvisation-permissive language in builder agent — architectural enforcement of CSS contract (COMP-07)
+- [Phase 01-component-architecture]: @layer overrides SLIDE MAP comment pattern mandated in builder self-check — all --comp-* customizations must appear in comment map (D-10)
 
 ### Pending Todos
 
@@ -115,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T13:04:44.595Z
-Stopped at: Completed 13-01-PLAN.md
+Last session: 2026-04-05T17:48:18.456Z
+Stopped at: Completed 01-05-PLAN.md
 Resume file: None
