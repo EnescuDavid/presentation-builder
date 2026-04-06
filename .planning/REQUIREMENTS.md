@@ -56,7 +56,7 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 - [ ] **REVIEW-01**: Presentation-reviewer agent with story + visual + brand compliance checks
 - [x] **REVIEW-02**: Playwright screenshot capture tool (`tools/capture-slides.py`)
 - [x] **REVIEW-03**: Build-log.yaml for pipeline traceability
-- [ ] **REVIEW-04**: Review integration in build-new-deck workflow (BLOCKER -> builder auto-fix, max 2 rounds)
+- [x] **REVIEW-04**: Review integration in build-new-deck workflow (BLOCKER -> builder auto-fix, max 2 rounds)
 
 ## Future Requirements
 
@@ -115,7 +115,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REVIEW-01 | Phase 6 | Pending |
 | REVIEW-02 | Phase 6 | Complete |
 | REVIEW-03 | Phase 6 | Complete |
-| REVIEW-04 | Phase 6 | Pending |
+| REVIEW-04 | Phase 6 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 33 total
