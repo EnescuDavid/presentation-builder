@@ -97,42 +97,34 @@ This checks WCAG AA contrast ratios for all color combinations defined in theme.
 
 ---
 
-## Step 5: Test Presentation (builder subagent)
+## Step 5: Test Presentation (inline, no subagent)
 
-Generate a comprehensive visual proof across all 21 components.
+Generate a quick 5-slide visual proof that covers the key brand surfaces. Do NOT use a subagent — build this inline to keep it fast.
 
-**Launch the builder subagent** to generate `brands/{name}/test-presentation.html`.
+**Build `brands/{name}/test-presentation.html` directly** with exactly 5 slides:
 
-Per **D-10**: The test presentation MUST contain exactly **21 slides**, one per component type, in this order:
+1. `title` — brand name, subtitle, checks primary color + font + master layer
+2. `metrics` — 3-4 KPI cards, checks accent colors + card surfaces + number styling
+3. `two-column` — text + image placeholder, checks body text + heading hierarchy + spacing
+4. `chart` — bar or pie chart, checks chart color palette from brand.yaml
+5. `summary` — 3 takeaways, checks surface background + bullet styling + footer
 
-1. `title`
-2. `section-break`
-3. `text-heavy`
-4. `two-column`
-5. `metrics`
-6. `image-full-bleed`
-7. `agenda`
-8. `summary`
-9. `contact`
-10. `comparison`
-11. `timeline`
-12. `quote`
-13. `card-grid`
-14. `framework`
-15. `data-table`
-16. `harvey-balls`
-17. `chart`
-18. `mermaid-diagram`
-19. `waterfall`
-20. `code-block`
-21. `team`
+**How to build it:**
+1. Read `templates/_skeleton.html` for the HTML structure
+2. Read the 5 component templates from `templates/` (title.html, metrics.html, two-column.html, chart.html, summary.html)
+3. Read `tokens/base.css` and `tokens/components.css` for base styles
+4. Assemble a single HTML file:
+   - Inline `base.css` into `@layer tokens`
+   - Inline `tokens/animations.css` into `@layer animations`
+   - Inline the `@layer base-theme` rules from the skeleton
+   - Inline `brands/{name}/theme.css` into `@layer theme`
+   - Copy `tokens/components.css` verbatim into `@layer components`
+   - Add `@layer overrides` for any per-slide `--comp-*` variable tweaks
+5. Use `brand.yaml` `master_layer` settings for footer configuration
+6. Populate slides with sample German content appropriate to the brand's tone
+7. Write the result to `brands/{name}/test-presentation.html`
 
-**Builder instructions:**
-- Apply `brands/{name}/theme.css` as the theme
-- Use `brand.yaml` `master_layer` settings for footer configuration (company name, confidentiality, logo)
-- Populate each slide with sample/placeholder content in German, appropriate to the brand's tone (per `brand.yaml` `tone.formality`)
-- Slide titles should use the brand's `component_preferences.title_style` convention
-- The presentation serves as a visual regression test — if it looks good, the brand works everywhere
+**This is a brand smoke test, not a full component regression.** 5 slides is enough to verify colors, fonts, spacing, and chart palette. A full 21-component test can be run later via `/build` if needed.
 
 **Output:** `brands/{name}/test-presentation.html`.
 
@@ -150,7 +142,7 @@ Present all generated artifacts for user approval. This is the **single review g
 4. Brief summary of theme extraction results (colors found, fonts detected, logos extracted)
 
 **Ask the user to:**
-- Open `brands/{name}/test-presentation.html` in their browser and review all 21 slides
+- Open `brands/{name}/test-presentation.html` in their browser and review all 5 slides
 - Approve the generated brand.yaml and rules.md, or request changes **conversationally** (per **D-11**)
 
 **Handling feedback:**
