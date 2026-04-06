@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Agent Pipeline + Component Architecture
 status: executing
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-04-06T11:36:42.233Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-04-06T11:37:35.274Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 6
   completed_phases: 3
   total_plans: 14
-  completed_plans: 12
+  completed_plans: 13
   percent: 71
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 04 (orchestration-entry-points) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-04-06
 
@@ -74,6 +74,7 @@ Progress: [███████░░░] 71%
 | Phase 03-brand-system P03 | 3 | 3 tasks | 3 files |
 | Phase 03 P02 | 4min | 2 tasks | 4 files |
 | Phase 04-orchestration-entry-points P03 | 2 | 1 tasks | 1 files |
+| Phase 04-orchestration-entry-points P02 | 2 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -118,6 +119,9 @@ Recent decisions affecting current work:
 - [Phase 03]: brand-checker is advisory-only: all conflicts flagged but pipeline never blocked
 - [Phase 04]: D-11 applied: model comprehension routing for refine-deck — no menu, model reads user description and routes silently to 6-tier change gradient
 - [Phase 04]: D-12 applied: refine-deck change gradient (no debate Tiers 1-3, lightweight planner Tier 4, condensed 1-round Tier 5, full pipeline Tier 6)
+- [Phase 04-orchestration-entry-points]: 9-step pipeline with named agents; architect+critic run in parallel; debate ceiling at N==3 escalates to user
+- [Phase 04-orchestration-entry-points]: Resumability uses 3 states only: no .pipeline/ = fresh, artifacts found = ask, resume = skip completed steps
+- [Phase 04-orchestration-entry-points]: Forward-referenced Phase 5 agents (narrative-planner, architect, critic, reviewer) in workflow spec per D-06
 
 ### Pending Todos
 
@@ -130,6 +134,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T11:36:42.231Z
-Stopped at: Completed 04-03-PLAN.md
+Last session: 2026-04-06T11:37:35.272Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
