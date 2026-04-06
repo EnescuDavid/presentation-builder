@@ -1,73 +1,106 @@
 # Workflow: Refine Deck
 
-Iterate on an existing presentation -- update content, change layouts, swap themes, or restructure slides.
+Iterate on an existing presentation — from typo fixes to full restructures. Change scope is detected automatically from your description and routed to the right agent(s).
 
 <required_reading>
 **Read these reference files NOW before proceeding:**
 
-1. `references/component-catalog.md` -- 14 components with semantic descriptions and HTML patterns
+1. `references/component-catalog.md` -- 21 components with semantic descriptions, HTML patterns, --comp-* variables
 2. `references/design-principles.md` -- Consulting-grade design rules and typography hierarchy
+3. `references/css-property-map.md` -- CSS property map for slide-stylist (91 --comp-* variables)
+4. `references/brand-system.md` -- brand.yaml schema, agent-to-field mapping
 </required_reading>
 
 <process>
 
-## Step 1: Identify Target
+## Step 1: Load Existing Deck
 
-Locate the existing presentation:
+1. Read `projects/{name}/presentation.html` — the current deck
+2. Read `projects/{name}/deck-plan.md` — the original slide plan (if exists)
+3. Read `brands/{brand}/brand.yaml` — the active brand (detect from presentation.html theme link)
+4. If presentation.html doesn't exist, tell the user and suggest `/build {name}` instead
 
-1. Find `projects/{name}/presentation.html` -- the current deck
-2. Find `projects/{name}/deck-plan.md` -- the original slide plan
-3. If neither exists, ask the user for the file path
-4. Read both files to understand current state
+## Step 2: Determine Change Scope
 
-## Step 2: Understand Changes
+Read the user's change description. Based on what they want, route to the appropriate tier below. Do NOT present a numbered menu. Do NOT ask the user to classify their change. Analyze their words and route.
 
-Ask the user what they want to change:
+Surface your routing choice in one sentence before acting: "This looks like a visual adjustment — I'll have the stylist handle the CSS."
 
-- **Content changes:** Update text, numbers, quotes on specific slides
-- **Layout changes:** Swap a component (e.g., replace two-column with comparison)
-- **Theme changes:** Switch from default to enterprise, or apply a custom theme
-- **Structural changes:** Add, remove, or reorder slides
-- **Style changes:** Adjust fonts, colors, spacing, animations
-- **Specific slide edits:** "Change slide 3 to use bigger numbers" or "Add a timeline after the metrics slide"
+### Tier 1: Typo / Content Edit
+**Signals:** "fix typo", "change the number", "update the text", "replace [word]", specific text corrections, data updates, factual corrections
+**Route:** Spawn `slide-editor` with:
+- `projects/{name}/presentation.html`
+- The specific change request (which slide, what text to change)
 
-## Step 3: Update Plan (if structural)
+No debate. Surgical edit only.
+After edit: run verification loop, present change to user.
 
-For changes that affect the slide structure or component selection:
+### Tier 2: Visual Adjustment
+**Signals:** "change the colors", "make it bigger", "adjust spacing", "different font", "animation", "visual tweak", "looks too busy", color/size/style descriptions
+**Route:** Spawn `slide-stylist` with:
+- `projects/{name}/presentation.html`
+- `brands/{brand}/brand.yaml`
+- `references/css-property-map.md`
+- The visual change request
 
-1. Update `projects/{name}/deck-plan.md` with the new slide breakdown
-2. Present the updated plan to the user for approval
-3. Wait for confirmation before proceeding
+No debate. CSS-only changes via @layer overrides.
+After edit: run verification loop, present change to user.
 
-Skip this step for content-only or style-only changes.
+### Tier 3: Component Swap
+**Signals:** "use a timeline instead", "swap to comparison layout", "change this to a card grid", component name mentions with "instead" or "swap" or "replace", same-slide layout change
+**Route:** Spawn `slide-editor` with:
+- `projects/{name}/presentation.html`
+- `references/component-catalog.md`
+- The swap request (which slide, which new component)
 
-## Step 4: Apply Changes
+No debate. Editor replaces the component HTML while preserving content.
+After edit: run verification loop, present change to user.
 
-**For content-only changes:**
-- Edit `projects/{name}/presentation.html` directly
-- Update text, numbers, labels within existing component markup
-- Preserve all CSS, theme links, and master layer configuration
+### Tier 4: Add / Remove Slides
+**Signals:** "add a slide about...", "remove the last slide", "insert a metrics slide after...", "delete slide 5", adding or removing individual slides
+**Route:**
+1. Spawn `slide-editor` with the HTML change request
+2. Spawn `narrative-planner` for a lightweight structural coherence check:
+   - Pass: `projects/{name}/deck-plan.md` + the add/remove description
+   - Planner checks that the narrative still flows. Advisory only — no full debate.
+3. Update `deck-plan.md` to reflect the change
 
-**For structural changes:**
-- Spawn the `presentation-builder` subagent with the updated `deck-plan.md`
-- The builder regenerates affected slides while preserving unchanged ones
-- Output: updated `projects/{name}/presentation.html`
+After edit: run verification loop, present change to user.
 
-**For theme changes:**
-- Swap the `<link>` tag to the new theme CSS file
-- Verify all components render correctly with the new theme
-- Check color contrast and readability
+### Tier 5: Section Restructure
+**Signals:** "reorganize the middle section", "move the comparison before the metrics", "restructure the flow", "reorder slides 4-8", multi-slide reorganization
+**Route:**
+1. Spawn `narrative-planner` to revise `deck-plan.md`:
+   - Pass: current `deck-plan.md`, `projects/{name}/.pipeline/brand-context.md` (if exists), the restructure request
+   - Run a condensed 1-round debate: planner produces revised plan, spawn `presentation-architect` only (no critic) for a structural check
+   - If architect has BLOCKINGs: planner revises once. No further rounds.
+2. Present revised plan to user for approval
+3. Spawn `presentation-builder` to regenerate the affected section(s)
 
-## Step 5: Verify
+After rebuild: run verification loop, present changes to user.
 
-After applying changes:
+### Tier 6: Full Restructure
+**Signals:** "completely redo the narrative", "start over with the structure", "rewrite the whole flow", "new angle on the same content", fundamental narrative or messaging changes
+**Route:** Return to `build-new-deck.md` pipeline from Step 4 (Debate).
+- Skip Steps 1-3 (brief, research, brand-check) if the brief and research haven't changed
+- The existing `projects/{name}/.pipeline/research.md` and `.pipeline/brand-context.md` are reused
+- Full 3-round debate pipeline runs
 
-1. Open `projects/{name}/presentation.html` in the browser
-2. Navigate through all slides, focusing on changed slides
-3. Check: layout integrity, text overflow, theme consistency, animation behavior
-4. Run the verification loop from SKILL.md
-5. Report changes made and any issues found
+## Step 3: Verify and Iterate
 
-If the user wants further refinements, loop back to Step 2.
+After any change (regardless of tier):
+
+1. Run the verification loop from SKILL.md (HTML exists, opens without errors, slides render, theme applied, master layer, German text, animations)
+2. Report what was changed and any issues found
+3. Ask: "Anything else to refine?"
+4. If yes: loop back to Step 2 with the new request
+5. If no: done
 
 </process>
+
+## Anti-Patterns
+
+- **DO NOT** present a numbered menu asking the user to pick a change type
+- **DO NOT** ask "Is this a content change or a structural change?"
+- **DO** read the user's natural language and route silently
+- **DO** surface what you're doing: "This looks like a visual adjustment — I'll have the stylist handle the CSS."
