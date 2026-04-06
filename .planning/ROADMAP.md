@@ -235,7 +235,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 06-01-PLAN.md -- Infrastructure: fix check-contrast.js path, create capture-slides.py, create build-log-format.md
+- [x] 06-01-PLAN.md -- Infrastructure: fix check-contrast.js path, create capture-slides.py, create build-log-format.md
 - [ ] 06-02-PLAN.md -- Presentation-reviewer agent definition (3-stage: story, visual, delivery)
 - [ ] 06-03-PLAN.md -- Build-log retrofit across all 10 agent definitions
 - [ ] 06-04-PLAN.md -- Orchestrator workflow updates (build-log lifecycle, review integration, quick review mode)
@@ -252,4 +252,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Brand System | v2.0 | 3/3 | Complete   | 2026-04-06 |
 | 4. Orchestration & Entry Points | v2.0 | 3/3 | Complete   | 2026-04-06 |
 | 5. Strategist Debate | v2.0 | 4/4 | Complete   | 2026-04-06 |
-| 6. Review Pipeline | v2.0 | 0/4 | Planned | - |
+| 6. Review Pipeline | v2.0 | 1/4 | In Progress|  |

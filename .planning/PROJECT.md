@@ -57,13 +57,13 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - [x] `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers — Phase 4
 - [x] `build-new-deck.md` workflow rewrite with orchestration logic + pipeline resumability — Phase 4
 - [x] `refine-deck.md` workflow rewrite with change-scope routing — Phase 4
-- [ ] Narrative-planner agent (SCQA, Pyramid, action titles, visual treatment)
-- [ ] Presentation-architect agent (10 structural checks, pacing, rhythm)
-- [ ] Presentation-critic agent (6 adversarial checks, evidence gaps, "So What" test)
-- [ ] Slide-editor agent for surgical HTML edits
-- [ ] Verdict-driven debate protocol (auto-gate, 3-round ceiling)
-- [ ] Rich deck-plan.md format with Narrative Flow Map
-- [ ] Audience-presets.md rewrite with hard/soft rules
+- [x] Narrative-planner agent (SCQA, Pyramid, action titles, visual treatment) — Phase 5
+- [x] Presentation-architect agent (10 structural checks, pacing, rhythm) — Phase 5
+- [x] Presentation-critic agent (6 adversarial checks, evidence gaps, "So What" test) — Phase 5
+- [x] Slide-editor agent for surgical HTML edits — Phase 5
+- [x] Verdict-driven debate protocol (auto-gate, 3-round ceiling) — Phase 5
+- [x] Rich deck-plan.md format with Narrative Flow Map — Phase 5
+- [x] Audience-presets.md rewrite with hard/soft rules — Phase 5
 - [ ] Presentation-reviewer agent (story + visual + brand compliance)
 - [ ] Playwright screenshot capture tool
 - [ ] Build-log.yaml format for pipeline traceability
@@ -101,12 +101,12 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Monolithic components.css over per-component files | Eliminates builder selection logic; single file copied verbatim | — Pending |
-| Verdict-driven debate gate (not orchestrator-judged) | Architect + Critic BLOCKINGs auto-gate the loop. Orchestrator is traffic controller only | — Pending |
-| 3-agent consensus debate over single-agent role-play | Real disagreement > self-anchoring. Independent contexts per OMX pattern | — Pending |
+| Verdict-driven debate gate (not orchestrator-judged) | Architect + Critic BLOCKINGs auto-gate the loop. Orchestrator is traffic controller only | Delivered Phase 5 |
+| 3-agent consensus debate over single-agent role-play | Real disagreement > self-anchoring. Independent contexts per OMX pattern | Delivered Phase 5 |
 | brands/ directory replacing themes/ | A brand is more than a theme.css — includes rules, preferences, component biases | — Pending |
 | Model comprehension routing in SKILL.md | Natural language understanding, not keyword dispatch. Proven by Superpowers/OMX | — Pending |
-| deck-plan.md as markdown convention, not YAML schema | Planner (opus) needs creative freedom; builder (sonnet) needs unambiguous instructions | — Pending |
-| slide-editor agent separate from builder and stylist | Surgical HTML edits vs generation vs CSS-only. Most-used agent in refine-deck | — Pending |
+| deck-plan.md as markdown convention, not YAML schema | Planner (opus) needs creative freedom; builder (sonnet) needs unambiguous instructions | Delivered Phase 5 |
+| slide-editor agent separate from builder and stylist | Surgical HTML edits vs generation vs CSS-only. Most-used agent in refine-deck | Delivered Phase 5 |
 | Pipeline resumability via .pipeline/ state detection | Prevents wasting expensive opus debate rounds on context resets | — Pending |
 
 ## Evolution
@@ -127,4 +127,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-06 after Phase 4 completion*
+*Last updated: 2026-04-06 after Phase 5 completion*

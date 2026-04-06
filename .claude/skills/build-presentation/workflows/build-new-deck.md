@@ -10,6 +10,7 @@ Build a complete presentation through the 9-agent pipeline: brief intake with br
 3. `references/design-principles.md` — Consulting-grade design rules and typography hierarchy
 4. `references/brand-system.md` — brand.yaml schema, bundled brands, agent-to-field mapping
 5. `references/visual-vocabulary.md` — 15 content archetypes, bullet-list smell test
+6. `references/build-log-format.md` — build-log.yaml schema, append pattern, event types
 </required_reading>
 
 <pipeline>
@@ -104,6 +105,28 @@ Create the pipeline directory:
 mkdir -p projects/{name}/.pipeline/debate
 ```
 
+### 1c: Initialize Build Log
+
+Create the pipeline trace file:
+
+```bash
+cat > projects/{name}/.pipeline/build-log.yaml << 'EOF'
+meta:
+  project: "{name}"
+  started: "{ISO-8601-timestamp}"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "started"
+EOF
+```
+
+All subsequent agents append to this file. See `references/build-log-format.md` for schema.
+
 ## Step 2: Research (researcher agent)
 
 Spawn the `presentation-researcher` subagent with:
@@ -112,6 +135,8 @@ Spawn the `presentation-researcher` subagent with:
 - `references/visual-vocabulary.md`
 
 Wait for completion. The agent writes `projects/{name}/.pipeline/research.md`.
+
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "research"`, `event: "phase_end"`, `message: "Research complete"`.
 
 **Surface findings:** Read `.pipeline/research.md` and summarize the key findings to the user in conversation. Quote specific data points, statistics, recommended content archetypes, and gap analysis. Always present findings inline — never direct the user to open a pipeline file.
 
@@ -126,6 +151,8 @@ Spawn the `brand-checker` subagent with:
 - `projects/{name}/.pipeline/research.md`
 
 Wait for completion. The agent writes `projects/{name}/.pipeline/brand-context.md`.
+
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "brand-check"`, `event: "phase_end"`, `message: "Brand check complete"`.
 
 **Surface findings:** Summarize brand alignment notes, color semantics, and any advisory flags to the user in conversation. Brand-checker is advisory-only — it never blocks the pipeline.
 
@@ -169,6 +196,8 @@ Read both verdict files. Count BLOCKING items (tagged `[BLOCKING-1]`, `[BLOCKING
 - **BLOCKINGs exist and N < 3:** Surface the blocking items to the user in conversation (quote them, do not reference files). Increment N, return to 4.1. The planner will address the critiques in round N+1.
 - **BLOCKINGs exist and N == 3 (ceiling reached):** Escalate to user. Surface all remaining BLOCKING items with Consensus Notes from both architect and critic. Ask the user how to proceed: override and accept the plan, or provide guidance for one more planner pass.
 
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "debate"`, `event: "phase_end"`, `message: "Debate resolved after {N} rounds"`.
+
 ## Step 5: User Review (main chat)
 
 Present the approved plan (the final `round-{N}-plan.md`) to the user:
@@ -186,6 +215,8 @@ Ask: "Approve this plan, or what would you like to change?"
 
 Do NOT proceed to building until the user explicitly approves.
 
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "user-review"`, `event: "user_action"`, `message: "User approved deck-plan"`.
+
 ## Step 6: Build (builder agent)
 
 Spawn the `presentation-builder` subagent with:
@@ -198,6 +229,8 @@ Spawn the `presentation-builder` subagent with:
 
 Wait for completion. The agent writes `projects/{name}/presentation.html`.
 
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "build"`, `event: "phase_end"`, `message: "Build complete"`.
+
 ## Step 7: Stylist Pass (slide-stylist agent, conditional)
 
 If the builder flagged any visual concerns, or if the user's brand has strict visual rules in `rules.md`:
@@ -209,6 +242,8 @@ Spawn the `slide-stylist` subagent with:
 - `references/css-property-map.md`
 
 Wait for completion. The agent edits `projects/{name}/presentation.html` in-place.
+
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "stylist"`, `event: "phase_end"`, `message: "Stylist pass complete"`.
 
 If no visual concerns and no strict brand rules: skip this step.
 
@@ -224,12 +259,20 @@ Wait for completion. The agent writes `projects/{name}/.pipeline/review-report.m
 
 **Evaluate review:**
 - Read `.pipeline/review-report.md`
-- Surface the review scorecard to the user in conversation (quote scores and findings, do not reference the file)
+- Parse the review scorecard:
+  - Read the `**Story:**` line — extract PASS or FAIL
+  - Read the `**Visual:**` line — extract PASS or FAIL
+  - If either shows FAIL, read the `## Blockers` section
+  - Count `[BLOCKER-N]` tags — these are the findings to fix
+  - Surface each blocker to the user with its slide number and fix recommendation
+- Surface the full scorecard to the user in conversation (quote scores and findings, do not reference the file)
 - If no BLOCKERs: proceed to Step 9
 - If BLOCKERs exist (max 2 auto-fix rounds):
   - Surface the blockers to the user in conversation
   - Spawn `presentation-builder` again with the review report as additional input
   - Re-run reviewer. If still blocking after 2 rounds: escalate to user
+
+Log the phase transition: append to build-log.yaml with `agent: "orchestrator"`, `phase: "review"`, `event: "phase_end"`, `message: "Review complete: Story {PASS|FAIL}, Visual {PASS|FAIL}"`.
 
 ## Step 9: Delivery
 
@@ -238,6 +281,27 @@ Present the final deck to the user:
 2. Share the review scorecard summary (quoted from `.pipeline/review-report.md`, not a file reference)
 3. Run the verification loop from SKILL.md
 4. Ask if they want any refinements → route to `refine-deck.md` workflow
+
+### 9b: Finalize Build Log
+
+Update the summary block in build-log.yaml:
+
+```bash
+python3 -c "
+import yaml
+with open('projects/{name}/.pipeline/build-log.yaml') as f:
+    log = yaml.safe_load(f)
+log['summary'] = {
+    'status': 'success',
+    'total_duration_s': 0,
+    'pipeline_flow': '{brief(OK) -> research -> strategy -> review -> build -> delivery}'
+}
+with open('projects/{name}/.pipeline/build-log.yaml', 'w') as f:
+    yaml.dump(log, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+"
+```
+
+Fill in the actual `pipeline_flow` string from the steps that ran (skip steps that were skipped, e.g., omit `-> stylist` if Step 7 was skipped).
 
 </pipeline>
 

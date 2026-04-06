@@ -49,13 +49,13 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 - [x] **DEBATE-04**: Verdict-driven debate protocol (zero BLOCKINGs = pass, 3-round ceiling, user escalation)
 - [x] **DEBATE-05**: Rich deck-plan.md format with Narrative Flow Map and per-slide specs
 - [x] **DEBATE-06**: Audience-presets.md rewrite with hard rules (enforced) and soft rules (suggested)
-- [ ] **DEBATE-07**: Slide-editor agent for surgical HTML edits (content, component swaps, element add/remove)
+- [x] **DEBATE-07**: Slide-editor agent for surgical HTML edits (content, component swaps, element add/remove)
 
 ### Review Pipeline
 
 - [ ] **REVIEW-01**: Presentation-reviewer agent with story + visual + brand compliance checks
-- [ ] **REVIEW-02**: Playwright screenshot capture tool (`tools/capture-slides.py`)
-- [ ] **REVIEW-03**: Build-log.yaml for pipeline traceability
+- [x] **REVIEW-02**: Playwright screenshot capture tool (`tools/capture-slides.py`)
+- [x] **REVIEW-03**: Build-log.yaml for pipeline traceability
 - [ ] **REVIEW-04**: Review integration in build-new-deck workflow (BLOCKER -> builder auto-fix, max 2 rounds)
 
 ## Future Requirements
@@ -111,10 +111,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DEBATE-04 | Phase 5 | Complete |
 | DEBATE-05 | Phase 5 | Complete |
 | DEBATE-06 | Phase 5 | Complete |
-| DEBATE-07 | Phase 5 | Pending |
+| DEBATE-07 | Phase 5 | Complete |
 | REVIEW-01 | Phase 6 | Pending |
-| REVIEW-02 | Phase 6 | Pending |
-| REVIEW-03 | Phase 6 | Pending |
+| REVIEW-02 | Phase 6 | Complete |
+| REVIEW-03 | Phase 6 | Complete |
 | REVIEW-04 | Phase 6 | Pending |
 
 **Coverage:**

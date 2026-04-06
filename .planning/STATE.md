@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
 milestone: v2.0
-milestone_name: Data Viz, Consulting Intelligence & Platform
-status: verifying
-stopped_at: Completed 06-02-PLAN.md
-last_updated: "2026-04-06T15:19:36.663Z"
+milestone_name: Agent Pipeline + Component Architecture
+status: executing
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-04-06T15:19:20.328Z"
 last_activity: 2026-04-06
 progress:
-  total_phases: 7
+  total_phases: 6
   completed_phases: 5
-  total_plans: 8
-  completed_plans: 13
+  total_plans: 22
+  completed_plans: 19
   percent: 71
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 11 — consulting-intelligence-ai-skill-layer
+**Current focus:** Phase 06 — review-pipeline
 
 ## Current Position
 
-Phase: 11
-Plan: 2 of 2 complete
-Status: Phase complete — ready for verification
+Phase: 06 (review-pipeline) — EXECUTING
+Plan: 2 of 4
+Status: Ready to execute
 Last activity: 2026-04-06
 
 Progress: [███████░░░] 71%
@@ -69,7 +69,18 @@ Progress: [███████░░░] 71%
 | Phase 12 P01 | 3min | 2 tasks | 3 files |
 | Phase 12 P02 | 3min | 2 tasks | 2 files |
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
-| Phase 06-review-pipeline P02 | 2 | 1 tasks | 1 files |
+| Phase 02-visual-vocabulary P03 | 3 | 2 tasks | 2 files |
+| Phase 03 P01 | 9min | 2 tasks | 11 files |
+| Phase 03-brand-system P03 | 3 | 3 tasks | 3 files |
+| Phase 03 P02 | 4min | 2 tasks | 4 files |
+| Phase 04-orchestration-entry-points P03 | 2 | 1 tasks | 1 files |
+| Phase 04-orchestration-entry-points P02 | 2 | 1 tasks | 1 files |
+| Phase 04-orchestration-entry-points P01 | 5 | 2 tasks | 5 files |
+| Phase 05 P01 | 3min | 2 tasks | 2 files |
+| Phase 05 P02 | 5 | 2 tasks | 2 files |
+| Phase 05 P03 | 2 | 2 tasks | 2 files |
+| Phase 05-strategist-debate P04 | 525665min | 2 tasks | 2 files |
+| Phase 06-review-pipeline P01 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -104,9 +115,34 @@ Recent decisions affecting current work:
 - [Phase 12]: Accessible export uses cheerio DOM parsing with h1/h2/h3 heading hierarchy and German labels
 - [Phase 12]: PPTX export uses image-based slides (full visual fidelity) via DeckTape screenshots + PptxGenJS assembly
 - [Phase 13]: Three-tier compliance status (AUTOMATED/PARTIAL/N/A) for honest EAA gap documentation
-- [Phase 06-review-pipeline]: Three-stage review ordering: Story before Visual (intent before polish), Delivery advisory-only
-- [Phase 06-review-pipeline]: Catalog-driven class name validation per D-10 -- component-catalog.md read at runtime
-- [Phase 06-review-pipeline]: Screenshot capture optional (D-08) -- failure silently skipped in reviewer agent
+- [Phase 02-visual-vocabulary]: css-property-map.md covers all 21 components as lookup table for slide-stylist natural language requests
+- [Phase 02-visual-vocabulary]: slide-stylist uses @layer overrides with #slide-{n} scope — zero risk to other slides or component CSS
+- [Phase 03]: Used --color-surface (not --color-surface-alt) for neutral in all bundled brand.yaml files -- verified --color-surface-alt does not exist in tokens/base.css
+- [Phase 03]: theme-system.md rewritten as Brand System doc with brand.yaml schema, 3-file package structure, and updated PPTX extraction guidance
+- [Phase 03-brand-system]: Onboard-brand workflow replaces extract-theme workflow as primary brand intake path; SKILL.md intake option 3 updated to reflect full brand system
+- [Phase 03]: Builder reads brand.yaml for rendering fields only (theme_css, logo, master_layer, color_semantics) — not component_preferences or tone
+- [Phase 03]: Strategist reads brand-context.md (pre-digested by brand-checker), not brand.yaml directly — temporary until Phase 5 debate triad
+- [Phase 03]: brand-checker is advisory-only: all conflicts flagged but pipeline never blocked
+- [Phase 04]: D-11 applied: model comprehension routing for refine-deck — no menu, model reads user description and routes silently to 6-tier change gradient
+- [Phase 04]: D-12 applied: refine-deck change gradient (no debate Tiers 1-3, lightweight planner Tier 4, condensed 1-round Tier 5, full pipeline Tier 6)
+- [Phase 04-orchestration-entry-points]: 9-step pipeline with named agents; architect+critic run in parallel; debate ceiling at N==3 escalates to user
+- [Phase 04-orchestration-entry-points]: Resumability uses 3 states only: no .pipeline/ = fresh, artifacts found = ask, resume = skip completed steps
+- [Phase 04-orchestration-entry-points]: Forward-referenced Phase 5 agents (narrative-planner, architect, critic, reviewer) in workflow spec per D-06
+- [Phase 04-01]: Model comprehension routing replaces keyword dispatch table in SKILL.md -- describes workflows in natural language with use-when signals, model selects based on intent
+- [Phase 04-01]: Three slash commands are pure workspace initializers (5-10 lines each): create folder + input/, set context, hand off to SKILL.md
+- [Phase 04-01]: projects/*/.pipeline/ added to root .gitignore -- agent pipeline artifacts will not pollute git history
+- [Phase 05]: Hard rules (BLOCKING) defined per audience: C-Suite max 15 slides/24pt min/no text-heavy/no animations, Stakeholder max 25/18pt min, Technical max 40/14pt min, Sales max 15/24pt min; Workshop+Internal advisory-only
+- [Phase 05]: narrative-planner agent writes to .pipeline/debate/round-N-plan.md (never deck-plan.md); Narrative Flow Map first section; 7 required per-slide fields; 12-item success criteria
+- [Phase 05]: Hybrid audiences: primary hard rules always apply, soft rules blend via averages and union/intersection of prefer/avoid lists
+- [Phase 05]: D-03: Architect checks structural quality (10 checks including brand compliance as ADVISORY)
+- [Phase 05]: D-04: Critic checks argument quality (6 checks) -- scoped to exclude structural concerns
+- [Phase 05]: D-16: Internal/Workshop audiences use advisory-only mode in architect -- no hard rule enforcement
+- [Phase 05]: D-17/D-18/D-19: slide-editor agent -- separate agent for surgical HTML edits, Edit-tool-only, fulfills refine-deck Tier 1/3/4
+- [Phase 05]: D-20: presentation-strategist.md deleted after all 3 replacements (narrative-planner, architect, critic) confirmed present
+- [Phase 05-strategist-debate]: [BLOCKING-N] is the canonical debate gate tag format — agents emit it, build-new-deck.md Step 4.3 parses it
+- [Phase 06]: check-contrast.js path changed from themes/ to brands/ -- Phase 3 migrated theme files, this was a pre-existing bug
+- [Phase 06]: build-log-format.md as standalone reference doc -- single source of truth for all agents over inlining per agent
+- [Phase 06]: Bash cat-append pattern for build-log entries -- avoids YAML library dependency in agent context
 
 ### Pending Todos
 
@@ -119,6 +155,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T15:19:36.660Z
-Stopped at: Completed 06-02-PLAN.md
+Last session: 2026-04-06T15:19:20.325Z
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None
