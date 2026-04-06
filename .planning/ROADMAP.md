@@ -133,7 +133,7 @@ Plans:
 - [ ] **Phase 2: Visual Vocabulary** - 15 content archetypes, bullet-list smell test, curated icons, CSS property map, slide-stylist agent (gap closure in progress)
 - [x] **Phase 3: Brand System** - brands/ directory, brand.yaml + rules.md per brand, brand-checker/profiler agents, onboard-brand workflow (completed 2026-04-06)
 - [x] **Phase 4: Orchestration & Entry Points** - SKILL.md rewrite, /build /refine /onboard commands, workflow rewrites, pipeline resumability (completed 2026-04-06)
-- [x] **Phase 5: Strategist Debate** - Narrative-planner, architect, critic agents, verdict-driven debate protocol, rich deck-plan.md, audience hard/soft rules, slide-editor agent (completed 2026-04-06)
+- [x] **Phase 5: Strategist Debate** - Narrative-planner, architect, critic agents, verdict-driven debate protocol, rich deck-plan.md, audience hard/soft rules, slide-editor agent (gap closure in progress) (completed 2026-04-06)
 - [ ] **Phase 6: Review Pipeline** - Presentation-reviewer agent, Playwright screenshots, build-log.yaml, review integration in build workflow
 
 ## Phase Details
@@ -215,12 +215,13 @@ Plans:
   5. Rich deck-plan.md format includes Narrative Flow Map and per-slide specs
   6. Audience-presets.md rewritten with hard rules (enforced) and soft rules (suggested)
   7. Slide-editor agent performs surgical HTML edits (content, component swaps, element add/remove)
-**Plans**: 3 plans
+**Plans**: 4 plans
 
 Plans:
 - [x] 05-01-PLAN.md -- Audience-presets.md hard/soft rule rewrite and narrative-planner agent definition
 - [x] 05-02-PLAN.md -- Presentation-architect (10 structural checks) and presentation-critic (6 adversarial checks) agent definitions
 - [x] 05-03-PLAN.md -- Slide-editor agent definition and presentation-strategist.md deletion
+- [x] 05-04-PLAN.md -- Gap closure: align BLOCKING tag format between agents and debate gate (DEBATE-04)
 
 ### Phase 6: Review Pipeline
 **Goal**: Built presentations go through automated review with visual verification, compliance checks, and traceable build logs
@@ -244,5 +245,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Visual Vocabulary | v2.0 | 2/3 | Gap closure | - |
 | 3. Brand System | v2.0 | 3/3 | Complete   | 2026-04-06 |
 | 4. Orchestration & Entry Points | v2.0 | 3/3 | Complete   | 2026-04-06 |
-| 5. Strategist Debate | v2.0 | 3/3 | Complete   | 2026-04-06 |
+| 5. Strategist Debate | v2.0 | 4/4 | Complete   | 2026-04-06 |
 | 6. Review Pipeline | v2.0 | 0/0 | Not started | - |
