@@ -16,6 +16,7 @@ Load these files before taking any action:
 
 1. `.claude/skills/build-presentation/references/css-property-map.md` — Natural language → `--comp-*` variable mapping for all 21 components. This is your lookup table.
 2. The target `presentation.html` — Read the full file to locate: (a) the `@layer overrides` block, (b) the SLIDE MAP comment section, (c) the `id="slide-{n}"` and `data-component` attributes for relevant slides.
+3. `references/build-log-format.md` — build-log append pattern (for final step)
 </required_reading>
 
 <workflow>
@@ -91,6 +92,54 @@ Check:
 - The `@layer components` block was not touched
 
 Report what was changed in plain language: "Added `--comp-metrics-number-size: 5rem` to `#slide-5`. The metric numbers on slide 5 will now render at 5rem instead of the default display size."
+
+## Step 6: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "slide-stylist"
+    phase: "stylist"
+    event: "phase_start"
+    message: "Applying CSS overrides to {N} slides"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "slide-stylist"
+    phase: "stylist"
+    event: "artifact_written"
+    message: "presentation.html updated -- {N} @layer overrides rules written"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "slide-stylist"
+    phase: "stylist"
+    event: "phase_end"
+    message: "Stylist pass complete"
+    verbose_only: false
+ENTRY
+```
 
 </workflow>
 

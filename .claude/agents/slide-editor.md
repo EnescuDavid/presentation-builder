@@ -16,6 +16,7 @@ Load these files before any edit:
 2. `references/component-catalog.md` -- component HTML patterns, BEM class names, required slots (needed for component swaps)
 3. `projects/{name}/deck-plan.md` -- original slide plan for context on content structure (if exists)
 4. `tokens/components.css` -- component CSS class names to verify BEM naming after swaps
+5. `references/build-log-format.md` -- build-log append pattern (for final step)
 </required_reading>
 
 <workflow>
@@ -43,6 +44,60 @@ Load these files before any edit:
 3. For removing a slide: identify the `<section>` boundaries. Use Edit to remove the entire `<section>` block.
 4. For adding elements within a slide: locate the insertion point, build the element HTML following the component's BEM pattern, use Edit to insert.
 5. Read back the surrounding context to verify no broken HTML tags.
+
+## Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "slide-editor"
+    phase: "edit"
+    event: "phase_start"
+    message: "Editing slide {N}: {change_type}"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "slide-editor"
+    phase: "edit"
+    event: "decision"
+    message: "Change classified as: {tier}"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "slide-editor"
+    phase: "edit"
+    event: "artifact_written"
+    message: "presentation.html updated -- {description}"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "slide-editor"
+    phase: "edit"
+    event: "phase_end"
+    message: "Edit complete"
+    verbose_only: false
+ENTRY
+```
 
 </workflow>
 

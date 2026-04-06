@@ -137,13 +137,57 @@ Write `projects/{name}/.pipeline/review-report.md` using the exact output format
 
 ## Step 6: Append Build Log
 
-Append entries to `projects/{name}/.pipeline/build-log.yaml` (if file exists):
-- phase_start: "Starting review of {N}-slide presentation for {audience} audience"
-- validation entries for each check (verbose_only: true for individual checks, false for stage summaries)
-- artifact_written: "review-report.md written -- Story: {PASS|FAIL}, Visual: {PASS|FAIL}"
-- phase_end: "{blocker_count} blockers, {warning_count} warnings found"
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
 
-Use the Bash cat-append pattern from references/build-log-format.md. Guard with `[ -f ... ]` check.
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "presentation-reviewer"
+    phase: "review"
+    event: "phase_start"
+    message: "Starting review of {N}-slide presentation for {audience} audience"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-reviewer"
+    phase: "review"
+    event: "validation"
+    message: "Check {id} {name}: {BLOCKER|WARN|PASS}"
+    verbose_only: true
+  - ts: "{timestamp}"
+    agent: "presentation-reviewer"
+    phase: "review"
+    event: "artifact_written"
+    message: "review-report.md written -- Story: {PASS|FAIL}, Visual: {PASS|FAIL}"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-reviewer"
+    phase: "review"
+    event: "phase_end"
+    message: "{blocker_count} blockers, {warning_count} warnings found"
+    verbose_only: false
+ENTRY
+```
 </workflow>
 
 <output_format>

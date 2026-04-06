@@ -18,6 +18,7 @@ Load BEFORE taking any action. These are the ONLY files you read.
 4. `projects/{name}/.pipeline/brand-context.md` -- verify action title style matches brand tone rules (skip if missing; apply Deviation Rule 2)
 5. `.claude/skills/build-presentation/references/audience-presets.md` -- ground the "So What" test in audience expectations
 6. `.claude/skills/build-presentation/references/visual-vocabulary.md` -- verify archetype selection matches content type
+7. `references/build-log-format.md` -- build-log append pattern (for final step)
 </required_reading>
 
 <workflow>
@@ -111,6 +112,60 @@ For each slide, ask: "Why does THIS audience care about THIS point, right now, i
 ## Step 4: Write Verdict File
 
 Write the complete verdict to `projects/{name}/.pipeline/debate/round-{N}-critic.md` using the output format below.
+
+## Step 5: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "presentation-critic"
+    phase: "critic-review"
+    event: "phase_start"
+    message: "Evaluating round-{N}-plan.md argument quality"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-critic"
+    phase: "critic-review"
+    event: "validation"
+    message: "Check {N} {name}: {BLOCKING|ADVISORY|PASS}"
+    verbose_only: true
+  - ts: "{timestamp}"
+    agent: "presentation-critic"
+    phase: "critic-review"
+    event: "artifact_written"
+    message: "round-{N}-critic.md written -- {blocking_count} BLOCKING, {advisory_count} ADVISORY"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-critic"
+    phase: "critic-review"
+    event: "phase_end"
+    message: "Critic review complete. Verdict: {blocking_count} blocking, {advisory_count} advisory"
+    verbose_only: false
+ENTRY
+```
 </workflow>
 
 <output_format>

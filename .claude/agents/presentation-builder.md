@@ -24,6 +24,7 @@ Load BEFORE building. These are the ONLY reference files needed:
                                           (company_name, confidentiality, date_format, logo_position),
                                           color_semantics mapping (which CSS tokens mean
                                           positive/negative/neutral/highlight for state modifiers)
+7. `references/build-log-format.md`   -- build-log append pattern (for final step)
 
 Do NOT read individual template HTML files (templates/title.html, templates/metrics.html, etc.).
 Templates are human reference only. The catalog (templates/index.md) is the builder's source of truth.
@@ -143,6 +144,66 @@ Write the assembled presentation to `projects/{name}/presentation.html`.
 ## Step 10: Self-Check (run before returning)
 
 See Self-Check section below. Fix any failures found before delivering.
+
+## Step 11: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "presentation-builder"
+    phase: "build"
+    event: "phase_start"
+    message: "Building {slide_count} slides from deck-plan.md"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-builder"
+    phase: "build"
+    event: "decision"
+    message: "Deviation: slide {N} -- {reason}"
+    verbose_only: true
+  - ts: "{timestamp}"
+    agent: "presentation-builder"
+    phase: "build"
+    event: "artifact_written"
+    message: "Slide {N}/{total} built: {component}"
+    verbose_only: true
+  - ts: "{timestamp}"
+    agent: "presentation-builder"
+    phase: "build"
+    event: "artifact_written"
+    message: "presentation.html written -- {slide_count} slides, all class names verified"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-builder"
+    phase: "build"
+    event: "phase_end"
+    message: "Build complete. Self-check: {N}/{total} passed."
+    verbose_only: false
+ENTRY
+```
 
 </workflow>
 
