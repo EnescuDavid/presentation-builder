@@ -219,7 +219,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md -- Audience-presets.md hard/soft rule rewrite and narrative-planner agent definition
-- [ ] 05-02-PLAN.md -- Presentation-architect (10 structural checks) and presentation-critic (6 adversarial checks) agent definitions
+- [x] 05-02-PLAN.md -- Presentation-architect (10 structural checks) and presentation-critic (6 adversarial checks) agent definitions
 - [ ] 05-03-PLAN.md -- Slide-editor agent definition and presentation-strategist.md deletion
 
 ### Phase 6: Review Pipeline
@@ -244,5 +244,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Visual Vocabulary | v2.0 | 2/3 | Gap closure | - |
 | 3. Brand System | v2.0 | 3/3 | Complete   | 2026-04-06 |
 | 4. Orchestration & Entry Points | v2.0 | 3/3 | Complete   | 2026-04-06 |
-| 5. Strategist Debate | v2.0 | 0/3 | Planned | - |
+| 5. Strategist Debate | v2.0 | 2/3 | In Progress|  |
 | 6. Review Pipeline | v2.0 | 0/0 | Not started | - |
