@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** - Phases 1-6 (shipped 2026-03-27)
-- 🚧 **v2.0 Agent Pipeline + Component Architecture** - Phases 1-6 (in progress)
+- ✅ **v2.0 Agent Pipeline + Component Architecture** - Phases 1-6 (shipped 2026-04-06)
 
 ## Phases
 
@@ -130,11 +130,11 @@ Plans:
 **Milestone Goal:** Rewrite the presentation builder from a single-strategist, template-ignoring system into a multi-agent pipeline with locked CSS, visual argumentation, brand awareness, and consensus debate.
 
 - [x] **Phase 1: Component Architecture** - Monolithic components.css, @layer skeleton, --comp-* variable contract, template rewrite, builder agent rewrite (completed 2026-04-05)
-- [ ] **Phase 2: Visual Vocabulary** - 15 content archetypes, bullet-list smell test, curated icons, CSS property map, slide-stylist agent (gap closure in progress)
+- [x] **Phase 2: Visual Vocabulary** - 15 content archetypes, bullet-list smell test, curated icons, CSS property map, slide-stylist agent (completed 2026-04-05)
 - [x] **Phase 3: Brand System** - brands/ directory, brand.yaml + rules.md per brand, brand-checker/profiler agents, onboard-brand workflow (completed 2026-04-06)
 - [x] **Phase 4: Orchestration & Entry Points** - SKILL.md rewrite, /build /refine /onboard commands, workflow rewrites, pipeline resumability (completed 2026-04-06)
 - [x] **Phase 5: Strategist Debate** - Narrative-planner, architect, critic agents, verdict-driven debate protocol, rich deck-plan.md, audience hard/soft rules, slide-editor agent (gap closure in progress) (completed 2026-04-06)
-- [ ] **Phase 6: Review Pipeline** - Presentation-reviewer agent, Playwright screenshots, build-log.yaml, review integration in build workflow
+- [x] **Phase 6: Review Pipeline** - Presentation-reviewer agent, Playwright screenshots, build-log.yaml, review integration in build workflow (completed 2026-04-06)
 
 ## Phase Details
 
@@ -172,7 +172,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md -- Visual vocabulary reference (15 archetypes, smell test, 50 icons) and CSS property map (91 variables)
 - [x] 02-02-PLAN.md -- Slide-stylist agent definition, strategist integration, and catalog archetype cross-references
-- [ ] 02-03-PLAN.md -- Gap closure: CSS property map reference for slide-stylist agent (VIS-03)
+- [x] 02-03-PLAN.md -- Gap closure: CSS property map reference for slide-stylist agent (VIS-03)
 
 ### Phase 3: Brand System
 **Goal**: Corporate branding is managed through a structured brands/ directory with machine-readable profiles, automated extraction, and agent-driven validation
@@ -248,8 +248,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1. Component Architecture | v2.0 | 5/5 | Complete | 2026-04-05 |
-| 2. Visual Vocabulary | v2.0 | 2/3 | Gap closure | - |
+| 2. Visual Vocabulary | v2.0 | 3/3 | Complete | 2026-04-05 |
 | 3. Brand System | v2.0 | 3/3 | Complete   | 2026-04-06 |
 | 4. Orchestration & Entry Points | v2.0 | 3/3 | Complete   | 2026-04-06 |
 | 5. Strategist Debate | v2.0 | 4/4 | Complete   | 2026-04-06 |
-| 6. Review Pipeline | v2.0 | 3/4 | In Progress|  |
+| 6. Review Pipeline | v2.0 | 4/4 | Complete | 2026-04-06 |

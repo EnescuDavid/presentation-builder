@@ -38,18 +38,16 @@ def find_free_port(start=8100, end=8999):
 
 def start_server(directory, port):
     """Start a local HTTP server serving directory on port. Returns httpd handle."""
-    original_dir = os.getcwd()
-    os.chdir(directory)
+    import functools
 
     class SilentHandler(http.server.SimpleHTTPRequestHandler):
         def log_message(self, *args):
             pass  # silence access log
 
-    httpd = http.server.HTTPServer(('localhost', port), SilentHandler)
+    handler = functools.partial(SilentHandler, directory=directory)
+    httpd = http.server.HTTPServer(('localhost', port), handler)
     t = threading.Thread(target=httpd.serve_forever, daemon=True)
     t.start()
-    # Restore working directory so pathlib operations remain correct
-    os.chdir(original_dir)
     return httpd
 
 
@@ -147,12 +145,12 @@ def capture(html_path):
         '<meta charset="utf-8">'
         '<title>Contact Sheet</title>'
         '<style>'
-        'body { font-family: Inter, sans-serif; background: #f5f5f5; padding: 2rem; }'
-        '.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }'
-        'figure { margin: 0; background: white; border-radius: 6px; overflow: hidden;'
-        ' box-shadow: 0 2px 6px rgba(0,0,0,.1); }'
-        'img { width: 100%; display: block; }'
-        'figcaption { padding: .5rem .75rem; font-size: .8rem; color: #555; }'
+        'body {{ font-family: Inter, sans-serif; background: #f5f5f5; padding: 2rem; }}'
+        '.grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }}'
+        'figure {{ margin: 0; background: white; border-radius: 6px; overflow: hidden;'
+        ' box-shadow: 0 2px 6px rgba(0,0,0,.1); }}'
+        'img {{ width: 100%; display: block; }}'
+        'figcaption {{ padding: .5rem .75rem; font-size: .8rem; color: #555; }}'
         '</style>'
         '</head>'
         '<body>'

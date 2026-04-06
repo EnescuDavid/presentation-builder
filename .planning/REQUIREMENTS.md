@@ -10,12 +10,12 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 ### Component Architecture
 
 - [x] **COMP-01**: Builder copies monolithic `components.css` verbatim into every presentation (pre-written CSS for all 21 components)
-- [ ] **COMP-02**: Skeleton template uses `@layer` structure (tokens, animations, base-theme, theme, components, overrides)
+- [x] **COMP-02**: Skeleton template uses `@layer` structure (tokens, animations, base-theme, theme, components, overrides)
 - [x] **COMP-03**: Each component exposes `--comp-*` CSS custom properties as only customization surface
 - [x] **COMP-04**: Components include state variants and visual micro-patterns
-- [ ] **COMP-05**: All 21 templates refactored with exact BEM class names matching components.css
-- [ ] **COMP-06**: Component catalog enriched with per-component `--comp-*` variable reference
-- [ ] **COMP-07**: Builder agent rewritten to copy locked CSS, use exact class names, `--comp-*` vars only
+- [x] **COMP-05**: All 21 templates refactored with exact BEM class names matching components.css
+- [x] **COMP-06**: Component catalog enriched with per-component `--comp-*` variable reference
+- [x] **COMP-07**: Builder agent rewritten to copy locked CSS, use exact class names, `--comp-*` vars only
 
 ### Visual Vocabulary
 
@@ -31,7 +31,7 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 - [x] **BRAND-03**: Brand-checker agent validates brief against brand profile and produces `brand-context.md`
 - [x] **BRAND-04**: Brand-profiler agent generates `brand.yaml` from corporate assets (PPTX, PDF)
 - [x] **BRAND-05**: Onboard-brand workflow with test-presentation generation per component type
-- [ ] **BRAND-06**: `_base.css` embedded in skeleton's `@layer base-theme` (not in brands/)
+- [x] **BRAND-06**: `_base.css` embedded in skeleton's `@layer base-theme` (not in brands/)
 
 ### Orchestration & Entry Points
 
@@ -53,7 +53,7 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 
 ### Review Pipeline
 
-- [ ] **REVIEW-01**: Presentation-reviewer agent with story + visual + brand compliance checks
+- [x] **REVIEW-01**: Presentation-reviewer agent with story + visual + brand compliance checks
 - [x] **REVIEW-02**: Playwright screenshot capture tool (`tools/capture-slides.py`)
 - [x] **REVIEW-03**: Build-log.yaml for pipeline traceability
 - [x] **REVIEW-04**: Review integration in build-new-deck workflow (BLOCKER -> builder auto-fix, max 2 rounds)
@@ -84,13 +84,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | COMP-01 | Phase 1 | Complete |
-| COMP-02 | Phase 1 | Pending |
+| COMP-02 | Phase 1 | Complete |
 | COMP-03 | Phase 1 | Complete |
 | COMP-04 | Phase 1 | Complete |
-| COMP-05 | Phase 1 | Pending |
-| COMP-06 | Phase 1 | Pending |
-| COMP-07 | Phase 1 | Pending |
-| BRAND-06 | Phase 1 | Pending |
+| COMP-05 | Phase 1 | Complete |
+| COMP-06 | Phase 1 | Complete |
+| COMP-07 | Phase 1 | Complete |
+| BRAND-06 | Phase 1 | Complete |
 | VIS-01 | Phase 2 | Complete |
 | VIS-02 | Phase 2 | Complete |
 | VIS-03 | Phase 2 | Delivered |
@@ -112,7 +112,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DEBATE-05 | Phase 5 | Complete |
 | DEBATE-06 | Phase 5 | Complete |
 | DEBATE-07 | Phase 5 | Complete |
-| REVIEW-01 | Phase 6 | Pending |
+| REVIEW-01 | Phase 6 | Complete |
 | REVIEW-02 | Phase 6 | Complete |
 | REVIEW-03 | Phase 6 | Complete |
 | REVIEW-04 | Phase 6 | Complete |
