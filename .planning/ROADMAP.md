@@ -237,7 +237,7 @@ Plans:
 Plans:
 - [x] 06-01-PLAN.md -- Infrastructure: fix check-contrast.js path, create capture-slides.py, create build-log-format.md
 - [x] 06-02-PLAN.md -- Presentation-reviewer agent definition (3-stage: story, visual, delivery)
-- [ ] 06-03-PLAN.md -- Build-log retrofit across all 10 agent definitions
+- [x] 06-03-PLAN.md -- Build-log retrofit across all 10 agent definitions
 - [x] 06-04-PLAN.md -- Orchestrator workflow updates (build-log lifecycle, review integration, quick review mode)
 
 ## Progress
