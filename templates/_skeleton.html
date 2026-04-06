@@ -284,7 +284,8 @@
       .reveal .slides section ol {
         font-size: var(--font-size-body);
         line-height: var(--line-height-normal);
-        margin-left: var(--spacing-lg);
+        margin-left: 0;
+        padding-left: var(--spacing-lg);
       }
 
       .reveal .slides section li {
@@ -302,6 +303,8 @@
         height: var(--theme-accent-bar-height);
         background: linear-gradient(90deg, var(--theme-gradient-start), var(--theme-gradient-end));
         z-index: 10;
+        /* Anchor to slide top edge regardless of reveal.js centering */
+        margin-top: calc(-1 * var(--spacing-2xl));
       }
 
       /* ==========================================================================
