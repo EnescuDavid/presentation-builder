@@ -1,0 +1,31 @@
+name: "Startup"
+locale: "de"
+theme_css: "brands/startup/theme.css"
+logo: "brands/startup/logo.svg"
+
+master_layer:
+  company: "Startup Inc."
+  confidentiality: "Internal"
+  date_format: "DD.MM.YYYY"
+  logo_position: "top-right"
+
+component_preferences:
+  prefer: [card-grid, image-full-bleed, quote, metrics]
+  avoid: [data-table, harvey-balls]
+  title_style: "question"
+
+audience_overrides:
+  technical:
+    max_slides: 25
+
+tone:
+  formality: "casual"
+  action_titles: "engaging, punchy"
+  bullet_style: "narrative"
+  restrictions: []
+
+color_semantics:
+  positive: "--color-success"
+  negative: "--color-danger"
+  neutral: "--color-surface"
+  highlight: "--color-accent"

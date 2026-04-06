@@ -1,0 +1,35 @@
+name: "Enterprise"
+locale: "de"
+theme_css: "brands/enterprise/theme.css"
+logo: "brands/enterprise/logo.svg"
+
+master_layer:
+  company: "Enterprise Corp."
+  confidentiality: "Strictly Confidential"
+  date_format: "DD.MM.YYYY"
+  logo_position: "top-left"
+
+component_preferences:
+  prefer: [data-table, framework, metrics, comparison]
+  avoid: [card-grid, image-full-bleed, quote]
+  title_style: "statement"
+
+audience_overrides:
+  c-suite:
+    max_slides: 12
+
+tone:
+  formality: "high"
+  action_titles: "verb-first, formal German"
+  bullet_style: "data-driven"
+  restrictions:
+    - "No emoji"
+    - "No image-full-bleed slides"
+    - "No casual language"
+    - "No English mixed into German decks"
+
+color_semantics:
+  positive: "--color-success"
+  negative: "--color-danger"
+  neutral: "--color-surface"
+  highlight: "--color-primary"

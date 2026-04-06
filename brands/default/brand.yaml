@@ -1,0 +1,29 @@
+name: "Default"
+locale: "de"
+theme_css: "brands/default/theme.css"
+logo: ""
+
+master_layer:
+  company: ""
+  confidentiality: ""
+  date_format: "DD.MM.YYYY"
+  logo_position: "top-left"
+
+component_preferences:
+  prefer: []
+  avoid: []
+  title_style: "action-verb"
+
+audience_overrides: {}
+
+tone:
+  formality: "medium"
+  action_titles: "verb-first"
+  bullet_style: "concise"
+  restrictions: []
+
+color_semantics:
+  positive: "--color-success"
+  negative: "--color-danger"
+  neutral: "--color-surface"
+  highlight: "--color-accent"
