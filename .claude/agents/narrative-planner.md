@@ -27,6 +27,7 @@ Load these files before taking any action:
 7. `references/design-principles.md` -- typography hierarchy, spacing rules, 5 layout patterns, visual rhythm guidance
 8. If N > 1: `projects/{name}/.pipeline/debate/round-{N-1}-architect.md` -- previous round architect structural critique
 9. If N > 1: `projects/{name}/.pipeline/debate/round-{N-1}-critic.md` -- previous round critic adversarial verdict
+10. `references/build-log-format.md` -- build-log append pattern (for final step)
 
 Replace `{name}` with the project name from the workflow context. Replace `{N}` with the current round number.
 </required_reading>
@@ -55,7 +56,63 @@ Replace `{name}` with the project name from the workflow context. Replace `{N}` 
 8. If N > 1: read the previous round's architect and critic feedback files. For every BLOCKING issue, either fix it in the revised plan or provide specific written justification for why it should be downgraded to ADVISORY. Document each response in the Consensus Notes section. Do not silently skip any BLOCKING.
 
 9. Write the complete plan to `projects/{name}/.pipeline/debate/round-{N}-plan.md` using the output format defined below.
+
+10. Append to the build log (see Step 10: Append Build Log).
 </workflow>
+
+## Step 10: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "narrative-planner"
+    phase: "narrative-plan"
+    event: "phase_start"
+    message: "Planning {audience} presentation: {topic}"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "narrative-planner"
+    phase: "narrative-plan"
+    event: "decision"
+    message: "SCQA applied: {situation} -> {complication}"
+    verbose_only: true
+  - ts: "{timestamp}"
+    agent: "narrative-planner"
+    phase: "narrative-plan"
+    event: "artifact_written"
+    message: "round-{N}-plan.md written -- {slide_count} slides"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "narrative-planner"
+    phase: "narrative-plan"
+    event: "phase_end"
+    message: "Narrative plan complete. Round {N}, {slide_count} slides"
+    verbose_only: false
+ENTRY
+```
 
 <output_format>
 Write `projects/{name}/.pipeline/debate/round-{N}-plan.md` using this exact structure:

@@ -19,6 +19,7 @@ Load BEFORE taking any action. These are the ONLY files you read.
 5. `projects/{name}/brief.md` -- user requirements to verify plan addresses stated needs
 6. `projects/{name}/.pipeline/research.md` -- to judge if data density is justified by available evidence (skip if missing; apply Deviation Rule 1)
 7. `projects/{name}/.pipeline/brand-context.md` -- brand preferences, component restrictions, tone rules (skip if missing; apply Deviation Rule 2)
+8. `references/build-log-format.md` -- build-log append pattern (for final step)
 </required_reading>
 
 <workflow>
@@ -98,6 +99,60 @@ All brand violations are ADVISORY (not BLOCKING) — consistent with brand-check
 ## Step 4: Write Critique File
 
 Write the complete critique to `projects/{name}/.pipeline/debate/round-{N}-architect.md` using the output format below.
+
+## Step 5: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "presentation-architect"
+    phase: "architect-review"
+    event: "phase_start"
+    message: "Evaluating round-{N}-plan.md structural quality"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-architect"
+    phase: "architect-review"
+    event: "validation"
+    message: "Check {N} {name}: {BLOCKING|ADVISORY|PASS}"
+    verbose_only: true
+  - ts: "{timestamp}"
+    agent: "presentation-architect"
+    phase: "architect-review"
+    event: "artifact_written"
+    message: "round-{N}-architect.md written -- {blocking_count} BLOCKING, {advisory_count} ADVISORY"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-architect"
+    phase: "architect-review"
+    event: "phase_end"
+    message: "Architect review complete. Verdict: {blocking_count} blocking, {advisory_count} advisory"
+    verbose_only: false
+ENTRY
+```
 </workflow>
 
 <output_format>

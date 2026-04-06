@@ -102,3 +102,58 @@ Each H2 section becomes one potential slide in the strategist's deck plan. The s
 - Content is audience-appropriate (density matches audience type from brief)
 - No fabricated statistics -- all numbers come from either the user's brief or verified web sources
 </success_criteria>
+
+<required_reading>
+Load these files before taking any action:
+
+1. `projects/{name}/brief.md` -- user requirements, topic, audience type, key messages, constraints (REQUIRED -- cannot proceed without it)
+2. `references/build-log-format.md` -- build-log append pattern (for final step)
+</required_reading>
+
+## Step 5: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "presentation-researcher"
+    phase: "research"
+    event: "phase_start"
+    message: "Starting {mode} research for '{topic}'"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-researcher"
+    phase: "research"
+    event: "artifact_written"
+    message: "research.md written -- {N} content blocks, {M} gaps flagged"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "presentation-researcher"
+    phase: "research"
+    event: "phase_end"
+    message: "Research complete. Mode: {mode}"
+    verbose_only: false
+ENTRY
+```

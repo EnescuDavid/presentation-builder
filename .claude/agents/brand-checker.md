@@ -20,6 +20,7 @@ Load these files before taking any action:
 2. `brands/{name}/rules.md` — free-form corporate rules and prose guidance
 3. `projects/{name}/brief.md` — check for brand conflicts (required input — cannot proceed without it)
 4. `projects/{name}/.pipeline/research.md` — tone/language compliance (if exists; skip gracefully if missing)
+5. `references/build-log-format.md` — build-log append pattern (for final step)
 
 Replace `{name}` with the brand name and project name from the workflow context.
 </required_reading>
@@ -86,6 +87,54 @@ Synthesize the brand profile into a structured cheat sheet:
 Write the cheat sheet to `projects/{name}/.pipeline/brand-context.md`.
 
 Use the output format defined in the Output Format section below.
+
+## Step 6: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "brand-checker"
+    phase: "brand-check"
+    event: "phase_start"
+    message: "Checking brief against {brand} brand profile"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "brand-checker"
+    phase: "brand-check"
+    event: "artifact_written"
+    message: "brand-context.md written"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "brand-checker"
+    phase: "brand-check"
+    event: "phase_end"
+    message: "Brand check complete. Conflicts: {N}"
+    verbose_only: false
+ENTRY
+```
 </workflow>
 
 <output_format>

@@ -21,6 +21,7 @@ Load these files before taking any action:
 1. `brands/{name}/theme.css` — extracted theme CSS if `tools/extract-theme.js` has already run (may not exist yet)
 2. `brands/default/brand.yaml` — reference schema showing all 9 required fields
 3. `brands/enterprise/brand.yaml` — reference for a fully-fleshed-out profile with all optional fields populated
+4. `references/build-log-format.md` — build-log append pattern (for final step)
 
 These references show you the schema to follow and the range of values each field accepts. Do NOT copy their content — only use as structural references.
 </required_reading>
@@ -187,6 +188,60 @@ Use these section headings (include all that are relevant, skip empty sections):
 ```
 
 Include at minimum 3 section headings even if most contain "None" or "Use framework defaults." This ensures rules.md is always a complete document, not a stub.
+
+## Step 7: Append Build Log
+
+Append entries to `projects/{name}/.pipeline/build-log.yaml`.
+
+Guard: if the file does not exist, create it first:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "direct-invocation"
+INIT
+```
+
+Append these entries using Bash cat-append (2-space indentation under entries:):
+
+```bash
+cat >> projects/{name}/.pipeline/build-log.yaml << 'ENTRY'
+  - ts: "{timestamp}"
+    agent: "brand-profiler"
+    phase: "brand-profile"
+    event: "phase_start"
+    message: "Profiling brand from {N} input assets"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "brand-profiler"
+    phase: "brand-profile"
+    event: "artifact_written"
+    message: "brand.yaml written"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "brand-profiler"
+    phase: "brand-profile"
+    event: "artifact_written"
+    message: "test-presentation.html written"
+    verbose_only: false
+  - ts: "{timestamp}"
+    agent: "brand-profiler"
+    phase: "brand-profile"
+    event: "phase_end"
+    message: "Brand profile complete"
+    verbose_only: false
+ENTRY
+```
 </workflow>
 
 <output_format>
