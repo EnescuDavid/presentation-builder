@@ -53,10 +53,10 @@ Anyone can clone the repo, import their corporate PowerPoint theme, and build a 
 - [ ] Brand-checker agent (pre-debate gate producing brand-context.md)
 - [ ] Brand-profiler agent (generates brand.yaml from corporate assets)
 - [ ] Onboard-brand workflow with test-presentation generation
-- [ ] SKILL.md rewrite with model comprehension routing
-- [ ] `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers
-- [ ] `build-new-deck.md` workflow rewrite with orchestration logic + pipeline resumability
-- [ ] `refine-deck.md` workflow rewrite with change-scope routing
+- [x] SKILL.md rewrite with model comprehension routing — Phase 4
+- [x] `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers — Phase 4
+- [x] `build-new-deck.md` workflow rewrite with orchestration logic + pipeline resumability — Phase 4
+- [x] `refine-deck.md` workflow rewrite with change-scope routing — Phase 4
 - [ ] Narrative-planner agent (SCQA, Pyramid, action titles, visual treatment)
 - [ ] Presentation-architect agent (10 structural checks, pacing, rhythm)
 - [ ] Presentation-critic agent (6 adversarial checks, evidence gaps, "So What" test)
@@ -127,4 +127,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-05 after milestone v2.0 start*
+*Last updated: 2026-04-06 after Phase 4 completion*
