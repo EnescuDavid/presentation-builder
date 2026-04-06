@@ -35,8 +35,8 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 
 ### Orchestration & Entry Points
 
-- [ ] **ORCH-01**: SKILL.md rewritten with model comprehension routing (no keyword dispatch)
-- [ ] **ORCH-02**: `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers
+- [x] **ORCH-01**: SKILL.md rewritten with model comprehension routing (no keyword dispatch)
+- [x] **ORCH-02**: `/build`, `/refine`, `/onboard` thin slash commands as workspace initializers
 - [x] **ORCH-03**: `build-new-deck.md` workflow rewrite with 9-agent orchestration + pipeline resumability
 - [x] **ORCH-04**: `refine-deck.md` workflow rewrite with change-scope routing to appropriate agents
 - [x] **ORCH-05**: Pipeline state detection from `.pipeline/` artifacts on entry (resume or start fresh)
@@ -100,8 +100,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BRAND-03 | Phase 3 | Complete |
 | BRAND-04 | Phase 3 | Complete |
 | BRAND-05 | Phase 3 | Complete |
-| ORCH-01 | Phase 4 | Pending |
-| ORCH-02 | Phase 4 | Pending |
+| ORCH-01 | Phase 4 | Complete |
+| ORCH-02 | Phase 4 | Complete |
 | ORCH-03 | Phase 4 | Complete |
 | ORCH-04 | Phase 4 | Complete |
 | ORCH-05 | Phase 4 | Complete |

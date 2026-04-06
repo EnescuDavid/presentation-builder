@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Agent Pipeline + Component Architecture
-status: executing
-stopped_at: Completed 04-02-PLAN.md
-last_updated: "2026-04-06T11:37:35.274Z"
+status: verifying
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-04-06T11:41:58.340Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 6
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 14
-  completed_plans: 13
+  completed_plans: 14
   percent: 71
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 Phase: 04 (orchestration-entry-points) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-04-06
 
 Progress: [███████░░░] 71%
@@ -75,6 +75,7 @@ Progress: [███████░░░] 71%
 | Phase 03 P02 | 4min | 2 tasks | 4 files |
 | Phase 04-orchestration-entry-points P03 | 2 | 1 tasks | 1 files |
 | Phase 04-orchestration-entry-points P02 | 2 | 1 tasks | 1 files |
+| Phase 04-orchestration-entry-points P01 | 5 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -122,6 +123,9 @@ Recent decisions affecting current work:
 - [Phase 04-orchestration-entry-points]: 9-step pipeline with named agents; architect+critic run in parallel; debate ceiling at N==3 escalates to user
 - [Phase 04-orchestration-entry-points]: Resumability uses 3 states only: no .pipeline/ = fresh, artifacts found = ask, resume = skip completed steps
 - [Phase 04-orchestration-entry-points]: Forward-referenced Phase 5 agents (narrative-planner, architect, critic, reviewer) in workflow spec per D-06
+- [Phase 04-01]: Model comprehension routing replaces keyword dispatch table in SKILL.md -- describes workflows in natural language with use-when signals, model selects based on intent
+- [Phase 04-01]: Three slash commands are pure workspace initializers (5-10 lines each): create folder + input/, set context, hand off to SKILL.md
+- [Phase 04-01]: projects/*/.pipeline/ added to root .gitignore -- agent pipeline artifacts will not pollute git history
 
 ### Pending Todos
 
@@ -134,6 +138,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T11:37:35.272Z
-Stopped at: Completed 04-02-PLAN.md
+Last session: 2026-04-06T11:41:58.337Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
