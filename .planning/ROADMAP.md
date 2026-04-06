@@ -218,7 +218,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md -- Audience-presets.md hard/soft rule rewrite and narrative-planner agent definition
+- [x] 05-01-PLAN.md -- Audience-presets.md hard/soft rule rewrite and narrative-planner agent definition
 - [ ] 05-02-PLAN.md -- Presentation-architect (10 structural checks) and presentation-critic (6 adversarial checks) agent definitions
 - [ ] 05-03-PLAN.md -- Slide-editor agent definition and presentation-strategist.md deletion
 

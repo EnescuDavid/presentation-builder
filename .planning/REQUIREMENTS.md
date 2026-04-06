@@ -43,12 +43,12 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 
 ### Strategist Debate
 
-- [ ] **DEBATE-01**: Narrative-planner agent (SCQA, Pyramid Principle, action titles, visual treatment)
+- [x] **DEBATE-01**: Narrative-planner agent (SCQA, Pyramid Principle, action titles, visual treatment)
 - [ ] **DEBATE-02**: Presentation-architect agent (10 structural checks including brand + brief compliance)
 - [ ] **DEBATE-03**: Presentation-critic agent (6 adversarial checks, evidence gaps, "So What" test)
 - [ ] **DEBATE-04**: Verdict-driven debate protocol (zero BLOCKINGs = pass, 3-round ceiling, user escalation)
-- [ ] **DEBATE-05**: Rich deck-plan.md format with Narrative Flow Map and per-slide specs
-- [ ] **DEBATE-06**: Audience-presets.md rewrite with hard rules (enforced) and soft rules (suggested)
+- [x] **DEBATE-05**: Rich deck-plan.md format with Narrative Flow Map and per-slide specs
+- [x] **DEBATE-06**: Audience-presets.md rewrite with hard rules (enforced) and soft rules (suggested)
 - [ ] **DEBATE-07**: Slide-editor agent for surgical HTML edits (content, component swaps, element add/remove)
 
 ### Review Pipeline
@@ -105,12 +105,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ORCH-03 | Phase 4 | Complete |
 | ORCH-04 | Phase 4 | Complete |
 | ORCH-05 | Phase 4 | Complete |
-| DEBATE-01 | Phase 5 | Pending |
+| DEBATE-01 | Phase 5 | Complete |
 | DEBATE-02 | Phase 5 | Pending |
 | DEBATE-03 | Phase 5 | Pending |
 | DEBATE-04 | Phase 5 | Pending |
-| DEBATE-05 | Phase 5 | Pending |
-| DEBATE-06 | Phase 5 | Pending |
+| DEBATE-05 | Phase 5 | Complete |
+| DEBATE-06 | Phase 5 | Complete |
 | DEBATE-07 | Phase 5 | Pending |
 | REVIEW-01 | Phase 6 | Pending |
 | REVIEW-02 | Phase 6 | Pending |

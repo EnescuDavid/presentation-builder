@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Agent Pipeline + Component Architecture
-status: verifying
-stopped_at: Phase 5 context gathered
-last_updated: "2026-04-06T11:49:59.586Z"
+status: executing
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-04-06T13:37:55.365Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 6
   completed_phases: 4
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 17
+  completed_plans: 15
   percent: 71
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 04 — orchestration-entry-points
+**Current focus:** Phase 05 — strategist-debate
 
 ## Current Position
 
-Phase: 5
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 05 (strategist-debate) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
 Last activity: 2026-04-06
 
 Progress: [███████░░░] 71%
@@ -76,6 +76,7 @@ Progress: [███████░░░] 71%
 | Phase 04-orchestration-entry-points P03 | 2 | 1 tasks | 1 files |
 | Phase 04-orchestration-entry-points P02 | 2 | 1 tasks | 1 files |
 | Phase 04-orchestration-entry-points P01 | 5 | 2 tasks | 5 files |
+| Phase 05 P01 | 3min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -126,6 +127,9 @@ Recent decisions affecting current work:
 - [Phase 04-01]: Model comprehension routing replaces keyword dispatch table in SKILL.md -- describes workflows in natural language with use-when signals, model selects based on intent
 - [Phase 04-01]: Three slash commands are pure workspace initializers (5-10 lines each): create folder + input/, set context, hand off to SKILL.md
 - [Phase 04-01]: projects/*/.pipeline/ added to root .gitignore -- agent pipeline artifacts will not pollute git history
+- [Phase 05]: Hard rules (BLOCKING) defined per audience: C-Suite max 15 slides/24pt min/no text-heavy/no animations, Stakeholder max 25/18pt min, Technical max 40/14pt min, Sales max 15/24pt min; Workshop+Internal advisory-only
+- [Phase 05]: narrative-planner agent writes to .pipeline/debate/round-N-plan.md (never deck-plan.md); Narrative Flow Map first section; 7 required per-slide fields; 12-item success criteria
+- [Phase 05]: Hybrid audiences: primary hard rules always apply, soft rules blend via averages and union/intersection of prefer/avoid lists
 
 ### Pending Todos
 
@@ -138,6 +142,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T11:49:59.583Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-strategist-debate/05-CONTEXT.md
+Last session: 2026-04-06T13:37:55.362Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: None
