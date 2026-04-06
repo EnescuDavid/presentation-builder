@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Agent Pipeline + Component Architecture
 status: executing
-stopped_at: Completed 03-01-PLAN.md
-last_updated: "2026-04-06T09:46:42.325Z"
+stopped_at: Completed 03-03-PLAN.md
+last_updated: "2026-04-06T09:51:30.022Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 11
-  completed_plans: 9
+  completed_plans: 10
   percent: 71
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 03 (brand-system) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-04-06
 
@@ -71,6 +71,7 @@ Progress: [███████░░░] 71%
 | Phase 13 P01 | 3min | 2 tasks | 2 files |
 | Phase 02-visual-vocabulary P03 | 3 | 2 tasks | 2 files |
 | Phase 03 P01 | 9min | 2 tasks | 11 files |
+| Phase 03-brand-system P03 | 3 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -109,6 +110,7 @@ Recent decisions affecting current work:
 - [Phase 02-visual-vocabulary]: slide-stylist uses @layer overrides with #slide-{n} scope — zero risk to other slides or component CSS
 - [Phase 03]: Used --color-surface (not --color-surface-alt) for neutral in all bundled brand.yaml files -- verified --color-surface-alt does not exist in tokens/base.css
 - [Phase 03]: theme-system.md rewritten as Brand System doc with brand.yaml schema, 3-file package structure, and updated PPTX extraction guidance
+- [Phase 03-brand-system]: Onboard-brand workflow replaces extract-theme workflow as primary brand intake path; SKILL.md intake option 3 updated to reflect full brand system
 
 ### Pending Todos
 
@@ -121,6 +123,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T09:46:42.323Z
-Stopped at: Completed 03-01-PLAN.md
+Last session: 2026-04-06T09:51:30.020Z
+Stopped at: Completed 03-03-PLAN.md
 Resume file: None

@@ -30,7 +30,7 @@ Requirements for the Agent Pipeline + Component Architecture milestone. Each map
 - [x] **BRAND-02**: Hand-written `brand.yaml` for 3 bundled brands (default, startup, enterprise)
 - [ ] **BRAND-03**: Brand-checker agent validates brief against brand profile and produces `brand-context.md`
 - [ ] **BRAND-04**: Brand-profiler agent generates `brand.yaml` from corporate assets (PPTX, PDF)
-- [ ] **BRAND-05**: Onboard-brand workflow with test-presentation generation per component type
+- [x] **BRAND-05**: Onboard-brand workflow with test-presentation generation per component type
 - [ ] **BRAND-06**: `_base.css` embedded in skeleton's `@layer base-theme` (not in brands/)
 
 ### Orchestration & Entry Points
@@ -99,7 +99,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BRAND-02 | Phase 3 | Complete |
 | BRAND-03 | Phase 3 | Pending |
 | BRAND-04 | Phase 3 | Pending |
-| BRAND-05 | Phase 3 | Pending |
+| BRAND-05 | Phase 3 | Complete |
 | ORCH-01 | Phase 4 | Pending |
 | ORCH-02 | Phase 4 | Pending |
 | ORCH-03 | Phase 4 | Pending |
