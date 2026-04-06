@@ -13,15 +13,16 @@ You are working in a presentation builder framework that generates consulting-gr
 ## Project Structure
 
 ```
-projects/{name}/          # Generated presentations
+projects/{name}/          # Your generated presentations
   brief.md                #   User requirements
   research.md             #   Structured content (optional)
   deck-plan.md            #   Slide-by-slide plan (review before building)
   presentation.html       #   Final output (single file, works offline)
+examples/                 # Example presentations (basic, German demo, themed showcase)
 templates/                # 21 component HTML templates + _skeleton.html
-tokens/                   # base.css (design tokens) + animations.css
+tokens/                   # base.css (design tokens) + animations.css + components.css
 brands/                   # default/, startup/, enterprise/ brand packages (brand.yaml + rules.md + theme.css)
-tools/                    # extract-theme.js, export-pdf.sh, check-contrast.js
+tools/                    # extract-theme.js, export-pdf.sh, check-contrast.js, capture-slides.py
 docs/                     # german-typography.md, speaker-notes.md, eaa-compliance.md
 ```
 

@@ -34,15 +34,15 @@ Skill location: `.claude/skills/build-presentation/SKILL.md`
 | code-block | Code snippets with syntax highlighting |
 | team | Team members with photo, name, role (2-6 persons) |
 
-Full details: `references/component-catalog.md`
+Full details: `.claude/skills/build-presentation/references/component-catalog.md`
 
 ### Brand System
 
-Brands extend CSS custom properties (tokens) in `tokens/base.css`. Three bundled brands: default, startup, enterprise. Each brand has `brand.yaml` + `rules.md` + `theme.css`. Onboard a corporate brand via the onboard-brand workflow. See `references/theme-system.md`.
+Brands extend CSS custom properties (tokens) in `tokens/base.css`. Three bundled brands: default, startup, enterprise. Each brand has `brand.yaml` + `rules.md` + `theme.css`. Onboard a corporate brand via the onboard-brand workflow. See `.claude/skills/build-presentation/references/theme-system.md`.
 
 ### Audience Presets
 
-Six audience types with quantified design rules: C-Suite, Stakeholder, Technical, Sales, Workshop, Internal. Each preset specifies slide count, word limits, font sizes, component selection bias, and animation density. See `references/audience-presets.md`.
+Six audience types with quantified design rules: C-Suite, Stakeholder, Technical, Sales, Workshop, Internal. Each preset specifies slide count, word limits, font sizes, component selection bias, and animation density. See `.claude/skills/build-presentation/references/audience-presets.md`.
 
 ### Project Structure
 
@@ -108,36 +108,17 @@ A shareable, code-based slide deck framework that turns structured content (YAML
 
 ```
 templates/          # 21 component HTML templates + _skeleton.html + index.md
-tokens/             # base.css (design tokens) + animations.css
+tokens/             # base.css (design tokens) + animations.css + components.css
 brands/             # default/, startup/, enterprise/ brand packages (brand.yaml + rules.md + theme.css)
-tools/              # extract-theme.js, export-pdf.sh, export-pptx.js, export-accessible.js, check-contrast.js, extract-titles.js, gallery.html
-projects/           # Generated presentations ({name}/ folders)
+tools/              # extract-theme.js, export-pdf.sh, export-pptx.js, check-contrast.js, capture-slides.py
+projects/           # Your generated presentations ({name}/ folders)
+examples/           # Example presentations (basic, German demo, themed showcase)
 docs/               # german-typography.md, speaker-notes.md, eaa-compliance.md, presentation-checklist.md
+references/         # build-log-format.md (pipeline traceability schema)
 AGENTS.md           # Cross-tool repo conventions (read by Copilot, Claude Code, Cursor, Gemini CLI, etc.)
-.claude/skills/     # build-presentation skill (SKILL.md + workflows/ + references/) -- shared by both tools
-.claude/agents/     # Claude Code subagents (presentation-researcher, strategist, builder)
-.github/agents/     # Copilot CLI agents (orchestrator + researcher, strategist, builder ports)
+.claude/skills/     # build-presentation skill (SKILL.md + workflows/ + references/)
+.claude/agents/     # Claude Code subagents (10 agents: researcher, builder, reviewer, etc.)
+.github/agents/     # Copilot CLI agents (orchestrator + researcher, strategist, builder)
 .github/hooks/      # Copilot CLI hooks (template/token protection)
 ```
 <!-- GSD:architecture-end -->
-
-<!-- GSD:workflow-start source:GSD defaults -->
-## GSD Workflow Enforcement
-
-Before using Edit, Write, or other file-changing tools, start work through a GSD command so planning artifacts and execution context stay in sync.
-
-Use these entry points:
-- `/gsd:quick` for small fixes, doc updates, and ad-hoc tasks
-- `/gsd:debug` for investigation and bug fixing
-- `/gsd:execute-phase` for planned phase work
-
-Do not make direct repo edits outside a GSD workflow unless the user explicitly asks to bypass it.
-<!-- GSD:workflow-end -->
-
-
-<!-- GSD:profile-start -->
-## Developer Profile
-
-> Profile not yet configured. Run `/gsd:profile-user` to generate your developer profile.
-> This section is managed by `generate-claude-profile` -- do not edit manually.
-<!-- GSD:profile-end -->

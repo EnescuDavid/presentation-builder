@@ -1,4 +1,16 @@
+# Internal planning artifacts
 .planning/
+
+# Dependencies
 node_modules/
+
+# OS files
 .DS_Store
+
+# Agent pipeline artifacts
 projects/*/.pipeline/
+projects/*/screenshots/
+
+# Personal/scratch directories
+Presentation*/
+new_insights/
