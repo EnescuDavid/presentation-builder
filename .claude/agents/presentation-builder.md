@@ -19,6 +19,11 @@ Load BEFORE building. These are the ONLY reference files needed:
 4. `templates/_skeleton.html`         -- the structural shell (reveal.js init, master layer, @layer order)
 5. `.claude/skills/build-presentation/references/audience-presets.md` -- audience design rules
                                           (font sizes, word limits, slide counts, animation density)
+6. `brands/{name}/brand.yaml`         -- brand profile: theme_css path (which theme CSS to embed),
+                                          logo path (for master layer), master_layer config
+                                          (company_name, confidentiality, date_format, logo_position),
+                                          color_semantics mapping (which CSS tokens mean
+                                          positive/negative/neutral/highlight for state modifiers)
 
 Do NOT read individual template HTML files (templates/title.html, templates/metrics.html, etc.).
 Templates are human reference only. The catalog (templates/index.md) is the builder's source of truth.
@@ -105,12 +110,22 @@ If no slides need overrides, the SLIDE MAP comment can say "No overrides — def
 
 ## Step 7: Configure Master Layer and presentationConfig
 
-Populate the `presentationConfig` object in the init script:
-- `company`: from brand.yaml → `brand.company_name`, or from deck-plan.md metadata
-- `confidentiality`: from deck-plan.md metadata (e.g., "Vertraulich", "Streng Vertraulich")
-- `date`: from deck-plan.md metadata (German format: "5. April 2026"), or leave empty for auto-population
-- `logo`: from brand.yaml → `brand.logo_path`, or empty string
-- `slideNumberStyle`: from brand.yaml preference or "progress" default
+Read `brands/{name}/brand.yaml` (required reading item 6). Map brand.yaml `master_layer` fields and `color_semantics` to the `presentationConfig` object in the init script:
+
+- `company`: from `brand.yaml` → `master_layer.company_name`, or from deck-plan.md metadata if brand.yaml missing
+- `confidentiality`: from `brand.yaml` → `master_layer.confidentiality`, or from deck-plan.md metadata (e.g., "Vertraulich", "Streng Vertraulich")
+- `date`: from deck-plan.md metadata formatted per `brand.yaml` → `master_layer.date_format`, or leave empty for auto-population
+- `logo`: from `brand.yaml` → `logo` field (project-root-relative path), or empty string if no brand
+- `logoPosition`: from `brand.yaml` → `master_layer.logo_position` ("left", "right", or "none")
+- `slideNumberStyle`: from deck-plan.md preference or "progress" default
+
+Also apply `brand.yaml` → `color_semantics` when selecting state modifier classes:
+- `color_semantics.positive` token → use `.comp-*__card--positive` for growth/positive metrics
+- `color_semantics.negative` token → use `.comp-*__card--negative` for decline/risk metrics
+- `color_semantics.neutral` token → use `.comp-*__card--neutral` for unchanged/neutral items
+- `color_semantics.highlight` token → use `.comp-*__card--highlighted` for key emphasis
+
+This ensures the builder applies the brand's semantic color mapping when selecting state modifiers, rather than making arbitrary positive/negative/neutral choices.
 
 ## Step 8: German Typography
 

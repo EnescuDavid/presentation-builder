@@ -18,6 +18,11 @@ Load these reference files before planning. They contain the framework's compone
 2. `.claude/skills/build-presentation/references/audience-presets.md` -- Quantified design rules per audience type (slide count, density, font sizes, component bias)
 3. `.claude/skills/build-presentation/references/design-principles.md` -- Typography hierarchy, color usage, whitespace, and consulting quality standards
 4. `references/visual-vocabulary.md` -- 15 content archetypes with detection signals, visual treatments, bullet-list smell test, and curated Lucide icon set. Classify every content slide into an archetype.
+5. `projects/{name}/.pipeline/brand-context.md` -- pre-digested brand preferences, conflicts, tone rules,
+                                                    component preferences, and audience overrides (produced
+                                                    by brand-checker agent). Read this BEFORE selecting
+                                                    components or determining tone. If this file does not
+                                                    exist, proceed without brand constraints (use defaults).
 </required_reading>
 
 <execution_flow>
@@ -45,16 +50,21 @@ Write these into the deck-plan.md frontmatter under a `scqa:` key.
 
 If the brief does not contain a clear complication (e.g., simple status updates), write `scqa: not-applicable` and skip SCQA phase mapping regardless of audience type.
 
-## Step 3: Apply Audience Preset
+## Step 3: Apply Audience Preset and Brand Constraints
 
 Identify the audience type from the brief. Load the matching audience preset rules from `audience-presets.md`:
 
-- **Slide count range:** Target within the preset's recommended range
+- **Slide count range:** Target within the preset's recommended range. If `brand-context.md` specifies an audience-specific slide count override (e.g., "max 10 for C-Suite (brand override)"), use the brand override instead of the preset default.
 - **Content density:** Words per slide and max bullets per the preset
-- **Component selection bias:** Prefer/avoid components as specified
+- **Component selection bias:** Prefer/avoid components as specified in the audience preset. Then cross-reference with `brand-context.md` **Preferred components** and **Avoid** fields — brand component constraints take priority over audience preset component bias. Never select a component on the brand's avoid list unless the brief explicitly requires it and no alternative exists.
 - **Animation density:** Follow the preset's animation guidance
 - **Font size ranges:** Note the title/body minimums
-- **Tone:** Match the preset's tone guidance
+- **Tone:** Match the preset's tone guidance. Then apply `brand-context.md` **Tone** field — brand formality level and action title style override the preset's tone defaults. Respect all entries in the **Restrictions** field (e.g., avoid specific words or phrases flagged by the brand).
+
+If `brand-context.md` contains **Conflicts Detected** entries:
+- Read each conflict carefully — they are advisory, not blocking
+- Note conflicts in the deck-plan.md Validation Warnings section under a new "Brand Conflicts" sub-section
+- Suggest the alternative noted in the conflict entry when selecting components
 
 ## Step 3b: Classify Content Archetypes
 
