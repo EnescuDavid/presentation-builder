@@ -23,7 +23,7 @@ What would you like to do?
 
 1. **Build a new presentation** from scratch
 2. **Refine an existing deck** (iterate on content, design, or structure)
-3. **Import a corporate theme** from a .pptx file
+3. **Onboard a corporate brand** (from PPTX, PDF, logos, or conversation)
 
 **Describe your need and I will route to the right workflow.**
 </intake>
@@ -33,7 +33,7 @@ What would you like to do?
 |----------|----------|
 | 1, "new", "create", "build", "presentation", "deck" | workflows/build-new-deck.md |
 | 2, "refine", "improve", "update", "change", "fix", "iterate" | workflows/refine-deck.md |
-| 3, "theme", "import", "pptx", "brand", "corporate", "extract" | workflows/extract-theme.md |
+| 3, "theme", "import", "pptx", "brand", "corporate", "extract" | workflows/onboard-brand.md |
 
 **After reading the workflow, follow it exactly.**
 </routing>
@@ -64,5 +64,6 @@ All in `references/`:
 - **audience-presets.md** -- 6 audience types (C-Suite, Stakeholder, Technical, Sales, Workshop, Internal) with quantified design rules
 - **design-principles.md** -- Consulting-grade design rules: typography hierarchy, color usage, spacing, visual hierarchy, content density
 - **theme-system.md** -- Full CSS token catalog, theme file structure, PPTX extraction, footer configuration
+- **brand-system.md** -- brand.yaml schema (9 fields), bundled brands comparison, agent-to-field mapping, brand selection logic
 - **animation-guide.md** -- 6 animation classes (fadeUp, blurIn, slideL, slideR, scalePop, lineGrow), density rules per audience
 </reference_index>
