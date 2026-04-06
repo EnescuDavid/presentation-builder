@@ -6,12 +6,12 @@ description: Build consulting-grade HTML presentations from natural language pro
 <essential_principles>
 ## How the Presentation Builder Works
 
-This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Themes in `themes/` override these tokens. Components in `templates/` reference tokens via `var()` and adapt automatically to any theme.
+This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Brands in `brands/` override these tokens via theme.css, with brand.yaml profiles for agent awareness. Components in `templates/` reference tokens via `var()` and adapt automatically to any brand.
 
 **Key facts:**
 - 21 component templates in `templates/` (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework, data-table, harvey-balls, chart, mermaid-diagram, waterfall, code-block, team)
 - CSS design tokens in `tokens/base.css` (colors, typography, spacing, shadows) + `tokens/animations.css`
-- Three bundled themes in `themes/`: default, startup, enterprise
+- Three bundled brands in `brands/`: default, startup, enterprise (each with brand.yaml + rules.md + theme.css)
 - Generated presentations live in `projects/{name}/`
 - German-first: all templates handle 130-300% text expansion with overflow-wrap and hyphens
 - No build step: AI writes final HTML directly from template references
@@ -19,24 +19,43 @@ This framework generates single-file HTML presentations using reveal.js. All vis
 </essential_principles>
 
 <intake>
-What would you like to do?
+Describe what you want to build, change, or set up. No menu -- just tell me what you need.
 
-1. **Build a new presentation** from scratch
-2. **Refine an existing deck** (iterate on content, design, or structure)
-3. **Import a corporate theme** from a .pptx file
-
-**Describe your need and I will route to the right workflow.**
+**Examples:**
+- "Build a pitch deck for our Q3 board meeting"
+- "Change the colors on slide 4 to match our brand"
+- "Import our corporate PowerPoint theme"
 </intake>
 
-<routing>
-| Response | Workflow |
-|----------|----------|
-| 1, "new", "create", "build", "presentation", "deck" | workflows/build-new-deck.md |
-| 2, "refine", "improve", "update", "change", "fix", "iterate" | workflows/refine-deck.md |
-| 3, "theme", "import", "pptx", "brand", "corporate", "extract" | workflows/extract-theme.md |
+<workflows>
+## Available Workflows
 
-**After reading the workflow, follow it exactly.**
-</routing>
+**build-new-deck** -- Create a new presentation from scratch.
+- Use when: the user wants a new deck that does not exist yet
+- Signals: "build", "create", "new deck", "presentation about...", "pitch deck for...", topic descriptions without an existing project
+- Pipeline: 9-agent orchestration (brief intake, research, brand-check, debate with planner + architect + critic, user review, build, style, review) with pipeline resumability
+- Input: User's description + optional files in `projects/{name}/input/`
+- Output: `projects/{name}/presentation.html`
+- File path: `workflows/build-new-deck.md`
+
+**refine-deck** -- Modify, improve, or iterate on an existing presentation.
+- Use when: the user has an existing deck and wants changes -- from typo fixes to full restructures
+- Signals: "change", "fix", "update", "refine", "improve", "swap", "restructure", references to specific slides or existing project names
+- Routing: model comprehension detects change scope (typo → slide-editor, visual → slide-stylist, structural → planner + builder) automatically -- no menu presented to user
+- Input: Existing `projects/{name}/` with `presentation.html`
+- Output: Updated `presentation.html`
+- File path: `workflows/refine-deck.md`
+
+**onboard-brand** -- Set up or import a corporate brand.
+- Use when: the user wants to add their company's visual identity
+- Signals: "brand", "import", "corporate", "PowerPoint theme", "our colors", company identity discussions
+- Pipeline: brand profiler extracts from assets, generates brand.yaml + theme.css, produces test deck
+- Input: Brand assets in `brands/{name}/input/`
+- Output: `brands/{name}/brand.yaml` + `theme.css` + `test-presentation.html`
+- File path: `workflows/onboard-brand.md`
+
+Read the selected workflow file and follow it exactly.
+</workflows>
 
 <verification_loop>
 ## After Every Generation
@@ -60,9 +79,11 @@ Run these checks to ensure the presentation is healthy:
 
 All in `references/`:
 
-- **component-catalog.md** -- 21 slide components with semantic descriptions, required/optional slots, HTML patterns, audience fit
+- **component-catalog.md** -- 21 slide components with semantic descriptions, required/optional slots, HTML patterns, --comp-* variables, audience fit
 - **audience-presets.md** -- 6 audience types (C-Suite, Stakeholder, Technical, Sales, Workshop, Internal) with quantified design rules
 - **design-principles.md** -- Consulting-grade design rules: typography hierarchy, color usage, spacing, visual hierarchy, content density
-- **theme-system.md** -- Full CSS token catalog, theme file structure, PPTX extraction, footer configuration
+- **brand-system.md** -- brand.yaml schema (9 fields), bundled brands comparison, agent-to-field mapping, brand selection logic
+- **visual-vocabulary.md** -- 15 content archetypes, bullet-list smell test, curated Lucide icons
+- **css-property-map.md** -- CSS property map for slide-stylist agent (91 --comp-* variables by component)
 - **animation-guide.md** -- 6 animation classes (fadeUp, blurIn, slideL, slideR, scalePop, lineGrow), density rules per audience
 </reference_index>
