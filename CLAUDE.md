@@ -36,9 +36,9 @@ Skill location: `.claude/skills/build-presentation/SKILL.md`
 
 Full details: `references/component-catalog.md`
 
-### Theme System
+### Brand System
 
-Themes override CSS custom properties (tokens) in `tokens/base.css`. Three bundled themes: default, startup, enterprise. Import from PPTX via `tools/extract-theme.js`. See `references/theme-system.md`.
+Brands extend CSS custom properties (tokens) in `tokens/base.css`. Three bundled brands: default, startup, enterprise. Each brand has `brand.yaml` + `rules.md` + `theme.css`. Onboard a corporate brand via the onboard-brand workflow. See `references/theme-system.md`.
 
 ### Audience Presets
 
@@ -109,7 +109,7 @@ A shareable, code-based slide deck framework that turns structured content (YAML
 ```
 templates/          # 21 component HTML templates + _skeleton.html + index.md
 tokens/             # base.css (design tokens) + animations.css
-themes/             # default/, startup/, enterprise/ theme CSS files
+brands/             # default/, startup/, enterprise/ brand packages (brand.yaml + rules.md + theme.css)
 tools/              # extract-theme.js, export-pdf.sh, export-pptx.js, export-accessible.js, check-contrast.js, extract-titles.js, gallery.html
 projects/           # Generated presentations ({name}/ folders)
 docs/               # german-typography.md, speaker-notes.md, eaa-compliance.md, presentation-checklist.md

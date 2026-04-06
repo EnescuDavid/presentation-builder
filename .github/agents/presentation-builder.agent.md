@@ -26,7 +26,7 @@ Load these reference files before building. They contain the full design system 
 
 Read `deck-plan.md` from the project folder (e.g., `projects/{name}/deck-plan.md`). Extract:
 - **Audience type:** Determines density, animation, and font choices
-- **Theme:** Which theme CSS to link (default, or a custom theme from `themes/`)
+- **Brand:** Which brand CSS to link (default, or a custom brand from `brands/`)
 - **Total slides:** Expected slide count for verification
 - **Per-slide details:** Component type, content summary, theme variant, master layer, animation recommendations
 
@@ -58,7 +58,7 @@ For each slide in the deck plan:
 
 ## Step 4: Apply Theme
 
-Read the theme file from `themes/{theme}/theme.css`. Apply:
+Read the brand's theme file from `brands/{brand}/theme.css`. Apply:
 - Theme CSS link in the HTML `<head>` after tokens CSS
 - Theme overrides color, typography, and surface tokens
 - Verify the theme file exists; fall back to default tokens if not found

@@ -1,10 +1,12 @@
-# Theme System
+# Brand System
 
-AI reference for the presentation builder's CSS custom property theming system. Themes apply corporate branding on top of the component library. All 14 components adopt theme changes automatically via `var()` references.
+AI reference for the presentation builder's CSS custom property theming system and brand profiles. Brands apply corporate branding on top of the component library. All 21 components adopt brand changes automatically via `var()` references.
+
+> **Migration note:** The `themes/` directory was replaced by `brands/` in Phase 3. Each brand is now a 3-file package: `brand.yaml` (machine-readable profile) + `rules.md` (prose guidance) + `theme.css` (CSS token overrides).
 
 ## Token Architecture
 
-All visual properties are CSS custom properties on `:root` defined in `tokens/base.css`. Themes override these values; components reference them via `var(--token)`.
+All visual properties are CSS custom properties on `:root` defined in `tokens/base.css`. Brand theme.css files override these values; components reference them via `var(--token)`.
 
 ### Color Tokens (16)
 
@@ -60,11 +62,81 @@ All visual properties are CSS custom properties on `:root` defined in `tokens/ba
 | `--ease-entrance` | cubic-bezier(.16,1,.3,1) | Animation easing |
 | `--duration-fast` (0.5s), `--duration-normal` (0.7s), `--duration-slow` (0.85s) | Animation durations | Timing |
 
+## Brand Directory Structure
+
+Each brand lives in `brands/{name}/` with 3 files:
+
+```
+brands/
+  default/
+    brand.yaml       # Machine-readable profile (9 fields)
+    rules.md         # Prose guidance -- consulting do's/don'ts
+    theme.css        # CSS custom property overrides
+  startup/
+    brand.yaml
+    rules.md
+    theme.css
+    logo.svg
+  enterprise/
+    brand.yaml
+    rules.md
+    theme.css
+    logo.svg
+  {custom}/          # Created by onboard-brand workflow
+    brand.yaml
+    rules.md
+    theme.css
+    logo.svg
+    test-presentation.html
+    input/           # Drop zone -- PPTX, PDFs, logos, fonts
+```
+
+## brand.yaml Schema (9 Fields)
+
+All brand profiles follow this schema:
+
+```yaml
+name: "Brand Name"
+locale: "de"
+theme_css: "brands/{name}/theme.css"
+logo: "brands/{name}/logo.svg"   # "" for no logo
+
+master_layer:
+  company: "Company Name"
+  confidentiality: "Confidential"
+  date_format: "DD.MM.YYYY"
+  logo_position: "top-left"      # top-left | top-right | bottom-left
+
+component_preferences:
+  prefer: [framework, metrics, comparison]
+  avoid: [card-grid, image-full-bleed]
+  title_style: "statement"       # statement | question | action-verb
+
+audience_overrides:
+  c-suite:
+    max_slides: 12
+
+tone:
+  formality: "high"              # high | medium | casual
+  action_titles: "verb-first"
+  bullet_style: "data-driven"    # concise | narrative | data-driven
+  restrictions:
+    - "No emoji"
+
+color_semantics:
+  positive: "--color-success"
+  negative: "--color-danger"
+  neutral: "--color-surface"
+  highlight: "--color-accent"
+```
+
+**Color semantics token names must match actual tokens in `tokens/base.css`. Only use `--color-surface` (not `--color-surface-alt` -- that token does not exist).**
+
 ## Theme File Structure
 
-Each theme lives in `themes/{name}/theme.css`. A theme file overrides `:root` tokens and adds theme-specific styles.
+Each brand's `theme.css` overrides `:root` tokens and adds brand-specific styles.
 
-**Example (default theme at `themes/default/theme.css`):**
+**Example (`brands/default/theme.css`):**
 ```css
 :root {
   --slide-bg: var(--color-background);
@@ -85,23 +157,28 @@ Theme files also include:
 - Card elevation refinement (border-radius, shadow, border)
 - Dark background variant (`section[data-background-color="dark"]`)
 
-**Three included themes:**
-| Theme | Personality | Primary | Accent | Display Font |
+**Three bundled brands:**
+| Brand | Personality | Primary | Accent | Display Font |
 |-------|------------|---------|--------|-------------|
 | default | Professional consulting | #1E3A5F navy | #3182CE blue | Inter |
 | startup | Bold, modern, energetic | #004E98 blue | #FF6B35 orange | Space Grotesk |
 | enterprise | Conservative, corporate | #0D2137 dark navy | #2E6BA6 steel blue | Inter |
 
-## Creating a New Theme
+## Creating a New Brand
 
-1. **Copy the default:** `cp -r themes/default/ themes/{name}/`
+Use the onboard-brand workflow (`workflows/onboard-brand.md`) for guided brand creation from PPTX/PDF assets.
+
+For manual creation:
+1. **Copy the default:** `cp -r brands/default/ brands/{name}/`
 2. **Override color tokens:** Change `--color-primary`, `--color-accent`, etc. in `:root`
 3. **Set display font (optional):** Override `--font-family-display` and add Google Fonts link
 4. **Adjust accent bar:** Set `--theme-accent-bar-height` and `--theme-accent-bar-color`
-5. **Set logo:** Place SVG at `themes/{name}/logo.svg`, set `--master-logo-height`
-6. **Link in presentation:** Add `<link rel="stylesheet" href="themes/{name}/theme.css">` after base.css
+5. **Set logo:** Place SVG at `brands/{name}/logo.svg`, set `--master-logo-height`
+6. **Write brand.yaml:** Fill all 9 fields; use project-root-relative paths (`brands/{name}/theme.css`)
+7. **Write rules.md:** Prose guidance for tone, visual style, chart conventions, prohibited patterns
+8. **Link in presentation:** Add `<link rel="stylesheet" href="brands/{name}/theme.css">` after base.css
 
-All 14 components adopt the new theme automatically via `var()` references. No component CSS changes needed.
+All 21 components adopt the new brand automatically via `var()` references. No component CSS changes needed.
 
 ## Dark/Light Variants
 
@@ -121,11 +198,13 @@ The `tools/extract-theme.js` script extracts colors, fonts, and metadata from a 
 node tools/extract-theme.js path/to/template.pptx --name "client"
 ```
 
-**Output:** Creates `themes/{name}/theme.css` with extracted tokens. After extraction:
+**Output:** Creates `brands/{name}/theme.css` with extracted tokens. After extraction:
 1. Review and adjust extracted colors for web contrast ratios
 2. Verify font availability (add Google Fonts link if needed)
-3. Place company logo as SVG at `themes/{name}/logo.svg`
-4. Test with a sample presentation
+3. Place company logo as SVG at `brands/{name}/logo.svg`
+4. Write `brands/{name}/brand.yaml` with the 9-field schema
+5. Write `brands/{name}/rules.md` with prose guidance
+6. Run `node tools/check-contrast.js brands/{name}` to validate WCAG AA compliance
 
 ## Footer Configuration
 
@@ -135,7 +214,7 @@ Each presentation configures its footer via a JavaScript object in the HTML file
 var presentationConfig = {
   company: 'Acme Corp.',
   confidentiality: 'Confidential',
-  logo: 'themes/default/logo.svg'
+  logo: 'brands/default/logo.svg'
 };
 ```
 
@@ -146,3 +225,8 @@ The master layer in `_skeleton.html` reads this config to render:
 - Slide number
 
 Footer uses left-aligned layout with dot separators to avoid overlap with the slide counter. Footer is hidden on slides with `data-master="hide"` (title, section-break, image-full-bleed).
+
+The `master_layer` fields in `brand.yaml` map directly to this presentationConfig:
+- `brand.yaml master_layer.company` → `presentationConfig.company`
+- `brand.yaml master_layer.confidentiality` → `presentationConfig.confidentiality`
+- `brand.yaml logo` → `presentationConfig.logo`

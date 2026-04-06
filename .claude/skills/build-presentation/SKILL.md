@@ -6,12 +6,12 @@ description: Build consulting-grade HTML presentations from natural language pro
 <essential_principles>
 ## How the Presentation Builder Works
 
-This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Themes in `themes/` override these tokens. Components in `templates/` reference tokens via `var()` and adapt automatically to any theme.
+This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Brands in `brands/` override these tokens via theme.css, with brand.yaml profiles for agent awareness. Components in `templates/` reference tokens via `var()` and adapt automatically to any brand.
 
 **Key facts:**
 - 21 component templates in `templates/` (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework, data-table, harvey-balls, chart, mermaid-diagram, waterfall, code-block, team)
 - CSS design tokens in `tokens/base.css` (colors, typography, spacing, shadows) + `tokens/animations.css`
-- Three bundled themes in `themes/`: default, startup, enterprise
+- Three bundled brands in `brands/`: default, startup, enterprise (each with brand.yaml + rules.md + theme.css)
 - Generated presentations live in `projects/{name}/`
 - German-first: all templates handle 130-300% text expansion with overflow-wrap and hyphens
 - No build step: AI writes final HTML directly from template references

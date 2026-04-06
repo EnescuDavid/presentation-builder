@@ -19,12 +19,12 @@ Your job is to manage the pipeline: gather requirements, delegate to agents, pre
 
 ## How the Presentation Builder Works
 
-This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Themes in `themes/` override these tokens. Components in `templates/` reference tokens via `var()` and adapt automatically to any theme.
+This framework generates single-file HTML presentations using reveal.js. All visual properties are CSS custom properties (tokens) in `tokens/base.css`. Brands in `brands/` override these tokens via theme.css, with brand.yaml profiles for agent awareness. Components in `templates/` reference tokens via `var()` and adapt automatically to any brand.
 
 **Key facts:**
 - 21 component templates in `templates/` (title, section-break, text-heavy, two-column, metrics, image-full-bleed, agenda, summary, contact, comparison, timeline, quote, card-grid, framework, data-table, harvey-balls, chart, mermaid-diagram, waterfall, code-block, team)
 - CSS design tokens in `tokens/base.css` (colors, typography, spacing, shadows) + `tokens/animations.css`
-- Three bundled themes in `themes/`: default, startup, enterprise
+- Three bundled brands in `brands/`: default, startup, enterprise (each with brand.yaml + rules.md + theme.css)
 - Generated presentations live in `projects/{name}/`
 - German-first: all templates handle 130-300% text expansion with overflow-wrap and hyphens
 - No build step: AI writes final HTML directly from template references
@@ -60,7 +60,7 @@ Gather requirements through conversation. Ask about:
 - **Audience type:** C-Suite, Stakeholder, Technical, Sales, Workshop, or Internal?
 - **Key messages:** What are the 3-5 main points you want to communicate?
 - **Slide count preference:** Or let the audience preset guide this
-- **Theme preference:** default, startup, enterprise, or a custom theme?
+- **Brand preference:** default, startup, enterprise, or a custom brand?
 - **Specific components:** Any particular layouts wanted (e.g., metrics dashboard, timeline, comparison)?
 - **Language:** German (default) or English?
 
@@ -80,8 +80,8 @@ Gather requirements through conversation. Ask about:
 2. ...
 3. ...
 
-## Theme
-- Theme: default | startup | enterprise | custom
+## Brand
+- Brand: default | startup | enterprise | custom
 - Special requests: ...
 
 ## Constraints
@@ -227,7 +227,7 @@ node tools/extract-theme.js <path-to-file.pptx> --name "<theme-name>"
 ```
 
 **Expected output:**
-- `themes/{name}/theme.css` -- Extracted CSS custom property overrides
+- `brands/{name}/theme.css` -- Extracted CSS custom property overrides
 - Extracted logo images (if found in the PPTX)
 
 If the extraction fails, check:
@@ -236,11 +236,11 @@ If the extraction fails, check:
 
 ### Step 3: Review Extracted Theme
 
-Read the generated `themes/{name}/theme.css` and check:
+Read the generated `brands/{name}/theme.css` and check:
 
 1. **Colors:** Are the extracted `--color-primary`, `--color-accent` etc. reasonable? Check contrast ratios.
 2. **Fonts:** Is the extracted `--font-family-display` available on the web? If proprietary, add a Google Fonts fallback or switch to Inter.
-3. **Completeness:** Are all expected tokens present? Compare against `themes/default/theme.css`.
+3. **Completeness:** Are all expected tokens present? Compare against `brands/default/theme.css`.
 
 ### Step 4: Adjust
 
@@ -249,15 +249,15 @@ Fine-tune tokens that commonly need manual override after extraction:
 - **Font fallbacks:** Add web-safe fallbacks after the primary font
 - **Shadow values:** PPTX shadows often need translation to CSS box-shadow syntax
 - **Footer text:** Update the `presentationConfig` object for company name and confidentiality label
-- **Logo:** Place company logo as SVG at `themes/{name}/logo.svg` (convert from PNG if needed)
+- **Logo:** Place company logo as SVG at `brands/{name}/logo.svg` (convert from PNG if needed)
 - **Color contrast:** Ensure text-on-background meets WCAG AA (4.5:1 for body, 3:1 for large text)
 
 ### Step 5: Test
 
-Apply the new theme to a quick test presentation:
+Apply the new brand to a quick test presentation:
 
 1. Copy an existing presentation or create a minimal test with 3-4 different components
-2. Link the new theme: `<link rel="stylesheet" href="themes/{name}/theme.css">`
+2. Link the new brand theme: `<link rel="stylesheet" href="brands/{name}/theme.css">`
 3. Open in browser and verify:
    - Colors render correctly
    - Font loads (check Network tab)

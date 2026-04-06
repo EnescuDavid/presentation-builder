@@ -20,7 +20,7 @@ projects/{name}/          # Generated presentations
   presentation.html       #   Final output (single file, works offline)
 templates/                # 21 component HTML templates + _skeleton.html
 tokens/                   # base.css (design tokens) + animations.css
-themes/                   # default/, startup/, enterprise/ theme overrides
+brands/                   # default/, startup/, enterprise/ brand packages (brand.yaml + rules.md + theme.css)
 tools/                    # extract-theme.js, export-pdf.sh, check-contrast.js
 docs/                     # german-typography.md, speaker-notes.md, eaa-compliance.md
 ```
@@ -30,7 +30,7 @@ docs/                     # german-typography.md, speaker-notes.md, eaa-complian
 ```bash
 npx serve                                                    # Serve presentations locally
 node tools/extract-theme.js <file.pptx> --name "<name>"      # Extract PPTX theme
-node tools/check-contrast.js themes/<name>                   # Check color contrast (WCAG AA)
+node tools/check-contrast.js brands/<name>                   # Check color contrast (WCAG AA)
 ./tools/export-pdf.sh projects/<name>/presentation.html      # Export to PDF (requires DeckTape)
 node tools/export-accessible.js projects/<name>/presentation.html  # Accessible HTML export
 ```
@@ -78,7 +78,7 @@ After generating or modifying a presentation:
 **Ask first:**
 - Before modifying files in `templates/` -- they are reference patterns used by all presentations
 - Before modifying `tokens/base.css` -- changes affect all themes and presentations
-- Before deleting or restructuring existing themes in `themes/`
+- Before deleting or restructuring existing brands in `brands/`
 
 **Never:**
 - Generate presentations outside `projects/{name}/` folders
