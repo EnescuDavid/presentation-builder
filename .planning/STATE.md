@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Agent Pipeline + Component Architecture
-status: verifying
-stopped_at: Phase 4 context gathered
-last_updated: "2026-04-06T10:34:01.610Z"
+status: executing
+stopped_at: Completed 04-03-PLAN.md
+last_updated: "2026-04-06T11:36:42.233Z"
 last_activity: 2026-04-06
 progress:
   total_phases: 6
   completed_phases: 3
-  total_plans: 11
-  completed_plans: 11
+  total_plans: 14
+  completed_plans: 12
   percent: 71
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Anyone can clone the repo, import their corporate PowerPoint theme, and build a professional presentation by prompting an AI assistant -- regardless of which AI tool they use.
-**Current focus:** Phase 03 — brand-system
+**Current focus:** Phase 04 — orchestration-entry-points
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 04 (orchestration-entry-points) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
 Last activity: 2026-04-06
 
 Progress: [███████░░░] 71%
@@ -73,6 +73,7 @@ Progress: [███████░░░] 71%
 | Phase 03 P01 | 9min | 2 tasks | 11 files |
 | Phase 03-brand-system P03 | 3 | 3 tasks | 3 files |
 | Phase 03 P02 | 4min | 2 tasks | 4 files |
+| Phase 04-orchestration-entry-points P03 | 2 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -115,6 +116,8 @@ Recent decisions affecting current work:
 - [Phase 03]: Builder reads brand.yaml for rendering fields only (theme_css, logo, master_layer, color_semantics) — not component_preferences or tone
 - [Phase 03]: Strategist reads brand-context.md (pre-digested by brand-checker), not brand.yaml directly — temporary until Phase 5 debate triad
 - [Phase 03]: brand-checker is advisory-only: all conflicts flagged but pipeline never blocked
+- [Phase 04]: D-11 applied: model comprehension routing for refine-deck — no menu, model reads user description and routes silently to 6-tier change gradient
+- [Phase 04]: D-12 applied: refine-deck change gradient (no debate Tiers 1-3, lightweight planner Tier 4, condensed 1-round Tier 5, full pipeline Tier 6)
 
 ### Pending Todos
 
@@ -127,6 +130,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-06T10:34:01.607Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-orchestration-entry-points/04-CONTEXT.md
+Last session: 2026-04-06T11:36:42.231Z
+Stopped at: Completed 04-03-PLAN.md
+Resume file: None

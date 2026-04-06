@@ -196,7 +196,12 @@ Plans:
   3. `build-new-deck.md` workflow orchestrates the full agent pipeline with resumability from any stage
   4. `refine-deck.md` workflow routes change requests to the appropriate agent (stylist, editor, strategist)
   5. Pipeline state detection resumes from `.pipeline/` artifacts on entry instead of starting fresh
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md -- SKILL.md model comprehension routing rewrite, three slash commands, extract-theme.md cleanup
+- [ ] 04-02-PLAN.md -- build-new-deck.md 9-agent pipeline orchestration with debate loop and resumability
+- [x] 04-03-PLAN.md -- refine-deck.md change-scope routing with 6-tier agent dispatch
 
 ### Phase 5: Strategist Debate
 **Goal**: Presentations are structured through a multi-agent consensus debate that enforces consulting methodology (SCQA, Pyramid Principle, action titles)
@@ -233,6 +238,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Component Architecture | v2.0 | 5/5 | Complete | 2026-04-05 |
 | 2. Visual Vocabulary | v2.0 | 2/3 | Gap closure | - |
 | 3. Brand System | v2.0 | 3/3 | Complete   | 2026-04-06 |
-| 4. Orchestration & Entry Points | v2.0 | 0/0 | Not started | - |
+| 4. Orchestration & Entry Points | v2.0 | 1/3 | In Progress|  |
 | 5. Strategist Debate | v2.0 | 0/0 | Not started | - |
 | 6. Review Pipeline | v2.0 | 0/0 | Not started | - |
