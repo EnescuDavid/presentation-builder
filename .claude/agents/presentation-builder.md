@@ -112,7 +112,7 @@ If no slides need overrides, the SLIDE MAP comment can say "No overrides — def
 
 Read `brands/{name}/brand.yaml` (required reading item 6). Map brand.yaml `master_layer` fields and `color_semantics` to the `presentationConfig` object in the init script:
 
-- `company`: from `brand.yaml` → `master_layer.company_name`, or from deck-plan.md metadata if brand.yaml missing
+- `company`: from `brand.yaml` → `master_layer.company`, or from deck-plan.md metadata if brand.yaml missing
 - `confidentiality`: from `brand.yaml` → `master_layer.confidentiality`, or from deck-plan.md metadata (e.g., "Vertraulich", "Streng Vertraulich")
 - `date`: from deck-plan.md metadata formatted per `brand.yaml` → `master_layer.date_format`, or leave empty for auto-population
 - `logo`: from `brand.yaml` → `logo` field (project-root-relative path), or empty string if no brand

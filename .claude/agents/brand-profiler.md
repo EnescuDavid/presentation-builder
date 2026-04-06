@@ -104,7 +104,7 @@ theme_css: "brands/{name}/theme.css"
 logo: "brands/{name}/{logo-filename}"  # e.g., brands/acme/logo.svg
 
 master_layer:
-  company_name: "{Company Name}"
+  company: "{Company Name}"
   confidentiality: "{Confidentiality Label}"  # e.g., "Vertraulich", "Confidential", ""
   date_format: "{format}"  # e.g., "D. MMMM YYYY" (German), "MMMM D, YYYY" (US)
   logo_position: "{left|right|none}"
