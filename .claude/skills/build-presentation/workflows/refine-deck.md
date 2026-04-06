@@ -9,6 +9,7 @@ Iterate on an existing presentation — from typo fixes to full restructures. Ch
 2. `references/design-principles.md` -- Consulting-grade design rules and typography hierarchy
 3. `references/css-property-map.md` -- CSS property map for slide-stylist (91 --comp-* variables)
 4. `references/brand-system.md` -- brand.yaml schema, agent-to-field mapping
+5. `references/build-log-format.md` -- build-log.yaml schema, guard pattern, append pattern
 </required_reading>
 
 <process>
@@ -19,6 +20,27 @@ Iterate on an existing presentation — from typo fixes to full restructures. Ch
 2. Read `projects/{name}/deck-plan.md` — the original slide plan (if exists)
 3. Read `brands/{brand}/brand.yaml` — the active brand (detect from presentation.html theme link)
 4. If presentation.html doesn't exist, tell the user and suggest `/build {name}` instead
+
+### Build Log Guard
+
+Ensure build-log.yaml exists for traceability:
+
+```bash
+mkdir -p projects/{name}/.pipeline
+[ -f projects/{name}/.pipeline/build-log.yaml ] || cat > projects/{name}/.pipeline/build-log.yaml << 'INIT'
+meta:
+  project: "{name}"
+  started: "unknown"
+  mode: "normal"
+
+entries: []
+
+summary:
+  status: "in-progress"
+  total_duration_s: 0
+  pipeline_flow: "refine-invocation"
+INIT
+```
 
 ## Step 2: Determine Change Scope
 
@@ -33,6 +55,7 @@ Surface your routing choice in one sentence before acting: "This looks like a vi
 - The specific change request (which slide, what text to change)
 
 No debate. Surgical edit only.
+Log the refinement: append to build-log.yaml with `agent: "orchestrator"`, `phase: "refine"`, `event: "decision"`, `message: "Refinement: content edit via slide-editor"`.
 After edit: run verification loop, present change to user.
 
 ### Tier 2: Visual Adjustment
@@ -44,6 +67,7 @@ After edit: run verification loop, present change to user.
 - The visual change request
 
 No debate. CSS-only changes via @layer overrides.
+Log the refinement: append to build-log.yaml with `agent: "orchestrator"`, `phase: "refine"`, `event: "decision"`, `message: "Refinement: visual adjustment via slide-stylist"`.
 After edit: run verification loop, present change to user.
 
 ### Tier 3: Component Swap
@@ -85,6 +109,21 @@ After rebuild: run verification loop, present changes to user.
 - Skip Steps 1-3 (brief, research, brand-check) if the brief and research haven't changed
 - The existing `projects/{name}/.pipeline/research.md` and `.pipeline/brand-context.md` are reused
 - Full 3-round debate pipeline runs
+
+## Quick Review (for changes affecting <=3 slides)
+
+After the agent completes:
+1. Count how many slides were affected by the change
+2. If <= 3 slides changed:
+   - Run only the checks relevant to the change type:
+     - Content change (editor) → Story checks S1-S3, S7, S10 only
+     - CSS change (stylist) → Visual checks V1-V3, V6, V9, V13 only
+     - Full rebuild (builder) → Run full reviewer
+   - Report findings inline in conversation (no review-report.md file needed)
+   - No screenshots unless explicitly requested
+3. If > 3 slides changed:
+   - Run the full `presentation-reviewer` agent (same as build-new-deck Step 8)
+   - Write `.pipeline/review-report.md`
 
 ## Step 3: Verify and Iterate
 
