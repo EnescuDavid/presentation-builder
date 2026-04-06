@@ -139,6 +139,10 @@
       --content-max-width: 1100px;
       --master-logo-height: 32px;
       --master-footer-color: var(--color-text-muted);
+      --theme-accent-bar-height: 3px;
+      --theme-gradient-start: var(--color-primary);
+      --theme-gradient-end: var(--color-accent);
+      --theme-heading-border: 2px solid var(--color-accent);
     }
 
     .reveal .slides section {
@@ -146,6 +150,9 @@
       color: var(--color-text);
       text-align: left;
       padding: var(--spacing-2xl);
+      height: 100%;
+      box-sizing: border-box;
+      overflow: visible;
     }
 
     .reveal .slides section h1,
@@ -1130,7 +1137,7 @@
     <div class="slides">
 
       <!-- Slide 1: Title/Cover (master hidden) -->
-      <section data-master="hide" data-component="title">
+      <section data-master="hide" data-component="title" class="center">
         <div class="comp-title">
           <h1>Strategische Neuausrichtung der Digitalplattform</h1>
           <div class="comp-title__divider"></div>
@@ -1164,7 +1171,7 @@
       </section>
 
       <!-- Slide 3: Section Break "01 Marktanalyse" (master hidden) -->
-      <section data-master="hide" data-component="section-break">
+      <section data-master="hide" data-component="section-break" class="center">
         <div class="comp-section-break">
           <span class="comp-section-break__counter">01</span>
           <div class="comp-section-break__divider"></div>
@@ -1235,7 +1242,7 @@
       </section>
 
       <!-- Slide 7: Section Break "02 Strategie" (master hidden) -->
-      <section data-master="hide" data-component="section-break">
+      <section data-master="hide" data-component="section-break" class="center">
         <div class="comp-section-break">
           <span class="comp-section-break__counter">02</span>
           <div class="comp-section-break__divider"></div>
@@ -1478,7 +1485,7 @@
       fragments: true,
 
       // Centering
-      center: true,
+      center: false,
 
       // Min/max scale
       minScale: 0.2,

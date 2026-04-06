@@ -156,6 +156,8 @@
       --master-footer-color: var(--color-text-muted);
       --theme-accent-bar-height: 3px;
       --theme-accent-bar-color: var(--color-accent);
+      --theme-gradient-start: var(--color-primary);
+      --theme-gradient-end: var(--color-accent);
       --theme-heading-border: 2px solid var(--color-accent);
     }
 
@@ -165,6 +167,9 @@
       color: var(--color-text);
       text-align: left;
       padding: var(--spacing-2xl);
+      height: 100%;
+      box-sizing: border-box;
+      overflow: visible;
     }
 
     .reveal .slides section h1,
@@ -185,7 +190,7 @@
       line-height: var(--line-height-snug);
       padding-bottom: var(--spacing-xs);
       border-bottom: var(--theme-heading-border);
-      display: inline-block;
+      display: block;
       margin-bottom: var(--spacing-lg);
     }
 
@@ -218,8 +223,8 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: var(--theme-accent-bar-height);
-      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      height: var(--theme-accent-bar-height, 3px);
+      background: linear-gradient(90deg, var(--theme-gradient-start, var(--color-primary)), var(--theme-gradient-end, var(--color-accent)));
       z-index: 10;
     }
 
@@ -710,7 +715,7 @@
            SLIDE 1: Title/Cover
            data-master="hide" suppresses master layer on opening slide
            ================================================================ -->
-      <section data-master="hide" data-component="title">
+      <section data-master="hide" data-component="title" class="center">
         <div class="comp-title">
           <h1>Markenstrategie 2026</h1>
           <div class="comp-title__divider"></div>
@@ -904,7 +909,7 @@
       transition: 'none',
       backgroundTransition: 'fade',
       fragments: true,
-      center: true,
+      center: false,
       minScale: 0.2,
       maxScale: 2.0
     });

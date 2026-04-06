@@ -166,6 +166,12 @@
         --radius-lg:   14px;
         --radius-full: 9999px;
 
+        /* --- Theme defaults — overridden by brands/{name}/theme.css --- */
+        --theme-accent-bar-height: 3px;
+        --theme-gradient-start: var(--color-primary);
+        --theme-gradient-end: var(--color-accent);
+        --theme-heading-border: 2px solid var(--color-accent);
+
         /* --- Animation Timing --- */
         --ease-entrance:   cubic-bezier(.16, 1, .3, 1);
         --duration-fast:   0.5s;
@@ -243,6 +249,9 @@
         color: var(--color-text);
         text-align: left;
         padding: var(--spacing-2xl);
+        height: 100%;          /* 100% of .slides container = 720px */
+        box-sizing: border-box;
+        overflow: visible;     /* Allow graceful overflow, don't clip */
       }
 
       .reveal .slides section h1,
@@ -262,8 +271,8 @@
         font-size: var(--font-size-heading);
         line-height: var(--line-height-snug);
         padding-bottom: var(--spacing-xs);
-        border-bottom: var(--theme-heading-border);
-        display: inline-block;
+        border-bottom: var(--theme-heading-border, none);
+        display: block;
         margin-bottom: var(--spacing-lg);
       }
 
@@ -300,11 +309,10 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
-        height: var(--theme-accent-bar-height);
-        background: linear-gradient(90deg, var(--theme-gradient-start), var(--theme-gradient-end));
+        height: var(--theme-accent-bar-height, 3px);
+        background: linear-gradient(90deg, var(--theme-gradient-start, var(--color-primary)), var(--theme-gradient-end, var(--color-accent)));
         z-index: 10;
-        /* Anchor to slide top edge regardless of reveal.js centering */
-        margin-top: calc(-1 * var(--spacing-2xl));
+        /* No margin-top hack needed — center: false means top: 0 is the slide edge */
       }
 
       /* ==========================================================================
@@ -500,6 +508,88 @@
         color: var(--color-text-muted);
         margin-top: var(--spacing-sm);
         text-align: right;
+      }
+
+      /* ==========================================================================
+         CSS Grid Layout Zones
+         AI agents target zones by name instead of guessing positioning CSS.
+         Components wrap content in .slide-grid with zone children.
+         ========================================================================== */
+
+      /* Remove section padding when grid handles layout */
+      .reveal .slides section:has(.slide-grid) {
+        padding: 0;
+      }
+
+      /* Base slide grid — shared by all components */
+      .slide-grid {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "content"
+          "footer";
+        height: 100%;
+        padding: var(--slide-padding-top, var(--spacing-2xl))
+                 var(--slide-padding-right, var(--spacing-2xl))
+                 var(--slide-padding-bottom, var(--spacing-2xl))
+                 var(--slide-padding-left, var(--spacing-2xl));
+        gap: var(--spacing-lg);
+        box-sizing: border-box;
+      }
+
+      /* Zone assignments */
+      .slide-grid__header  { grid-area: header; }
+      .slide-grid__content { grid-area: content; }
+      .slide-grid__footer  { grid-area: footer; }
+      .slide-grid__left    { grid-area: left; }
+      .slide-grid__right   { grid-area: right; }
+      .slide-grid__cards   { grid-area: cards; }
+
+      /* Layout variants */
+      .slide-grid--two-col {
+        grid-template-areas:
+          "header header"
+          "left   right"
+          "footer footer";
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .slide-grid--split-60-40 {
+        grid-template-areas:
+          "header header"
+          "left   right"
+          "footer footer";
+        grid-template-columns: 3fr 2fr;
+      }
+
+      .slide-grid--split-40-60 {
+        grid-template-areas:
+          "header header"
+          "left   right"
+          "footer footer";
+        grid-template-columns: 2fr 3fr;
+      }
+
+      .slide-grid--cards {
+        grid-template-areas:
+          "header"
+          "cards"
+          "footer";
+      }
+
+      .slide-grid--bleed {
+        padding: 0;
+        grid-template-areas: "content";
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+      }
+
+      .slide-grid--center {
+        align-items: center;
+        justify-items: center;
+        text-align: center;
       }
 
       /* ==========================================================================
@@ -722,7 +812,7 @@
     <!-- Title/section-break/image-full-bleed slides also need data-master="hide" -->
     <div class="slides">
 
-      <section id="slide-1" data-component="title" data-master="hide">
+      <section id="slide-1" data-component="title" data-master="hide" class="center">
         <div class="comp-title">
           <h1 class="comp-title__title">Pr&auml;sentationstitel</h1>
           <div class="comp-title__divider"></div>
@@ -730,6 +820,19 @@
           <p class="comp-title__tagline">Unternehmen &middot; Datum</p>
         </div>
       </section>
+
+      <!-- Example: Content slide with grid zones
+      <section id="slide-2" data-component="text-heavy">
+        <div class="slide-grid">
+          <div class="slide-grid__header">
+            <h2>Slide Title</h2>
+          </div>
+          <div class="slide-grid__content comp-text-heavy">
+            component content here
+          </div>
+        </div>
+      </section>
+      -->
 
     </div>
 
@@ -865,8 +968,8 @@
       // Fragments
       fragments: true,
 
-      // Centering
-      center: true,
+      // Centering — false: eliminates JS-injected top offsets that break accent bars and positioning
+      center: false,
 
       // Min/max scale
       minScale: 0.2,
