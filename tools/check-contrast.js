@@ -129,7 +129,7 @@ const RESET = '\x1b[0m';
 
 const rootDir = path.resolve(__dirname, '..');
 const baseTokenPath = path.join(rootDir, 'tokens/base.css');
-const themesDir = path.join(rootDir, 'themes');
+const themesDir = path.join(rootDir, 'brands');
 
 // Parse CLI args
 const args = process.argv.slice(2);
