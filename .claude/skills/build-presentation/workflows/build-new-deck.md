@@ -163,7 +163,7 @@ Wait for BOTH to complete:
 
 **4.3: Evaluate Verdicts**
 
-Read both verdict files. Count BLOCKING items (tagged `[B1]`, `[B2]`, etc.) across both:
+Read both verdict files. Count BLOCKING items (tagged `[BLOCKING-1]`, `[BLOCKING-2]`, etc.) across both:
 
 - **Zero BLOCKINGs from both:** Debate ends. The `round-{N}-plan.md` is the approved plan. Proceed to Step 5.
 - **BLOCKINGs exist and N < 3:** Surface the blocking items to the user in conversation (quote them, do not reference files). Increment N, return to 4.1. The planner will address the critiques in round N+1.
