@@ -73,6 +73,8 @@ After generating or modifying a presentation:
 **Always:**
 - Use CSS custom properties from `tokens/base.css` -- never hardcode colors, fonts, or spacing
 - Set `data-master="hide"` on title, section-break, and image-full-bleed slides
+- Set `class="center"` on title and section-break slides (required for vertical centering)
+- Keep `center: false` in reveal.js config — never change to `center: true`
 - Include German text handling CSS rules in every presentation
 - Use action titles on content slides (verb-based sentences, not topic labels)
 

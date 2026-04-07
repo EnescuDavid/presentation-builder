@@ -15,7 +15,7 @@ Do NOT read individual template HTML files as primary input — this catalog sup
 ### HTML Structure
 
 ```html
-<section id="slide-1" data-component="title" data-master="hide">
+<section id="slide-1" data-component="title" data-master="hide" class="center">
   <div class="comp-title">
     <h1 class="comp-title__title">Handlungsempfehlung f&uuml;r Digitalisierung</h1>
     <div class="comp-title__divider"></div>
@@ -61,7 +61,7 @@ Structural component — not mapped to content archetypes. Used for deck structu
 ### HTML Structure
 
 ```html
-<section id="slide-2" data-component="section-break" data-master="hide">
+<section id="slide-2" data-component="section-break" data-master="hide" class="center">
   <div class="comp-section-break">
     <h2 class="comp-section-break__title">01 &mdash; Ausgangslage</h2>
     <p class="comp-section-break__subtitle">Marktentwicklung und Wettbewerbsumfeld</p>

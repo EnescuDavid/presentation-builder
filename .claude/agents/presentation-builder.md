@@ -67,15 +67,16 @@ For each slide in the deck plan:
 2. Copy the HTML Structure pattern from the catalog entry
 3. Add `id="slide-{n}"` and `data-component="{type}"` to the `<section>` element (n starts at 1)
 4. Add `data-master="hide"` for title, section-break, and image-full-bleed slides
-5. Fill in content from the deck plan (and research.md if available)
-6. Apply state modifier classes on CHILD elements where the deck plan specifies emphasis:
+5. Add `class="center"` for title and section-break slides (required for vertical centering with `center: false`)
+6. Fill in content from the deck plan (and research.md if available)
+7. Apply state modifier classes on CHILD elements where the deck plan specifies emphasis:
    - `.comp-metrics__card--positive` for growth/green
    - `.comp-metrics__card--negative` for decline/red
    - `.comp-comparison__card--current` for IST state
    - `.comp-comparison__card--target` for SOLL state
    - `.comp-comparison__card--recommended` for preferred option
    - Other state modifiers as listed in the catalog's State Modifiers table
-7. If content needs non-default sizing, note the slide for Step 6 (overrides)
+8. If content needs non-default sizing, note the slide for Step 6 (overrides)
 
 ## Step 5: Apply Animations
 
@@ -219,6 +220,7 @@ ENTRY
 8. Apply state modifier classes on CHILD elements (`.comp-metrics__card--positive`), never on the component wrapper.
 9. Use real German umlauts (ä/ö/ü or &auml;/&ouml;/&uuml; HTML entities) — never ae/oe/ue substitutions.
 10. Include `lang="de"` on the `<html>` element for German hyphenation.
+11. Add `class="center"` on title and section-break `<section>` elements — required for vertical centering since `center: false` is set in reveal.js config.
 
 
 ## MUST NOT
@@ -231,6 +233,8 @@ ENTRY
 6. NEVER read individual template HTML files (templates/title.html, templates/metrics.html, etc.) for building reference. Only read `templates/index.md`.
 7. NEVER set `--comp-*` variables on component wrapper elements (`.comp-metrics`, `.comp-comparison`). Always set them on the `<section>` wrapper.
 8. NEVER apply state modifiers on component wrapper elements (`.comp-metrics--highlighted`). Always apply on child elements (`.comp-metrics__card--highlighted`).
+9. NEVER add `margin-top` hacks to the accent bar `::before` pseudo-element. With `center: false`, `top: 0` is the true slide edge — no offset needed.
+10. NEVER change `center: false` to `center: true` in the reveal.js config. The framework requires `center: false` for reliable layout.
 
 
 ## Self-Check (run before returning the presentation)
