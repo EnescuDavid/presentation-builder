@@ -87,6 +87,73 @@ projects/{name}/
   notes.yaml          # Optional speaker notes
 ```
 
+## Critical Layout Rules
+
+These rules are **mandatory** for correct slide rendering. Violating them causes accent bar misalignment, broken centering, and asymmetric padding.
+
+### reveal.js Config
+
+```javascript
+center: false,  // NEVER change to true — eliminates JS-injected top offsets
+```
+
+### Section Attributes
+
+| Slide Type | Required Attributes |
+|------------|-------------------|
+| title | `data-master="hide" class="center"` |
+| section-break | `data-master="hide" class="center"` |
+| image-full-bleed | `data-master="hide"` |
+| All other content slides | (none required) |
+
+`class="center"` is **required** on title and section-break slides for vertical centering. Without it, content sticks to the top.
+
+### Section CSS
+
+Every presentation must include these rules on `.reveal .slides section`:
+
+```css
+height: 100%;
+box-sizing: border-box;
+overflow: visible;
+```
+
+### Accent Bar
+
+The accent bar `::before` pseudo-element must use `top: 0` with **no `margin-top` hack**:
+
+```css
+.reveal .slides section:not([data-master="hide"])::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: var(--theme-accent-bar-height, 3px);
+  background: linear-gradient(90deg, var(--theme-gradient-start, var(--color-primary)), var(--theme-gradient-end, var(--color-accent)));
+  z-index: 10;
+  /* NO margin-top — center:false means top:0 is the slide edge */
+}
+```
+
+### Theme Token Defaults
+
+Always define these tokens (brands override them):
+
+```css
+--theme-accent-bar-height: 3px;
+--theme-gradient-start: var(--color-primary);
+--theme-gradient-end: var(--color-accent);
+--theme-heading-border: 2px solid var(--color-accent);
+```
+
+### h2 Display
+
+```css
+.reveal .slides section h2 {
+  display: block;  /* NEVER inline-block — breaks flex layouts */
+  border-bottom: var(--theme-heading-border, none);
+}
+```
+
 ## Key Conventions
 
 - **German-first:** All templates handle 130-300% text expansion (`overflow-wrap: break-word`, `hyphens: auto`)
@@ -172,6 +239,8 @@ Follow this workflow to generate a consulting-grade presentation:
    d. Fill content slots with German-ready text (use HTML entities for umlauts)
    e. Apply theme tokens and animation classes (`fadeUp`, `blurIn`, `slideL`, `slideR`, `scalePop`)
    f. Set `data-master="hide"` on title, section-break, and image-full-bleed slides
+   g. Set `class="center"` on title and section-break slides
+   h. Ensure `center: false` in `Reveal.initialize()` config
 
 5. **Review in browser:** Open via local server (`npx serve`) for full functionality including speaker notes (`S` key) and navigation.
 
